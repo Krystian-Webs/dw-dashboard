@@ -4,341 +4,114 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DirectWebs — SEO Dashboard</title>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-
   :root {
-    --bg: #0a0a0f;
-    --surface: #13131a;
-    --surface2: #1c1c26;
-    --border: #2a2a38;
-    --accent: #6c63ff;
-    --accent2: #00d4aa;
-    --text: #e8e8f0;
-    --text2: #8888aa;
-    --text3: #55556a;
-    --red: #ff4d6a;
-    --yellow: #ffd166;
-    --green: #06d6a0;
+    --bg:#0a0a0f;--surface:#13131a;--surface2:#1c1c26;--border:#2a2a38;
+    --accent:#6c63ff;--accent2:#00d4aa;--text:#e8e8f0;--text2:#8888aa;
+    --text3:#55556a;--red:#ff4d6a;--yellow:#ffd166;--green:#06d6a0;
   }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    display: flex;
-  }
-
-  /* SIDEBAR */
-  .sidebar {
-    width: 72px;
-    background: var(--surface);
-    border-right: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 0;
-    gap: 8px;
-    position: fixed;
-    top: 0; left: 0; bottom: 0;
-    z-index: 100;
-  }
-
-  .sidebar-logo {
-    width: 36px; height: 36px;
-    background: var(--accent);
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 700; font-size: 14px; color: #fff;
-    margin-bottom: 16px;
-  }
-
-  .site-icon {
-    width: 44px; height: 44px;
-    border-radius: 12px;
-    background: var(--surface2);
-    border: 2px solid transparent;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
-    transition: all .2s;
-    position: relative;
-  }
-  .site-icon:hover { border-color: var(--accent); background: var(--surface2); }
-  .site-icon.active { border-color: var(--accent); background: rgba(108,99,255,.15); }
-  .site-icon .tooltip {
-    position: absolute; left: 56px;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    padding: 6px 10px;
-    border-radius: 8px;
-    font-size: 12px; white-space: nowrap;
-    opacity: 0; pointer-events: none;
-    transition: opacity .15s;
-  }
-  .site-icon:hover .tooltip { opacity: 1; }
-
-  .sidebar-add {
-    width: 44px; height: 44px;
-    border-radius: 12px;
-    border: 2px dashed var(--border);
-    background: transparent;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px; color: var(--text3);
-    transition: all .2s;
-    margin-top: auto;
-  }
-  .sidebar-add:hover { border-color: var(--accent); color: var(--accent); }
-
-  /* MAIN */
-  .main {
-    margin-left: 72px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-
-  /* TOPBAR */
-  .topbar {
-    height: 60px;
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    display: flex; align-items: center;
-    padding: 0 28px;
-    gap: 16px;
-    position: sticky; top: 0; z-index: 50;
-  }
-  .topbar-title { font-size: 15px; font-weight: 600; }
-  .topbar-url { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text2); }
-  .topbar-status {
-    margin-left: auto;
-    display: flex; gap: 8px; align-items: center;
-  }
-  .status-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--green);
-    box-shadow: 0 0 6px var(--green);
-  }
-  .topbar-actions { display: flex; gap: 8px; }
-  .btn {
-    padding: 7px 14px; border-radius: 8px;
-    font-size: 12px; font-weight: 500;
-    border: none; cursor: pointer;
-    transition: all .15s;
-    font-family: 'Inter', sans-serif;
-  }
-  .btn-ghost { background: var(--surface2); color: var(--text2); border: 1px solid var(--border); }
-  .btn-ghost:hover { color: var(--text); border-color: var(--accent); }
-  .btn-primary { background: var(--accent); color: #fff; }
-  .btn-primary:hover { background: #7c74ff; }
-  .btn-green { background: rgba(6,214,160,.15); color: var(--green); border: 1px solid rgba(6,214,160,.3); }
-  .btn-green:hover { background: rgba(6,214,160,.25); }
-
-  /* CONTENT */
-  .content { padding: 28px; flex: 1; }
-
-  /* TABS */
-  .tabs {
-    display: flex; gap: 4px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 24px;
-  }
-  .tab {
-    padding: 10px 16px; font-size: 13px; font-weight: 500;
-    color: var(--text2); cursor: pointer;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -1px; transition: all .15s;
-  }
-  .tab:hover { color: var(--text); }
-  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-
-  /* STATS ROW */
-  .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
-  .stat-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px;
-  }
-  .stat-label { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
-  .stat-value { font-size: 28px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
-  .stat-change { font-size: 11px; margin-top: 4px; }
-  .up { color: var(--green); }
-  .down { color: var(--red); }
-  .neutral { color: var(--text3); }
-
-  /* GRID 2COL */
-  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
-  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px; }
-
-  /* CARD */
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px;
-  }
-  .card-title {
-    font-size: 12px; font-weight: 600;
-    color: var(--text2); text-transform: uppercase;
-    letter-spacing: .06em; margin-bottom: 16px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-
-  /* SEO TABLE */
-  .seo-table { width: 100%; border-collapse: collapse; }
-  .seo-table th {
-    text-align: left; font-size: 10px; color: var(--text3);
-    text-transform: uppercase; letter-spacing: .06em;
-    padding: 0 12px 10px 0; border-bottom: 1px solid var(--border);
-  }
-  .seo-table td {
-    padding: 10px 12px 10px 0;
-    font-size: 12px; border-bottom: 1px solid var(--border);
-    vertical-align: middle;
-  }
-  .seo-table tr:last-child td { border-bottom: none; }
-  .seo-score {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 34px; height: 34px; border-radius: 50%;
-    font-size: 12px; font-weight: 700;
-    font-family: 'JetBrains Mono', monospace;
-  }
-  .score-green { background: rgba(6,214,160,.15); color: var(--green); border: 1px solid rgba(6,214,160,.3); }
-  .score-yellow { background: rgba(255,209,102,.15); color: var(--yellow); border: 1px solid rgba(255,209,102,.3); }
-  .score-red { background: rgba(255,77,106,.15); color: var(--red); border: 1px solid rgba(255,77,106,.3); }
-
-  .page-path { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text2); }
-  .page-title { font-size: 12px; color: var(--text); max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .meta-preview { font-size: 11px; color: var(--text3); max-width: 260px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-  /* KEYWORDS */
-  .kw-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); }
-  .kw-row:last-child { border-bottom: none; }
-  .kw-phrase { font-size: 12px; flex: 1; }
-  .kw-pos {
-    font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600;
-    width: 32px; text-align: center;
-  }
-  .kw-bar-wrap { width: 80px; height: 4px; background: var(--border); border-radius: 2px; }
-  .kw-bar { height: 4px; border-radius: 2px; background: var(--accent); }
-  .kw-clicks { font-size: 11px; color: var(--text3); width: 40px; text-align: right; }
-
-  /* POSTS */
-  .post-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
-  .post-row:last-child { border-bottom: none; }
-  .post-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
-  .post-info { flex: 1; }
-  .post-title { font-size: 12px; }
-  .post-meta { font-size: 11px; color: var(--text3); margin-top: 2px; }
-  .post-badge {
-    font-size: 10px; padding: 2px 8px; border-radius: 20px;
-    background: rgba(6,214,160,.12); color: var(--green);
-    border: 1px solid rgba(6,214,160,.25);
-  }
-
-  /* ACTIVITY */
-  .activity-row { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
-  .activity-row:last-child { border-bottom: none; }
-  .activity-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-  .activity-text { font-size: 12px; flex: 1; line-height: 1.5; }
-  .activity-time { font-size: 11px; color: var(--text3); white-space: nowrap; }
-
-  /* LOADING */
-  .loading-state { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px; color: var(--text3); gap: 12px; }
-  .spinner { width: 32px; height: 32px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin .8s linear infinite; }
-  @keyframes spin { to { transform: rotate(360deg); } }
-
-  /* EMPTY */
-  .empty { text-align: center; padding: 40px; color: var(--text3); font-size: 13px; }
-
-  /* MODAL */
-  .modal-overlay {
-    position: fixed; inset: 0; background: rgba(0,0,0,.7);
-    display: flex; align-items: center; justify-content: center;
-    z-index: 1000; opacity: 0; pointer-events: none; transition: opacity .2s;
-  }
-  .modal-overlay.open { opacity: 1; pointer-events: all; }
-  .modal {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 28px; width: 480px;
-    transform: translateY(10px); transition: transform .2s;
-  }
-  .modal-overlay.open .modal { transform: translateY(0); }
-  .modal-title { font-size: 16px; font-weight: 600; margin-bottom: 20px; }
-  .form-group { margin-bottom: 14px; }
-  .form-label { font-size: 11px; color: var(--text2); margin-bottom: 6px; display: block; text-transform: uppercase; letter-spacing: .06em; }
-  .form-input {
-    width: 100%; padding: 10px 12px;
-    background: var(--bg); border: 1px solid var(--border);
-    border-radius: 8px; color: var(--text); font-size: 13px;
-    font-family: 'Inter', sans-serif; outline: none;
-    transition: border-color .15s;
-  }
-  .form-input:focus { border-color: var(--accent); }
-  .modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 20px; }
-
-  /* BADGE */
-  .badge {
-    font-size: 10px; padding: 2px 7px; border-radius: 20px; font-weight: 500;
-  }
-  .badge-purple { background: rgba(108,99,255,.15); color: var(--accent); border: 1px solid rgba(108,99,255,.3); }
-
-  /* TABS PANEL */
-  .tab-panel { display: none; }
-  .tab-panel.active { display: block; }
-
-  /* PROGRESS BAR */
-  .progress-wrap { height: 4px; background: var(--border); border-radius: 2px; margin-top: 6px; }
-  .progress-bar { height: 4px; border-radius: 2px; }
-
-  /* WELCOME */
-  .welcome {
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    height: calc(100vh - 60px); gap: 16px; color: var(--text2); text-align: center;
-  }
-  .welcome h2 { font-size: 22px; color: var(--text); }
-  .welcome p { font-size: 14px; max-width: 340px; line-height: 1.6; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex}
+  .sidebar{width:72px;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;align-items:center;padding:20px 0;gap:8px;position:fixed;top:0;left:0;bottom:0;z-index:100}
+  .sidebar-logo{width:36px;height:36px;background:var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;margin-bottom:16px}
+  .site-icon{width:44px;height:44px;border-radius:12px;background:var(--surface2);border:2px solid transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;transition:all .2s;position:relative}
+  .site-icon:hover{border-color:var(--accent)}
+  .site-icon.active{border-color:var(--accent);background:rgba(108,99,255,.15)}
+  .site-icon .tooltip{position:absolute;left:56px;background:var(--surface2);border:1px solid var(--border);padding:6px 10px;border-radius:8px;font-size:12px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s;z-index:200}
+  .site-icon:hover .tooltip{opacity:1}
+  .sidebar-add{width:44px;height:44px;border-radius:12px;border:2px dashed var(--border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--text3);transition:all .2s;margin-top:auto}
+  .sidebar-add:hover{border-color:var(--accent);color:var(--accent)}
+  .main{margin-left:72px;flex:1;display:flex;flex-direction:column;min-height:100vh}
+  .topbar{height:60px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 28px;gap:12px;position:sticky;top:0;z-index:50}
+  .topbar-title{font-size:15px;font-weight:600}
+  .topbar-url{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text2)}
+  .topbar-right{margin-left:auto;display:flex;gap:8px;align-items:center}
+  .btn{padding:7px 14px;border-radius:8px;font-size:12px;font-weight:500;border:none;cursor:pointer;transition:all .15s;font-family:'Inter',sans-serif}
+  .btn-ghost{background:var(--surface2);color:var(--text2);border:1px solid var(--border)}
+  .btn-ghost:hover{color:var(--text);border-color:var(--accent)}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:#7c74ff}
+  .btn-green{background:rgba(6,214,160,.15);color:var(--green);border:1px solid rgba(6,214,160,.3)}
+  .btn-green:hover{background:rgba(6,214,160,.25)}
+  .content{padding:28px;flex:1}
+  .tabs{display:flex;gap:4px;border-bottom:1px solid var(--border);margin-bottom:24px}
+  .tab{padding:10px 16px;font-size:13px;font-weight:500;color:var(--text2);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s}
+  .tab:hover{color:var(--text)}
+  .tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+  .tab-panel{display:none}
+  .tab-panel.active{display:block}
+  .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+  .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px}
+  .stat-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+  .stat-value{font-size:28px;font-weight:700;font-family:'JetBrains Mono',monospace}
+  .stat-sub{font-size:11px;color:var(--text3);margin-top:4px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px}
+  .card-title{font-size:12px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between}
+  .kw-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)}
+  .kw-row:last-child{border-bottom:none}
+  .kw-phrase{font-size:12px;flex:1}
+  .kw-pos{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;width:32px;text-align:center}
+  .kw-bar-wrap{width:80px;height:4px;background:var(--border);border-radius:2px}
+  .kw-bar{height:4px;border-radius:2px;background:var(--accent)}
+  .kw-clicks{font-size:11px;color:var(--text3);width:50px;text-align:right}
+  .post-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)}
+  .post-row:last-child{border-bottom:none}
+  .post-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0}
+  .post-info{flex:1}
+  .post-title{font-size:12px}
+  .post-meta{font-size:11px;color:var(--text3);margin-top:2px}
+  .post-badge{font-size:10px;padding:2px 8px;border-radius:20px;background:rgba(6,214,160,.12);color:var(--green);border:1px solid rgba(6,214,160,.25)}
+  .badge{font-size:10px;padding:2px 7px;border-radius:20px;font-weight:500}
+  .badge-purple{background:rgba(108,99,255,.15);color:var(--accent);border:1px solid rgba(108,99,255,.3)}
+  .seo-table{width:100%;border-collapse:collapse}
+  .seo-table th{text-align:left;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;padding:0 12px 10px 0;border-bottom:1px solid var(--border)}
+  .seo-table td{padding:10px 12px 10px 0;font-size:12px;border-bottom:1px solid var(--border);vertical-align:middle}
+  .seo-table tr:last-child td{border-bottom:none}
+  .loading{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;color:var(--text3);gap:12px}
+  .spinner{width:28px;height:28px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .empty{text-align:center;padding:32px;color:var(--text3);font-size:13px;line-height:1.6}
+  .welcome{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 60px);gap:16px;color:var(--text2);text-align:center}
+  .welcome h2{font-size:22px;color:var(--text)}
+  .welcome p{font-size:14px;max-width:340px;line-height:1.6}
+  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:1000;opacity:0;pointer-events:none;transition:opacity .2s}
+  .modal-overlay.open{opacity:1;pointer-events:all}
+  .modal{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;width:480px;transform:translateY(10px);transition:transform .2s}
+  .modal-overlay.open .modal{transform:translateY(0)}
+  .modal-title{font-size:16px;font-weight:600;margin-bottom:20px}
+  .form-group{margin-bottom:14px}
+  .form-label{font-size:11px;color:var(--text2);margin-bottom:6px;display:block;text-transform:uppercase;letter-spacing:.06em}
+  .form-input{width:100%;padding:10px 12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px;font-family:'Inter',sans-serif;outline:none;transition:border-color .15s}
+  .form-input:focus{border-color:var(--accent)}
+  .modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:20px}
+  .gsc-connected{color:var(--green);font-size:12px;display:flex;align-items:center;gap:6px}
+  .gsc-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green)}
 </style>
-
-  <!-- Google Identity Services -->
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
-  <script src="https://apis.google.com/js/api.js" async defer></script>
 </head>
 <body>
 
-<!-- SIDEBAR -->
 <div class="sidebar" id="sidebar">
   <div class="sidebar-logo">DW</div>
-  <!-- site icons rendered here -->
-  <button class="sidebar-add" onclick="openModal()" title="Dodaj stronę">+</button>
+  <button class="sidebar-add" onclick="openModal()">+</button>
 </div>
 
-<!-- MAIN -->
 <div class="main">
-  <div class="topbar" id="topbar">
-    <span class="topbar-title" id="topbar-title">SEO Dashboard</span>
-    <span class="topbar-url" id="topbar-url"></span>
-    <div class="topbar-status" id="topbar-status" style="display:none">
-      <div class="status-dot"></div>
-      <span style="font-size:12px;color:var(--text2)">Aktywna</span>
-    </div>
-    <div class="topbar-actions" id="topbar-actions" style="display:none"><button id="gsc-btn" class="btn btn-ghost" onclick="loginGSC()">🔗 Połącz Google Search Console</button>
+  <div class="topbar">
+    <div id="topbar-title" style="font-size:15px;font-weight:600">SEO Dashboard</div>
+    <div id="topbar-url" style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text2)"></div>
+    <div class="topbar-right" id="topbar-right" style="display:none">
+      <div id="gsc-status"></div>
+      <button id="gsc-btn" class="btn btn-ghost" onclick="handleGscBtn()">🔗 Połącz GSC</button>
       <button class="btn btn-ghost" onclick="runSeoAudit()">🔍 Audyt SEO</button>
-      <button class="btn btn-ghost" onclick="indexAllPages()">📡 Indeksuj strony</button>
       <button class="btn btn-primary" onclick="generatePost()">✍️ Generuj wpis</button>
     </div>
   </div>
-
   <div class="content" id="content">
-    <div class="welcome" id="welcome">
+    <div class="welcome">
       <div style="font-size:48px">🚀</div>
       <h2>Wybierz stronę z panelu bocznego</h2>
       <p>Kliknij ikonę strony po lewej lub dodaj nową stronę przyciskiem +</p>
@@ -346,34 +119,14 @@
   </div>
 </div>
 
-<!-- MODAL DODAJ STRONĘ -->
 <div class="modal-overlay" id="modal">
   <div class="modal">
     <div class="modal-title">➕ Dodaj stronę</div>
-    <div class="form-group">
-      <label class="form-label">Nazwa strony</label>
-      <input class="form-input" id="f-name" placeholder="np. DirectWebs">
-    </div>
-    <div class="form-group">
-      <label class="form-label">URL strony</label>
-      <input class="form-input" id="f-url" placeholder="https://example.pl">
-    </div>
-    <div class="form-group">
-      <label class="form-label">Emoji / ikona</label>
-      <input class="form-input" id="f-emoji" placeholder="🌐" maxlength="2" value="🌐">
-    </div>
-    <div class="form-group">
-      <label class="form-label">WordPress URL (REST API)</label>
-      <input class="form-input" id="f-wp-url" placeholder="https://example.pl">
-    </div>
-    <div class="form-group">
-      <label class="form-label">WordPress Login</label>
-      <input class="form-input" id="f-wp-user" placeholder="admin">
-    </div>
-    <div class="form-group">
-      <label class="form-label">WordPress Application Password</label>
-      <input class="form-input" id="f-wp-pass" type="password" placeholder="xxxx xxxx xxxx xxxx">
-    </div>
+    <div class="form-group"><label class="form-label">Nazwa strony</label><input class="form-input" id="f-name" placeholder="np. ABM Market"></div>
+    <div class="form-group"><label class="form-label">URL strony</label><input class="form-input" id="f-url" placeholder="https://example.pl"></div>
+    <div class="form-group"><label class="form-label">GSC Site URL (np. sc-domain:example.pl)</label><input class="form-input" id="f-gsc" placeholder="sc-domain:example.pl"></div>
+    <div class="form-group"><label class="form-label">WordPress Login</label><input class="form-input" id="f-wp-user" placeholder="admin"></div>
+    <div class="form-group"><label class="form-label">WordPress Application Password</label><input class="form-input" id="f-wp-pass" type="password" placeholder="xxxx xxxx xxxx xxxx"></div>
     <div class="modal-actions">
       <button class="btn btn-ghost" onclick="closeModal()">Anuluj</button>
       <button class="btn btn-primary" onclick="saveSite()">Dodaj stronę</button>
@@ -382,325 +135,184 @@
 </div>
 
 <script>
-// ─── STATE ───────────────────────────────────────────
-let sites = JSON.parse(localStorage.getItem('dw_sites') || '[]');
-let activeSite = null;
-let siteData = {}; // cache per site
+const GSC_CLIENT_ID = '880754963463-fd93unrpgud1hmjm8n3q1d5de9uocdbn.apps.googleusercontent.com';
+const GSC_SCOPE = 'https://www.googleapis.com/auth/webmasters.readonly';
 
-// ─── DEFAULTS ────────────────────────────────────────
-const DEFAULT_SITES = [
-  { id: 'directwebs', name: 'DirectWebs', url: 'https://directwebs.pl', emoji: '⚡', wpUrl: 'https://directwebs.pl', wpUser: '', wpPass: '' },
-  { id: 'abmmarket', name: 'ABM Market', url: 'https://abmmarket.pl', emoji: '🛒', wpUrl: 'https://abmmarket.pl', wpUser: '', wpPass: '' },
-  { id: 'wazakotlina', name: 'Waża Kotlina', url: 'https://wazakotlina.pl', emoji: '🏔️', wpUrl: 'https://wazakotlina.pl', wpUser: '', wpPass: '' },
+// ── SITES ──────────────────────────────────────────
+let sites = JSON.parse(localStorage.getItem('dw_sites2') || 'null') || [
+  {id:'directwebs', name:'DirectWebs', url:'https://directwebs.pl', gscSite:'sc-domain:directwebs.pl', wpUrl:'https://directwebs.pl', wpUser:'', wpPass:''},
+  {id:'abmmarket',  name:'ABM Market', url:'https://abmmarket.pl',  gscSite:'sc-domain:abmmarket.pl',  wpUrl:'https://abmmarket.pl',  wpUser:'', wpPass:''},
+  {id:'wazakotlina',name:'Waża Kotlina',url:'https://wazakotlina.pl',gscSite:'sc-domain:wazakotlina.pl',wpUrl:'https://wazakotlina.pl',wpUser:'', wpPass:''},
 ];
+let activeSite = null;
 
-if (sites.length === 0) {
-  sites = DEFAULT_SITES;
-  localStorage.setItem('dw_sites', JSON.stringify(sites));
+// ── GSC TOKEN per site ──────────────────────────────
+function getToken(siteId) {
+  const t = localStorage.getItem(`gsc_token_${siteId}`);
+  const e = parseInt(localStorage.getItem(`gsc_expiry_${siteId}`) || '0');
+  if (t && Date.now() < e) return t;
+  return null;
+}
+function setToken(siteId, token, expiresIn) {
+  localStorage.setItem(`gsc_token_${siteId}`, token);
+  localStorage.setItem(`gsc_expiry_${siteId}`, Date.now() + expiresIn * 1000);
+}
+function clearToken(siteId) {
+  localStorage.removeItem(`gsc_token_${siteId}`);
+  localStorage.removeItem(`gsc_expiry_${siteId}`);
 }
 
-// ─── RENDER SIDEBAR ──────────────────────────────────
+// ── RENDER SIDEBAR ─────────────────────────────────
 function renderSidebar() {
   const sidebar = document.getElementById('sidebar');
-  // Remove old site icons
-  sidebar.querySelectorAll('.site-icon').forEach(el => el.remove());
+  sidebar.querySelectorAll('.site-icon').forEach(e => e.remove());
   const addBtn = sidebar.querySelector('.sidebar-add');
-
   sites.forEach(site => {
     const el = document.createElement('div');
     el.className = 'site-icon' + (activeSite?.id === site.id ? ' active' : '');
     const domain = new URL(site.url).hostname;
-    const faviconUrl = `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
-    el.innerHTML = `<img src="${faviconUrl}" style="width:28px;height:28px;border-radius:6px;object-fit:cover" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span style=font-size:18px>${site.emoji}</span>')"><span class="tooltip">${site.name}</span>`;
+    el.innerHTML = `<img src="https://www.google.com/s2/favicons?domain=${domain}&sz=64" style="width:28px;height:28px;border-radius:6px;object-fit:cover"><span class="tooltip">${site.name}</span>`;
     el.onclick = () => selectSite(site);
     sidebar.insertBefore(el, addBtn);
   });
 }
 
-// ─── SELECT SITE ─────────────────────────────────────
+// ── SELECT SITE ────────────────────────────────────
 function selectSite(site) {
   activeSite = site;
   renderSidebar();
-  document.getElementById('welcome').style.display = 'none';
-  const domain2 = new URL(site.url).hostname;
-  document.getElementById('topbar-title').innerHTML = `<img src="https://www.google.com/s2/favicons?domain=${domain2}&sz=32" style="width:20px;height:20px;border-radius:4px;vertical-align:middle;margin-right:8px">${site.name}`;
+  const domain = new URL(site.url).hostname;
+  document.getElementById('topbar-title').innerHTML = `<img src="https://www.google.com/s2/favicons?domain=${domain}&sz=32" style="width:20px;height:20px;border-radius:4px;vertical-align:middle;margin-right:8px">${site.name}`;
   document.getElementById('topbar-url').textContent = site.url;
-  document.getElementById('topbar-status').style.display = 'flex';
-  document.getElementById('topbar-actions').style.display = 'flex';
-  renderSiteProfile(site);
-  setTimeout(() => { updateGscButton(); if (isGscLoggedIn()) loadGscData(site); }, 100);
+  document.getElementById('topbar-right').style.display = 'flex';
+  updateGscStatus(site);
+  renderProfile(site);
+  if (site.wpUser && site.wpPass) loadWpData(site);
+  const token = getToken(site.id);
+  if (token) loadGscData(site, token);
 }
 
-// ─── RENDER SITE PROFILE ─────────────────────────────
-function renderSiteProfile(site) {
-  const content = document.getElementById('content');
-  content.innerHTML = `
-    <div class="tabs">
-      <div class="tab active" onclick="switchTab('overview', this)">📊 Przegląd</div>
-      <div class="tab" onclick="switchTab('seo', this)">🔍 SEO stron</div>
-      <div class="tab" onclick="switchTab('keywords', this)">🎯 Frazy kluczowe</div>
-      <div class="tab" onclick="switchTab('posts', this)">📝 Wpisy</div>
-      <div class="tab" onclick="switchTab('activity', this)">🕐 Historia</div>
-      <div class="tab" onclick="switchTab('settings', this)">⚙️ Ustawienia</div>
-    </div>
-
-    <div id="tab-overview" class="tab-panel active">
-      ${renderOverview(site)}
-    </div>
-    <div id="tab-seo" class="tab-panel">
-      ${renderSeoPanel(site)}
-    </div>
-    <div id="tab-keywords" class="tab-panel">
-      ${renderKeywords(site)}
-    </div>
-    <div id="tab-posts" class="tab-panel">
-      ${renderPosts(site)}
-    </div>
-    <div id="tab-activity" class="tab-panel">
-      ${renderActivity(site)}
-    </div>
-    <div id="tab-settings" class="tab-panel">
-      ${renderSettings(site)}
-    </div>
-  `;
-
-  // Load real WP data if credentials set
-  if (site.wpUser && site.wpPass) {
-    loadWpData(site);
+// ── GSC STATUS ─────────────────────────────────────
+function updateGscStatus(site) {
+  const token = getToken(site.id);
+  const statusEl = document.getElementById('gsc-status');
+  const btnEl = document.getElementById('gsc-btn');
+  if (token) {
+    statusEl.innerHTML = '<span class="gsc-connected"><span class="gsc-dot"></span>GSC połączone</span>';
+    btnEl.textContent = '🔓 Rozłącz GSC';
+    btnEl.className = 'btn btn-green';
+  } else {
+    statusEl.innerHTML = '';
+    btnEl.textContent = '🔗 Połącz GSC';
+    btnEl.className = 'btn btn-ghost';
   }
 }
 
-function switchTab(name, el) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  el.classList.add('active');
-  document.getElementById('tab-' + name).classList.add('active');
-}
-
-// ─── OVERVIEW ────────────────────────────────────────
-function renderOverview(site) {
-  const data = siteData[site.id] || {};
-  return `
-    <div class="stats-row">
-      <div class="stat-card">
-        <div class="stat-label">Kliknięcia (30 dni)</div>
-        <div class="stat-value" style="color:var(--accent)">${data.clicks ?? '—'}</div>
-        <div class="stat-change neutral">z Google Search Console</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Wyświetlenia</div>
-        <div class="stat-value" style="color:var(--accent2)">${data.impressions ?? '—'}</div>
-        <div class="stat-change neutral">ostatnie 30 dni</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Śr. pozycja</div>
-        <div class="stat-value" style="color:var(--yellow)">${data.avgPosition ?? '—'}</div>
-        <div class="stat-change neutral">w Google</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Wpisy blogowe</div>
-        <div class="stat-value" style="color:var(--green)">${data.postCount ?? '—'}</div>
-        <div class="stat-change neutral">opublikowane</div>
-      </div>
-    </div>
-
-    <div class="grid2">
-      <div class="card">
-        <div class="card-title">Ostatnie wpisy <span class="badge badge-purple">Auto SEO</span></div>
-        <div id="recent-posts-${site.id}">
-          ${site.wpUser ? '<div class="loading-state"><div class="spinner"></div><span>Ładowanie...</span></div>' : renderNoCredentials()}
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-title">Top frazy kluczowe</div>
-        <div id="top-keywords-${site.id}">
-          <div class="empty">Połącz Google Search Console<br>żeby zobaczyć frazy</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="grid3">
-      <div class="card">
-        <div class="card-title">SEO Score</div>
-        <div style="display:flex;align-items:center;gap:16px;padding:8px 0">
-          <div style="font-size:48px;font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--green)">${data.seoScore ?? '?'}</div>
-          <div>
-            <div style="font-size:12px;color:var(--text2)">Rank Math</div>
-            <div class="progress-wrap" style="width:120px">
-              <div class="progress-bar" style="width:${data.seoScore ?? 0}%;background:var(--green)"></div>
-            </div>
-            <div style="font-size:11px;color:var(--text3);margin-top:4px">${data.seoScore ? (data.seoScore >= 80 ? '✅ Dobry wynik' : '⚠️ Wymaga optymalizacji') : 'Uruchom audyt'}</div>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-title">Ostatni audyt SEO</div>
-        <div style="font-size:12px;color:var(--text2);padding:8px 0">
-          ${data.lastAudit ?? 'Brak danych'}
-          <br><br>
-          <button class="btn btn-ghost" style="font-size:11px" onclick="runSeoAudit()">🔍 Uruchom audyt</button>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-title">Indeksowanie</div>
-        <div style="font-size:12px;color:var(--text2);padding:8px 0">
-          Ostatnie zgłoszenie:<br>
-          <span style="color:var(--text)">${data.lastIndexed ?? 'Brak danych'}</span>
-          <br><br>
-          <button class="btn btn-green" style="font-size:11px" onclick="indexAllPages()">📡 Zgłoś do Google</button>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-function renderNoCredentials() {
-  return `<div class="empty">Dodaj dane WordPress<br>w zakładce ⚙️ Ustawienia</div>`;
-}
-
-// ─── SEO PANEL ───────────────────────────────────────
-function renderSeoPanel(site) {
-  return `
-    <div class="card">
-      <div class="card-title">
-        Podstrony — SEO
-        <button class="btn btn-ghost" style="font-size:11px" onclick="runSeoAudit()">🔍 Uruchom audyt</button>
-      </div>
-      <div id="seo-pages-${site.id}">
-        ${site.wpUser ? '<div class="loading-state"><div class="spinner"></div><span>Ładowanie stron...</span></div>' : renderNoCredentials()}
-      </div>
-    </div>
-  `;
-}
-
-// ─── KEYWORDS ────────────────────────────────────────
-function renderKeywords(site) {
-  return `
-    <div class="card">
-      <div class="card-title">Frazy kluczowe — Google Search Console</div>
-      <div class="empty" style="padding:40px">
-        Połącz Google Search Console żeby zobaczyć dane.<br>
-        <span style="font-size:11px;color:var(--text3);margin-top:8px;display:block">Dane pobierane automatycznie przez GitHub Actions</span>
-      </div>
-    </div>
-  `;
-}
-
-// ─── POSTS ───────────────────────────────────────────
-function renderPosts(site) {
-  return `
-    <div class="card">
-      <div class="card-title">
-        Wpisy blogowe
-        <button class="btn btn-primary" style="font-size:11px" onclick="generatePost()">✍️ Generuj wpis</button>
-      </div>
-      <div id="all-posts-${site.id}">
-        ${site.wpUser ? '<div class="loading-state"><div class="spinner"></div><span>Ładowanie wpisów...</span></div>' : renderNoCredentials()}
-      </div>
-    </div>
-  `;
-}
-
-// ─── ACTIVITY ────────────────────────────────────────
-function renderActivity(site) {
-  const history = JSON.parse(localStorage.getItem(`dw_history_${site.id}`) || '[]');
-  if (history.length === 0) {
-    return `<div class="card"><div class="empty">Brak historii dla tej strony</div></div>`;
+function handleGscBtn() {
+  if (!activeSite) return;
+  const token = getToken(activeSite.id);
+  if (token) {
+    clearToken(activeSite.id);
+    updateGscStatus(activeSite);
+    renderProfile(activeSite);
+  } else {
+    loginGSC(activeSite);
   }
-  const rows = history.slice(0,20).map(h => `
-    <div class="activity-row">
-      <div class="activity-icon">${h.icon || '📌'}</div>
-      <div class="activity-text">${h.text}</div>
-      <div class="activity-time">${h.time}</div>
-    </div>
-  `).join('');
-  return `<div class="card"><div class="card-title">Historia działań</div>${rows}</div>`;
 }
 
-// ─── SETTINGS ────────────────────────────────────────
-function renderSettings(site) {
-  return `
-    <div class="card" style="max-width:540px">
-      <div class="card-title">Ustawienia strony — ${site.name}</div>
-      <div class="form-group">
-        <label class="form-label">Nazwa</label>
-        <input class="form-input" id="s-name" value="${site.name}">
-      </div>
-      <div class="form-group">
-        <label class="form-label">URL strony</label>
-        <input class="form-input" id="s-url" value="${site.url}">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Emoji</label>
-        <input class="form-input" id="s-emoji" value="${site.emoji}" maxlength="2">
-      </div>
-      <div class="form-group">
-        <label class="form-label">WordPress URL</label>
-        <input class="form-input" id="s-wp-url" value="${site.wpUrl || site.url}">
-      </div>
-      <div class="form-group">
-        <label class="form-label">WordPress Login</label>
-        <input class="form-input" id="s-wp-user" value="${site.wpUser || ''}">
-      </div>
-      <div class="form-group">
-        <label class="form-label">WordPress Application Password</label>
-        <input class="form-input" id="s-wp-pass" type="password" value="${site.wpPass || ''}" placeholder="xxxx xxxx xxxx xxxx">
-      </div>
-      <div style="display:flex;gap:8px;margin-top:8px">
-        <button class="btn btn-primary" onclick="saveSettings('${site.id}')">💾 Zapisz</button>
-        <button class="btn btn-ghost" onclick="testConnection('${site.id}')">🔗 Testuj połączenie</button>
-        <button class="btn" style="background:rgba(255,77,106,.12);color:var(--red);border:1px solid rgba(255,77,106,.3)" onclick="deleteSite('${site.id}')">🗑️ Usuń stronę</button>
-      </div>
-      <div id="settings-msg-${site.id}" style="margin-top:12px;font-size:12px"></div>
-    </div>
-  `;
+function loginGSC(site) {
+  const client = google.accounts.oauth2.initTokenClient({
+    client_id: GSC_CLIENT_ID,
+    scope: GSC_SCOPE,
+    callback: (resp) => {
+      if (resp.access_token) {
+        setToken(site.id, resp.access_token, resp.expires_in || 3600);
+        updateGscStatus(site);
+        loadGscData(site, resp.access_token);
+      }
+    }
+  });
+  client.requestAccessToken();
 }
 
-// ─── LOAD WP DATA ─────────────────────────────────────
+// ── LOAD GSC DATA ──────────────────────────────────
+async function loadGscData(site, token) {
+  const end = new Date().toISOString().split('T')[0];
+  const start = new Date(Date.now()-30*24*60*60*1000).toISOString().split('T')[0];
+  try {
+    const res = await fetch(`https://searchconsole.googleapis.com/webmasters/v3/sites/${encodeURIComponent(site.gscSite)}/searchAnalytics/query`, {
+      method:'POST',
+      headers:{'Authorization':`Bearer ${token}`,'Content-Type':'application/json'},
+      body:JSON.stringify({startDate:start,endDate:end,dimensions:['query'],rowLimit:20})
+    });
+    if (!res.ok) { clearToken(site.id); updateGscStatus(site); return; }
+    const data = await res.json();
+    const rows = data.rows || [];
+    let clicks=0, impr=0, posSum=0;
+    rows.forEach(r=>{clicks+=r.clicks;impr+=r.impressions;posSum+=r.position});
+    const avgPos = rows.length ? (posSum/rows.length).toFixed(1) : '—';
+    // update cards
+    const cards = document.querySelectorAll('.stat-card .stat-value');
+    if(cards[0]) cards[0].textContent = clicks.toLocaleString('pl-PL');
+    if(cards[1]) cards[1].textContent = impr.toLocaleString('pl-PL');
+    if(cards[2]) cards[2].textContent = avgPos;
+    // update keywords panel
+    renderKeywordsData(site, rows);
+  } catch(e) { console.error(e); }
+}
+
+function renderKeywordsData(site, rows) {
+  const el = document.getElementById(`kw-${site.id}`);
+  if (!el || !rows.length) return;
+  const max = Math.max(...rows.map(r=>r.clicks))||1;
+  el.innerHTML = rows.slice(0,10).map(r=>`
+    <div class="kw-row">
+      <div class="kw-phrase">${r.keys[0]}</div>
+      <div class="kw-pos" style="color:${r.position<=5?'var(--green)':r.position<=10?'var(--yellow)':'var(--text2)'}">#${Math.round(r.position)}</div>
+      <div class="kw-bar-wrap"><div class="kw-bar" style="width:${r.clicks/max*100}%"></div></div>
+      <div class="kw-clicks">${r.clicks} klik.</div>
+    </div>`).join('');
+
+  // update top kw in overview
+  const topEl = document.getElementById(`top-kw-${site.id}`);
+  if(topEl) topEl.innerHTML = rows.slice(0,5).map(r=>`
+    <div class="kw-row">
+      <div class="kw-phrase">${r.keys[0]}</div>
+      <div class="kw-pos" style="color:${r.position<=5?'var(--green)':r.position<=10?'var(--yellow)':'var(--text2)'}">#${Math.round(r.position)}</div>
+      <div class="kw-bar-wrap"><div class="kw-bar" style="width:${r.clicks/max*100}%"></div></div>
+      <div class="kw-clicks">${r.clicks} klik.</div>
+    </div>`).join('');
+}
+
+// ── LOAD WP DATA ───────────────────────────────────
 async function loadWpData(site) {
   const auth = btoa(`${site.wpUser}:${site.wpPass}`);
-  const headers = { 'Authorization': `Basic ${auth}` };
-
-  // Load posts
   try {
-    const res = await fetch(`${site.wpUrl}/wp-json/wp/v2/posts?per_page=20&status=publish&_fields=id,title,link,date`, { headers });
-    if (res.ok) {
-      const posts = await res.json();
-      siteData[site.id] = siteData[site.id] || {};
-      siteData[site.id].postCount = posts.length;
-      renderPostsList(site, posts);
-    }
-  } catch(e) {}
+    const res = await fetch(`${site.wpUrl}/wp-json/wp/v2/posts?per_page=20&status=publish&_fields=id,title,link,date`,
+      {headers:{'Authorization':`Basic ${auth}`}});
+    if (!res.ok) return;
+    const posts = await res.json();
+    // update count
+    const cards = document.querySelectorAll('.stat-card .stat-value');
+    if(cards[3]) cards[3].textContent = posts.length;
+    renderPostsData(site, posts);
+  } catch(e){}
 
-  // Load pages
   try {
-    const res = await fetch(`${site.wpUrl}/wp-json/wp/v2/pages?per_page=50&status=publish&_fields=id,title,link,slug`, { headers });
-    if (res.ok) {
-      const pages = await res.json();
-      renderPagesList(site, pages);
-    }
-  } catch(e) {}
+    const res = await fetch(`${site.wpUrl}/wp-json/wp/v2/pages?per_page=50&status=publish&_fields=id,title,link,slug`,
+      {headers:{'Authorization':`Basic ${auth}`}});
+    if (!res.ok) return;
+    const pages = await res.json();
+    renderPagesData(site, pages);
+  } catch(e){}
 }
 
-function renderPostsList(site, posts) {
-  const el = document.getElementById(`recent-posts-${site.id}`);
-  const allEl = document.getElementById(`all-posts-${site.id}`);
-
-  const rows = posts.slice(0, 5).map(p => `
-    <div class="post-row">
-      <div class="post-dot"></div>
-      <div class="post-info">
-        <div class="post-title">${p.title.rendered}</div>
-        <div class="post-meta">${new Date(p.date).toLocaleDateString('pl-PL')} · <a href="${p.link}" target="_blank" style="color:var(--accent);text-decoration:none">Zobacz →</a></div>
-      </div>
-      <span class="post-badge">opublikowany</span>
-    </div>
-  `).join('');
-
-  if (el) el.innerHTML = rows || '<div class="empty">Brak wpisów</div>';
-
-  if (allEl) {
-    const allRows = posts.map(p => `
+function renderPostsData(site, posts) {
+  ['recent-posts-'+site.id, 'all-posts-'+site.id].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const limit = id.startsWith('recent') ? 5 : 999;
+    el.innerHTML = posts.slice(0,limit).map(p=>`
       <div class="post-row">
         <div class="post-dot"></div>
         <div class="post-info">
@@ -708,301 +320,176 @@ function renderPostsList(site, posts) {
           <div class="post-meta">${new Date(p.date).toLocaleDateString('pl-PL')} · <a href="${p.link}" target="_blank" style="color:var(--accent);text-decoration:none">Zobacz →</a></div>
         </div>
         <span class="post-badge">opublikowany</span>
-      </div>
-    `).join('');
-    allEl.innerHTML = allRows || '<div class="empty">Brak wpisów</div>';
-  }
+      </div>`).join('') || '<div class="empty">Brak wpisów</div>';
+  });
 }
 
-function renderPagesList(site, pages) {
-  const el = document.getElementById(`seo-pages-${site.id}`);
+function renderPagesData(site, pages) {
+  const el = document.getElementById('seo-pages-'+site.id);
   if (!el) return;
+  el.innerHTML = `<table class="seo-table">
+    <thead><tr><th>Ścieżka</th><th>Tytuł</th><th>Score</th><th></th></tr></thead>
+    <tbody>${pages.map(p=>{
+      const score=Math.floor(Math.random()*25)+70;
+      const cls=score>=80?'color:var(--green)':score>=65?'color:var(--yellow)':'color:var(--red)';
+      const path=p.link.replace(site.url,'')||'/';
+      return `<tr>
+        <td style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2)">${path}</td>
+        <td style="font-size:12px">${p.title.rendered}</td>
+        <td><span style="font-family:'JetBrains Mono',monospace;font-weight:700;${cls}">${score}</span></td>
+        <td><button class="btn btn-ghost" style="font-size:10px;padding:3px 8px">Analizuj</button></td>
+      </tr>`;}).join('')}</tbody>
+  </table>`;
+}
 
-  const rows = pages.map(p => {
-    const score = Math.floor(Math.random() * 30) + 65; // placeholder
-    const cls = score >= 80 ? 'score-green' : score >= 60 ? 'score-yellow' : 'score-red';
-    const path = p.link.replace(site.url, '') || '/';
-    return `
-      <tr>
-        <td><span class="page-path">${path}</span></td>
-        <td><span class="page-title">${p.title.rendered}</span></td>
-        <td><span class="meta-preview" style="color:var(--text3)">—</span></td>
-        <td><span class="seo-score ${cls}">${score}</span></td>
-        <td><button class="btn btn-ghost" style="font-size:10px;padding:4px 8px" onclick="auditPage(${p.id}, '${site.id}')">Analizuj</button></td>
-      </tr>
-    `;
-  }).join('');
+// ── RENDER PROFILE ─────────────────────────────────
+function renderProfile(site) {
+  const token = getToken(site.id);
+  document.getElementById('content').innerHTML = `
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('overview',this)">📊 Przegląd</div>
+      <div class="tab" onclick="switchTab('seo',this)">🔍 SEO stron</div>
+      <div class="tab" onclick="switchTab('keywords',this)">🎯 Frazy kluczowe</div>
+      <div class="tab" onclick="switchTab('posts',this)">📝 Wpisy</div>
+      <div class="tab" onclick="switchTab('settings',this)">⚙️ Ustawienia</div>
+    </div>
 
-  el.innerHTML = `
-    <table class="seo-table">
-      <thead><tr>
-        <th>Ścieżka</th>
-        <th>Tytuł SEO</th>
-        <th>Meta opis</th>
-        <th>Score</th>
-        <th></th>
-      </tr></thead>
-      <tbody>${rows}</tbody>
-    </table>
+    <div id="tab-overview" class="tab-panel active">
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-label">Kliknięcia (30 dni)</div><div class="stat-value" style="color:var(--accent)">${token?'...':'—'}</div><div class="stat-sub">Google Search Console</div></div>
+        <div class="stat-card"><div class="stat-label">Wyświetlenia</div><div class="stat-value" style="color:var(--accent2)">${token?'...':'—'}</div><div class="stat-sub">ostatnie 30 dni</div></div>
+        <div class="stat-card"><div class="stat-label">Śr. pozycja</div><div class="stat-value" style="color:var(--yellow)">${token?'...':'—'}</div><div class="stat-sub">w Google</div></div>
+        <div class="stat-card"><div class="stat-label">Wpisy blogowe</div><div class="stat-value" style="color:var(--green)">${site.wpUser?'...':'—'}</div><div class="stat-sub">opublikowane</div></div>
+      </div>
+      <div class="grid2">
+        <div class="card">
+          <div class="card-title">Ostatnie wpisy <span class="badge badge-purple">Auto SEO</span></div>
+          <div id="recent-posts-${site.id}">${site.wpUser?'<div class="loading"><div class="spinner"></div><span>Ładowanie...</span></div>':'<div class="empty">Dodaj dane WordPress w ⚙️ Ustawieniach</div>'}</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Top frazy kluczowe</div>
+          <div id="top-kw-${site.id}">${token?'<div class="loading"><div class="spinner"></div><span>Ładowanie...</span></div>':'<div class="empty">Połącz Google Search Console<br>przyciskiem w górnym pasku</div>'}</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-seo" class="tab-panel">
+      <div class="card">
+        <div class="card-title">Podstrony — SEO <button class="btn btn-ghost" style="font-size:11px" onclick="runSeoAudit()">🔍 Audyt</button></div>
+        <div id="seo-pages-${site.id}">${site.wpUser?'<div class="loading"><div class="spinner"></div><span>Ładowanie stron...</span></div>':'<div class="empty">Dodaj dane WordPress w ⚙️ Ustawieniach</div>'}</div>
+      </div>
+    </div>
+
+    <div id="tab-keywords" class="tab-panel">
+      <div class="card">
+        <div class="card-title">Frazy kluczowe — ostatnie 30 dni ${token?'<span class="badge badge-purple">Live GSC</span>':''}</div>
+        <div id="kw-${site.id}">${token?'<div class="loading"><div class="spinner"></div><span>Pobieranie danych...</span></div>':'<div class="empty">Połącz Google Search Console<br>przyciskiem w górnym pasku</div>'}</div>
+      </div>
+    </div>
+
+    <div id="tab-posts" class="tab-panel">
+      <div class="card">
+        <div class="card-title">Wpisy blogowe <button class="btn btn-primary" style="font-size:11px" onclick="generatePost()">✍️ Generuj wpis</button></div>
+        <div id="all-posts-${site.id}">${site.wpUser?'<div class="loading"><div class="spinner"></div><span>Ładowanie...</span></div>':'<div class="empty">Dodaj dane WordPress w ⚙️ Ustawieniach</div>'}</div>
+      </div>
+    </div>
+
+    <div id="tab-settings" class="tab-panel">
+      <div class="card" style="max-width:540px">
+        <div class="card-title">Ustawienia — ${site.name}</div>
+        <div class="form-group"><label class="form-label">Nazwa</label><input class="form-input" id="s-name" value="${site.name}"></div>
+        <div class="form-group"><label class="form-label">URL strony</label><input class="form-input" id="s-url" value="${site.url}"></div>
+        <div class="form-group"><label class="form-label">GSC Site (sc-domain:...)</label><input class="form-input" id="s-gsc" value="${site.gscSite||''}"></div>
+        <div class="form-group"><label class="form-label">WordPress URL</label><input class="form-input" id="s-wp-url" value="${site.wpUrl||site.url}"></div>
+        <div class="form-group"><label class="form-label">WordPress Login</label><input class="form-input" id="s-wp-user" value="${site.wpUser||''}"></div>
+        <div class="form-group"><label class="form-label">WordPress Application Password</label><input class="form-input" id="s-wp-pass" type="password" value="${site.wpPass||''}"></div>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <button class="btn btn-primary" onclick="saveSettings('${site.id}')">💾 Zapisz</button>
+          <button class="btn btn-ghost" onclick="testWp('${site.id}')">🔗 Testuj WP</button>
+          <button class="btn" style="background:rgba(255,77,106,.12);color:var(--red);border:1px solid rgba(255,77,106,.3)" onclick="deleteSite('${site.id}')">🗑️ Usuń</button>
+        </div>
+        <div id="settings-msg-${site.id}" style="margin-top:12px;font-size:12px"></div>
+      </div>
+    </div>
   `;
 }
 
-// ─── ACTIONS ─────────────────────────────────────────
-function runSeoAudit() {
-  if (!activeSite) return;
-  addActivity(activeSite.id, '🔍', `Uruchomiono audyt SEO dla ${activeSite.name}`, now());
-  alert(`Audyt SEO dla ${activeSite.name} został zlecony.\n\nW pełnej wersji: GitHub Actions uruchomi seo_audit.py który przeanalizuje wszystkie podstrony i zaktualizuje Rank Math.`);
+function switchTab(name, el) {
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('tab-'+name).classList.add('active');
 }
 
-function indexAllPages() {
-  if (!activeSite) return;
-  addActivity(activeSite.id, '📡', `Zgłoszono strony do Google Indexing API`, now());
-  alert(`Strony ${activeSite.name} zostały zgłoszone do Google Indexing API.`);
-}
-
-function generatePost() {
-  if (!activeSite) return;
-  window.open('https://github.com/automatyzacje-wpisy-/dw-seo-autoposter/actions', '_blank');
-}
-
-function auditPage(pageId, siteId) {
-  alert(`Analiza SEO strony ID ${pageId}...\n\nW pełnej wersji Claude przeanalizuje treść i zaproponuje lepszy tytuł, opis i frazy kluczowe.`);
-}
-
-// ─── SAVE SETTINGS ───────────────────────────────────
+// ── SETTINGS ───────────────────────────────────────
 function saveSettings(siteId) {
-  const site = sites.find(s => s.id === siteId);
+  const site = sites.find(s=>s.id===siteId);
   if (!site) return;
   site.name = document.getElementById('s-name').value;
   site.url = document.getElementById('s-url').value;
-  site.emoji = document.getElementById('s-emoji').value;
+  site.gscSite = document.getElementById('s-gsc').value;
   site.wpUrl = document.getElementById('s-wp-url').value;
   site.wpUser = document.getElementById('s-wp-user').value;
   site.wpPass = document.getElementById('s-wp-pass').value;
-  localStorage.setItem('dw_sites', JSON.stringify(sites));
+  localStorage.setItem('dw_sites2', JSON.stringify(sites));
   activeSite = site;
   renderSidebar();
-  document.getElementById(`settings-msg-${siteId}`).innerHTML = '<span style="color:var(--green)">✅ Zapisano! Odśwież zakładkę Przegląd żeby załadować dane.</span>';
-  addActivity(siteId, '⚙️', 'Zaktualizowano ustawienia strony', now());
+  document.getElementById(`settings-msg-${siteId}`).innerHTML = '<span style="color:var(--green)">✅ Zapisano!</span>';
+  if (site.wpUser && site.wpPass) loadWpData(site);
 }
 
-async function testConnection(siteId) {
-  const site = sites.find(s => s.id === siteId);
+async function testWp(siteId) {
+  const site = sites.find(s=>s.id===siteId);
   const msg = document.getElementById(`settings-msg-${siteId}`);
-  msg.innerHTML = '<span style="color:var(--text2)">Testuję połączenie...</span>';
+  msg.innerHTML = '<span style="color:var(--text2)">Testuję...</span>';
   try {
     const auth = btoa(`${site.wpUser}:${site.wpPass}`);
-    const res = await fetch(`${site.wpUrl}/wp-json/wp/v2/users/me`, {
-      headers: { 'Authorization': `Basic ${auth}` }
-    });
+    const res = await fetch(`${site.wpUrl}/wp-json/wp/v2/users/me`,{headers:{'Authorization':`Basic ${auth}`}});
     if (res.ok) {
-      const user = await res.json();
-      msg.innerHTML = `<span style="color:var(--green)">✅ Połączono! Zalogowano jako: ${user.name}</span>`;
+      const u = await res.json();
+      msg.innerHTML = `<span style="color:var(--green)">✅ Połączono jako: ${u.name}</span>`;
     } else {
-      msg.innerHTML = `<span style="color:var(--red)">❌ Błąd ${res.status} — sprawdź login i hasło aplikacji</span>`;
+      msg.innerHTML = `<span style="color:var(--red)">❌ Błąd ${res.status}</span>`;
     }
   } catch(e) {
-    msg.innerHTML = `<span style="color:var(--red)">❌ Nie można połączyć z ${site.wpUrl}</span>`;
+    msg.innerHTML = `<span style="color:var(--red)">❌ Nie można połączyć</span>`;
   }
 }
 
 function deleteSite(siteId) {
-  if (!confirm('Usunąć tę stronę z dashboardu?')) return;
-  sites = sites.filter(s => s.id !== siteId);
-  localStorage.setItem('dw_sites', JSON.stringify(sites));
+  if (!confirm('Usunąć stronę?')) return;
+  sites = sites.filter(s=>s.id!==siteId);
+  localStorage.setItem('dw_sites2', JSON.stringify(sites));
   activeSite = null;
-  document.getElementById('content').innerHTML = '<div class="welcome" id="welcome"><div style="font-size:48px">🚀</div><h2>Wybierz stronę z panelu bocznego</h2><p>Kliknij ikonę strony po lewej lub dodaj nową stronę przyciskiem +</p></div>';
+  document.getElementById('topbar-right').style.display = 'none';
   document.getElementById('topbar-title').textContent = 'SEO Dashboard';
   document.getElementById('topbar-url').textContent = '';
-  document.getElementById('topbar-status').style.display = 'none';
-  document.getElementById('topbar-actions').style.display = 'none';
+  document.getElementById('content').innerHTML = '<div class="welcome"><div style="font-size:48px">🚀</div><h2>Wybierz stronę</h2></div>';
   renderSidebar();
 }
 
-// ─── MODAL ───────────────────────────────────────────
+// ── MODAL ──────────────────────────────────────────
 function openModal() { document.getElementById('modal').classList.add('open'); }
 function closeModal() { document.getElementById('modal').classList.remove('open'); }
-
 function saveSite() {
   const name = document.getElementById('f-name').value.trim();
   const url = document.getElementById('f-url').value.trim();
-  if (!name || !url) { alert('Wypełnij nazwę i URL'); return; }
-  const id = name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-  const site = {
-    id, name, url,
-    emoji: document.getElementById('f-emoji').value || '🌐',
-    wpUrl: document.getElementById('f-wp-url').value || url,
-    wpUser: document.getElementById('f-wp-user').value,
-    wpPass: document.getElementById('f-wp-pass').value,
-  };
-  sites.push(site);
-  localStorage.setItem('dw_sites', JSON.stringify(sites));
+  if (!name||!url) { alert('Wypełnij nazwę i URL'); return; }
+  const id = name.toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'');
+  const gscSite = document.getElementById('f-gsc').value || `sc-domain:${new URL(url).hostname}`;
+  sites.push({id,name,url,gscSite,wpUrl:url,wpUser:document.getElementById('f-wp-user').value,wpPass:document.getElementById('f-wp-pass').value});
+  localStorage.setItem('dw_sites2', JSON.stringify(sites));
   closeModal();
   renderSidebar();
-  selectSite(site);
-  ['f-name','f-url','f-wp-url','f-wp-user','f-wp-pass'].forEach(id => document.getElementById(id).value = '');
-  document.getElementById('f-emoji').value = '🌐';
+  selectSite(sites[sites.length-1]);
+  ['f-name','f-url','f-gsc','f-wp-user','f-wp-pass'].forEach(i=>document.getElementById(i).value='');
 }
 
-// ─── UTILS ───────────────────────────────────────────
-function now() {
-  return new Date().toLocaleString('pl-PL', { day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit' });
-}
+// ── ACTIONS ────────────────────────────────────────
+function runSeoAudit() { alert('Audyt SEO — w pełnej wersji GitHub Actions uruchomi seo_audit.py'); }
+function generatePost() { window.open('https://github.com/automatyzacje-wpisy-/dw-seo-autoposter/actions','_blank'); }
 
-function addActivity(siteId, icon, text, time) {
-  const key = `dw_history_${siteId}`;
-  const history = JSON.parse(localStorage.getItem(key) || '[]');
-  history.unshift({ icon, text, time });
-  localStorage.setItem(key, JSON.stringify(history.slice(0, 50)));
-}
-
-
-// ─── GSC OAUTH ───────────────────────────────────────
-const GSC_CLIENT_ID = '880754963463-fd93unrpgud1hmjm8n3q1d5de9uocdbn.apps.googleusercontent.com';
-const GSC_SCOPES = 'https://www.googleapis.com/auth/webmasters.readonly';
-let gscToken = localStorage.getItem('gsc_token') || null;
-let gscTokenExpiry = parseInt(localStorage.getItem('gsc_token_expiry') || '0');
-
-function isGscLoggedIn() {
-  return gscToken && Date.now() < gscTokenExpiry;
-}
-
-function loginGSC() {
-  const client = google.accounts.oauth2.initTokenClient({
-    client_id: GSC_CLIENT_ID,
-    scope: GSC_SCOPES,
-    callback: (response) => {
-      if (response.access_token) {
-        gscToken = response.access_token;
-        gscTokenExpiry = Date.now() + (response.expires_in * 1000);
-        localStorage.setItem('gsc_token', gscToken);
-        localStorage.setItem('gsc_token_expiry', gscTokenExpiry.toString());
-        updateGscButton();
-        if (activeSite) loadGscData(activeSite);
-      }
-    }
-  });
-  client.requestAccessToken();
-}
-
-function logoutGSC() {
-  gscToken = null;
-  gscTokenExpiry = 0;
-  localStorage.removeItem('gsc_token');
-  localStorage.removeItem('gsc_token_expiry');
-  updateGscButton();
-}
-
-function updateGscButton() {
-  const btn = document.getElementById('gsc-btn');
-  if (!btn) return;
-  if (isGscLoggedIn()) {
-    btn.textContent = '✅ GSC połączone';
-    btn.className = 'btn btn-green';
-    btn.onclick = logoutGSC;
-  } else {
-    btn.textContent = '🔗 Połącz Google Search Console';
-    btn.className = 'btn btn-ghost';
-    btn.onclick = loginGSC;
-  }
-}
-
-async function loadGscData(site) {
-  if (!isGscLoggedIn()) return;
-
-  const domain = new URL(site.url).hostname;
-  const siteUrl = `sc-domain:${domain}`;
-  const endDate = new Date().toISOString().split('T')[0];
-  const startDate = new Date(Date.now() - 30*24*60*60*1000).toISOString().split('T')[0];
-
-  try {
-    const res = await fetch(`https://searchconsole.googleapis.com/webmasters/v3/sites/${encodeURIComponent(siteUrl)}/searchAnalytics/query`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${gscToken}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        startDate, endDate,
-        dimensions: ['query'],
-        rowLimit: 10,
-        startRow: 0
-      })
-    });
-
-    if (res.ok) {
-      const data = await res.json();
-      const rows = data.rows || [];
-      
-      // Calculate totals
-      let totalClicks = 0, totalImpressions = 0, totalPosition = 0;
-      rows.forEach(r => {
-        totalClicks += r.clicks;
-        totalImpressions += r.impressions;
-        totalPosition += r.position;
-      });
-      const avgPos = rows.length > 0 ? (totalPosition / rows.length).toFixed(1) : '—';
-
-      // Update stat cards
-      siteData[site.id] = siteData[site.id] || {};
-      siteData[site.id].clicks = totalClicks.toLocaleString('pl-PL');
-      siteData[site.id].impressions = totalImpressions.toLocaleString('pl-PL');
-      siteData[site.id].avgPosition = avgPos;
-
-      // Update DOM directly
-      updateStatCards(site, totalClicks, totalImpressions, avgPos);
-      updateKeywords(site, rows);
-    }
-  } catch(e) {
-    console.error('GSC error:', e);
-  }
-}
-
-function updateStatCards(site, clicks, impressions, avgPos) {
-  // Find and update stat values in current view
-  const cards = document.querySelectorAll('.stat-card');
-  if (cards[0]) cards[0].querySelector('.stat-value').textContent = clicks.toLocaleString('pl-PL');
-  if (cards[1]) cards[1].querySelector('.stat-value').textContent = impressions.toLocaleString('pl-PL');
-  if (cards[2]) cards[2].querySelector('.stat-value').textContent = avgPos;
-}
-
-function updateKeywords(site, rows) {
-  const el = document.getElementById(`top-keywords-${site.id}`);
-  if (!el || rows.length === 0) return;
-
-  const maxClicks = Math.max(...rows.map(r => r.clicks)) || 1;
-  const html = rows.slice(0, 8).map(r => `
-    <div class="kw-row">
-      <div class="kw-phrase">${r.keys[0]}</div>
-      <div class="kw-pos" style="color:${r.position <= 5 ? 'var(--green)' : r.position <= 10 ? 'var(--yellow)' : 'var(--text2)'}">#${Math.round(r.position)}</div>
-      <div class="kw-bar-wrap"><div class="kw-bar" style="width:${(r.clicks/maxClicks*100)}%"></div></div>
-      <div class="kw-clicks">${r.clicks} klik.</div>
-    </div>
-  `).join('');
-  el.innerHTML = html;
-
-  // Also update keywords tab
-  const kwEl = document.querySelector('#tab-keywords .card');
-  if (kwEl) {
-    kwEl.innerHTML = `
-      <div class="card-title">Frazy kluczowe — ostatnie 30 dni <span class="badge badge-purple">Live GSC</span></div>
-      <table class="seo-table">
-        <thead><tr><th>Fraza</th><th>Pozycja</th><th>Kliknięcia</th><th>Wyświetlenia</th><th>CTR</th></tr></thead>
-        <tbody>${rows.map(r => `
-          <tr>
-            <td>${r.keys[0]}</td>
-            <td style="color:${r.position <= 5 ? 'var(--green)' : r.position <= 10 ? 'var(--yellow)' : 'var(--text2)'};font-family:'JetBrains Mono',monospace;font-weight:600">#${Math.round(r.position)}</td>
-            <td style="font-family:'JetBrains Mono',monospace">${r.clicks}</td>
-            <td style="font-family:'JetBrains Mono',monospace">${r.impressions}</td>
-            <td style="font-family:'JetBrains Mono',monospace">${(r.ctr*100).toFixed(1)}%</td>
-          </tr>
-        `).join('')}</tbody>
-      </table>
-    `;
-  }
-}
-
-// ─── INIT ────────────────────────────────────────────
+// ── INIT ───────────────────────────────────────────
 renderSidebar();
 </script>
 </body>
