@@ -307,6 +307,10 @@
   .welcome h2 { font-size: 22px; color: var(--text); }
   .welcome p { font-size: 14px; max-width: 340px; line-height: 1.6; }
 </style>
+
+  <!-- Google Identity Services -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="https://apis.google.com/js/api.js" async defer></script>
 </head>
 <body>
 
@@ -326,7 +330,7 @@
       <div class="status-dot"></div>
       <span style="font-size:12px;color:var(--text2)">Aktywna</span>
     </div>
-    <div class="topbar-actions" id="topbar-actions" style="display:none">
+    <div class="topbar-actions" id="topbar-actions" style="display:none"><button id="gsc-btn" class="btn btn-ghost" onclick="loginGSC()">🔗 Połącz Google Search Console</button>
       <button class="btn btn-ghost" onclick="runSeoAudit()">🔍 Audyt SEO</button>
       <button class="btn btn-ghost" onclick="indexAllPages()">📡 Indeksuj strony</button>
       <button class="btn btn-primary" onclick="generatePost()">✍️ Generuj wpis</button>
@@ -424,6 +428,7 @@ function selectSite(site) {
   document.getElementById('topbar-status').style.display = 'flex';
   document.getElementById('topbar-actions').style.display = 'flex';
   renderSiteProfile(site);
+  setTimeout(() => { updateGscButton(); if (isGscLoggedIn()) loadGscData(site); }, 100);
 }
 
 // ─── RENDER SITE PROFILE ─────────────────────────────
@@ -849,6 +854,152 @@ function addActivity(siteId, icon, text, time) {
   const history = JSON.parse(localStorage.getItem(key) || '[]');
   history.unshift({ icon, text, time });
   localStorage.setItem(key, JSON.stringify(history.slice(0, 50)));
+}
+
+
+// ─── GSC OAUTH ───────────────────────────────────────
+const GSC_CLIENT_ID = '880754963463-fd93unrpgud1hmjm8n3q1d5de9uocdbn.apps.googleusercontent.com';
+const GSC_SCOPES = 'https://www.googleapis.com/auth/webmasters.readonly';
+let gscToken = localStorage.getItem('gsc_token') || null;
+let gscTokenExpiry = parseInt(localStorage.getItem('gsc_token_expiry') || '0');
+
+function isGscLoggedIn() {
+  return gscToken && Date.now() < gscTokenExpiry;
+}
+
+function loginGSC() {
+  const client = google.accounts.oauth2.initTokenClient({
+    client_id: GSC_CLIENT_ID,
+    scope: GSC_SCOPES,
+    callback: (response) => {
+      if (response.access_token) {
+        gscToken = response.access_token;
+        gscTokenExpiry = Date.now() + (response.expires_in * 1000);
+        localStorage.setItem('gsc_token', gscToken);
+        localStorage.setItem('gsc_token_expiry', gscTokenExpiry.toString());
+        updateGscButton();
+        if (activeSite) loadGscData(activeSite);
+      }
+    }
+  });
+  client.requestAccessToken();
+}
+
+function logoutGSC() {
+  gscToken = null;
+  gscTokenExpiry = 0;
+  localStorage.removeItem('gsc_token');
+  localStorage.removeItem('gsc_token_expiry');
+  updateGscButton();
+}
+
+function updateGscButton() {
+  const btn = document.getElementById('gsc-btn');
+  if (!btn) return;
+  if (isGscLoggedIn()) {
+    btn.textContent = '✅ GSC połączone';
+    btn.className = 'btn btn-green';
+    btn.onclick = logoutGSC;
+  } else {
+    btn.textContent = '🔗 Połącz Google Search Console';
+    btn.className = 'btn btn-ghost';
+    btn.onclick = loginGSC;
+  }
+}
+
+async function loadGscData(site) {
+  if (!isGscLoggedIn()) return;
+
+  const domain = new URL(site.url).hostname;
+  const siteUrl = `sc-domain:${domain}`;
+  const endDate = new Date().toISOString().split('T')[0];
+  const startDate = new Date(Date.now() - 30*24*60*60*1000).toISOString().split('T')[0];
+
+  try {
+    const res = await fetch(`https://searchconsole.googleapis.com/webmasters/v3/sites/${encodeURIComponent(siteUrl)}/searchAnalytics/query`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${gscToken}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        startDate, endDate,
+        dimensions: ['query'],
+        rowLimit: 10,
+        startRow: 0
+      })
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      const rows = data.rows || [];
+      
+      // Calculate totals
+      let totalClicks = 0, totalImpressions = 0, totalPosition = 0;
+      rows.forEach(r => {
+        totalClicks += r.clicks;
+        totalImpressions += r.impressions;
+        totalPosition += r.position;
+      });
+      const avgPos = rows.length > 0 ? (totalPosition / rows.length).toFixed(1) : '—';
+
+      // Update stat cards
+      siteData[site.id] = siteData[site.id] || {};
+      siteData[site.id].clicks = totalClicks.toLocaleString('pl-PL');
+      siteData[site.id].impressions = totalImpressions.toLocaleString('pl-PL');
+      siteData[site.id].avgPosition = avgPos;
+
+      // Update DOM directly
+      updateStatCards(site, totalClicks, totalImpressions, avgPos);
+      updateKeywords(site, rows);
+    }
+  } catch(e) {
+    console.error('GSC error:', e);
+  }
+}
+
+function updateStatCards(site, clicks, impressions, avgPos) {
+  // Find and update stat values in current view
+  const cards = document.querySelectorAll('.stat-card');
+  if (cards[0]) cards[0].querySelector('.stat-value').textContent = clicks.toLocaleString('pl-PL');
+  if (cards[1]) cards[1].querySelector('.stat-value').textContent = impressions.toLocaleString('pl-PL');
+  if (cards[2]) cards[2].querySelector('.stat-value').textContent = avgPos;
+}
+
+function updateKeywords(site, rows) {
+  const el = document.getElementById(`top-keywords-${site.id}`);
+  if (!el || rows.length === 0) return;
+
+  const maxClicks = Math.max(...rows.map(r => r.clicks)) || 1;
+  const html = rows.slice(0, 8).map(r => `
+    <div class="kw-row">
+      <div class="kw-phrase">${r.keys[0]}</div>
+      <div class="kw-pos" style="color:${r.position <= 5 ? 'var(--green)' : r.position <= 10 ? 'var(--yellow)' : 'var(--text2)'}">#${Math.round(r.position)}</div>
+      <div class="kw-bar-wrap"><div class="kw-bar" style="width:${(r.clicks/maxClicks*100)}%"></div></div>
+      <div class="kw-clicks">${r.clicks} klik.</div>
+    </div>
+  `).join('');
+  el.innerHTML = html;
+
+  // Also update keywords tab
+  const kwEl = document.querySelector('#tab-keywords .card');
+  if (kwEl) {
+    kwEl.innerHTML = `
+      <div class="card-title">Frazy kluczowe — ostatnie 30 dni <span class="badge badge-purple">Live GSC</span></div>
+      <table class="seo-table">
+        <thead><tr><th>Fraza</th><th>Pozycja</th><th>Kliknięcia</th><th>Wyświetlenia</th><th>CTR</th></tr></thead>
+        <tbody>${rows.map(r => `
+          <tr>
+            <td>${r.keys[0]}</td>
+            <td style="color:${r.position <= 5 ? 'var(--green)' : r.position <= 10 ? 'var(--yellow)' : 'var(--text2)'};font-family:'JetBrains Mono',monospace;font-weight:600">#${Math.round(r.position)}</td>
+            <td style="font-family:'JetBrains Mono',monospace">${r.clicks}</td>
+            <td style="font-family:'JetBrains Mono',monospace">${r.impressions}</td>
+            <td style="font-family:'JetBrains Mono',monospace">${(r.ctr*100).toFixed(1)}%</td>
+          </tr>
+        `).join('')}</tbody>
+      </table>
+    `;
+  }
 }
 
 // ─── INIT ────────────────────────────────────────────
