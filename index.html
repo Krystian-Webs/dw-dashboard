@@ -187,7 +187,7 @@ function selectSite(site) {
   document.getElementById('topbar-right').style.display = 'flex';
   updateGscStatus(site);
   renderProfile(site);
-  if (site.wpUser && site.wpPass) loadWpData(site);
+  if (site.wpUser && site.wpPass) { loadWpData(site); loadSeoStatus(site); }
   const token = getToken(site.id);
   if (token) loadGscData(site, token);
 }
@@ -342,6 +342,105 @@ function renderPagesData(site, pages) {
   </table>`;
 }
 
+// ── LOAD SEO STATUS from plugin ───────────────────
+async function loadSeoStatus(site) {
+  const el = document.getElementById('seo-pages-'+site.id);
+  if (!el || !site.wpUser) return;
+
+  el.innerHTML = '<div class="loading"><div class="spinner"></div><span>Pobieranie statusu SEO...</span></div>';
+
+  const auth = btoa(`${site.wpUser}:${site.wpPass}`);
+  try {
+    // First check plugin info
+    const infoRes = await fetch(`${site.wpUrl}/wp-json/directwebs/v1/info?token=directwebs2026`, {
+      headers: {'Authorization': `Basic ${auth}`}
+    });
+
+    let pluginInfo = null;
+    if (infoRes.ok) {
+      pluginInfo = await infoRes.json();
+    }
+
+    // Get SEO status
+    const res = await fetch(`${site.wpUrl}/wp-json/directwebs/v1/seo-status?token=directwebs2026&type=all&limit=100`, {
+      headers: {'Authorization': `Basic ${auth}`}
+    });
+
+    if (!res.ok) {
+      el.innerHTML = '<div class="empty">Plugin DirectWebs SEO nie jest zainstalowany.<br><span style="font-size:11px;color:var(--text3)">Wgraj plugin directwebs-seo.php przez WP Admin → Wtyczki</span></div>';
+      return;
+    }
+
+    const data = await res.json();
+    const items = data.items || [];
+
+    // Update SEO score card
+    const scoreEl = document.querySelector('.stat-card:last-child .stat-value');
+
+    // Group by type
+    const posts    = items.filter(i => i.type === 'post');
+    const pages    = items.filter(i => i.type === 'page');
+    const products = items.filter(i => i.type === 'product');
+
+    const pluginBadge = pluginInfo ? `<span class="badge badge-purple">${pluginInfo.seo_plugin === 'none' ? 'Brak wtyczki SEO' : pluginInfo.seo_plugin}</span>` : '';
+    const wcBadge = pluginInfo?.woocommerce ? '<span class="badge" style="background:rgba(0,212,170,.12);color:var(--accent2);border:1px solid rgba(0,212,170,.3)">WooCommerce</span>' : '';
+
+    const avgScore = data.avg_score || 0;
+    const scoreColor = avgScore >= 70 ? 'var(--green)' : avgScore >= 50 ? 'var(--yellow)' : 'var(--red)';
+
+    const renderSection = (title, sectionItems, type) => {
+      if (!sectionItems.length) return '';
+      return `
+        <div style="margin-bottom:24px">
+          <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;display:flex;align-items:center;gap:8px">
+            ${title} <span style="color:var(--text2)">(${sectionItems.length})</span>
+          </div>
+          <table class="seo-table">
+            <thead><tr>
+              <th style="width:30%">Tytuł</th>
+              <th>Tytuł SEO</th>
+              <th>Meta opis</th>
+              <th style="width:60px">Score</th>
+              <th style="width:50px">Słowa</th>
+            </tr></thead>
+            <tbody>${sectionItems.map(item => {
+              const sc = item.score;
+              const scColor = sc>=70?'var(--green)':sc>=50?'var(--yellow)':'var(--red)';
+              return `<tr>
+                <td><a href="${item.url}" target="_blank" style="color:var(--accent);text-decoration:none;font-size:12px">${item.title.substring(0,40)}${item.title.length>40?'...':''}</a></td>
+                <td style="font-size:11px;color:${item.seo_title?'var(--text)':'var(--red)'}">${item.seo_title?item.seo_title.substring(0,35)+'...':'⚠️ Brak'}</td>
+                <td style="font-size:11px;color:${item.seo_desc?'var(--text2)':'var(--red)'}">${item.seo_desc?item.seo_desc.substring(0,45)+'...':'⚠️ Brak'}</td>
+                <td><span style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;color:${scColor}">${sc}</span></td>
+                <td style="font-size:11px;color:var(--text3)">${item.word_count}</td>
+              </tr>`;
+            }).join('')}</tbody>
+          </table>
+        </div>`;
+    };
+
+    el.innerHTML = `
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border)">
+        <div style="font-size:32px;font-weight:700;color:${scoreColor};font-family:'JetBrains Mono',monospace">${avgScore}</div>
+        <div>
+          <div style="font-size:12px;color:var(--text2)">Średni SEO Score</div>
+          <div style="display:flex;gap:6px;margin-top:4px">${pluginBadge}${wcBadge}</div>
+        </div>
+        <div style="margin-left:auto;display:flex;gap:16px;font-size:12px">
+          <span style="color:var(--green)">✅ ${data.good} dobrych</span>
+          <span style="color:var(--red)">❌ ${data.bad} słabych</span>
+          <span style="color:var(--text2)">📄 ${data.total} łącznie</span>
+        </div>
+      </div>
+      ${renderSection('📝 Wpisy blogowe', posts, 'post')}
+      ${renderSection('📄 Strony', pages, 'page')}
+      ${renderSection('🛒 Produkty', products, 'product')}
+    `;
+
+  } catch(e) {
+    el.innerHTML = `<div class="empty">Błąd połączenia: ${e.message}</div>`;
+  }
+}
+
 // ── RENDER PROFILE ─────────────────────────────────
 function renderProfile(site) {
   const token = getToken(site.id);
@@ -375,8 +474,8 @@ function renderProfile(site) {
 
     <div id="tab-seo" class="tab-panel">
       <div class="card">
-        <div class="card-title">Podstrony — SEO <button class="btn btn-ghost" style="font-size:11px" onclick="runSeoAudit()">🔍 Audyt</button></div>
-        <div id="seo-pages-${site.id}">${site.wpUser?'<div class="loading"><div class="spinner"></div><span>Ładowanie stron...</span></div>':'<div class="empty">Dodaj dane WordPress w ⚙️ Ustawieniach</div>'}</div>
+        <div class="card-title">SEO — strony, wpisy, produkty <button class="btn btn-ghost" style="font-size:11px" onclick="loadSeoStatus(activeSite)">🔄 Odśwież</button></div>
+        <div id="seo-pages-${site.id}">${site.wpUser?'<div class="loading"><div class="spinner"></div><span>Pobieranie statusu SEO...</span></div>':'<div class="empty">Dodaj dane WordPress w ⚙️ Ustawieniach</div>'}</div>
       </div>
     </div>
 
@@ -435,7 +534,7 @@ function saveSettings(siteId) {
   activeSite = site;
   renderSidebar();
   document.getElementById(`settings-msg-${siteId}`).innerHTML = '<span style="color:var(--green)">✅ Zapisano!</span>';
-  if (site.wpUser && site.wpPass) loadWpData(site);
+  if (site.wpUser && site.wpPass) { loadWpData(site); loadSeoStatus(site); }
 }
 
 async function testWp(siteId) {
