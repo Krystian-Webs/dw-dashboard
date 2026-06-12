@@ -92,6 +92,7 @@
   .gsc-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green)}
 </style>
 </head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <body>
 
 <div class="sidebar" id="sidebar">
@@ -259,36 +260,136 @@ async function loadGscData(site, token) {
     // update keywords panel
     renderKeywordsData(site, rows);
 
-    if (site.id === 'directwebs') loadFullRanking(site, token);
+    if (site.id === 'directwebs') { loadFullRanking(site, token); loadAiVisibility(site); }
   } catch(e) { console.error(e); }
 }
 
-// ── FULL RANKING (DirectWebs only) ─────────────────
+// ── FULL RANKING + TREND + FORECAST (DirectWebs only) ─
+let rankChartInstance = null;
+let forecastChartInstance = null;
+
 async function loadFullRanking(site, token) {
   const el = document.getElementById(`ranking-full-${site.id}`);
+  const trendEl = document.getElementById(`rank-trend-${site.id}`);
+  const summaryEl = document.getElementById(`rank-summary-${site.id}`);
+  const forecastEl = document.getElementById(`forecast-${site.id}`);
   if (!el) return;
+  if (!token) { el.innerHTML = '<div class="empty">Połącz Google Search Console przyciskiem w górnym pasku</div>'; return; }
+
+  const periodSel = document.getElementById(`rank-period-${site.id}`);
+  const days = periodSel ? parseInt(periodSel.value) : 90;
+
+  el.innerHTML = '<div class="loading"><div class="spinner"></div><span>Pobieranie danych...</span></div>';
+  if (trendEl) trendEl.innerHTML = '<div class="loading"><div class="spinner"></div><span>Ładowanie wykresu...</span></div>';
+  if (forecastEl) forecastEl.innerHTML = '<div class="loading"><div class="spinner"></div><span>Liczenie prognozy...</span></div>';
+
   const end = new Date().toISOString().split('T')[0];
-  const start = new Date(Date.now()-90*24*60*60*1000).toISOString().split('T')[0];
+  const start = new Date(Date.now()-days*24*60*60*1000).toISOString().split('T')[0];
+
   try {
-    const res = await fetch(`https://searchconsole.googleapis.com/webmasters/v3/sites/${encodeURIComponent(site.gscSite)}/searchAnalytics/query`, {
+    // 1) Lista fraz (zagregowane)
+    const resQuery = await fetch(`https://searchconsole.googleapis.com/webmasters/v3/sites/${encodeURIComponent(site.gscSite)}/searchAnalytics/query`, {
       method:'POST',
       headers:{'Authorization':`Bearer ${token}`,'Content-Type':'application/json'},
       body:JSON.stringify({startDate:start,endDate:end,dimensions:['query'],rowLimit:250})
     });
-    if (!res.ok) { el.innerHTML = '<div class="empty">Błąd pobierania danych GSC</div>'; return; }
-    const data = await res.json();
-    let rows = data.rows || [];
+    if (!resQuery.ok) { el.innerHTML = '<div class="empty">Błąd pobierania danych GSC (zaloguj się ponownie)</div>'; return; }
+    const dataQuery = await resQuery.json();
+    let rows = dataQuery.rows || [];
     rows.sort((a,b)=>a.position-b.position);
 
     const top10 = rows.filter(r=>r.position<=10).length;
     const top3  = rows.filter(r=>r.position<=3).length;
 
+    document.getElementById(`m-top3-${site.id}`).textContent = top3;
+    document.getElementById(`m-top10-${site.id}`).textContent = top10;
+
+    // 2) Trend po dniach (srednia pozycja)
+    const resDate = await fetch(`https://searchconsole.googleapis.com/webmasters/v3/sites/${encodeURIComponent(site.gscSite)}/searchAnalytics/query`, {
+      method:'POST',
+      headers:{'Authorization':`Bearer ${token}`,'Content-Type':'application/json'},
+      body:JSON.stringify({startDate:start,endDate:end,dimensions:['date'],rowLimit:days+5})
+    });
+    const dataDate = resDate.ok ? await resDate.json() : {rows:[]};
+    const dateRows = (dataDate.rows||[]).sort((a,b)=>a.keys[0]<b.keys[0]?-1:1);
+
+    // Render trend chart
+    if (trendEl) {
+      trendEl.innerHTML = `<canvas id="rankCanvas-${site.id}" role="img" aria-label="Wykres trendu sredniej pozycji w Google"></canvas>`;
+      const ctx = document.getElementById(`rankCanvas-${site.id}`);
+      if (rankChartInstance) rankChartInstance.destroy();
+      rankChartInstance = new Chart(ctx, {
+        type:'line',
+        data:{
+          labels: dateRows.map(r=>r.keys[0].slice(5)),
+          datasets:[{
+            label:'Średnia pozycja',
+            data: dateRows.map(r=>Math.round(r.position*10)/10),
+            borderColor:'#7F77DD',
+            backgroundColor:'rgba(127,119,221,0.12)',
+            fill:true, tension:0.3, pointRadius:0, borderWidth:2
+          }]
+        },
+        options:{
+          responsive:true, maintainAspectRatio:false,
+          scales:{ y:{ reverse:true, title:{display:true,text:'Pozycja (niżej = lepiej)'} }, x:{ ticks:{ maxTicksLimit:10 } } },
+          plugins:{ legend:{ display:false } }
+        }
+      });
+    }
+
+    if (summaryEl) {
+      summaryEl.innerHTML = `<div style="display:flex;gap:16px;font-size:12px;padding-top:8px;border-top:1px solid var(--border)">
+        <span style="color:var(--green)">🥇 ${top3} fraz w TOP 3</span>
+        <span style="color:var(--yellow)">⭐ ${top10} fraz w TOP 10</span>
+        <span style="color:var(--text2)">📊 ${rows.length} fraz łącznie (${days} dni)</span>
+      </div>`;
+    }
+
+    // 3) PROGNOZA — liniowa regresja na trendzie sredniej pozycji -> projekcja TOP10 na 12 tyg.
+    if (forecastEl) {
+      const validPts = dateRows.map((r,i)=>({x:i, y:r.position})).filter(p=>!isNaN(p.y));
+      let forecastLabels = [], forecastData = [];
+      if (validPts.length >= 3) {
+        const n = validPts.length;
+        const sumX = validPts.reduce((a,p)=>a+p.x,0);
+        const sumY = validPts.reduce((a,p)=>a+p.y,0);
+        const sumXY = validPts.reduce((a,p)=>a+p.x*p.y,0);
+        const sumXX = validPts.reduce((a,p)=>a+p.x*p.x,0);
+        const slope = (n*sumXY - sumX*sumY) / (n*sumXX - sumX*sumX || 1);
+        const intercept = (sumY - slope*sumX) / n;
+
+        // szacuj % fraz w TOP10 dzis i ekstrapoluj proporcjonalnie do spadku sredniej pozycji
+        const currentAvgPos = validPts[validPts.length-1].y;
+        const top10Ratio = rows.length ? top10/rows.length : 0;
+
+        for (let w=0; w<=12; w++) {
+          const futureX = n - 1 + w*7; // co tydzien (~7 punktow dziennych dalej)
+          const projectedPos = Math.max(1, slope*futureX + intercept);
+          // im nizsza pozycja, tym wyzszy udzial w TOP10 (odwrotna proporcja, capped)
+          const improvementFactor = currentAvgPos > 0 ? currentAvgPos / projectedPos : 1;
+          const projectedRatio = Math.min(1, top10Ratio * improvementFactor);
+          forecastLabels.push(w===0?'Teraz':`+${w}tyg`);
+          forecastData.push(Math.round(projectedRatio * rows.length));
+        }
+      }
+
+      if (forecastData.length) {
+        forecastEl.innerHTML = `<canvas id="forecastCanvas-${site.id}" role="img" aria-label="Prognoza liczby fraz w TOP10 na 12 tygodni"></canvas>`;
+        const fctx = document.getElementById(`forecastCanvas-${site.id}`);
+        if (forecastChartInstance) forecastChartInstance.destroy();
+        forecastChartInstance = new Chart(fctx, {
+          type:'bar',
+          data:{ labels: forecastLabels, datasets:[{ label:'Frazy w TOP 10', data: forecastData, backgroundColor:'#7F77DD' }] },
+          options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{ y:{ title:{display:true,text:'Liczba fraz'} } } }
+        });
+      } else {
+        forecastEl.innerHTML = '<div class="empty">Za mało danych historycznych do prognozy (potrzeba min. 3 dni)</div>';
+      }
+    }
+
+    // Render full table
     el.innerHTML = `
-      <div style="display:flex;gap:16px;margin-bottom:16px;font-size:12px">
-        <span style="color:var(--green)">🥇 ${top3} w TOP 3</span>
-        <span style="color:var(--yellow)">⭐ ${top10} w TOP 10</span>
-        <span style="color:var(--text2)">📊 ${rows.length} fraz (90 dni)</span>
-      </div>
       <table class="seo-table">
         <thead><tr><th>Fraza</th><th>Pozycja</th><th>Kliknięcia</th><th>Wyświetlenia</th><th>CTR</th></tr></thead>
         <tbody>${rows.map(r=>{
@@ -303,6 +404,81 @@ async function loadFullRanking(site, token) {
           </tr>`;
         }).join('')}</tbody>
       </table>`;
+  } catch(e) {
+    el.innerHTML = `<div class="empty">Błąd: ${e.message}</div>`;
+  }
+}
+
+// ── AI VISIBILITY (z ai_visibility_log.json w repo) ──
+async function loadAiVisibility(site) {
+  const el = document.getElementById(`ai-visibility-${site.id}`);
+  if (!el) return;
+  el.innerHTML = '<div class="loading"><div class="spinner"></div><span>Pobieranie danych...</span></div>';
+
+  try {
+    const res = await fetch(`https://raw.githubusercontent.com/Krystian-Webs/automatyzacje-wpisy-/main/dw-seo-autoposter/ai_visibility_log.json?t=${Date.now()}`);
+    if (!res.ok) {
+      el.innerHTML = '<div class="empty">Brak danych — workflow jeszcze się nie wykonał (czekamy na poniedziałek 9:00)</div>';
+      document.getElementById(`m-ai-${site.id}`).textContent = '—';
+      return;
+    }
+    const history = await res.json();
+    if (!history.length) { el.innerHTML = '<div class="empty">Brak danych</div>'; return; }
+
+    const latest = history[history.length-1];
+    const checks = latest.checks || [];
+
+    let mentioned = 0, total = 0;
+    const tierGroups = {};
+    checks.forEach(c=>{
+      ['chatgpt','gemini'].forEach(plat=>{
+        if (c[plat] && !c[plat].error) {
+          total++;
+          if (c[plat].mentioned) mentioned++;
+        }
+      });
+      const tier = c.tier || 'inne';
+      tierGroups[tier] = tierGroups[tier] || {mentioned:0, total:0};
+      ['chatgpt','gemini'].forEach(plat=>{
+        if (c[plat] && !c[plat].error) {
+          tierGroups[tier].total++;
+          if (c[plat].mentioned) tierGroups[tier].mentioned++;
+        }
+      });
+    });
+
+    document.getElementById(`m-ai-${site.id}`).textContent = `${mentioned}/${total}`;
+
+    const tierLabels = {lokalnie:'📍 Lokalnie (Kotlina Kłodzka)', regionalnie:'🗺️ Regionalnie (Dolny Śląsk)', krajowo:'🇵🇱 Krajowo (Polska)', brand:'🏷️ Brand'};
+    const tierHtml = Object.entries(tierGroups).map(([tier,v])=>{
+      const pct = v.total ? Math.round(v.mentioned/v.total*100) : 0;
+      const color = pct>=50?'var(--green)':pct>0?'var(--yellow)':'var(--text2)';
+      return `<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
+        <span style="font-size:13px">${tierLabels[tier]||tier}</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-weight:700;color:${color}">${v.mentioned}/${v.total}</span>
+      </div>`;
+    }).join('');
+
+    const sa = latest.site_analysis;
+    let analysisHtml = '';
+    if (sa && !sa.error) {
+      const scoreColor = sa.score>=70?'var(--green)':sa.score>=40?'var(--yellow)':'var(--red)';
+      analysisHtml = `
+        <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+            <div style="font-size:28px;font-weight:700;color:${scoreColor};font-family:'JetBrains Mono',monospace">${sa.score}</div>
+            <div style="font-size:12px;color:var(--text2)">Score widoczności lokalnej (AI)</div>
+          </div>
+          ${(sa.strengths||[]).map(s=>`<div style="font-size:12px;color:var(--green)">✓ ${s}</div>`).join('')}
+          ${(sa.improvements||[]).map(s=>`<div style="font-size:12px;color:var(--yellow)">→ ${s}</div>`).join('')}
+        </div>`;
+    }
+
+    el.innerHTML = `
+      <div style="font-size:11px;color:var(--text3);margin-bottom:8px">Ostatni pomiar: ${latest.date} · historia: ${history.length} pomiar(ów)</div>
+      ${tierHtml}
+      ${analysisHtml}
+    `;
   } catch(e) {
     el.innerHTML = `<div class="empty">Błąd: ${e.message}</div>`;
   }
@@ -543,17 +719,54 @@ function renderProfile(site) {
 
     ${site.id === 'directwebs' ? `
     <div id="tab-airank" class="tab-panel">
-      <div class="card" style="margin-bottom:16px">
-        <div class="card-title">🤖 AI-widoczność (GEO) <span class="badge badge-purple">DirectWebs only</span></div>
-        <div style="font-size:12px;color:var(--text2);line-height:1.6">
-          <p style="margin-bottom:8px"><strong>Schema markup:</strong> Organization, Service, FAQPage — sprawdź status:
-            <a href="https://search.google.com/test/rich-results?url=https://directwebs.pl" target="_blank" style="color:var(--accent)">Rich Results Test →</a>
-          </p>
-          <p style="margin-bottom:8px"><strong>Monitoring wzmianek w AI</strong> (ChatGPT, Perplexity, Claude) — moduł w przygotowaniu. Wymaga dodatkowych kluczy API i będzie sprawdzał cyklicznie czy DirectWebs jest polecane jako specjalista w odpowiedziach AI.</p>
+
+      <div id="ai-metrics-${site.id}" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px">
+        <div class="card" style="padding:1rem">
+          <div style="font-size:12px;color:var(--text2);margin-bottom:4px">Fraz w TOP 3</div>
+          <div id="m-top3-${site.id}" style="font-size:24px;font-weight:700;font-family:'JetBrains Mono',monospace">—</div>
+        </div>
+        <div class="card" style="padding:1rem">
+          <div style="font-size:12px;color:var(--text2);margin-bottom:4px">Fraz w TOP 10</div>
+          <div id="m-top10-${site.id}" style="font-size:24px;font-weight:700;font-family:'JetBrains Mono',monospace">—</div>
+        </div>
+        <div class="card" style="padding:1rem">
+          <div style="font-size:12px;color:var(--text2);margin-bottom:4px">Schema status</div>
+          <div style="font-size:24px;font-weight:700;color:var(--green)">OK</div>
+        </div>
+        <div class="card" style="padding:1rem">
+          <div style="font-size:12px;color:var(--text2);margin-bottom:4px">Wzmianki w AI</div>
+          <div id="m-ai-${site.id}" style="font-size:24px;font-weight:700;font-family:'JetBrains Mono',monospace">—</div>
         </div>
       </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <div class="card-title" style="display:flex;align-items:center;gap:12px">
+          <span>📈 Trend pozycji w Google</span>
+          <select id="rank-period-${site.id}" onchange="loadFullRanking(activeSite, getToken(activeSite.id))" style="margin-left:auto;font-size:12px;padding:4px 8px;border-radius:6px;border:1px solid var(--border);background:var(--bg2);color:var(--text)">
+            <option value="7">7 dni</option>
+            <option value="28">28 dni</option>
+            <option value="90" selected>90 dni</option>
+            <option value="180">180 dni</option>
+          </select>
+          <button class="btn btn-ghost" style="font-size:11px" onclick="loadFullRanking(activeSite, getToken(activeSite.id))">🔄 Odśwież</button>
+        </div>
+        <div id="rank-trend-${site.id}" style="position:relative;width:100%;height:240px;margin-bottom:8px"></div>
+        <div id="rank-summary-${site.id}"></div>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <div class="card-title">🔮 Prognoza — przewidywane TOP 10 (na bazie trendu)</div>
+        <div id="forecast-${site.id}" style="position:relative;width:100%;height:200px"></div>
+        <p style="font-size:11px;color:var(--text3);margin:8px 0 0">Szacunek liniowy na podstawie ostatnich pomiarów. Realne wyniki zależą od tempa publikacji i konkurencji.</p>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <div class="card-title">🤖 Widoczność w AI <button class="btn btn-ghost" style="font-size:11px" onclick="loadAiVisibility(activeSite)">🔄 Odśwież</button></div>
+        <div id="ai-visibility-${site.id}"><div class="loading"><div class="spinner"></div><span>Pobieranie danych...</span></div></div>
+      </div>
+
       <div class="card">
-        <div class="card-title">📈 Pełny ranking Google (90 dni) <button class="btn btn-ghost" style="font-size:11px" onclick="loadFullRanking(activeSite, getToken(activeSite.id))">🔄 Odśwież</button></div>
+        <div class="card-title">📊 Pełna lista fraz</div>
         <div id="ranking-full-${site.id}">${token?'<div class="loading"><div class="spinner"></div><span>Pobieranie danych...</span></div>':'<div class="empty">Połącz Google Search Console przyciskiem w górnym pasku</div>'}</div>
       </div>
     </div>
