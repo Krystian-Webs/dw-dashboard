@@ -258,7 +258,54 @@ async function loadGscData(site, token) {
     if(cards[2]) cards[2].textContent = avgPos;
     // update keywords panel
     renderKeywordsData(site, rows);
+
+    if (site.id === 'directwebs') loadFullRanking(site, token);
   } catch(e) { console.error(e); }
+}
+
+// ── FULL RANKING (DirectWebs only) ─────────────────
+async function loadFullRanking(site, token) {
+  const el = document.getElementById(`ranking-full-${site.id}`);
+  if (!el) return;
+  const end = new Date().toISOString().split('T')[0];
+  const start = new Date(Date.now()-90*24*60*60*1000).toISOString().split('T')[0];
+  try {
+    const res = await fetch(`https://searchconsole.googleapis.com/webmasters/v3/sites/${encodeURIComponent(site.gscSite)}/searchAnalytics/query`, {
+      method:'POST',
+      headers:{'Authorization':`Bearer ${token}`,'Content-Type':'application/json'},
+      body:JSON.stringify({startDate:start,endDate:end,dimensions:['query'],rowLimit:250})
+    });
+    if (!res.ok) { el.innerHTML = '<div class="empty">Błąd pobierania danych GSC</div>'; return; }
+    const data = await res.json();
+    let rows = data.rows || [];
+    rows.sort((a,b)=>a.position-b.position);
+
+    const top10 = rows.filter(r=>r.position<=10).length;
+    const top3  = rows.filter(r=>r.position<=3).length;
+
+    el.innerHTML = `
+      <div style="display:flex;gap:16px;margin-bottom:16px;font-size:12px">
+        <span style="color:var(--green)">🥇 ${top3} w TOP 3</span>
+        <span style="color:var(--yellow)">⭐ ${top10} w TOP 10</span>
+        <span style="color:var(--text2)">📊 ${rows.length} fraz (90 dni)</span>
+      </div>
+      <table class="seo-table">
+        <thead><tr><th>Fraza</th><th>Pozycja</th><th>Kliknięcia</th><th>Wyświetlenia</th><th>CTR</th></tr></thead>
+        <tbody>${rows.map(r=>{
+          const pos = r.position;
+          const posColor = pos<=3?'var(--green)':pos<=10?'var(--yellow)':'var(--text2)';
+          return `<tr>
+            <td style="font-size:12px">${r.keys[0]}</td>
+            <td><span style="font-family:'JetBrains Mono',monospace;font-weight:700;color:${posColor}">#${pos.toFixed(1)}</span></td>
+            <td style="font-size:12px">${r.clicks}</td>
+            <td style="font-size:12px">${r.impressions}</td>
+            <td style="font-size:12px">${(r.ctr*100).toFixed(1)}%</td>
+          </tr>`;
+        }).join('')}</tbody>
+      </table>`;
+  } catch(e) {
+    el.innerHTML = `<div class="empty">Błąd: ${e.message}</div>`;
+  }
 }
 
 function renderKeywordsData(site, rows) {
@@ -451,6 +498,7 @@ function renderProfile(site) {
       <div class="tab" onclick="switchTab('keywords',this)">🎯 Frazy kluczowe</div>
       <div class="tab" onclick="switchTab('posts',this)">📝 Wpisy</div>
       <div class="tab" onclick="switchTab('settings',this)">⚙️ Ustawienia</div>
+      ${site.id === 'directwebs' ? '<div class="tab" onclick="switchTab(\'airank\',this)" style="margin-left:auto;color:var(--accent)">🤖 AI &amp; Ranking</div>' : ''}
     </div>
 
     <div id="tab-overview" class="tab-panel active">
@@ -492,6 +540,24 @@ function renderProfile(site) {
         <div id="all-posts-${site.id}">${site.wpUser?'<div class="loading"><div class="spinner"></div><span>Ładowanie...</span></div>':'<div class="empty">Dodaj dane WordPress w ⚙️ Ustawieniach</div>'}</div>
       </div>
     </div>
+
+    ${site.id === 'directwebs' ? `
+    <div id="tab-airank" class="tab-panel">
+      <div class="card" style="margin-bottom:16px">
+        <div class="card-title">🤖 AI-widoczność (GEO) <span class="badge badge-purple">DirectWebs only</span></div>
+        <div style="font-size:12px;color:var(--text2);line-height:1.6">
+          <p style="margin-bottom:8px"><strong>Schema markup:</strong> Organization, Service, FAQPage — sprawdź status:
+            <a href="https://search.google.com/test/rich-results?url=https://directwebs.pl" target="_blank" style="color:var(--accent)">Rich Results Test →</a>
+          </p>
+          <p style="margin-bottom:8px"><strong>Monitoring wzmianek w AI</strong> (ChatGPT, Perplexity, Claude) — moduł w przygotowaniu. Wymaga dodatkowych kluczy API i będzie sprawdzał cyklicznie czy DirectWebs jest polecane jako specjalista w odpowiedziach AI.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">📈 Pełny ranking Google (90 dni) <button class="btn btn-ghost" style="font-size:11px" onclick="loadFullRanking(activeSite, getToken(activeSite.id))">🔄 Odśwież</button></div>
+        <div id="ranking-full-${site.id}">${token?'<div class="loading"><div class="spinner"></div><span>Pobieranie danych...</span></div>':'<div class="empty">Połącz Google Search Console przyciskiem w górnym pasku</div>'}</div>
+      </div>
+    </div>
+    ` : ''}
 
     <div id="tab-settings" class="tab-panel">
       <div class="card" style="max-width:540px">
