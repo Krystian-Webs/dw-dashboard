@@ -8,23 +8,29 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
   :root {
-    --bg:#0a0a0f;--surface:#13131a;--surface2:#1c1c26;--border:#2a2a38;
-    --accent:#6c63ff;--accent2:#00d4aa;--text:#e8e8f0;--text2:#8888aa;
-    --text3:#55556a;--red:#ff4d6a;--yellow:#ffd166;--green:#06d6a0;
+    --bg:#F4F4F2;--surface:#ffffff;--surface2:#F1EFE8;--border:#E4E2DC;
+    --accent:#6c63ff;--accent2:#00b894;--text:#1f1f23;--text2:#6b6b76;
+    --text3:#9b9ba6;--red:#e0445b;--yellow:#e0a82e;--green:#1d9e75;
+    --side-bg:#13131f;--side-text:#cfcfe0;--side-text2:#7d7d99;--side-active:#6c63ff;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex}
-  .sidebar{width:72px;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;align-items:center;padding:20px 0;gap:8px;position:fixed;top:0;left:0;bottom:0;z-index:100}
-  .sidebar-logo{width:36px;height:36px;background:var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;margin-bottom:16px}
-  .site-icon{width:44px;height:44px;border-radius:12px;background:var(--surface2);border:2px solid transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;transition:all .2s;position:relative}
-  .site-icon:hover{border-color:var(--accent)}
-  .site-icon.active{border-color:var(--accent);background:rgba(108,99,255,.15)}
-  .site-icon .tooltip{position:absolute;left:56px;background:var(--surface2);border:1px solid var(--border);padding:6px 10px;border-radius:8px;font-size:12px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s;z-index:200}
-  .site-icon:hover .tooltip{opacity:1}
-  .sidebar-add{width:44px;height:44px;border-radius:12px;border:2px dashed var(--border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--text3);transition:all .2s;margin-top:auto}
-  .sidebar-add:hover{border-color:var(--accent);color:var(--accent)}
-  .main{margin-left:72px;flex:1;display:flex;flex-direction:column;min-height:100vh}
-  .topbar{height:60px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 28px;gap:12px;position:sticky;top:0;z-index:50}
+  .sidebar{width:240px;background:var(--side-bg);display:flex;flex-direction:column;padding:18px 12px;gap:4px;position:fixed;top:0;left:0;bottom:0;z-index:100;overflow-y:auto}
+  .sidebar-logo{display:flex;align-items:center;gap:10px;padding:0 8px 16px;color:#fff;font-weight:600;font-size:15px}
+  .sidebar-logo span{width:30px;height:30px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+  .sidebar-section-label{font-size:10px;color:var(--side-text2);text-transform:uppercase;letter-spacing:.08em;padding:14px 10px 6px}
+  .site-icon{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;cursor:pointer;color:var(--side-text);font-size:13px;transition:all .15s}
+  .site-icon:hover{background:rgba(255,255,255,.05)}
+  .site-icon.active{background:rgba(108,99,255,.18);color:#fff}
+  .site-icon img{width:18px;height:18px;border-radius:4px;object-fit:cover;flex-shrink:0}
+  .nav-item{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;cursor:pointer;color:var(--side-text);font-size:13px;transition:all .15s}
+  .nav-item:hover{background:rgba(255,255,255,.05);color:#fff}
+  .nav-item.active{background:var(--accent);color:#fff}
+  .nav-item.airank{color:#b9b3ff}
+  .sidebar-add{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;border:1px dashed rgba(255,255,255,.15);background:transparent;cursor:pointer;color:var(--side-text2);font-size:13px;margin-top:8px;width:100%;font-family:'Inter',sans-serif}
+  .sidebar-add:hover{border-color:var(--accent);color:#fff}
+  .main{margin-left:240px;flex:1;display:flex;flex-direction:column;min-height:100vh}
+  .topbar{height:64px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 28px;gap:12px;position:sticky;top:0;z-index:50}
   .topbar-title{font-size:15px;font-weight:600}
   .topbar-url{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text2)}
   .topbar-right{margin-left:auto;display:flex;gap:8px;align-items:center}
@@ -33,29 +39,26 @@
   .btn-ghost:hover{color:var(--text);border-color:var(--accent)}
   .btn-primary{background:var(--accent);color:#fff}
   .btn-primary:hover{background:#7c74ff}
-  .btn-green{background:rgba(6,214,160,.15);color:var(--green);border:1px solid rgba(6,214,160,.3)}
-  .btn-green:hover{background:rgba(6,214,160,.25)}
-  .content{padding:28px;flex:1}
-  .tabs{display:flex;gap:4px;border-bottom:1px solid var(--border);margin-bottom:24px}
-  .tab{padding:10px 16px;font-size:13px;font-weight:500;color:var(--text2);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s}
-  .tab:hover{color:var(--text)}
-  .tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+  .btn-green{background:rgba(29,158,117,.12);color:var(--green);border:1px solid rgba(29,158,117,.3)}
+  .btn-green:hover{background:rgba(29,158,117,.2)}
+  .content{padding:24px 28px;flex:1}
+  .tabs{display:none}
   .tab-panel{display:none}
   .tab-panel.active{display:block}
-  .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
-  .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px}
-  .stat-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
-  .stat-value{font-size:28px;font-weight:700;font-family:'JetBrains Mono',monospace}
+  .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+  .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px}
+  .stat-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+  .stat-value{font-size:24px;font-weight:600;font-family:'JetBrains Mono',monospace}
   .stat-sub{font-size:11px;color:var(--text3);margin-top:4px}
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
   .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px}
-  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px}
-  .card-title{font-size:12px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px}
+  .card-title{font-size:12px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
   .kw-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)}
   .kw-row:last-child{border-bottom:none}
   .kw-phrase{font-size:12px;flex:1}
   .kw-pos{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;width:32px;text-align:center}
-  .kw-bar-wrap{width:80px;height:4px;background:var(--border);border-radius:2px}
+  .kw-bar-wrap{width:80px;height:4px;background:var(--surface2);border-radius:2px}
   .kw-bar{height:4px;border-radius:2px;background:var(--accent)}
   .kw-clicks{font-size:11px;color:var(--text3);width:50px;text-align:right}
   .post-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)}
@@ -64,21 +67,21 @@
   .post-info{flex:1}
   .post-title{font-size:12px}
   .post-meta{font-size:11px;color:var(--text3);margin-top:2px}
-  .post-badge{font-size:10px;padding:2px 8px;border-radius:20px;background:rgba(6,214,160,.12);color:var(--green);border:1px solid rgba(6,214,160,.25)}
+  .post-badge{font-size:10px;padding:2px 8px;border-radius:20px;background:rgba(29,158,117,.1);color:var(--green);border:1px solid rgba(29,158,117,.25)}
   .badge{font-size:10px;padding:2px 7px;border-radius:20px;font-weight:500}
-  .badge-purple{background:rgba(108,99,255,.15);color:var(--accent);border:1px solid rgba(108,99,255,.3)}
+  .badge-purple{background:rgba(108,99,255,.12);color:var(--accent);border:1px solid rgba(108,99,255,.25)}
   .seo-table{width:100%;border-collapse:collapse}
   .seo-table th{text-align:left;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;padding:0 12px 10px 0;border-bottom:1px solid var(--border)}
   .seo-table td{padding:10px 12px 10px 0;font-size:12px;border-bottom:1px solid var(--border);vertical-align:middle}
   .seo-table tr:last-child td{border-bottom:none}
   .loading{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;color:var(--text3);gap:12px}
-  .spinner{width:28px;height:28px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
+  .spinner{width:24px;height:24px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
   @keyframes spin{to{transform:rotate(360deg)}}
   .empty{text-align:center;padding:32px;color:var(--text3);font-size:13px;line-height:1.6}
-  .welcome{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 60px);gap:16px;color:var(--text2);text-align:center}
+  .welcome{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 64px);gap:16px;color:var(--text2);text-align:center}
   .welcome h2{font-size:22px;color:var(--text)}
   .welcome p{font-size:14px;max-width:340px;line-height:1.6}
-  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:1000;opacity:0;pointer-events:none;transition:opacity .2s}
+  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:1000;opacity:0;pointer-events:none;transition:opacity .2s}
   .modal-overlay.open{opacity:1;pointer-events:all}
   .modal{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;width:480px;transform:translateY(10px);transition:transform .2s}
   .modal-overlay.open .modal{transform:translateY(0)}
@@ -90,14 +93,22 @@
   .modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:20px}
   .gsc-connected{color:var(--green);font-size:12px;display:flex;align-items:center;gap:6px}
   .gsc-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green)}
+  .geo-row{display:flex;align-items:center;gap:10px;padding:6px 0}
+  .geo-label{font-size:12px;width:160px;flex-shrink:0}
+  .geo-bar-wrap{flex:1;height:6px;background:var(--surface2);border-radius:3px;overflow:hidden}
+  .geo-bar{height:6px;border-radius:3px;background:var(--accent)}
+  .geo-val{font-size:11px;color:var(--text3);width:60px;text-align:right;font-family:'JetBrains Mono',monospace}
 </style>
 </head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <body>
 
 <div class="sidebar" id="sidebar">
-  <div class="sidebar-logo">DW</div>
-  <button class="sidebar-add" onclick="openModal()">+</button>
+  <div class="sidebar-logo"><span>DW</span> DirectWebs Panel</div>
+  <div class="sidebar-section-label">Strony</div>
+  <div id="sidebar-sites"></div>
+  <button class="sidebar-add" onclick="openModal()">+ Dodaj stronę</button>
+  <div id="sidebar-nav-wrap"></div>
 </div>
 
 <div class="main">
@@ -164,23 +175,42 @@ function clearToken(siteId) {
 }
 
 // ── RENDER SIDEBAR ─────────────────────────────────
+const NAV_ITEMS = [
+  {id:'overview', icon:'📊', label:'Przegląd'},
+  {id:'seo', icon:'🔍', label:'SEO stron'},
+  {id:'keywords', icon:'🎯', label:'Frazy kluczowe'},
+  {id:'posts', icon:'📝', label:'Wpisy'},
+  {id:'settings', icon:'⚙️', label:'Ustawienia'},
+];
+
 function renderSidebar() {
-  const sidebar = document.getElementById('sidebar');
-  sidebar.querySelectorAll('.site-icon').forEach(e => e.remove());
-  const addBtn = sidebar.querySelector('.sidebar-add');
+  const sitesEl = document.getElementById('sidebar-sites');
+  sitesEl.innerHTML = '';
   sites.forEach(site => {
     const el = document.createElement('div');
     el.className = 'site-icon' + (activeSite?.id === site.id ? ' active' : '');
     const domain = new URL(site.url).hostname;
-    el.innerHTML = `<img src="https://www.google.com/s2/favicons?domain=${domain}&sz=64" style="width:28px;height:28px;border-radius:6px;object-fit:cover"><span class="tooltip">${site.name}</span>`;
+    el.innerHTML = `<img src="https://www.google.com/s2/favicons?domain=${domain}&sz=64"><span>${site.name}</span>`;
     el.onclick = () => selectSite(site);
-    sidebar.insertBefore(el, addBtn);
+    sitesEl.appendChild(el);
   });
+  renderSidebarNav();
+}
+
+function renderSidebarNav() {
+  const navWrap = document.getElementById('sidebar-nav-wrap');
+  if (!activeSite) { navWrap.innerHTML = ''; return; }
+  let items = [...NAV_ITEMS];
+  if (activeSite.id === 'directwebs') items.push({id:'airank', icon:'🤖', label:'AI & Ranking', cls:'airank'});
+  navWrap.innerHTML = `<div class="sidebar-section-label">${activeSite.name}</div>` +
+    items.map(it => `<div class="nav-item ${it.cls||''} ${activeTab===it.id?'active':''}" onclick="switchTab('${it.id}', this)">${it.icon} ${it.label}</div>`).join('');
 }
 
 // ── SELECT SITE ────────────────────────────────────
+let activeTab = 'overview';
 function selectSite(site) {
   activeSite = site;
+  activeTab = 'overview';
   renderSidebar();
   const domain = new URL(site.url).hostname;
   document.getElementById('topbar-title').innerHTML = `<img src="https://www.google.com/s2/favicons?domain=${domain}&sz=32" style="width:20px;height:20px;border-radius:4px;vertical-align:middle;margin-right:8px">${site.name}`;
@@ -189,8 +219,17 @@ function selectSite(site) {
   updateGscStatus(site);
   renderProfile(site);
   if (site.wpUser && site.wpPass) { loadWpData(site); loadSeoStatus(site); }
-  const token = getToken(site.id);
-  if (token) loadGscData(site, token);
+  let token = getToken(site.id);
+  if (token) {
+    loadGscData(site, token);
+    if (site.id === 'directwebs') { loadFullRanking(site, token); loadAiVisibility(site); }
+    loadGeoData(site, token);
+  } else if (localStorage.getItem(`gsc_connected_${site.id}`) === '1') {
+    silentReconnectGSC(site);
+  }
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  const panel = document.getElementById('tab-'+activeTab);
+  if (panel) panel.classList.add('active');
 }
 
 // ── GSC STATUS ─────────────────────────────────────
@@ -214,8 +253,10 @@ function handleGscBtn() {
   const token = getToken(activeSite.id);
   if (token) {
     clearToken(activeSite.id);
+    localStorage.removeItem(`gsc_connected_${activeSite.id}`);
     updateGscStatus(activeSite);
     renderProfile(activeSite);
+    switchTab(activeTab, document.querySelector('.nav-item.active'));
   } else {
     loginGSC(activeSite);
   }
@@ -228,12 +269,35 @@ function loginGSC(site) {
     callback: (resp) => {
       if (resp.access_token) {
         setToken(site.id, resp.access_token, resp.expires_in || 3600);
+        localStorage.setItem(`gsc_connected_${site.id}`, '1');
         updateGscStatus(site);
         loadGscData(site, resp.access_token);
+        loadGeoData(site, resp.access_token);
+        if (site.id === 'directwebs') { loadFullRanking(site, resp.access_token); loadAiVisibility(site); }
       }
     }
   });
   client.requestAccessToken();
+}
+
+// ── SILENT RECONNECT — uzytkownik juz raz zezwolil, odswiez token bez ekranu logowania
+function silentReconnectGSC(site) {
+  const client = google.accounts.oauth2.initTokenClient({
+    client_id: GSC_CLIENT_ID,
+    scope: GSC_SCOPE,
+    callback: (resp) => {
+      if (resp.access_token) {
+        setToken(site.id, resp.access_token, resp.expires_in || 3600);
+        if (activeSite?.id === site.id) {
+          updateGscStatus(site);
+          loadGscData(site, resp.access_token);
+          loadGeoData(site, resp.access_token);
+          if (site.id === 'directwebs') { loadFullRanking(site, resp.access_token); loadAiVisibility(site); }
+        }
+      }
+    }
+  });
+  client.requestAccessToken({prompt: ''});
 }
 
 // ── LOAD GSC DATA ──────────────────────────────────
@@ -259,9 +323,68 @@ async function loadGscData(site, token) {
     if(cards[2]) cards[2].textContent = avgPos;
     // update keywords panel
     renderKeywordsData(site, rows);
-
-    if (site.id === 'directwebs') { loadFullRanking(site, token); loadAiVisibility(site); }
+    loadOverviewTrend(site, token);
   } catch(e) { console.error(e); }
+}
+
+// ── OVERVIEW TREND (clicks per day, slim chart) ────
+let overviewChartInstances = {};
+async function loadOverviewTrend(site, token) {
+  const el = document.getElementById(`overview-trend-${site.id}`);
+  if (!el) return;
+  const end = new Date().toISOString().split('T')[0];
+  const start = new Date(Date.now()-30*24*60*60*1000).toISOString().split('T')[0];
+  try {
+    const res = await fetch(`https://searchconsole.googleapis.com/webmasters/v3/sites/${encodeURIComponent(site.gscSite)}/searchAnalytics/query`, {
+      method:'POST',
+      headers:{'Authorization':`Bearer ${token}`,'Content-Type':'application/json'},
+      body:JSON.stringify({startDate:start,endDate:end,dimensions:['date'],rowLimit:35})
+    });
+    if (!res.ok) return;
+    const data = await res.json();
+    const rows = (data.rows||[]).sort((a,b)=>a.keys[0]<b.keys[0]?-1:1);
+    el.innerHTML = `<canvas id="ovCanvas-${site.id}"></canvas>`;
+    const ctx = document.getElementById(`ovCanvas-${site.id}`);
+    if (overviewChartInstances[site.id]) overviewChartInstances[site.id].destroy();
+    overviewChartInstances[site.id] = new Chart(ctx, {
+      type:'line',
+      data:{ labels: rows.map(r=>r.keys[0].slice(5)), datasets:[{ data: rows.map(r=>r.clicks), borderColor:'#6c63ff', backgroundColor:'rgba(108,99,255,0.08)', fill:true, tension:0.35, pointRadius:0, borderWidth:1.5 }] },
+      options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{ x:{display:false}, y:{display:false} } }
+    });
+  } catch(e) {}
+}
+
+// ── GEO DATA (kraje wg GSC) ─────────────────────────
+async function loadGeoData(site, token) {
+  const el = document.getElementById(`geo-${site.id}`);
+  if (!el) return;
+  const end = new Date().toISOString().split('T')[0];
+  const start = new Date(Date.now()-30*24*60*60*1000).toISOString().split('T')[0];
+  try {
+    const res = await fetch(`https://searchconsole.googleapis.com/webmasters/v3/sites/${encodeURIComponent(site.gscSite)}/searchAnalytics/query`, {
+      method:'POST',
+      headers:{'Authorization':`Bearer ${token}`,'Content-Type':'application/json'},
+      body:JSON.stringify({startDate:start,endDate:end,dimensions:['country'],rowLimit:6})
+    });
+    if (!res.ok) { el.innerHTML = '<div class="empty">Brak danych geo</div>'; return; }
+    const data = await res.json();
+    let rows = (data.rows||[]).sort((a,b)=>b.clicks-a.clicks);
+    if (!rows.length) { el.innerHTML = '<div class="empty">Brak danych geo (zbyt mało ruchu)</div>'; return; }
+    const maxClicks = rows[0].clicks || 1;
+    const names = {pol:'🇵🇱 Polska', deu:'🇩🇪 Niemcy', gbr:'🇬🇧 Wielka Brytania', usa:'🇺🇸 USA', cze:'🇨🇿 Czechy', ukr:'🇺🇦 Ukraina'};
+    el.innerHTML = rows.map(r=>{
+      const code = r.keys[0];
+      const label = names[code] || code.toUpperCase();
+      const pct = Math.round((r.clicks/maxClicks)*100);
+      return `<div class="geo-row">
+        <div class="geo-label">${label}</div>
+        <div class="geo-bar-wrap"><div class="geo-bar" style="width:${pct}%"></div></div>
+        <div class="geo-val">${r.clicks} kl.</div>
+      </div>`;
+    }).join('');
+  } catch(e) {
+    el.innerHTML = `<div class="empty">Błąd: ${e.message}</div>`;
+  }
 }
 
 // ── FULL RANKING + TREND + FORECAST (DirectWebs only) ─
@@ -325,9 +448,9 @@ async function loadFullRanking(site, token) {
           datasets:[{
             label:'Średnia pozycja',
             data: dateRows.map(r=>Math.round(r.position*10)/10),
-            borderColor:'#7F77DD',
-            backgroundColor:'rgba(127,119,221,0.12)',
-            fill:true, tension:0.3, pointRadius:0, borderWidth:2
+            borderColor:'#6c63ff',
+            backgroundColor:'rgba(108,99,255,0.08)',
+            fill:true, tension:0.3, pointRadius:0, borderWidth:1.5
           }]
         },
         options:{
@@ -380,7 +503,7 @@ async function loadFullRanking(site, token) {
         if (forecastChartInstance) forecastChartInstance.destroy();
         forecastChartInstance = new Chart(fctx, {
           type:'bar',
-          data:{ labels: forecastLabels, datasets:[{ label:'Frazy w TOP 10', data: forecastData, backgroundColor:'#7F77DD' }] },
+          data:{ labels: forecastLabels, datasets:[{ label:'Frazy w TOP 10', data: forecastData, backgroundColor:'#6c63ff', borderRadius:4, maxBarThickness:20 }] },
           options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{ y:{ title:{display:true,text:'Liczba fraz'} } } }
         });
       } else {
@@ -668,15 +791,6 @@ async function loadSeoStatus(site) {
 function renderProfile(site) {
   const token = getToken(site.id);
   document.getElementById('content').innerHTML = `
-    <div class="tabs">
-      <div class="tab active" onclick="switchTab('overview',this)">📊 Przegląd</div>
-      <div class="tab" onclick="switchTab('seo',this)">🔍 SEO stron</div>
-      <div class="tab" onclick="switchTab('keywords',this)">🎯 Frazy kluczowe</div>
-      <div class="tab" onclick="switchTab('posts',this)">📝 Wpisy</div>
-      <div class="tab" onclick="switchTab('settings',this)">⚙️ Ustawienia</div>
-      ${site.id === 'directwebs' ? '<div class="tab" onclick="switchTab(\'airank\',this)" style="margin-left:auto;color:var(--accent)">🤖 AI &amp; Ranking</div>' : ''}
-    </div>
-
     <div id="tab-overview" class="tab-panel active">
       <div class="stats-row">
         <div class="stat-card"><div class="stat-label">Kliknięcia (30 dni)</div><div class="stat-value" style="color:var(--accent)">${token?'...':'—'}</div><div class="stat-sub">Google Search Console</div></div>
@@ -692,6 +806,16 @@ function renderProfile(site) {
         <div class="card">
           <div class="card-title">Top frazy kluczowe</div>
           <div id="top-kw-${site.id}">${token?'<div class="loading"><div class="spinner"></div><span>Ładowanie...</span></div>':'<div class="empty">Połącz Google Search Console<br>przyciskiem w górnym pasku</div>'}</div>
+        </div>
+      </div>
+      <div class="grid2">
+        <div class="card">
+          <div class="card-title">Trend kliknięć (30 dni)</div>
+          <div id="overview-trend-${site.id}" style="position:relative;width:100%;height:140px">${token?'':'<div class="empty">Połącz GSC</div>'}</div>
+        </div>
+        <div class="card">
+          <div class="card-title">🌍 Skąd przychodzą użytkownicy</div>
+          <div id="geo-${site.id}">${token?'<div class="loading"><div class="spinner"></div><span>Ładowanie...</span></div>':'<div class="empty">Połącz Google Search Console<br>przyciskiem w górnym pasku</div>'}</div>
         </div>
       </div>
     </div>
@@ -750,13 +874,13 @@ function renderProfile(site) {
           </select>
           <button class="btn btn-ghost" style="font-size:11px" onclick="loadFullRanking(activeSite, getToken(activeSite.id))">🔄 Odśwież</button>
         </div>
-        <div id="rank-trend-${site.id}" style="position:relative;width:100%;height:240px;margin-bottom:8px"></div>
+        <div id="rank-trend-${site.id}" style="position:relative;width:100%;height:160px;margin-bottom:8px"></div>
         <div id="rank-summary-${site.id}"></div>
       </div>
 
       <div class="card" style="margin-bottom:16px">
         <div class="card-title">🔮 Prognoza — przewidywane TOP 10 (na bazie trendu)</div>
-        <div id="forecast-${site.id}" style="position:relative;width:100%;height:200px"></div>
+        <div id="forecast-${site.id}" style="position:relative;width:100%;height:140px"></div>
         <p style="font-size:11px;color:var(--text3);margin:8px 0 0">Szacunek liniowy na podstawie ostatnich pomiarów. Realne wyniki zależą od tempa publikacji i konkurencji.</p>
       </div>
 
@@ -793,10 +917,12 @@ function renderProfile(site) {
 }
 
 function switchTab(name, el) {
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  activeTab = name;
+  document.querySelectorAll('.nav-item').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-  el.classList.add('active');
-  document.getElementById('tab-'+name).classList.add('active');
+  if (el) el.classList.add('active');
+  const panel = document.getElementById('tab-'+name);
+  if (panel) panel.classList.add('active');
 }
 
 // ── SETTINGS ───────────────────────────────────────
