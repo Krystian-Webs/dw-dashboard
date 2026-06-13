@@ -620,7 +620,59 @@ async function loadAiVisibility(site) {
     document.getElementById(`m-ai-${site.id}`).textContent = `${mentioned}/${total}`;
 
     const tierLabels = {lokalnie:'📍 Lokalnie (Kotlina Kłodzka)', regionalnie:'🗺️ Regionalnie (Dolny Śląsk)', krajowo:'🇵🇱 Krajowo (Polska)', brand:'🏷️ Brand'};
-    const tierHtml = Object.entries(tierGroups).map(([tier,v])=>{
+    const tierOrder = ['lokalnie','regionalnie','krajowo','brand'];
+
+    // ── MAPA ZASIĘGU (koncentryczne kregi) ──
+    const ringColor = pct => pct>=50?'#1d9e75':pct>=25?'#e0a82e':'#e4e2dc';
+    const ringPct = tier => { const v=tierGroups[tier]; return v&&v.total ? Math.round(v.mentioned/v.total*100) : 0; };
+    const pPol = ringPct('krajowo'), pDS = ringPct('regionalnie'), pKK = ringPct('lokalnie');
+    const mapHtml = `
+      <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding:8px 0 16px">
+        <svg width="180" height="180" viewBox="0 0 180 180">
+          <circle cx="90" cy="90" r="85" fill="${ringColor(pPol)}" opacity="0.18"/>
+          <circle cx="90" cy="90" r="85" fill="none" stroke="${ringColor(pPol)}" stroke-width="2"/>
+          <circle cx="90" cy="90" r="55" fill="${ringColor(pDS)}" opacity="0.25"/>
+          <circle cx="90" cy="90" r="55" fill="none" stroke="${ringColor(pDS)}" stroke-width="2"/>
+          <circle cx="90" cy="90" r="26" fill="${ringColor(pKK)}" opacity="0.35"/>
+          <circle cx="90" cy="90" r="26" fill="none" stroke="${ringColor(pKK)}" stroke-width="2"/>
+          <circle cx="90" cy="90" r="4" fill="#6c63ff"/>
+          <text x="90" y="94" text-anchor="middle" font-size="9" fill="#1f1f23" font-weight="600">DW</text>
+        </svg>
+        <div style="display:flex;flex-direction:column;gap:8px;font-size:12px">
+          <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${ringColor(pKK)};margin-right:6px"></span>Kotlina Kłodzka — <strong>${pKK}%</strong> wzmianek</div>
+          <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${ringColor(pDS)};margin-right:6px"></span>Dolny Śląsk — <strong>${pDS}%</strong> wzmianek</div>
+          <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${ringColor(pPol)};margin-right:6px"></span>Polska — <strong>${pPol}%</strong> wzmianek</div>
+          <div style="color:var(--text3);font-size:11px;margin-top:4px">Kolory: 🟢 ≥50% · 🟡 25-49% · ⚪ &lt;25%</div>
+        </div>
+      </div>`;
+
+    // ── SZCZEGÓŁY PER PYTANIE (klikalne, rozwijane) ──
+    const escapeHtml = s => (s||'').replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    const questionsHtml = checks.map((c,i)=>{
+      const platBadge = plat => {
+        const d = c[plat];
+        if (!d) return '';
+        if (d.error) return `<span class="badge" style="background:var(--surface2);color:var(--text3)">${plat==='chatgpt'?'ChatGPT':'Gemini'}: błąd</span>`;
+        const color = d.mentioned ? 'rgba(29,158,117,.12)' : 'var(--surface2)';
+        const tcolor = d.mentioned ? 'var(--green)' : 'var(--text3)';
+        return `<span class="badge" style="background:${color};color:${tcolor};border:1px solid var(--border)">${plat==='chatgpt'?'ChatGPT':'Gemini'} ${d.mentioned?'✓':'✗'}</span>`;
+      };
+      return `
+        <div style="border-bottom:1px solid var(--border)">
+          <div onclick="document.getElementById('aiq-${site.id}-${i}').classList.toggle('open')" style="display:flex;align-items:center;gap:8px;padding:10px 4px;cursor:pointer">
+            <span style="font-size:12px;flex:1">${escapeHtml(c.question)}</span>
+            ${platBadge('chatgpt')}${platBadge('gemini')}
+            <span style="color:var(--text3);font-size:11px">▾</span>
+          </div>
+          <div id="aiq-${site.id}-${i}" class="ai-detail" style="display:none;padding:0 4px 12px;font-size:12px;color:var(--text2);line-height:1.5">
+            ${c.chatgpt && !c.chatgpt.error ? `<div style="margin-bottom:8px"><strong>ChatGPT:</strong> ${escapeHtml(c.chatgpt.response_excerpt||'').slice(0,300)}...</div>` : ''}
+            ${c.gemini && !c.gemini.error ? `<div><strong>Gemini:</strong> ${escapeHtml(c.gemini.response_excerpt||'').slice(0,300)}...</div>` : ''}
+          </div>
+        </div>`;
+    }).join('');
+
+    const tierHtml = tierOrder.filter(t=>tierGroups[t]).map(tier=>{
+      const v = tierGroups[tier];
       const pct = v.total ? Math.round(v.mentioned/v.total*100) : 0;
       const color = pct>=50?'var(--green)':pct>0?'var(--yellow)':'var(--text2)';
       return `<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
@@ -646,8 +698,20 @@ async function loadAiVisibility(site) {
 
     el.innerHTML = `
       <div style="font-size:11px;color:var(--text3);margin-bottom:8px">Ostatni pomiar: ${latest.date} · historia: ${history.length} pomiar(ów)</div>
+      ${mapHtml}
+      <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin:8px 0">Wyniki per zakres</div>
       ${tierHtml}
+      <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin:16px 0 4px">Szczegóły pytań (kliknij aby rozwinąć)</div>
+      ${questionsHtml}
       ${analysisHtml}
+    `;
+    el.querySelectorAll('.ai-detail').forEach(d=>{
+      d.style.display = 'none';
+    });
+    // toggle helper via CSS class
+    const style = document.createElement('style');
+    style.textContent = '.ai-detail.open{display:block!important}';
+    el.appendChild(style);
     `;
   } catch(e) {
     el.innerHTML = `<div class="empty">Błąd: ${e.message}</div>`;
