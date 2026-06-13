@@ -105,6 +105,7 @@
 
 <div class="sidebar" id="sidebar">
   <div class="sidebar-logo"><span>DW</span> DirectWebs Panel</div>
+  <div class="nav-item" id="nav-compare" onclick="showCompare()">📊 Porównanie</div>
   <div class="sidebar-section-label">Strony</div>
   <div id="sidebar-sites"></div>
   <button class="sidebar-add" onclick="openModal()">+ Dodaj stronę</button>
@@ -184,6 +185,7 @@ const NAV_ITEMS = [
 ];
 
 function renderSidebar() {
+  document.getElementById('nav-compare')?.classList.remove('active');
   const sitesEl = document.getElementById('sidebar-sites');
   sitesEl.innerHTML = '';
   sites.forEach(site => {
@@ -321,6 +323,22 @@ async function loadGscData(site, token) {
     if(cards[0]) cards[0].textContent = clicks.toLocaleString('pl-PL');
     if(cards[1]) cards[1].textContent = impr.toLocaleString('pl-PL');
     if(cards[2]) cards[2].textContent = avgPos;
+    siteCache[site.id] = {...(siteCache[site.id]||{}), clicks, impr, avgPos};
+
+    // pelna lista do top3/top10 (do porownania)
+    const resAll = await fetch(`https://searchconsole.googleapis.com/webmasters/v3/sites/${encodeURIComponent(site.gscSite)}/searchAnalytics/query`, {
+      method:'POST',
+      headers:{'Authorization':`Bearer ${token}`,'Content-Type':'application/json'},
+      body:JSON.stringify({startDate:start,endDate:end,dimensions:['query'],rowLimit:250})
+    });
+    if (resAll.ok) {
+      const allData = await resAll.json();
+      const allRows = allData.rows || [];
+      siteCache[site.id].top3 = allRows.filter(r=>r.position<=3).length;
+      siteCache[site.id].top10 = allRows.filter(r=>r.position<=10).length;
+      siteCache[site.id].totalKw = allRows.length;
+    }
+
     // update keywords panel
     renderKeywordsData(site, rows);
     loadOverviewTrend(site, token);
@@ -732,6 +750,7 @@ async function loadSeoStatus(site) {
     const wcBadge = pluginInfo?.woocommerce ? '<span class="badge" style="background:rgba(0,212,170,.12);color:var(--accent2);border:1px solid rgba(0,212,170,.3)">WooCommerce</span>' : '';
 
     const avgScore = data.avg_score || 0;
+    siteCache[site.id] = {...(siteCache[site.id]||{}), seoScore: avgScore};
     const scoreColor = avgScore >= 70 ? 'var(--green)' : avgScore >= 50 ? 'var(--yellow)' : 'var(--red)';
 
     const renderSection = (title, sectionItems, type) => {
@@ -992,6 +1011,84 @@ function saveSite() {
 // ── ACTIONS ────────────────────────────────────────
 function runSeoAudit() { alert('Audyt SEO — w pełnej wersji GitHub Actions uruchomi seo_audit.py'); }
 function generatePost() { window.open('https://github.com/Krystian-Webs/automatyzacje-wpisy-/actions','_blank'); }
+
+// ── PORÓWNANIE STRON ────────────────────────────────
+let siteCache = {};
+
+function showCompare() {
+  activeSite = null;
+  document.querySelectorAll('.site-icon').forEach(e=>e.classList.remove('active'));
+  document.getElementById('nav-compare').classList.add('active');
+  document.getElementById('sidebar-nav-wrap').innerHTML = '';
+  document.getElementById('topbar-title').textContent = 'Porównanie stron';
+  document.getElementById('topbar-url').textContent = '';
+  document.getElementById('topbar-right').style.display = 'none';
+
+  const rows = sites.map(s=>{
+    const c = siteCache[s.id] || {};
+    const domain = new URL(s.url).hostname;
+    return `<tr>
+      <td style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500"><img src="https://www.google.com/s2/favicons?domain=${domain}&sz=32" style="width:18px;height:18px;border-radius:4px">${s.name}</td>
+      <td style="font-family:'JetBrains Mono',monospace">${c.clicks ?? '—'}</td>
+      <td style="font-family:'JetBrains Mono',monospace">${c.impr ?? '—'}</td>
+      <td style="font-family:'JetBrains Mono',monospace">${c.avgPos ?? '—'}</td>
+      <td style="font-family:'JetBrains Mono',monospace;color:var(--green)">${c.top3 ?? '—'}</td>
+      <td style="font-family:'JetBrains Mono',monospace;color:var(--yellow)">${c.top10 ?? '—'}</td>
+      <td style="font-family:'JetBrains Mono',monospace">${c.totalKw ?? '—'}</td>
+      <td style="font-family:'JetBrains Mono',monospace;color:${c.seoScore>=70?'var(--green)':c.seoScore>=50?'var(--yellow)':'var(--text2)'}">${c.seoScore ?? '—'}</td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('content').innerHTML = `
+    <div class="card" style="margin-bottom:16px">
+      <div class="card-title">📊 Porównanie stron (ostatnie 30 dni)</div>
+      <p style="font-size:12px;color:var(--text3);margin-bottom:14px">Dane uzupełniają się automatycznie po wejściu na każdą stronę z połączonym GSC. Idealne do prezentacji wyników klientom.</p>
+      <table class="seo-table">
+        <thead><tr><th>Strona</th><th>Kliknięcia</th><th>Wyświetlenia</th><th>Śr. pozycja</th><th>TOP 3</th><th>TOP 10</th><th>Fraz łącznie</th><th>SEO Score</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚡ Sprawdź szybkość dowolnej strony (PageSpeed)</div>
+      <p style="font-size:12px;color:var(--text3);margin-bottom:12px">Wpisz adres strony klienta lub konkurencji, żeby porównać wydajność na żywo — świetne do prezentacji.</p>
+      <div style="display:flex;gap:8px;margin-bottom:16px">
+        <input class="form-input" id="ps-url" placeholder="https://przyklad.pl" style="flex:1">
+        <button class="btn btn-primary" onclick="checkPageSpeed()">Sprawdź</button>
+      </div>
+      <div id="ps-result"></div>
+    </div>
+  `;
+}
+
+async function checkPageSpeed() {
+  const url = document.getElementById('ps-url').value.trim();
+  const resEl = document.getElementById('ps-result');
+  if (!url) return;
+  resEl.innerHTML = '<div class="loading"><div class="spinner"></div><span>Analiza strony (może potrwać do 30s)...</span></div>';
+  try {
+    const res = await fetch(`https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&strategy=mobile&category=performance&category=seo`);
+    if (!res.ok) throw new Error('PageSpeed API error');
+    const data = await res.json();
+    const lh = data.lighthouseResult;
+    const perf = Math.round(lh.categories.performance.score * 100);
+    const seo = Math.round((lh.categories.seo?.score||0) * 100);
+    const lcp = lh.audits['largest-contentful-paint']?.displayValue || '—';
+    const fcp = lh.audits['first-contentful-paint']?.displayValue || '—';
+    const cls = lh.audits['cumulative-layout-shift']?.displayValue || '—';
+    const color = v=> v>=90?'var(--green)':v>=50?'var(--yellow)':'var(--red)';
+
+    resEl.innerHTML = `
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+        <div class="stat-card"><div class="stat-label">Performance (mobile)</div><div class="stat-value" style="color:${color(perf)}">${perf}</div></div>
+        <div class="stat-card"><div class="stat-label">SEO</div><div class="stat-value" style="color:${color(seo)}">${seo}</div></div>
+        <div class="stat-card"><div class="stat-label">LCP</div><div class="stat-value" style="font-size:18px">${lcp}</div></div>
+        <div class="stat-card"><div class="stat-label">CLS</div><div class="stat-value" style="font-size:18px">${cls}</div></div>
+      </div>`;
+  } catch(e) {
+    resEl.innerHTML = `<div class="empty">Błąd: ${e.message}. Sprawdź czy URL jest poprawny i publicznie dostępny.</div>`;
+  }
+}
 
 // ── INIT ───────────────────────────────────────────
 renderSidebar();
