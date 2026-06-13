@@ -34,13 +34,13 @@
   .topbar-title{font-size:15px;font-weight:600}
   .topbar-url{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text2)}
   .topbar-right{margin-left:auto;display:flex;gap:8px;align-items:center}
-  .btn{padding:7px 14px;border-radius:8px;font-size:12px;font-weight:500;border:none;cursor:pointer;transition:all .15s;font-family:'Inter',sans-serif}
-  .btn-ghost{background:var(--surface2);color:var(--text2);border:1px solid var(--border)}
-  .btn-ghost:hover{color:var(--text);border-color:var(--accent)}
-  .btn-primary{background:var(--accent);color:#fff}
-  .btn-primary:hover{background:#7c74ff}
-  .btn-green{background:rgba(29,158,117,.12);color:var(--green);border:1px solid rgba(29,158,117,.3)}
-  .btn-green:hover{background:rgba(29,158,117,.2)}
+  .btn{padding:8px 16px;border-radius:8px;font-size:12px;font-weight:600;border:none;cursor:pointer;transition:all .15s;font-family:'Inter',sans-serif}
+  .btn-ghost{background:var(--surface);color:var(--text);border:1px solid var(--border);box-shadow:0 1px 2px rgba(0,0,0,.03)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 1px 3px rgba(108,99,255,.35)}
+  .btn-primary:hover{background:#574fe0}
+  .btn-green{background:rgba(29,158,117,.1);color:var(--green);border:1px solid rgba(29,158,117,.35);font-weight:600}
+  .btn-green:hover{background:rgba(29,158,117,.18)}
   .content{padding:24px 28px;flex:1}
   .tabs{display:none}
   .tab-panel{display:none}
@@ -991,10 +991,16 @@ function saveSite() {
 
 // ── ACTIONS ────────────────────────────────────────
 function runSeoAudit() { alert('Audyt SEO — w pełnej wersji GitHub Actions uruchomi seo_audit.py'); }
-function generatePost() { window.open('https://github.com/automatyzacje-wpisy-/dw-seo-autoposter/actions','_blank'); }
+function generatePost() { window.open('https://github.com/Krystian-Webs/automatyzacje-wpisy-/actions','_blank'); }
 
 // ── INIT ───────────────────────────────────────────
 renderSidebar();
+// Wstepnie odswiez tokeny GSC dla stron ktore byly juz polaczone — by przy wyborze strony dane byly gotowe od razu
+sites.forEach(site => {
+  if (!getToken(site.id) && localStorage.getItem(`gsc_connected_${site.id}`) === '1') {
+    silentReconnectGSC(site);
+  }
+});
 </script>
 </body>
 </html>
