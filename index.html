@@ -97,6 +97,12 @@
   .geo-label{font-size:12px;width:160px;flex-shrink:0}
   .geo-bar-wrap{flex:1;height:6px;background:var(--surface2);border-radius:3px;overflow:hidden}
   .geo-bar{height:6px;border-radius:3px;background:var(--accent)}
+  .tile-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:16px}
+  .tile{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;aspect-ratio:1/1;display:flex;flex-direction:column;justify-content:space-between}
+  .tile-label{font-size:11px;color:var(--text2);text-transform:uppercase;letter-spacing:.05em}
+  .tile-value{font-size:26px;font-weight:700;font-family:'JetBrains Mono',monospace}
+  .tile-sub{font-size:11px;color:var(--text3)}
+  .tile-ring-wrap{flex:1;display:flex;align-items:center;justify-content:center}
   .geo-val{font-size:11px;color:var(--text3);width:60px;text-align:right;font-family:'JetBrains Mono',monospace}
 
   .menu-toggle{display:none;background:none;border:none;font-size:20px;cursor:pointer;color:var(--text);padding:4px 8px}
@@ -119,10 +125,10 @@
     .grid2,.grid3{grid-template-columns:1fr;gap:12px}
     .card-title{flex-wrap:wrap;gap:6px}
     .card-title select, .card-title .btn{font-size:11px!important}
-    #ai-metrics-directwebs{grid-template-columns:repeat(2,1fr)!important}
+    .tile-grid{grid-template-columns:repeat(3,1fr)}
+    .tile{padding:10px}
+    .tile-value{font-size:18px}
     .ai-detail{font-size:11px!important}
-    svg[width="180"]{width:120px!important;height:120px!important}
-    #ai-visibility-directwebs > div[style*="display:flex"][style*="align-items:center"][style*="gap:24px"]{flex-direction:column;align-items:flex-start;gap:12px}
     .stat-card{padding:12px}
     .stat-value{font-size:20px}
     .card{padding:14px}
@@ -401,7 +407,7 @@ async function loadOverviewTrend(site, token) {
     overviewChartInstances[site.id] = new Chart(ctx, {
       type:'line',
       data:{ labels: rows.map(r=>r.keys[0].slice(5)), datasets:[{ data: rows.map(r=>r.clicks), borderColor:'#6c63ff', backgroundColor:'rgba(108,99,255,0.08)', fill:true, tension:0.35, pointRadius:0, borderWidth:1.5 }] },
-      options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{ x:{display:false}, y:{display:false} } }
+      options:{ responsive:true, maintainAspectRatio:false, animation:false, plugins:{legend:{display:false}}, scales:{ x:{display:false}, y:{display:false} } }
     });
   } catch(e) {}
 }
@@ -439,24 +445,19 @@ async function loadGeoData(site, token) {
   }
 }
 
-// ── FULL RANKING + TREND + FORECAST (DirectWebs only) ─
-let rankChartInstance = null;
-let forecastChartInstance = null;
-
+// ── FULL RANKING + KAFELKI (DirectWebs only) ──────
 async function loadFullRanking(site, token) {
   const el = document.getElementById(`ranking-full-${site.id}`);
-  const trendEl = document.getElementById(`rank-trend-${site.id}`);
   const summaryEl = document.getElementById(`rank-summary-${site.id}`);
-  const forecastEl = document.getElementById(`forecast-${site.id}`);
   if (!el) return;
   if (!token) { el.innerHTML = '<div class="empty">Połącz Google Search Console przyciskiem w górnym pasku</div>'; return; }
 
   const periodSel = document.getElementById(`rank-period-${site.id}`);
   const days = periodSel ? parseInt(periodSel.value) : 90;
+  const periodEl = document.getElementById(`m-period-${site.id}`);
+  if (periodEl) periodEl.textContent = `${days} dni`;
 
   el.innerHTML = '<div class="loading"><div class="spinner"></div><span>Pobieranie danych...</span></div>';
-  if (trendEl) trendEl.innerHTML = '<div class="loading"><div class="spinner"></div><span>Ładowanie wykresu...</span></div>';
-  if (forecastEl) forecastEl.innerHTML = '<div class="loading"><div class="spinner"></div><span>Liczenie prognozy...</span></div>';
 
   const end = new Date().toISOString().split('T')[0];
   const start = new Date(Date.now()-days*24*60*60*1000).toISOString().split('T')[0];
@@ -475,11 +476,13 @@ async function loadFullRanking(site, token) {
 
     const top10 = rows.filter(r=>r.position<=10).length;
     const top3  = rows.filter(r=>r.position<=3).length;
+    const avgPos = rows.length ? (rows.reduce((s,r)=>s+r.position,0)/rows.length).toFixed(1) : '—';
 
     document.getElementById(`m-top3-${site.id}`).textContent = top3;
     document.getElementById(`m-top10-${site.id}`).textContent = top10;
+    document.getElementById(`m-avgpos-${site.id}`).textContent = avgPos;
 
-    // 2) Trend po dniach (srednia pozycja)
+    // 2) Trend po dniach (srednia pozycja) — do prostej prognozy liniowej
     const resDate = await fetch(`https://searchconsole.googleapis.com/webmasters/v3/sites/${encodeURIComponent(site.gscSite)}/searchAnalytics/query`, {
       method:'POST',
       headers:{'Authorization':`Bearer ${token}`,'Content-Type':'application/json'},
@@ -488,43 +491,10 @@ async function loadFullRanking(site, token) {
     const dataDate = resDate.ok ? await resDate.json() : {rows:[]};
     const dateRows = (dataDate.rows||[]).sort((a,b)=>a.keys[0]<b.keys[0]?-1:1);
 
-    // Render trend chart
-    if (trendEl) {
-      trendEl.innerHTML = `<canvas id="rankCanvas-${site.id}" role="img" aria-label="Wykres trendu sredniej pozycji w Google"></canvas>`;
-      const ctx = document.getElementById(`rankCanvas-${site.id}`);
-      if (rankChartInstance) rankChartInstance.destroy();
-      rankChartInstance = new Chart(ctx, {
-        type:'line',
-        data:{
-          labels: dateRows.map(r=>r.keys[0].slice(5)),
-          datasets:[{
-            label:'Średnia pozycja',
-            data: dateRows.map(r=>Math.round(r.position*10)/10),
-            borderColor:'#6c63ff',
-            backgroundColor:'rgba(108,99,255,0.08)',
-            fill:true, tension:0.3, pointRadius:0, borderWidth:1.5
-          }]
-        },
-        options:{
-          responsive:true, maintainAspectRatio:false,
-          scales:{ y:{ reverse:true, title:{display:true,text:'Pozycja (niżej = lepiej)'} }, x:{ ticks:{ maxTicksLimit:10 } } },
-          plugins:{ legend:{ display:false } }
-        }
-      });
-    }
-
-    if (summaryEl) {
-      summaryEl.innerHTML = `<div style="display:flex;gap:16px;font-size:12px;padding-top:8px;border-top:1px solid var(--border)">
-        <span style="color:var(--green)">🥇 ${top3} fraz w TOP 3</span>
-        <span style="color:var(--yellow)">⭐ ${top10} fraz w TOP 10</span>
-        <span style="color:var(--text2)">📊 ${rows.length} fraz łącznie (${days} dni)</span>
-      </div>`;
-    }
-
-    // 3) PROGNOZA — liniowa regresja na trendzie sredniej pozycji -> projekcja TOP10 na 12 tyg.
+    // Prognoza: regresja liniowa pozycji -> projekcja TOP10 za 12 tyg.
+    const forecastEl = document.getElementById(`m-forecast-${site.id}`);
+    const validPts = dateRows.map((r,i)=>({x:i, y:r.position})).filter(p=>!isNaN(p.y));
     if (forecastEl) {
-      const validPts = dateRows.map((r,i)=>({x:i, y:r.position})).filter(p=>!isNaN(p.y));
-      let forecastLabels = [], forecastData = [];
       if (validPts.length >= 3) {
         const n = validPts.length;
         const sumX = validPts.reduce((a,p)=>a+p.x,0);
@@ -533,34 +503,26 @@ async function loadFullRanking(site, token) {
         const sumXX = validPts.reduce((a,p)=>a+p.x*p.x,0);
         const slope = (n*sumXY - sumX*sumY) / (n*sumXX - sumX*sumX || 1);
         const intercept = (sumY - slope*sumX) / n;
-
-        // szacuj % fraz w TOP10 dzis i ekstrapoluj proporcjonalnie do spadku sredniej pozycji
         const currentAvgPos = validPts[validPts.length-1].y;
         const top10Ratio = rows.length ? top10/rows.length : 0;
-
-        for (let w=0; w<=12; w++) {
-          const futureX = n - 1 + w*7; // co tydzien (~7 punktow dziennych dalej)
-          const projectedPos = Math.max(1, slope*futureX + intercept);
-          // im nizsza pozycja, tym wyzszy udzial w TOP10 (odwrotna proporcja, capped)
-          const improvementFactor = currentAvgPos > 0 ? currentAvgPos / projectedPos : 1;
-          const projectedRatio = Math.min(1, top10Ratio * improvementFactor);
-          forecastLabels.push(w===0?'Teraz':`+${w}tyg`);
-          forecastData.push(Math.round(projectedRatio * rows.length));
-        }
-      }
-
-      if (forecastData.length) {
-        forecastEl.innerHTML = `<canvas id="forecastCanvas-${site.id}" role="img" aria-label="Prognoza liczby fraz w TOP10 na 12 tygodni"></canvas>`;
-        const fctx = document.getElementById(`forecastCanvas-${site.id}`);
-        if (forecastChartInstance) forecastChartInstance.destroy();
-        forecastChartInstance = new Chart(fctx, {
-          type:'bar',
-          data:{ labels: forecastLabels, datasets:[{ label:'Frazy w TOP 10', data: forecastData, backgroundColor:'#6c63ff', borderRadius:4, maxBarThickness:20 }] },
-          options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{ y:{ title:{display:true,text:'Liczba fraz'} } } }
-        });
+        const futureX = n - 1 + 12*7;
+        const projectedPos = Math.max(1, slope*futureX + intercept);
+        const improvementFactor = currentAvgPos > 0 ? currentAvgPos / projectedPos : 1;
+        const projectedRatio = Math.min(1, top10Ratio * improvementFactor);
+        const projected = Math.round(projectedRatio * rows.length);
+        const diff = projected - top10;
+        forecastEl.innerHTML = `${projected} <span style="font-size:12px;color:${diff>=0?'var(--green)':'var(--red)'}">(${diff>=0?'+':''}${diff})</span>`;
       } else {
-        forecastEl.innerHTML = '<div class="empty">Za mało danych historycznych do prognozy (potrzeba min. 3 dni)</div>';
+        forecastEl.textContent = '—';
       }
+    }
+
+    if (summaryEl) {
+      summaryEl.innerHTML = `<div style="display:flex;gap:16px;font-size:12px;flex-wrap:wrap">
+        <span style="color:var(--green)">🥇 ${top3} fraz w TOP 3</span>
+        <span style="color:var(--yellow)">⭐ ${top10} fraz w TOP 10</span>
+        <span style="color:var(--text2)">📊 ${rows.length} fraz łącznie</span>
+      </div>`;
     }
 
     // Render full table
@@ -627,27 +589,26 @@ async function loadAiVisibility(site) {
     const tierLabels = {lokalnie:'📍 Lokalnie (Kotlina Kłodzka)', regionalnie:'🗺️ Regionalnie (Dolny Śląsk)', krajowo:'🇵🇱 Krajowo (Polska)', brand:'🏷️ Brand'};
     const tierOrder = ['lokalnie','regionalnie','krajowo','brand'];
 
-    // ── MAPA ZASIĘGU (koncentryczne kregi) ──
-    const ringColor = pct => pct>=50?'#1d9e75':pct>=25?'#e0a82e':'#e4e2dc';
+    // ── ZAKRESY (kafelki) ──
+    const ringColor = pct => pct>=50?'var(--green)':pct>=25?'var(--yellow)':'var(--text3)';
     const ringPct = tier => { const v=tierGroups[tier]; return v&&v.total ? Math.round(v.mentioned/v.total*100) : 0; };
     const pPol = ringPct('krajowo'), pDS = ringPct('regionalnie'), pKK = ringPct('lokalnie');
     const mapHtml = `
-      <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding:8px 0 16px">
-        <svg width="180" height="180" viewBox="0 0 180 180">
-          <circle cx="90" cy="90" r="85" fill="${ringColor(pPol)}" opacity="0.18"/>
-          <circle cx="90" cy="90" r="85" fill="none" stroke="${ringColor(pPol)}" stroke-width="2"/>
-          <circle cx="90" cy="90" r="55" fill="${ringColor(pDS)}" opacity="0.25"/>
-          <circle cx="90" cy="90" r="55" fill="none" stroke="${ringColor(pDS)}" stroke-width="2"/>
-          <circle cx="90" cy="90" r="26" fill="${ringColor(pKK)}" opacity="0.35"/>
-          <circle cx="90" cy="90" r="26" fill="none" stroke="${ringColor(pKK)}" stroke-width="2"/>
-          <circle cx="90" cy="90" r="4" fill="#6c63ff"/>
-          <text x="90" y="94" text-anchor="middle" font-size="9" fill="#1f1f23" font-weight="600">DW</text>
-        </svg>
-        <div style="display:flex;flex-direction:column;gap:8px;font-size:12px">
-          <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${ringColor(pKK)};margin-right:6px"></span>Kotlina Kłodzka — <strong>${pKK}%</strong> wzmianek</div>
-          <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${ringColor(pDS)};margin-right:6px"></span>Dolny Śląsk — <strong>${pDS}%</strong> wzmianek</div>
-          <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${ringColor(pPol)};margin-right:6px"></span>Polska — <strong>${pPol}%</strong> wzmianek</div>
-          <div style="color:var(--text3);font-size:11px;margin-top:4px">Kolory: 🟢 ≥50% · 🟡 25-49% · ⚪ &lt;25%</div>
+      <div class="tile-grid" style="margin-bottom:0">
+        <div class="tile">
+          <div class="tile-label">📍 Kotlina Kłodzka</div>
+          <div class="tile-ring-wrap"><div class="tile-value" style="color:${ringColor(pKK)}">${pKK}%</div></div>
+          <div class="tile-sub">lokalnie</div>
+        </div>
+        <div class="tile">
+          <div class="tile-label">🗺️ Dolny Śląsk</div>
+          <div class="tile-ring-wrap"><div class="tile-value" style="color:${ringColor(pDS)}">${pDS}%</div></div>
+          <div class="tile-sub">regionalnie</div>
+        </div>
+        <div class="tile">
+          <div class="tile-label">🇵🇱 Polska</div>
+          <div class="tile-ring-wrap"><div class="tile-value" style="color:${ringColor(pPol)}">${pPol}%</div></div>
+          <div class="tile-sub">krajowo</div>
         </div>
       </div>`;
 
@@ -960,44 +921,50 @@ function renderProfile(site) {
     ${site.id === 'directwebs' ? `
     <div id="tab-airank" class="tab-panel">
 
-      <div id="ai-metrics-${site.id}" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px">
-        <div class="card" style="padding:1rem">
-          <div style="font-size:12px;color:var(--text2);margin-bottom:4px">Fraz w TOP 3</div>
-          <div id="m-top3-${site.id}" style="font-size:24px;font-weight:700;font-family:'JetBrains Mono',monospace">—</div>
+      <div class="tile-grid">
+        <div class="tile">
+          <div class="tile-label">Frazy TOP 3</div>
+          <div class="tile-ring-wrap"><div class="tile-value" id="m-top3-${site.id}" style="color:var(--green)">—</div></div>
+          <div class="tile-sub">pozycja 1-3</div>
         </div>
-        <div class="card" style="padding:1rem">
-          <div style="font-size:12px;color:var(--text2);margin-bottom:4px">Fraz w TOP 10</div>
-          <div id="m-top10-${site.id}" style="font-size:24px;font-weight:700;font-family:'JetBrains Mono',monospace">—</div>
+        <div class="tile">
+          <div class="tile-label">Frazy TOP 10</div>
+          <div class="tile-ring-wrap"><div class="tile-value" id="m-top10-${site.id}" style="color:var(--yellow)">—</div></div>
+          <div class="tile-sub">pozycja 1-10</div>
         </div>
-        <div class="card" style="padding:1rem">
-          <div style="font-size:12px;color:var(--text2);margin-bottom:4px">Schema status</div>
-          <div style="font-size:24px;font-weight:700;color:var(--green)">OK</div>
+        <div class="tile">
+          <div class="tile-label">Schema</div>
+          <div class="tile-ring-wrap"><div class="tile-value" style="color:var(--green);font-size:20px">✓ OK</div></div>
+          <div class="tile-sub">Org./Service/FAQ</div>
         </div>
-        <div class="card" style="padding:1rem">
-          <div style="font-size:12px;color:var(--text2);margin-bottom:4px">Wzmianki w AI</div>
-          <div id="m-ai-${site.id}" style="font-size:24px;font-weight:700;font-family:'JetBrains Mono',monospace">—</div>
+        <div class="tile">
+          <div class="tile-label">Wzmianki AI</div>
+          <div class="tile-ring-wrap"><div class="tile-value" id="m-ai-${site.id}" style="font-size:20px">—</div></div>
+          <div class="tile-sub">ChatGPT + Gemini</div>
+        </div>
+        <div class="tile">
+          <div class="tile-label">Śr. pozycja</div>
+          <div class="tile-ring-wrap"><div class="tile-value" id="m-avgpos-${site.id}">—</div></div>
+          <div class="tile-sub" id="m-period-${site.id}">90 dni</div>
+        </div>
+        <div class="tile">
+          <div class="tile-label">Trend (12 tyg)</div>
+          <div class="tile-ring-wrap"><div class="tile-value" id="m-forecast-${site.id}" style="font-size:18px">—</div></div>
+          <div class="tile-sub">prognoza fraz TOP10</div>
         </div>
       </div>
 
       <div class="card" style="margin-bottom:16px">
-        <div class="card-title" style="display:flex;align-items:center;gap:12px">
-          <span>📈 Trend pozycji w Google</span>
-          <select id="rank-period-${site.id}" onchange="loadFullRanking(activeSite, getToken(activeSite.id))" style="margin-left:auto;font-size:12px;padding:4px 8px;border-radius:6px;border:1px solid var(--border);background:var(--bg2);color:var(--text)">
+        <div class="card-title">
+          <span>📈 Frazy</span>
+          <select id="rank-period-${site.id}" onchange="loadFullRanking(activeSite, getToken(activeSite.id))" style="font-size:11px;padding:4px 8px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text)">
             <option value="7">7 dni</option>
             <option value="28">28 dni</option>
             <option value="90" selected>90 dni</option>
             <option value="180">180 dni</option>
           </select>
-          <button class="btn btn-ghost" style="font-size:11px" onclick="loadFullRanking(activeSite, getToken(activeSite.id))">🔄 Odśwież</button>
         </div>
-        <div id="rank-trend-${site.id}" style="position:relative;width:100%;height:160px;margin-bottom:8px"></div>
         <div id="rank-summary-${site.id}"></div>
-      </div>
-
-      <div class="card" style="margin-bottom:16px">
-        <div class="card-title">🔮 Prognoza — przewidywane TOP 10 (na bazie trendu)</div>
-        <div id="forecast-${site.id}" style="position:relative;width:100%;height:140px"></div>
-        <p style="font-size:11px;color:var(--text3);margin:8px 0 0">Szacunek liniowy na podstawie ostatnich pomiarów. Realne wyniki zależą od tempa publikacji i konkurencji.</p>
       </div>
 
       <div class="card" style="margin-bottom:16px">
