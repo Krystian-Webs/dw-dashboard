@@ -712,7 +712,6 @@ async function loadAiVisibility(site) {
     const style = document.createElement('style');
     style.textContent = '.ai-detail.open{display:block!important}';
     el.appendChild(style);
-    `;
   } catch(e) {
     el.innerHTML = `<div class="empty">Błąd: ${e.message}</div>`;
   }
