@@ -841,6 +841,42 @@ async function loadSeoStatus(site) {
         </div>`;
     };
 
+    const renderProductSection = (sectionItems) => {
+      if (!sectionItems.length) return '';
+      return `
+        <div style="margin-bottom:24px">
+          <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;display:flex;align-items:center;gap:8px">
+            🛒 Produkty <span style="color:var(--text2)">(${sectionItems.length})</span>
+          </div>
+          <table class="seo-table">
+            <thead><tr>
+              <th style="width:24%">Produkt</th>
+              <th>Tytuł SEO</th>
+              <th>Meta opis</th>
+              <th style="width:70px">Cena</th>
+              <th style="width:80px">SKU</th>
+              <th style="width:55px">Score</th>
+            </tr></thead>
+            <tbody>${sectionItems.map(item => {
+              const sc = item.score;
+              const scColor = sc>=70?'var(--green)':sc>=50?'var(--yellow)':'var(--red)';
+              const cats = (item.categories||[]).join(', ');
+              return `<tr>
+                <td>
+                  <a href="${item.url}" target="_blank" style="color:var(--accent);text-decoration:none;font-size:12px;font-weight:500">${item.title.substring(0,40)}${item.title.length>40?'...':''}</a>
+                  ${cats?`<div style="font-size:10px;color:var(--text3);margin-top:2px">${cats}</div>`:''}
+                </td>
+                <td style="font-size:11px;color:${item.seo_title?'var(--text)':'var(--red)'}">${item.seo_title?item.seo_title.substring(0,40)+'...':'⚠️ Brak tytułu SEO'}</td>
+                <td style="font-size:11px;color:${item.seo_desc?'var(--text2)':'var(--red)'}">${item.seo_desc?item.seo_desc.substring(0,50)+'...':'⚠️ Brak meta opisu'}</td>
+                <td style="font-size:12px;font-family:'JetBrains Mono',monospace">${item.price?item.price+' zł':'—'}</td>
+                <td style="font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace">${item.sku||'—'}</td>
+                <td><span style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;color:${scColor}">${sc}</span></td>
+              </tr>`;
+            }).join('')}</tbody>
+          </table>
+        </div>`;
+    };
+
     el.innerHTML = `
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border)">
         <div style="font-size:32px;font-weight:700;color:${scoreColor};font-family:'JetBrains Mono',monospace">${avgScore}</div>
@@ -854,9 +890,9 @@ async function loadSeoStatus(site) {
           <span style="color:var(--text2)">📄 ${data.total} łącznie</span>
         </div>
       </div>
+      ${renderProductSection(products)}
       ${renderSection('📝 Wpisy blogowe', posts, 'post')}
       ${renderSection('📄 Strony', pages, 'page')}
-      ${renderSection('🛒 Produkty', products, 'product')}
     `;
 
   } catch(e) {
