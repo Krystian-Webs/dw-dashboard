@@ -724,8 +724,7 @@ async function loadWpData(site) {
     const res = await fetch(`${site.wpUrl}/wp-json/wp/v2/pages?per_page=50&status=publish&_fields=id,title,link,slug`,
       {headers:{'Authorization':`Basic ${auth}`}});
     if (!res.ok) return;
-    const pages = await res.json();
-    renderPagesData(site, pages);
+    await res.json();
   } catch(e){}
 }
 
@@ -746,23 +745,6 @@ function renderPostsData(site, posts) {
   });
 }
 
-function renderPagesData(site, pages) {
-  const el = document.getElementById('seo-pages-'+site.id);
-  if (!el) return;
-  el.innerHTML = `<table class="seo-table">
-    <thead><tr><th>Ścieżka</th><th>Tytuł</th><th>Score</th><th></th></tr></thead>
-    <tbody>${pages.map(p=>{
-      const score=Math.floor(Math.random()*25)+70;
-      const cls=score>=80?'color:var(--green)':score>=65?'color:var(--yellow)':'color:var(--red)';
-      const path=p.link.replace(site.url,'')||'/';
-      return `<tr>
-        <td style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2)">${path}</td>
-        <td style="font-size:12px">${p.title.rendered}</td>
-        <td><span style="font-family:'JetBrains Mono',monospace;font-weight:700;${cls}">${score}</span></td>
-        <td><button class="btn btn-ghost" style="font-size:10px;padding:3px 8px">Analizuj</button></td>
-      </tr>`;}).join('')}</tbody>
-  </table>`;
-}
 
 // ── LOAD SEO STATUS from plugin ───────────────────
 async function loadSeoStatus(site) {
