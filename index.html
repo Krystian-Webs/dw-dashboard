@@ -756,20 +756,16 @@ async function loadSeoStatus(site) {
 
   const auth = btoa(`${site.wpUser}:${site.wpPass}`);
   try {
-    // First check plugin info
-    const infoRes = await fetch(`${site.wpUrl}/wp-json/directwebs/v1/info?token=directwebs2026`, {
-      headers: {'Authorization': `Basic ${auth}`}
-    });
+    // First check plugin info — endpoint nie wymaga auth (token w URL), bez Authorization -> brak CORS preflight
+    const infoRes = await fetch(`${site.wpUrl}/wp-json/directwebs/v1/info?token=directwebs2026`);
 
     let pluginInfo = null;
     if (infoRes.ok) {
       pluginInfo = await infoRes.json();
     }
 
-    // Get SEO status
-    const res = await fetch(`${site.wpUrl}/wp-json/directwebs/v1/seo-status?token=directwebs2026&type=all&limit=100`, {
-      headers: {'Authorization': `Basic ${auth}`}
-    });
+    // Get SEO status — bez Authorization, jak wyżej
+    const res = await fetch(`${site.wpUrl}/wp-json/directwebs/v1/seo-status?token=directwebs2026&type=all&limit=100`);
 
     if (!res.ok) {
       el.innerHTML = '<div class="empty">Plugin DirectWebs SEO nie jest zainstalowany.<br><span style="font-size:11px;color:var(--text3)">Wgraj plugin directwebs-seo.php przez WP Admin → Wtyczki</span></div>';
