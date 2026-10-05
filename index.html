@@ -191,11 +191,14 @@ const GSC_CLIENT_ID = '880754963463-fd93unrpgud1hmjm8n3q1d5de9uocdbn.apps.google
 const GSC_SCOPE = 'https://www.googleapis.com/auth/webmasters.readonly';
 
 // ── SITES ──────────────────────────────────────────
-let sites = JSON.parse(localStorage.getItem('dw_sites2') || 'null') || [
-  {id:'directwebs', name:'DirectWebs', url:'https://directwebs.pl', gscSite:'sc-domain:directwebs.pl', wpUrl:'https://directwebs.pl', wpUser:'', wpPass:''},
-  {id:'abmmarket',  name:'ABM Market', url:'https://abmmarket.pl',  gscSite:'sc-domain:abmmarket.pl',  wpUrl:'https://abmmarket.pl',  wpUser:'', wpPass:''},
-  {id:'wazakotlina',name:'Waża Kotlina',url:'https://wazakotlina.pl',gscSite:'sc-domain:wazakotlina.pl',wpUrl:'https://wazakotlina.pl',wpUser:'', wpPass:''},
+// Panel tylko dla DirectWebs. Hasla i token zapisuja sie wylacznie w tej przegladarce (localStorage).
+const DEFAULT_SITES = [
+  {id:'directwebs', name:'DirectWebs', url:'https://directwebs.pl', gscSite:'sc-domain:directwebs.pl', wpUrl:'https://directwebs.pl', wpUser:'', wpPass:'', seoToken:''},
 ];
+const REMOVED_SITES = ['abmmarket', 'wazakotlina'];
+let sites = (JSON.parse(localStorage.getItem('dw_sites2') || 'null') || DEFAULT_SITES)
+  .filter(s => !REMOVED_SITES.includes(s.id));
+if (!sites.length) sites = DEFAULT_SITES;
 let activeSite = null;
 
 // ── GSC TOKEN per site ──────────────────────────────
@@ -260,11 +263,14 @@ function selectSite(site) {
   document.getElementById('topbar-right').style.display = 'flex';
   updateGscStatus(site);
   renderProfile(site);
-  if (site.wpUser && site.wpPass) { loadWpData(site); loadSeoStatus(site); }
+  if (site.wpUser && site.wpPass) loadWpData(site);
+  if (site.seoToken) loadSeoStatus(site);
+  // Widoczność w AI i wzmianki nie wymagają logowania Google — dane z workflow
+  if (site.id === 'directwebs') setTimeout(() => { loadAiVisibility(site); loadMentions(site); }, 0);
   let token = getToken(site.id);
   if (token) {
     loadGscData(site, token);
-    if (site.id === 'directwebs') { loadFullRanking(site, token); loadAiVisibility(site); }
+    if (site.id === 'directwebs') loadFullRanking(site, token);
     loadGeoData(site, token);
   } else if (localStorage.getItem(`gsc_connected_${site.id}`) === '1') {
     silentReconnectGSC(site);
@@ -554,7 +560,8 @@ async function loadAiVisibility(site) {
   el.innerHTML = '<div class="loading"><div class="spinner"></div><span>Pobieranie danych...</span></div>';
 
   try {
-    const res = await fetch(`https://raw.githubusercontent.com/Krystian-Webs/automatyzacje-wpisy-/main/dw-seo-autoposter/ai_visibility_log.json?t=${Date.now()}`);
+    // Plik kopiuje tu workflow monitora AI z prywatnego repo automatyzacje-wpisy-
+    const res = await fetch(`data/ai_visibility_log.json?t=${Date.now()}`);
     if (!res.ok) {
       el.innerHTML = '<div class="empty">Brak danych — workflow jeszcze się nie wykonał (czekamy na poniedziałek 9:00)</div>';
       document.getElementById(`m-ai-${site.id}`).textContent = '—';
@@ -569,7 +576,7 @@ async function loadAiVisibility(site) {
     let mentioned = 0, total = 0;
     const tierGroups = {};
     checks.forEach(c=>{
-      ['chatgpt','gemini'].forEach(plat=>{
+      ['chatgpt','gemini','claude'].forEach(plat=>{
         if (c[plat] && !c[plat].error) {
           total++;
           if (c[plat].mentioned) mentioned++;
@@ -577,7 +584,7 @@ async function loadAiVisibility(site) {
       });
       const tier = c.tier || 'inne';
       tierGroups[tier] = tierGroups[tier] || {mentioned:0, total:0};
-      ['chatgpt','gemini'].forEach(plat=>{
+      ['chatgpt','gemini','claude'].forEach(plat=>{
         if (c[plat] && !c[plat].error) {
           tierGroups[tier].total++;
           if (c[plat].mentioned) tierGroups[tier].mentioned++;
@@ -587,8 +594,14 @@ async function loadAiVisibility(site) {
 
     document.getElementById(`m-ai-${site.id}`).textContent = `${mentioned}/${total}`;
 
-    const tierLabels = {lokalnie:'📍 Lokalnie (Kotlina Kłodzka)', regionalnie:'🗺️ Regionalnie (Dolny Śląsk)', krajowo:'🇵🇱 Krajowo (Polska)', brand:'🏷️ Brand'};
-    const tierOrder = ['lokalnie','regionalnie','krajowo','brand'];
+    const tierLabels = {lokalnie:'📍 Lokalnie (Kotlina Kłodzka)', regionalnie:'🗺️ Regionalnie (Dolny Śląsk)', krajowo:'🇵🇱 Krajowo (Polska)', ekspert:'🎓 Jako ekspert', brand:'🏷️ Brand'};
+    const tierOrder = ['lokalnie','regionalnie','krajowo','ekspert','brand'];
+    const platName = {chatgpt:'ChatGPT', gemini:'Gemini', claude:'Claude'};
+
+    // Kogo AI poleca zamiast DirectWebs (domeny z odpowiedzi)
+    const rivalCount = {};
+    checks.forEach(c => ['chatgpt','gemini','claude'].forEach(plat => (c[plat]?.domains||[]).forEach(d => rivalCount[d] = (rivalCount[d]||0) + 1)));
+    const rivals = Object.entries(rivalCount).sort((a,b)=>b[1]-a[1]).slice(0,10);
 
     // ── ZAKRESY (kafelki) ──
     const ringColor = pct => pct>=50?'var(--green)':pct>=25?'var(--yellow)':'var(--text3)';
@@ -619,21 +632,22 @@ async function loadAiVisibility(site) {
       const platBadge = plat => {
         const d = c[plat];
         if (!d) return '';
-        if (d.error) return `<span class="badge" style="background:var(--surface2);color:var(--text3)">${plat==='chatgpt'?'ChatGPT':'Gemini'}: błąd</span>`;
+        if (d.error || d.skipped) return `<span class="badge" style="background:var(--surface2);color:var(--text3)">${platName[plat]}: ${d.skipped?'pominięto':'błąd'}</span>`;
         const color = d.mentioned ? 'rgba(29,158,117,.12)' : 'var(--surface2)';
         const tcolor = d.mentioned ? 'var(--green)' : 'var(--text3)';
-        return `<span class="badge" style="background:${color};color:${tcolor};border:1px solid var(--border)">${plat==='chatgpt'?'ChatGPT':'Gemini'} ${d.mentioned?'✓':'✗'}</span>`;
+        return `<span class="badge" style="background:${color};color:${tcolor};border:1px solid var(--border)">${platName[plat]} ${d.mentioned?'✓':'✗'}</span>`;
       };
       return `
         <div style="border-bottom:1px solid var(--border)">
           <div onclick="document.getElementById('aiq-${site.id}-${i}').classList.toggle('open')" style="display:flex;align-items:center;gap:8px;padding:10px 4px;cursor:pointer">
             <span style="font-size:12px;flex:1">${escapeHtml(c.question)}</span>
-            ${platBadge('chatgpt')}${platBadge('gemini')}
+            ${platBadge('chatgpt')}${platBadge('gemini')}${platBadge('claude')}
             <span style="color:var(--text3);font-size:11px">▾</span>
           </div>
           <div id="aiq-${site.id}-${i}" class="ai-detail" style="display:none;padding:0 4px 12px;font-size:12px;color:var(--text2);line-height:1.5">
             ${c.chatgpt && !c.chatgpt.error ? `<div style="margin-bottom:8px"><strong>ChatGPT:</strong> ${escapeHtml(c.chatgpt.response_excerpt||'').slice(0,300)}...</div>` : ''}
-            ${c.gemini && !c.gemini.error ? `<div><strong>Gemini:</strong> ${escapeHtml(c.gemini.response_excerpt||'').slice(0,300)}...</div>` : ''}
+            ${c.gemini && !c.gemini.error ? `<div style="margin-bottom:8px"><strong>Gemini:</strong> ${escapeHtml(c.gemini.response_excerpt||'').slice(0,300)}...</div>` : ''}
+            ${c.claude && !c.claude.error ? `<div><strong>Claude:</strong> ${escapeHtml(c.claude.response_excerpt||'').slice(0,300)}...</div>` : ''}
           </div>
         </div>`;
     }).join('');
@@ -670,6 +684,8 @@ async function loadAiVisibility(site) {
       ${tierHtml}
       <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin:16px 0 4px">Szczegóły pytań (kliknij aby rozwinąć)</div>
       ${questionsHtml}
+      ${rivals.length ? `<div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin:16px 0 4px">Kogo AI poleca zamiast DirectWebs</div>
+        ${rivals.map(([d,n])=>`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);font-size:12px"><a href="https://${escapeHtml(d)}" target="_blank" rel="noopener" style="color:var(--text);text-decoration:none">${escapeHtml(d)}</a><span style="color:var(--text3)">${n}×</span></div>`).join('')}` : ''}
       ${analysisHtml}
     `;
     el.querySelectorAll('.ai-detail').forEach(d=>{
@@ -681,6 +697,47 @@ async function loadAiVisibility(site) {
     el.appendChild(style);
   } catch(e) {
     el.innerHTML = `<div class="empty">Błąd: ${e.message}</div>`;
+  }
+}
+
+// ── WZMIANKI W SIECI + KONKURENCJA (data/mentions_log.json z workflow) ──
+async function loadMentions(site) {
+  const el = document.getElementById(`mentions-${site.id}`);
+  if (!el) return;
+  const esc = s => String(s??'').replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  try {
+    const res = await fetch(`data/mentions_log.json?t=${Date.now()}`);
+    if (!res.ok) { el.innerHTML = '<div class="empty">Brak danych — monitor wzmianek uruchomi się w poniedziałek lub czwartek.</div>'; return; }
+    const log = await res.json();
+    const latest = (log.runs||[]).slice(-1)[0];
+    const mentions = Object.values(log.mentions||{}).sort((a,b)=>(b.first_seen||'').localeCompare(a.first_seen||''));
+    const typeIcon = {katalog:'📒', opinie:'⭐', klient:'🤝', social:'💬', artykul:'📰', inne:'🔗'};
+    const mentionsHtml = mentions.length ? mentions.map(m=>`
+      <div style="display:flex;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);font-size:12px">
+        <span>${typeIcon[m.type]||'🔗'}</span>
+        <div style="flex:1;min-width:0">
+          <a href="${esc(m.url)}" target="_blank" rel="noopener" style="color:var(--text);text-decoration:none">${esc(m.title||m.domain)}</a>
+          <div style="color:var(--text3)">${esc(m.domain)}${m.note?' · '+esc(m.note):''}</div>
+        </div>
+        <span style="color:var(--text3);white-space:nowrap">${m.first_seen===latest?.date?'<span style="color:var(--green)">nowa</span> ':''}${esc(m.first_seen)}</span>
+      </div>`).join('') : '<div class="empty">Na razie brak wzmianek poza directwebs.pl — warto dodać firmę do katalogów i Google Business.</div>';
+    const marketHtml = (latest?.market||[]).map(q=>{
+      if (q.error) return `<div style="padding:8px 0;font-size:12px;color:var(--text3)">${esc(q.query)}: błąd pobierania</div>`;
+      const pos = q.directwebs_position;
+      return `<div style="padding:8px 0;border-bottom:1px solid var(--border)">
+        <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><strong>${esc(q.query)}</strong>
+          <span style="color:${pos?'var(--green)':'var(--text3)'}">DirectWebs: ${pos?'#'+pos:'brak'}</span></div>
+        <div style="font-size:11px;color:var(--text2)">${(q.results||[]).slice(0,6).map(r=>`${r.position}. ${esc(r.name||r.domain)}`).join(' · ')||'—'}</div>
+      </div>`;
+    }).join('');
+    el.innerHTML = `
+      <div style="font-size:11px;color:var(--text3);margin-bottom:8px">Ostatni pomiar: ${esc(latest?.date||'—')} · wzmianek łącznie: ${mentions.length}</div>
+      <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin:8px 0 4px">Gdzie pojawia się DirectWebs</div>
+      ${mentionsHtml}
+      <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin:16px 0 4px">Kto jest w Google na frazy lokalne</div>
+      ${marketHtml||'<div class="empty">Brak danych</div>'}`;
+  } catch(e) {
+    el.innerHTML = `<div class="empty">Błąd: ${esc(e.message)}</div>`;
   }
 }
 
@@ -754,10 +811,14 @@ async function loadSeoStatus(site) {
 
   el.innerHTML = '<div class="loading"><div class="spinner"></div><span>Pobieranie statusu SEO...</span></div>';
 
-  const auth = btoa(`${site.wpUser}:${site.wpPass}`);
+  if (!site.seoToken) {
+    el.innerHTML = '<div class="empty">Wpisz token wtyczki DirectWebs SEO w zakładce Ustawienia.</div>';
+    return;
+  }
+  const tok = encodeURIComponent(site.seoToken);
   try {
     // First check plugin info — endpoint nie wymaga auth (token w URL), bez Authorization -> brak CORS preflight
-    const infoRes = await fetch(`${site.wpUrl}/wp-json/directwebs/v1/info?token=directwebs2026`);
+    const infoRes = await fetch(`${site.wpUrl}/wp-json/directwebs/v1/info?token=${tok}`);
 
     let pluginInfo = null;
     if (infoRes.ok) {
@@ -765,7 +826,7 @@ async function loadSeoStatus(site) {
     }
 
     // Get SEO status — bez Authorization, jak wyżej
-    const res = await fetch(`${site.wpUrl}/wp-json/directwebs/v1/seo-status?token=directwebs2026&type=all&limit=100`);
+    const res = await fetch(`${site.wpUrl}/wp-json/directwebs/v1/seo-status?token=${tok}&type=all&limit=100`);
 
     if (!res.ok) {
       el.innerHTML = '<div class="empty">Plugin DirectWebs SEO nie jest zainstalowany.<br><span style="font-size:11px;color:var(--text3)">Wgraj plugin directwebs-seo.php przez WP Admin → Wtyczki</span></div>';
@@ -1007,6 +1068,11 @@ function renderProfile(site) {
         <div id="ai-visibility-${site.id}"><div class="loading"><div class="spinner"></div><span>Pobieranie danych...</span></div></div>
       </div>
 
+      <div class="card" style="margin-bottom:16px">
+        <div class="card-title">🌐 Wzmianki w sieci i konkurencja lokalna <button class="btn btn-ghost" style="font-size:11px" onclick="loadMentions(activeSite)">🔄 Odśwież</button></div>
+        <div id="mentions-${site.id}"><div class="loading"><div class="spinner"></div><span>Pobieranie danych...</span></div></div>
+      </div>
+
       <div class="card">
         <div class="card-title">📊 Pełna lista fraz</div>
         <div id="ranking-full-${site.id}">${token?'<div class="loading"><div class="spinner"></div><span>Pobieranie danych...</span></div>':'<div class="empty">Połącz Google Search Console przyciskiem w górnym pasku</div>'}</div>
@@ -1023,6 +1089,7 @@ function renderProfile(site) {
         <div class="form-group"><label class="form-label">WordPress URL</label><input class="form-input" id="s-wp-url" value="${site.wpUrl||site.url}"></div>
         <div class="form-group"><label class="form-label">WordPress Login</label><input class="form-input" id="s-wp-user" value="${site.wpUser||''}"></div>
         <div class="form-group"><label class="form-label">WordPress Application Password</label><input class="form-input" id="s-wp-pass" type="password" value="${site.wpPass||''}"></div>
+        <div class="form-group"><label class="form-label">Token wtyczki DirectWebs SEO</label><input class="form-input" id="s-seo-token" type="password" value="${site.seoToken||''}"><div style="font-size:11px;color:var(--text3);margin-top:4px">Zapisywany tylko w tej przeglądarce.</div></div>
         <div style="display:flex;gap:8px;margin-top:8px">
           <button class="btn btn-primary" onclick="saveSettings('${site.id}')">💾 Zapisz</button>
           <button class="btn btn-ghost" onclick="testWp('${site.id}')">🔗 Testuj WP</button>
@@ -1054,11 +1121,13 @@ function saveSettings(siteId) {
   site.wpUrl = document.getElementById('s-wp-url').value;
   site.wpUser = document.getElementById('s-wp-user').value;
   site.wpPass = document.getElementById('s-wp-pass').value;
+  site.seoToken = document.getElementById('s-seo-token').value;
   localStorage.setItem('dw_sites2', JSON.stringify(sites));
   activeSite = site;
   renderSidebar();
   document.getElementById(`settings-msg-${siteId}`).innerHTML = '<span style="color:var(--green)">✅ Zapisano!</span>';
-  if (site.wpUser && site.wpPass) { loadWpData(site); loadSeoStatus(site); }
+  if (site.wpUser && site.wpPass) loadWpData(site);
+  if (site.seoToken) loadSeoStatus(site);
 }
 
 async function testWp(siteId) {
