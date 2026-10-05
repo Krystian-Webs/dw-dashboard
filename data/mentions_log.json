@@ -1,0 +1,56 @@
+{
+  "runs": [
+    {
+      "date": "2026-10-05",
+      "brand": [
+        {
+          "query": "DirectWebs",
+          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+        },
+        {
+          "query": "directwebs.pl",
+          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+        },
+        {
+          "query": "DirectWebs Kłodzko strony internetowe",
+          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+        },
+        {
+          "query": "DirectWebs opinie",
+          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+        }
+      ],
+      "market": [
+        {
+          "query": "strony internetowe Kłodzko",
+          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+        },
+        {
+          "query": "tworzenie stron www Kotlina Kłodzka",
+          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+        },
+        {
+          "query": "pozycjonowanie stron Kłodzko",
+          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+        },
+        {
+          "query": "strony internetowe Polanica-Zdrój",
+          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+        },
+        {
+          "query": "strony internetowe Wałbrzych",
+          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+        },
+        {
+          "query": "strony internetowe Świdnica",
+          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+        },
+        {
+          "query": "sklep internetowy WooCommerce Dolny Śląsk",
+          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+        }
+      ]
+    }
+  ],
+  "mentions": {}
+}
