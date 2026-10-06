@@ -50,6 +50,57 @@
           "error": "Gemini: wyczerpany limit zapytan (pominieto)"
         }
       ]
+    },
+    {
+      "date": "2026-10-06",
+      "brand": [
+        {
+          "query": "DirectWebs",
+          "error": "Gemini 429 — wyczerpany limit darmowego planu (gemini-3.8-flash). Wlacz platnosci w Google AI Studio albo poczekaj na odnowienie limitu."
+        },
+        {
+          "query": "directwebs.pl",
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        {
+          "query": "DirectWebs Kłodzko strony internetowe",
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        {
+          "query": "DirectWebs opinie",
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        }
+      ],
+      "market": [
+        {
+          "query": "strony internetowe Kłodzko",
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        {
+          "query": "tworzenie stron www Kotlina Kłodzka",
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        {
+          "query": "pozycjonowanie stron Kłodzko",
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        {
+          "query": "strony internetowe Polanica-Zdrój",
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        {
+          "query": "strony internetowe Wałbrzych",
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        {
+          "query": "strony internetowe Świdnica",
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        {
+          "query": "sklep internetowy WooCommerce Dolny Śląsk",
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        }
+      ]
     }
   ],
   "mentions": {}

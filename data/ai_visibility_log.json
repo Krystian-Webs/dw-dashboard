@@ -2284,5 +2284,210 @@
     "site_analysis": {
       "error": "Gemini: wyczerpany limit zapytan (pominieto)"
     }
+  },
+  {
+    "date": "2026-10-06",
+    "checks": [
+      {
+        "question": "Kto robi strony internetowe w Kłodzku i Kotlinie Kłodzkiej?",
+        "tier": "lokalnie",
+        "chatgpt": {
+          "error": "429 insufficient_quota — doladuj konto OpenAI (platform.openai.com → Billing)"
+        },
+        "gemini": {
+          "error": "Gemini 429 — wyczerpany limit darmowego planu (gemini-3.8-flash). Wlacz platnosci w Google AI Studio albo poczekaj na odnowienie limitu."
+        },
+        "claude": {
+          "error": "Claude (subskrypcja): {'duration_api_ms': 2309, 'stop_reason': 'tool_use', 'session_id': 'bae60409-3faf-4e8c-8df3-abec3f2ad66d', 'total_cost_usd': 0.0261362, 'usage': {'input_tokens': 2, 'cache_creation_input_tokens': 5591, 'cache_read_input_tokens': 10341, 'output_tokens': 170, 'output_tokens_details': {'thinking_tokens': 77}, 'server_tool_use': {'web_search_requests': 0, 'web_fetch_requests': 0}, 'service_tier': 'sta | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfkeakTvUxDftRKHiHqJV\"}"
+        }
+      },
+      {
+        "question": "Agencja webdesign Kłodzko - kogo polecacie?",
+        "tier": "lokalnie",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        "claude": {
+          "mentioned": false,
+          "response_excerpt": "Nie mam sprawdzonych opinii o konkretnych agencjach z Kłodzka, więc żadnej nie polecę z pewnością. Wolę nie zgadywać nazw ani rekomendować firm, których nie znam.\n\nPrzy wyborze agencji warto zwrócić uwagę na kilka rzeczy:\n\n- **Realizacje:** poproś o linki do działających stron, najlepiej firm lokalnych. Sprawdź, czy ładują się szybko i dobrze wyglądają na telefonie.\n- **Opinie:** poszukaj ich w pr",
+          "domains": []
+        }
+      },
+      {
+        "question": "Firma do stworzenia strony internetowej Kotlina Kłodzka",
+        "tier": "lokalnie",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        "claude": {
+          "error": "Claude (subskrypcja): {'duration_api_ms': 3791, 'stop_reason': 'tool_use', 'session_id': 'a723542f-21e8-498d-b17b-707c0c088c5e', 'total_cost_usd': 0.0210266, 'usage': {'input_tokens': 2, 'cache_creation_input_tokens': 3981, 'cache_read_input_tokens': 11943, 'output_tokens': 271, 'output_tokens_details': {'thinking_tokens': 114}, 'server_tool_use': {'web_search_requests': 0, 'web_fetch_requests': 0}, 'service_tier': 'st | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011Cfkebpa1iUKMU9mJViVJy\"}"
+        }
+      },
+      {
+        "question": "Polecane agencje tworzenia stron internetowych na Dolnym Śląsku",
+        "tier": "regionalnie",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        "claude": {
+          "error": "Claude (subskrypcja): {'duration_api_ms': 2709, 'stop_reason': 'tool_use', 'session_id': 'd7aa3dce-276b-41f1-9de5-ab1730609d5e', 'total_cost_usd': 0.0208186, 'usage': {'input_tokens': 2, 'cache_creation_input_tokens': 3984, 'cache_read_input_tokens': 11943, 'output_tokens': 249, 'output_tokens_details': {'thinking_tokens': 92}, 'server_tool_use': {'web_search_requests': 0, 'web_fetch_requests': 0}, 'service_tier': 'sta | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfkecAiioNEjWx1ARcmur\"}"
+        }
+      },
+      {
+        "question": "Kto robi sklepy WooCommerce na Dolnym Śląsku?",
+        "tier": "regionalnie",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        "claude": {
+          "error": "Claude (subskrypcja): {'duration_api_ms': 1639, 'stop_reason': 'tool_use', 'session_id': 'd7d188d8-362f-457e-8500-94b878ebcf86', 'total_cost_usd': 0.019600600000000003, 'usage': {'input_tokens': 2, 'cache_creation_input_tokens': 3982, 'cache_read_input_tokens': 11943, 'output_tokens': 128, 'output_tokens_details': {'thinking_tokens': 48}, 'server_tool_use': {'web_search_requests': 0, 'web_fetch_requests': 0}, 'service_ | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfkecPPxyYaMFi8iz5wQs\"}"
+        }
+      },
+      {
+        "question": "Polecane agencje tworzenia stron internetowych w Polsce",
+        "tier": "krajowo",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        "claude": {
+          "mentioned": false,
+          "response_excerpt": "Nie mam zweryfikowanego, aktualnego rankingu, więc traktuj to jako punkt wyjścia, a nie rekomendację. Poniższe firmy są w Polsce znane, ale ich ofertę i opinie sprawdź samodzielnie.\n\n**Większe firmy, projekty szyte na miarę i aplikacje webowe**\n- **Netguru** (Poznań): produkty cyfrowe, e-commerce, UX/UI.\n- **Boldare** (Gliwice): projektowanie produktów cyfrowych i strony złożone.\n- **Merixstudio**",
+          "domains": []
+        }
+      },
+      {
+        "question": "Kto robi strony WordPress i sklepy WooCommerce dla małych firm w Polsce?",
+        "tier": "krajowo",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        "claude": {
+          "mentioned": false,
+          "response_excerpt": "Nie mam aktualnej, zweryfikowanej listy konkretnych firm, więc podaję kategorie wykonawców. W każdej z nich znajdziesz kogoś od WordPressa i WooCommerce dla małych firm.\n\n**1. Freelancerzy**\n- Zwykle najtańsza opcja, z kontaktem bezpośrednio z wykonawcą.\n- Szukaj na Useme, Oferteo, Fiverr i Upwork, w grupach na Facebooku (\"WordPress Polska\", \"WooCommerce Polska\") oraz na LinkedIn.\n\n**2. Małe agenc",
+          "domains": [
+            "home.pl",
+            "nazwa.pl"
+          ]
+        }
+      },
+      {
+        "question": "Jak wybrać firmę do stworzenia strony internetowej i sklepu online?",
+        "tier": "krajowo",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        "claude": {
+          "mentioned": false,
+          "response_excerpt": "# Jak wybrać firmę do stworzenia strony internetowej i sklepu online\n\n## 1. Zacznij od własnych potrzeb\nZanim zaczniesz szukać, ustal:\n- **cel** – wizytówka, blog, sklep, sprzedaż B2B/B2C,\n- **budżet** i **termin** realizacji,\n- **zakres** – ile produktów, jakie integracje (płatności, kurierzy, ERP, księgowość, marketplace'y),\n- **kto będzie prowadził stronę** po wdrożeniu.\n\nSpisana, choćby krótka",
+          "domains": []
+        }
+      },
+      {
+        "question": "Kto jest dobrym specjalistą od stron WordPress na Dolnym Śląsku?",
+        "tier": "ekspert",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        "claude": {
+          "error": "Claude (subskrypcja): {'duration_api_ms': 3912, 'stop_reason': 'tool_use', 'session_id': 'dcad0a42-4b31-40f2-8a2a-f8fe2ef10a4c', 'total_cost_usd': 0.020564600000000002, 'usage': {'input_tokens': 2, 'cache_creation_input_tokens': 3988, 'cache_read_input_tokens': 11943, 'output_tokens': 222, 'output_tokens_details': {'thinking_tokens': 113}, 'server_tool_use': {'web_search_requests': 0, 'web_fetch_requests': 0}, 'service | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfkefkHQHkEQ5GXY97fr3\"}"
+        }
+      },
+      {
+        "question": "Kto pomoże mi pozycjonować firmę w Google i w ChatGPT w Kłodzku?",
+        "tier": "ekspert",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        "claude": {
+          "mentioned": false,
+          "response_excerpt": "Nie znam sprawdzonej, polecanej firmy z Kłodzka, więc nie podam nazwy, której nie mogę zweryfikować. Mogę za to wskazać, kogo szukać i jak go ocenić.\n\n**Kogo wybrać**\n- **Lokalna agencja albo freelancer SEO** z Kłodzka, Wałbrzycha, Wrocławia lub Opola. Przy lokalnym biznesie ważna jest znajomość regionu, ale nie musi to być firma z samego Kłodzka.\n- **Specjalista od local SEO.** To w praktyce Prof",
+          "domains": []
+        }
+      },
+      {
+        "question": "Polecisz freelancera do zrobienia strony dla małej firmy w Kotlinie Kłodzkiej?",
+        "tier": "ekspert",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        "claude": {
+          "mentioned": false,
+          "response_excerpt": "Nie mogę polecić konkretnej osoby. Nie znam sprawdzonych freelancerów z Kotliny Kłodzkiej i nie chcę wymyślać nazwisk ani opinii. Mogę za to podpowiedzieć, jak znaleźć dobrego wykonawcę i na co zwrócić uwagę.\n\n**Gdzie szukać**\n- Polecenia od lokalnych firm, np. pensjonatów, restauracji i usługodawców w Kłodzku, Polanicy, Lądku czy Dusznikach. Ich strony widać od razu, a u właścicieli można zapytać",
+          "domains": []
+        }
+      },
+      {
+        "question": "Co to jest DirectWebs?",
+        "tier": "brand",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        "claude": {
+          "error": "Claude (subskrypcja): {'duration_api_ms': 2989, 'stop_reason': 'tool_use', 'session_id': '03d3a061-c777-4b47-8b52-8f5dc8d732a2', 'total_cost_usd': 0.0202206, 'usage': {'input_tokens': 2, 'cache_creation_input_tokens': 3967, 'cache_read_input_tokens': 11943, 'output_tokens': 196, 'output_tokens_details': {'thinking_tokens': 51}, 'server_tool_use': {'web_search_requests': 0, 'web_fetch_requests': 0}, 'service_tier': 'sta | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfkehrSYZFzDdecvqw38Y\"}"
+        }
+      },
+      {
+        "question": "DirectWebs opinie",
+        "tier": "brand",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        "claude": {
+          "error": "Claude (subskrypcja): {'duration_api_ms': 3253, 'stop_reason': 'tool_use', 'session_id': '6c3bf7c9-f9fc-469d-9327-aa2ff8e53031', 'total_cost_usd': 0.0205786, 'usage': {'input_tokens': 2, 'cache_creation_input_tokens': 3964, 'cache_read_input_tokens': 11943, 'output_tokens': 233, 'output_tokens_details': {'thinking_tokens': 93}, 'server_tool_use': {'web_search_requests': 0, 'web_fetch_requests': 0}, 'service_tier': 'sta | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfkeiDEhQiC4dpUHdLTrZ\"}"
+        }
+      },
+      {
+        "question": "directwebs.pl — czym się zajmuje ta firma i ile kosztuje strona?",
+        "tier": "brand",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        "claude": {
+          "error": "Claude (subskrypcja): {'duration_api_ms': 1722, 'stop_reason': 'tool_use', 'session_id': '7bb4402e-8df6-4fc2-8339-a6bd21cb35ac', 'total_cost_usd': 0.0191866, 'usage': {'input_tokens': 2, 'cache_creation_input_tokens': 3986, 'cache_read_input_tokens': 11943, 'output_tokens': 85, 'output_tokens_details': {'thinking_tokens': 0}, 'server_tool_use': {'web_search_requests': 0, 'web_fetch_requests': 0}, 'service_tier': 'stand | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfkeiRjmX1c2oGRjckz8j\"}"
+        }
+      }
+    ],
+    "site_analysis": {
+      "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+    }
   }
 ]
