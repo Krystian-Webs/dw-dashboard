@@ -1,0 +1,482 @@
+{
+  "updated": "2026-10-06 08:49",
+  "property_id": "511078398",
+  "summary": {
+    "biezace": {
+      "activeUsers": 44.0,
+      "newUsers": 43.0,
+      "sessions": 47.0,
+      "screenPageViews": 74.0,
+      "engagementRate": 0.5319,
+      "averageSessionDuration": 34.632
+    },
+    "poprzednie": {
+      "activeUsers": 33.0,
+      "newUsers": 31.0,
+      "sessions": 36.0,
+      "screenPageViews": 48.0,
+      "engagementRate": 0.3056,
+      "averageSessionDuration": 44.7657
+    }
+  },
+  "trend": [
+    {
+      "date": "20260708",
+      "users": 4.0,
+      "sessions": 4.0
+    },
+    {
+      "date": "20260709",
+      "users": 3.0,
+      "sessions": 3.0
+    },
+    {
+      "date": "20260710",
+      "users": 2.0,
+      "sessions": 2.0
+    },
+    {
+      "date": "20260711",
+      "users": 2.0,
+      "sessions": 2.0
+    },
+    {
+      "date": "20260713",
+      "users": 2.0,
+      "sessions": 2.0
+    },
+    {
+      "date": "20260714",
+      "users": 5.0,
+      "sessions": 5.0
+    },
+    {
+      "date": "20260715",
+      "users": 1.0,
+      "sessions": 1.0
+    },
+    {
+      "date": "20260717",
+      "users": 5.0,
+      "sessions": 6.0
+    },
+    {
+      "date": "20260719",
+      "users": 1.0,
+      "sessions": 1.0
+    },
+    {
+      "date": "20260721",
+      "users": 1.0,
+      "sessions": 1.0
+    },
+    {
+      "date": "20260722",
+      "users": 4.0,
+      "sessions": 4.0
+    },
+    {
+      "date": "20260723",
+      "users": 3.0,
+      "sessions": 5.0
+    },
+    {
+      "date": "20260724",
+      "users": 1.0,
+      "sessions": 1.0
+    },
+    {
+      "date": "20260725",
+      "users": 8.0,
+      "sessions": 8.0
+    },
+    {
+      "date": "20260727",
+      "users": 1.0,
+      "sessions": 1.0
+    },
+    {
+      "date": "20260728",
+      "users": 3.0,
+      "sessions": 3.0
+    },
+    {
+      "date": "20260729",
+      "users": 2.0,
+      "sessions": 2.0
+    },
+    {
+      "date": "20260730",
+      "users": 3.0,
+      "sessions": 3.0
+    },
+    {
+      "date": "20260803",
+      "users": 7.0,
+      "sessions": 7.0
+    },
+    {
+      "date": "20260805",
+      "users": 1.0,
+      "sessions": 1.0
+    },
+    {
+      "date": "20260806",
+      "users": 3.0,
+      "sessions": 3.0
+    },
+    {
+      "date": "20260808",
+      "users": 1.0,
+      "sessions": 1.0
+    },
+    {
+      "date": "20260809",
+      "users": 2.0,
+      "sessions": 2.0
+    },
+    {
+      "date": "20260810",
+      "users": 1.0,
+      "sessions": 1.0
+    },
+    {
+      "date": "20260811",
+      "users": 1.0,
+      "sessions": 1.0
+    },
+    {
+      "date": "20260813",
+      "users": 1.0,
+      "sessions": 1.0
+    },
+    {
+      "date": "20260814",
+      "users": 1.0,
+      "sessions": 1.0
+    },
+    {
+      "date": "20260815",
+      "users": 1.0,
+      "sessions": 1.0
+    },
+    {
+      "date": "20260817",
+      "users": 2.0,
+      "sessions": 2.0
+    },
+    {
+      "date": "20260818",
+      "users": 3.0,
+      "sessions": 4.0
+    },
+    {
+      "date": "20260819",
+      "users": 2.0,
+      "sessions": 2.0
+    },
+    {
+      "date": "20260820",
+      "users": 1.0,
+      "sessions": 1.0
+    },
+    {
+      "date": "20260821",
+      "users": 1.0,
+      "sessions": 1.0
+    },
+    {
+      "date": "20260822",
+      "users": 1.0,
+      "sessions": 1.0
+    },
+    {
+      "date": "20260823",
+      "users": 2.0,
+      "sessions": 2.0
+    },
+    {
+      "date": "20260824",
+      "users": 2.0,
+      "sessions": 2.0
+    },
+    {
+      "date": "20260826",
+      "users": 3.0,
+      "sessions": 3.0
+    },
+    {
+      "date": "20260827",
+      "users": 1.0,
+      "sessions": 1.0
+    },
+    {
+      "date": "20260830",
+      "users": 2.0,
+      "sessions": 2.0
+    },
+    {
+      "date": "20260831",
+      "users": 1.0,
+      "sessions": 1.0
+    },
+    {
+      "date": "20260901",
+      "users": 1.0,
+      "sessions": 1.0
+    },
+    {
+      "date": "20260902",
+      "users": 2.0,
+      "sessions": 2.0
+    },
+    {
+      "date": "20260903",
+      "users": 1.0,
+      "sessions": 1.0
+    },
+    {
+      "date": "20260904",
+      "users": 3.0,
+      "sessions": 3.0
+    },
+    {
+      "date": "20260906",
+      "users": 1.0,
+      "sessions": 1.0
+    },
+    {
+      "date": "20260907",
+      "users": 2.0,
+      "sessions": 2.0
+    },
+    {
+      "date": "20260908",
+      "users": 1.0,
+      "sessions": 1.0
+    },
+    {
+      "date": "20260909",
+      "users": 3.0,
+      "sessions": 3.0
+    },
+    {
+      "date": "20260910",
+      "users": 2.0,
+      "sessions": 2.0
+    },
+    {
+      "date": "20260911",
+      "users": 2.0,
+      "sessions": 2.0
+    },
+    {
+      "date": "20260912",
+      "users": 1.0,
+      "sessions": 1.0
+    },
+    {
+      "date": "20260914",
+      "users": 3.0,
+      "sessions": 3.0
+    },
+    {
+      "date": "20260915",
+      "users": 1.0,
+      "sessions": 1.0
+    },
+    {
+      "date": "20260916",
+      "users": 1.0,
+      "sessions": 1.0
+    },
+    {
+      "date": "20260917",
+      "users": 2.0,
+      "sessions": 2.0
+    },
+    {
+      "date": "20260918",
+      "users": 5.0,
+      "sessions": 7.0
+    },
+    {
+      "date": "20260919",
+      "users": 1.0,
+      "sessions": 1.0
+    },
+    {
+      "date": "20260920",
+      "users": 7.0,
+      "sessions": 7.0
+    },
+    {
+      "date": "20260921",
+      "users": 2.0,
+      "sessions": 2.0
+    },
+    {
+      "date": "20260922",
+      "users": 1.0,
+      "sessions": 2.0
+    },
+    {
+      "date": "20260923",
+      "users": 3.0,
+      "sessions": 3.0
+    },
+    {
+      "date": "20260925",
+      "users": 1.0,
+      "sessions": 1.0
+    },
+    {
+      "date": "20260926",
+      "users": 4.0,
+      "sessions": 4.0
+    },
+    {
+      "date": "20260930",
+      "users": 1.0,
+      "sessions": 1.0
+    },
+    {
+      "date": "20261001",
+      "users": 1.0,
+      "sessions": 1.0
+    },
+    {
+      "date": "20261005",
+      "users": 2.0,
+      "sessions": 2.0
+    }
+  ],
+  "channels": [
+    {
+      "sessionDefaultChannelGroup": "Direct",
+      "sessions": 25.0,
+      "activeUsers": 25.0
+    },
+    {
+      "sessionDefaultChannelGroup": "Referral",
+      "sessions": 10.0,
+      "activeUsers": 7.0
+    },
+    {
+      "sessionDefaultChannelGroup": "Organic Social",
+      "sessions": 8.0,
+      "activeUsers": 8.0
+    },
+    {
+      "sessionDefaultChannelGroup": "Organic Search",
+      "sessions": 4.0,
+      "activeUsers": 4.0
+    }
+  ],
+  "pages": [
+    {
+      "pagePath": "/",
+      "pageTitle": "Work in Progress -",
+      "screenPageViews": 51.0,
+      "activeUsers": 29.0
+    },
+    {
+      "pagePath": "/skontaktuj-sie-porozmawiajmy-o-twoim-projekcie/",
+      "pageTitle": "Skontaktuj się — porozmawiajmy o Twoim projekcie",
+      "screenPageViews": 6.0,
+      "activeUsers": 4.0
+    },
+    {
+      "pagePath": "/jak-tworzyc-strony-internetowe-poradnik/",
+      "pageTitle": "Jak tworzyć strony internetowe — kompletny poradnik 2025",
+      "screenPageViews": 4.0,
+      "activeUsers": 1.0
+    },
+    {
+      "pagePath": "/portfolio-projektow-i-stron-internetowych/",
+      "pageTitle": "Portfolio projektów i stron internetowych | DirectWebs",
+      "screenPageViews": 3.0,
+      "activeUsers": 2.0
+    },
+    {
+      "pagePath": "/blog-wordpress-projekty-graficzne-seo/",
+      "pageTitle": "Blog — WordPress, projekty graficzne i SEO | DirectWebs",
+      "screenPageViews": 2.0,
+      "activeUsers": 2.0
+    },
+    {
+      "pagePath": "/polityka-prywatnosci-rodo/",
+      "pageTitle": "Polityka prywatności — ochrona danych i RODO | DirectWebs",
+      "screenPageViews": 2.0,
+      "activeUsers": 2.0
+    },
+    {
+      "pagePath": "/wspolpraca-wordpress-strony-www/",
+      "pageTitle": "Współpraca przy tworzeniu stron WordPress — DirectWebs",
+      "screenPageViews": 2.0,
+      "activeUsers": 2.0
+    },
+    {
+      "pagePath": "/grafiki-halloween-z-chatgpt-pomysly-na-content-z-ai/",
+      "pageTitle": "Grafiki Halloween z ChatGPT – pomysły na content z AI",
+      "screenPageViews": 1.0,
+      "activeUsers": 1.0
+    },
+    {
+      "pagePath": "/projektowanie-stron-wordpress-o-mnie/",
+      "pageTitle": "Tworzę strony WordPress i projekty graficzne, które działają",
+      "screenPageViews": 1.0,
+      "activeUsers": 1.0
+    },
+    {
+      "pagePath": "/skontaktuj-sie-porozmawiajmy-o-twoim-projekcie/",
+      "pageTitle": "Kontakt – bezpłatna wycena strony internetowej | DirectWebs Kłodzko",
+      "screenPageViews": 1.0,
+      "activeUsers": 1.0
+    },
+    {
+      "pagePath": "/szkolenia-ai-online/",
+      "pageTitle": "Page Not Found -",
+      "screenPageViews": 1.0,
+      "activeUsers": 1.0
+    }
+  ],
+  "cities": [
+    {
+      "city": "Warsaw",
+      "activeUsers": 7.0
+    },
+    {
+      "city": "Wroclaw",
+      "activeUsers": 4.0
+    },
+    {
+      "city": "Ashburn",
+      "activeUsers": 2.0
+    },
+    {
+      "city": "Dublin",
+      "activeUsers": 2.0
+    },
+    {
+      "city": "Frankfurt am Main",
+      "activeUsers": 2.0
+    },
+    {
+      "city": "New York",
+      "activeUsers": 2.0
+    },
+    {
+      "city": "Poznan",
+      "activeUsers": 2.0
+    },
+    {
+      "city": "Altoona",
+      "activeUsers": 1.0
+    },
+    {
+      "city": "Bydgoszcz",
+      "activeUsers": 1.0
+    }
+  ]
+}
