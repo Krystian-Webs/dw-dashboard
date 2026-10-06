@@ -1,104 +1,53 @@
 {
   "runs": [
     {
-      "date": "2026-10-05",
+      "date": "2026-10-06",
       "brand": [
         {
           "query": "DirectWebs",
-          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+          "error": "Gemini 429 — wyczerpany limit darmowego planu (gemini-3.8-flash). Wlacz platnosci w Google AI Studio albo poczekaj na odnowienie limitu."
         },
         {
           "query": "directwebs.pl",
-          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
         },
         {
           "query": "DirectWebs Kłodzko strony internetowe",
-          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
         },
         {
           "query": "DirectWebs opinie",
-          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
         }
       ],
       "market": [
         {
           "query": "strony internetowe Kłodzko",
-          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
         },
         {
           "query": "tworzenie stron www Kotlina Kłodzka",
-          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
         },
         {
           "query": "pozycjonowanie stron Kłodzko",
-          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
         },
         {
           "query": "strony internetowe Polanica-Zdrój",
-          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
         },
         {
           "query": "strony internetowe Wałbrzych",
-          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
         },
         {
           "query": "strony internetowe Świdnica",
-          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
         },
         {
           "query": "sklep internetowy WooCommerce Dolny Śląsk",
-          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-05",
-      "brand": [
-        {
-          "query": "DirectWebs",
-          "error": "Gemini 429 (gemini-3.8-flash): {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \",\n    \"stat"
-        },
-        {
-          "query": "directwebs.pl",
-          "error": "Gemini 429 (gemini-3.8-flash): {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \",\n    \"stat"
-        },
-        {
-          "query": "DirectWebs Kłodzko strony internetowe",
-          "error": "Gemini 429 (gemini-3.8-flash): {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \",\n    \"stat"
-        },
-        {
-          "query": "DirectWebs opinie",
-          "error": "Gemini 429 (gemini-3.8-flash): {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \",\n    \"stat"
-        }
-      ],
-      "market": [
-        {
-          "query": "strony internetowe Kłodzko",
-          "error": "Gemini 429 (gemini-3.8-flash): {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \",\n    \"stat"
-        },
-        {
-          "query": "tworzenie stron www Kotlina Kłodzka",
-          "error": "Gemini 429 (gemini-3.8-flash): {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \",\n    \"stat"
-        },
-        {
-          "query": "pozycjonowanie stron Kłodzko",
-          "error": "Gemini 429 (gemini-3.8-flash): {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \",\n    \"stat"
-        },
-        {
-          "query": "strony internetowe Polanica-Zdrój",
-          "error": "Gemini 429 (gemini-3.8-flash): {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \",\n    \"stat"
-        },
-        {
-          "query": "strony internetowe Wałbrzych",
-          "error": "Gemini 429 (gemini-3.8-flash): {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \",\n    \"stat"
-        },
-        {
-          "query": "strony internetowe Świdnica",
-          "error": "Gemini 429 (gemini-3.8-flash): {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \",\n    \"stat"
-        },
-        {
-          "query": "sklep internetowy WooCommerce Dolny Śląsk",
-          "error": "Gemini 429 (gemini-3.8-flash): {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \",\n    \"stat"
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
         }
       ]
     }

@@ -2096,7 +2096,7 @@
     }
   },
   {
-    "date": "2026-10-05",
+    "date": "2026-10-06",
     "checks": [
       {
         "question": "Kto robi strony internetowe w Kłodzku i Kotlinie Kłodzkiej?",
@@ -2105,200 +2105,10 @@
           "error": "429 insufficient_quota — doladuj konto OpenAI (platform.openai.com → Billing)"
         },
         "gemini": {
-          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+          "error": "HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)"
         },
         "claude": {
-          "error": "400 Client Error: Bad Request for url: https://api.anthropic.com/v1/messages"
-        }
-      },
-      {
-        "question": "Agencja webdesign Kłodzko - kogo polecacie?",
-        "tier": "lokalnie",
-        "chatgpt": {
-          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
-        },
-        "gemini": {
-          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
-        },
-        "claude": {
-          "error": "400 Client Error: Bad Request for url: https://api.anthropic.com/v1/messages"
-        }
-      },
-      {
-        "question": "Firma do stworzenia strony internetowej Kotlina Kłodzka",
-        "tier": "lokalnie",
-        "chatgpt": {
-          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
-        },
-        "gemini": {
-          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
-        },
-        "claude": {
-          "error": "400 Client Error: Bad Request for url: https://api.anthropic.com/v1/messages"
-        }
-      },
-      {
-        "question": "Polecane agencje tworzenia stron internetowych na Dolnym Śląsku",
-        "tier": "regionalnie",
-        "chatgpt": {
-          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
-        },
-        "gemini": {
-          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
-        },
-        "claude": {
-          "error": "400 Client Error: Bad Request for url: https://api.anthropic.com/v1/messages"
-        }
-      },
-      {
-        "question": "Kto robi sklepy WooCommerce na Dolnym Śląsku?",
-        "tier": "regionalnie",
-        "chatgpt": {
-          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
-        },
-        "gemini": {
-          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
-        },
-        "claude": {
-          "error": "400 Client Error: Bad Request for url: https://api.anthropic.com/v1/messages"
-        }
-      },
-      {
-        "question": "Polecane agencje tworzenia stron internetowych w Polsce",
-        "tier": "krajowo",
-        "chatgpt": {
-          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
-        },
-        "gemini": {
-          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
-        },
-        "claude": {
-          "error": "400 Client Error: Bad Request for url: https://api.anthropic.com/v1/messages"
-        }
-      },
-      {
-        "question": "Kto robi strony WordPress i sklepy WooCommerce dla małych firm w Polsce?",
-        "tier": "krajowo",
-        "chatgpt": {
-          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
-        },
-        "gemini": {
-          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
-        },
-        "claude": {
-          "error": "400 Client Error: Bad Request for url: https://api.anthropic.com/v1/messages"
-        }
-      },
-      {
-        "question": "Jak wybrać firmę do stworzenia strony internetowej i sklepu online?",
-        "tier": "krajowo",
-        "chatgpt": {
-          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
-        },
-        "gemini": {
-          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
-        },
-        "claude": {
-          "error": "400 Client Error: Bad Request for url: https://api.anthropic.com/v1/messages"
-        }
-      },
-      {
-        "question": "Kto jest dobrym specjalistą od stron WordPress na Dolnym Śląsku?",
-        "tier": "ekspert",
-        "chatgpt": {
-          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
-        },
-        "gemini": {
-          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
-        },
-        "claude": {
-          "error": "400 Client Error: Bad Request for url: https://api.anthropic.com/v1/messages"
-        }
-      },
-      {
-        "question": "Kto pomoże mi pozycjonować firmę w Google i w ChatGPT w Kłodzku?",
-        "tier": "ekspert",
-        "chatgpt": {
-          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
-        },
-        "gemini": {
-          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
-        },
-        "claude": {
-          "error": "400 Client Error: Bad Request for url: https://api.anthropic.com/v1/messages"
-        }
-      },
-      {
-        "question": "Polecisz freelancera do zrobienia strony dla małej firmy w Kotlinie Kłodzkiej?",
-        "tier": "ekspert",
-        "chatgpt": {
-          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
-        },
-        "gemini": {
-          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
-        },
-        "claude": {
-          "error": "400 Client Error: Bad Request for url: https://api.anthropic.com/v1/messages"
-        }
-      },
-      {
-        "question": "Co to jest DirectWebs?",
-        "tier": "brand",
-        "chatgpt": {
-          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
-        },
-        "gemini": {
-          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
-        },
-        "claude": {
-          "error": "400 Client Error: Bad Request for url: https://api.anthropic.com/v1/messages"
-        }
-      },
-      {
-        "question": "DirectWebs opinie",
-        "tier": "brand",
-        "chatgpt": {
-          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
-        },
-        "gemini": {
-          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
-        },
-        "claude": {
-          "error": "400 Client Error: Bad Request for url: https://api.anthropic.com/v1/messages"
-        }
-      },
-      {
-        "question": "directwebs.pl — czym się zajmuje ta firma i ile kosztuje strona?",
-        "tier": "brand",
-        "chatgpt": {
-          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
-        },
-        "gemini": {
-          "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
-        },
-        "claude": {
-          "error": "400 Client Error: Bad Request for url: https://api.anthropic.com/v1/messages"
-        }
-      }
-    ],
-    "site_analysis": {
-      "error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
-    }
-  },
-  {
-    "date": "2026-10-05",
-    "checks": [
-      {
-        "question": "Kto robi strony internetowe w Kłodzku i Kotlinie Kłodzkiej?",
-        "tier": "lokalnie",
-        "chatgpt": {
-          "error": "429 insufficient_quota — doladuj konto OpenAI (platform.openai.com → Billing)"
-        },
-        "gemini": {
-          "error": "Gemini 503 (gemini-3.8-flash): {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n"
-        },
-        "claude": {
-          "error": "Claude 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfjqW5v6cDU726xaAGipU\"}"
+          "error": "Claude (subskrypcja): Invalid auth token · Fix external auth token · Invalid Authorization header value from CLAUDE_CODE_OAUTH_TOKEN: it contains a line break at character 80 (110 characters on 2 lines). | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfkeBP2hJWQ8x4WeESpJ3\"}"
         }
       },
       {
@@ -2311,7 +2121,7 @@
           "error": "Gemini 503 (gemini-3.8-flash): {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n"
         },
         "claude": {
-          "error": "Claude 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfjqWVUwxsSmxd9iGghBg\"}"
+          "error": "Claude (subskrypcja): Invalid auth token · Fix external auth token · Invalid Authorization header value from CLAUDE_CODE_OAUTH_TOKEN: it contains a line break at character 80 (110 characters on 2 lines). | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfkeSfzKTwaGcRXrgfYHW\"}"
         }
       },
       {
@@ -2321,14 +2131,10 @@
           "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
         },
         "gemini": {
-          "mentioned": false,
-          "response_excerpt": "Szukając firmy do stworzenia strony internetowej w **Kotlinie Kłodzkiej** (lub w jej najbliższych okolicach), warto wziąć pod uwagę specyfikę regionu – duża część lokalnego biznesu opiera się na **turystyce, gastronomii, rzemiośle i usługach lokalnych**. Dlatego dobra strona powinna być zoptymalizowana pod kątem urządzeń mobilnych, lokalnego SEO, a często także wersji językowych (np. język czeski,",
-          "domains": [
-            "booking.com"
-          ]
+          "error": "Gemini 429 — wyczerpany limit darmowego planu (gemini-3.8-flash). Wlacz platnosci w Google AI Studio albo poczekaj na odnowienie limitu."
         },
         "claude": {
-          "error": "Claude 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfjqY2YFecx2cGxvY7Zq4\"}"
+          "error": "Claude (subskrypcja): Invalid auth token · Fix external auth token · Invalid Authorization header value from CLAUDE_CODE_OAUTH_TOKEN: it contains a line break at character 80 (110 characters on 2 lines). | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfkeUK9WDqc3cXGhW49HQ\"}"
         }
       },
       {
@@ -2338,12 +2144,10 @@
           "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
         },
         "gemini": {
-          "mentioned": false,
-          "response_excerpt": "Dolny Śląsk, a w szczególności **Wrocław**, to jeden z najsilniejszych ośrodków IT i marketingu w Polsce. Wybór agencji zależy głównie od Twojego budżetu, stopnia skomplikowania projektu (zwykła strona-wizytówka, zaawansowany portal, sklep internetowy czy dedykowana aplikacja) oraz oczekiwanego wsparcia (SEO, branding, copywriting).\n\nOto zestawienie polecanych i sprawdzonych agencji z Dolnego Śląs",
-          "domains": []
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
         },
         "claude": {
-          "error": "Claude 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfjqZDYaP13Cz4G6MuMvz\"}"
+          "error": "Claude (subskrypcja): Invalid auth token · Fix external auth token · Invalid Authorization header value from CLAUDE_CODE_OAUTH_TOKEN: it contains a line break at character 80 (110 characters on 2 lines). | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfkeUQoKwqVQDDBxgBodp\"}"
         }
       },
       {
@@ -2353,10 +2157,10 @@
           "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
         },
         "gemini": {
-          "error": "Gemini 503 (gemini-3.8-flash): {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n"
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
         },
         "claude": {
-          "error": "Claude 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfjqZFTRZ3QNpQBpzUuBy\"}"
+          "error": "Claude (subskrypcja): Invalid auth token · Fix external auth token · Invalid Authorization header value from CLAUDE_CODE_OAUTH_TOKEN: it contains a line break at character 80 (110 characters on 2 lines). | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfkeUWd5J5untoSZ2fyY7\"}"
         }
       },
       {
@@ -2366,10 +2170,10 @@
           "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
         },
         "gemini": {
-          "error": "Gemini 503 (gemini-3.8-flash): {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n"
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
         },
         "claude": {
-          "error": "Claude 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfjqZGzgejXey81J5ceW3\"}"
+          "error": "Claude (subskrypcja): Invalid auth token · Fix external auth token · Invalid Authorization header value from CLAUDE_CODE_OAUTH_TOKEN: it contains a line break at character 80 (110 characters on 2 lines). | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfkeUcJ8gCcsMK88A6Eeg\"}"
         }
       },
       {
@@ -2379,10 +2183,10 @@
           "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
         },
         "gemini": {
-          "error": "Gemini 503 (gemini-3.8-flash): {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n"
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
         },
         "claude": {
-          "error": "Claude 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfjqZKkPb97Xbs2VmFUsT\"}"
+          "error": "Claude (subskrypcja): Invalid auth token · Fix external auth token · Invalid Authorization header value from CLAUDE_CODE_OAUTH_TOKEN: it contains a line break at character 80 (110 characters on 2 lines). | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfkeUi3AYG6KimK9xxKYj\"}"
         }
       },
       {
@@ -2392,10 +2196,10 @@
           "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
         },
         "gemini": {
-          "error": "Gemini 503 (gemini-3.8-flash): {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n"
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
         },
         "claude": {
-          "error": "Claude 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfjqZMvcHCinfntmiyeuw\"}"
+          "error": "Claude (subskrypcja): Invalid auth token · Fix external auth token · Invalid Authorization header value from CLAUDE_CODE_OAUTH_TOKEN: it contains a line break at character 80 (110 characters on 2 lines). | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfkeUojxyeYV3ueSpm5FA\"}"
         }
       },
       {
@@ -2405,10 +2209,10 @@
           "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
         },
         "gemini": {
-          "error": "Gemini 429 (gemini-3.8-flash): {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota ex"
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
         },
         "claude": {
-          "error": "Claude 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfjqZPVMv6kURv6MC2Gnb\"}"
+          "error": "Claude (subskrypcja): Invalid auth token · Fix external auth token · Invalid Authorization header value from CLAUDE_CODE_OAUTH_TOKEN: it contains a line break at character 80 (110 characters on 2 lines). | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfkeUubvgEYJnZAwMcgYC\"}"
         }
       },
       {
@@ -2418,10 +2222,10 @@
           "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
         },
         "gemini": {
-          "error": "Gemini 429 (gemini-3.8-flash): {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota ex"
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
         },
         "claude": {
-          "error": "Claude 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfjqZR2P3CgGbYB5qxXgr\"}"
+          "error": "Claude (subskrypcja): Invalid auth token · Fix external auth token · Invalid Authorization header value from CLAUDE_CODE_OAUTH_TOKEN: it contains a line break at character 80 (110 characters on 2 lines). | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfkeV1HyuzQ4Y8XhELBp9\"}"
         }
       },
       {
@@ -2431,10 +2235,10 @@
           "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
         },
         "gemini": {
-          "error": "Gemini 503 (gemini-3.8-flash): {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n"
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
         },
         "claude": {
-          "error": "Claude 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfjqZUn7NQN47nrriWWTA\"}"
+          "error": "Claude (subskrypcja): Invalid auth token · Fix external auth token · Invalid Authorization header value from CLAUDE_CODE_OAUTH_TOKEN: it contains a line break at character 80 (110 characters on 2 lines). | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfkeV6zY1qihDP5baT4iX\"}"
         }
       },
       {
@@ -2444,10 +2248,10 @@
           "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
         },
         "gemini": {
-          "error": "Gemini 503 (gemini-3.8-flash): {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n"
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
         },
         "claude": {
-          "error": "Claude 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfjqZqJ8ytByMauSroYWp\"}"
+          "error": "Claude (subskrypcja): Invalid auth token · Fix external auth token · Invalid Authorization header value from CLAUDE_CODE_OAUTH_TOKEN: it contains a line break at character 80 (110 characters on 2 lines). | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfkeVCiaPbEY5tm9BqM7G\"}"
         }
       },
       {
@@ -2457,10 +2261,10 @@
           "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
         },
         "gemini": {
-          "error": "Gemini 429 (gemini-3.8-flash): {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota ex"
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
         },
         "claude": {
-          "error": "Claude 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfjqZrpvHpSuoprgHZiyP\"}"
+          "error": "Claude (subskrypcja): Invalid auth token · Fix external auth token · Invalid Authorization header value from CLAUDE_CODE_OAUTH_TOKEN: it contains a line break at character 80 (110 characters on 2 lines). | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfkeVJR8AVBDTg3ZtDhZi\"}"
         }
       },
       {
@@ -2470,15 +2274,15 @@
           "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
         },
         "gemini": {
-          "error": "Gemini 429 (gemini-3.8-flash): {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota ex"
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
         },
         "claude": {
-          "error": "Claude 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfjqZtLhU93Ry7QonqGsD\"}"
+          "error": "Claude (subskrypcja): Invalid auth token · Fix external auth token · Invalid Authorization header value from CLAUDE_CODE_OAUTH_TOKEN: it contains a line break at character 80 (110 characters on 2 lines). | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CfkeVQ4D7L1oYLJE1z9BW\"}"
         }
       }
     ],
     "site_analysis": {
-      "error": "Gemini 429 (gemini-3.8-flash): {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \",\n    \"stat"
+      "error": "Gemini: wyczerpany limit zapytan (pominieto)"
     }
   }
 ]
