@@ -44,25 +44,6 @@
   .content{padding:24px 28px;flex:1}
   .tabs{display:none}
   .tab-panel{display:none}
-  .crm-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
-  .crm-stat{border:1px solid var(--border);border-radius:10px;padding:10px 12px;cursor:pointer;background:var(--surface)}
-  .crm-stat b{display:block;font-size:22px;font-family:'JetBrains Mono',monospace}
-  .crm-stat span{font-size:11px;color:var(--text2)}
-  .crm-stat.on{outline:2px solid var(--accent)}
-  .crm-wrap{display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:16px;align-items:start}
-  .crm-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
-  .crm-row{padding:10px 8px;border-bottom:1px solid var(--border);cursor:pointer;border-radius:8px}
-  .crm-row:hover,.crm-row.on{background:var(--surface2)}
-  .crm-row .t{display:flex;justify-content:space-between;gap:8px;font-size:13px;font-weight:600}
-  .crm-row .s{font-size:12px;color:var(--text2);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .crm-st{font-size:10px;padding:2px 8px;border-radius:20px;font-weight:600;white-space:nowrap}
-  .crm-st--start{background:#e0f2fe;color:#0369a1}.crm-st--progress{background:#fef3c7;color:#b45309}
-  .crm-st--won{background:#dcfce7;color:#15803d}.crm-st--lost{background:#f1f5f9;color:#64748b}
-  .crm-msg{border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:10px}
-  .crm-msg.me{background:var(--surface2)}
-  .crm-msg .h{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--text2);margin-bottom:8px}
-  .crm-msg .b{font-size:13px;white-space:pre-wrap;line-height:1.5;word-break:break-word}
-  @media (max-width:860px){.crm-wrap{grid-template-columns:1fr}.crm-stats{grid-template-columns:repeat(2,1fr)}}
   .tab-panel.active{display:block}
   .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
   .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px}
@@ -265,10 +246,7 @@ function renderSidebarNav() {
   const navWrap = document.getElementById('sidebar-nav-wrap');
   if (!activeSite) { navWrap.innerHTML = ''; return; }
   let items = [...NAV_ITEMS];
-  if (activeSite.id === 'directwebs') {
-    items.push({id:'airank', icon:'🤖', label:'AI & Ranking', cls:'airank'});
-    items.splice(items.findIndex(i => i.id === 'settings'), 0, {id:'contacts', icon:'💬', label:'Kontakty'});
-  }
+  if (activeSite.id === 'directwebs') items.push({id:'airank', icon:'🤖', label:'AI & Ranking', cls:'airank'});
   navWrap.innerHTML = `<div class="sidebar-section-label">${activeSite.name}</div>` +
     items.map(it => `<div class="nav-item ${it.cls||''} ${activeTab===it.id?'active':''}" onclick="switchTab('${it.id}', this)">${it.icon} ${it.label}</div>`).join('');
 }
@@ -288,8 +266,7 @@ function selectSite(site) {
   if (site.wpUser && site.wpPass) loadWpData(site);
   if (site.seoToken) loadSeoStatus(site);
   // Widoczność w AI i wzmianki nie wymagają logowania Google — dane z workflow
-  if (site.id === 'directwebs') setTimeout(() => { loadAiVisibility(site); loadMentions(site); loadGa4(site);
-    try { if (localStorage.getItem('crm_connected') === '1' && window.google?.accounts) crmLogin(''); } catch(e) {} }, 0);
+  if (site.id === 'directwebs') setTimeout(() => { loadAiVisibility(site); loadMentions(site); loadGa4(site); }, 0);
   let token = getToken(site.id);
   if (token) {
     loadGscData(site, token);
@@ -782,173 +759,6 @@ async function loadGa4(site) {
   }
 }
 
-// ── KONTAKTY (Gmail: etykiety DW/... jako statusy rozmow) ──
-const CRM_SCOPE = 'https://www.googleapis.com/auth/gmail.modify';
-const CRM_STATUSES = [
-  {key:'start',    label:'DW/Rozpoczęta', name:'Rozpoczęta'},
-  {key:'progress', label:'DW/W trakcie',  name:'W trakcie'},
-  {key:'won',      label:'DW/Pozyskana',  name:'Pozyskana'},
-  {key:'lost',     label:'DW/Utracona',   name:'Utracona'},
-];
-let crmToken = null, crmTokenExp = 0, crmLabelIds = {}, crmThreads = [], crmFilter = 'all', crmMe = '';
-const crmEsc = s => String(s??'').replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-
-function crmLogin(prompt) {
-  google.accounts.oauth2.initTokenClient({
-    client_id: GSC_CLIENT_ID, scope: CRM_SCOPE,
-    callback: (resp) => {
-      if (!resp.access_token) return;
-      crmToken = resp.access_token; crmTokenExp = Date.now() + (resp.expires_in||3600)*1000;
-      try { localStorage.setItem('crm_connected','1'); } catch(e) {}
-      const b = document.getElementById('crm-login'); if (b) b.textContent = 'Gmail połączony ✓';
-      crmLoad();
-    }
-  }).requestAccessToken(prompt === '' ? {prompt:''} : {});
-}
-
-async function crmApi(path, opts={}) {
-  if (!crmToken || Date.now() > crmTokenExp - 60000) throw new Error('Połącz ponownie Gmail (sesja wygasła).');
-  const res = await fetch('https://gmail.googleapis.com/gmail/v1/users/me/' + path, {
-    ...opts, headers: {'Authorization':'Bearer '+crmToken, 'Content-Type':'application/json', ...(opts.headers||{})}
-  });
-  if (!res.ok) {
-    const t = await res.text();
-    if (res.status === 403 && t.includes('SERVICE_DISABLED')) throw new Error('Gmail API jest wyłączone w projekcie Google Cloud — włącz „Gmail API”.');
-    throw new Error('Gmail ' + res.status + ': ' + t.slice(0,200));
-  }
-  return res.json();
-}
-
-async function crmEnsureLabels() {
-  const data = await crmApi('labels');
-  const byName = Object.fromEntries((data.labels||[]).map(l => [l.name, l.id]));
-  for (const st of CRM_STATUSES) {
-    if (!byName[st.label]) {
-      const created = await crmApi('labels', {method:'POST', body: JSON.stringify({name: st.label, labelListVisibility:'labelShow', messageListVisibility:'show'})});
-      byName[st.label] = created.id;
-    }
-    crmLabelIds[st.key] = byName[st.label];
-  }
-}
-
-function crmHeader(msg, name) {
-  return ((msg.payload && msg.payload.headers) || []).find(h => h.name.toLowerCase() === name.toLowerCase())?.value || '';
-}
-function crmWho(from) { const m = from.match(/^\s*"?([^"<]*)"?\s*<([^>]+)>/); return m ? (m[1].trim() || m[2]) : from; }
-function crmStatusOf(t) { return CRM_STATUSES.find(st => (t.labelIds||[]).includes(crmLabelIds[st.key])) || null; }
-function crmBadge(st) { return st ? `<span class="crm-st crm-st--${st.key}">${st.name}</span>` : ''; }
-
-async function crmLoad() {
-  const list = document.getElementById('crm-list');
-  if (!crmToken) { list.innerHTML = '<div class="empty">Kliknij „Połącz Gmail”, aby wczytać rozmowy.</div>'; return; }
-  list.innerHTML = '<div class="loading"><div class="spinner"></div><span>Wczytywanie rozmów...</span></div>';
-  try {
-    await crmEnsureLabels();
-    crmMe = (await crmApi('profile')).emailAddress || '';
-    const ids = new Set();
-    for (const st of CRM_STATUSES) {
-      const r = await crmApi('threads?maxResults=50&labelIds=' + encodeURIComponent(crmLabelIds[st.key]));
-      (r.threads||[]).forEach(t => ids.add(t.id));
-    }
-    crmThreads = [];
-    for (const id of ids) {
-      const t = await crmApi('threads/' + id + '?format=metadata&metadataHeaders=From&metadataHeaders=To&metadataHeaders=Subject&metadataHeaders=Date');
-      const first = t.messages[0], last = t.messages[t.messages.length-1];
-      const labelIds = [...new Set(t.messages.flatMap(m => m.labelIds||[]))];
-      const other = t.messages.map(m => crmHeader(m,'From')).find(f => !f.includes(crmMe)) || crmHeader(first,'To');
-      crmThreads.push({id, labelIds, who: crmWho(other), email: (other.match(/<([^>]+)>/)||[,other])[1],
-        subject: crmHeader(first,'Subject') || '(bez tematu)', snippet: last.snippet || '',
-        date: new Date(+last.internalDate), count: t.messages.length, lastFromMe: crmHeader(last,'From').includes(crmMe)});
-    }
-    crmThreads.sort((a,b) => b.date - a.date);
-    crmRender();
-  } catch(e) { list.innerHTML = `<div class="empty">Błąd: ${crmEsc(e.message)}</div>`; }
-}
-
-function crmRender() {
-  const counts = Object.fromEntries(CRM_STATUSES.map(st => [st.key, crmThreads.filter(t => crmStatusOf(t)?.key === st.key).length]));
-  document.getElementById('crm-stats').innerHTML = CRM_STATUSES.map(st =>
-    `<div class="crm-stat ${crmFilter===st.key?'on':''}" onclick="crmSetFilter('${st.key}')"><b>${counts[st.key]}</b><span>${st.name}</span></div>`).join('');
-  document.getElementById('crm-filter').innerHTML = [{key:'all',name:'Wszystkie'}, ...CRM_STATUSES].map(st =>
-    `<button class="btn ${crmFilter===st.key?'btn-primary':'btn-ghost'}" style="font-size:11px;padding:5px 10px" onclick="crmSetFilter('${st.key}')">${st.name}</button>`).join('');
-  const rows = crmThreads.filter(t => crmFilter === 'all' || crmStatusOf(t)?.key === crmFilter);
-  document.getElementById('crm-list').innerHTML = rows.length ? rows.map(t => `
-    <div class="crm-row" data-id="${t.id}" onclick="crmOpen('${t.id}')">
-      <div class="t"><span>${crmEsc(t.who)}</span>${crmBadge(crmStatusOf(t))}</div>
-      <div class="s"><b>${crmEsc(t.subject)}</b> — ${crmEsc(t.snippet)}</div>
-      <div class="s">${t.date.toLocaleDateString('pl-PL')} · ${t.count} wiad. · ${t.lastFromMe ? 'czeka na odpowiedź klienta' : '<b style="color:var(--accent)">klient czeka na Ciebie</b>'}</div>
-    </div>`).join('') : '<div class="empty">Brak rozmów z tym statusem. Dodaj rozmowę wyszukiwarką powyżej albo nadaj etykietę DW/… w Gmailu.</div>';
-}
-function crmSetFilter(k) { crmFilter = crmFilter === k ? 'all' : k; crmRender(); }
-
-function crmDecode(data) {
-  try { const bin = atob(data.replace(/-/g,'+').replace(/_/g,'/')); return new TextDecoder('utf-8').decode(Uint8Array.from(bin, c => c.charCodeAt(0))); } catch(e) { return ''; }
-}
-function crmBody(payload) {
-  const find = (p, type) => { if (!p) return null; if (p.mimeType === type && p.body?.data) return p.body.data; for (const c of (p.parts||[])) { const r = find(c, type); if (r) return r; } return null; };
-  let txt = find(payload, 'text/plain');
-  if (txt) return crmDecode(txt);
-  const html = find(payload, 'text/html');
-  if (html) { const d = document.createElement('div'); d.innerHTML = crmDecode(html); return d.textContent; }
-  return '';
-}
-function crmTrimQuote(text) { // ucinamy cytowana historie ("W dniu ... napisal:") — pelna tresc jest w Gmailu
-  const i = text.search(/\n(W dniu .{5,80}napisał|On .{5,80}wrote|-----Original Message|> )/);
-  return (i > 40 ? text.slice(0, i) : text).trim();
-}
-
-async function crmOpen(id) {
-  document.querySelectorAll('.crm-row').forEach(r => r.classList.toggle('on', r.dataset.id === id));
-  const box = document.getElementById('crm-thread');
-  box.innerHTML = '<div class="loading"><div class="spinner"></div><span>Wczytywanie rozmowy...</span></div>';
-  try {
-    const t = await crmApi('threads/' + id + '?format=full');
-    const info = crmThreads.find(x => x.id === id) || {};
-    const st = crmStatusOf(info);
-    box.innerHTML = `
-      <div class="card-title" style="flex-wrap:wrap;gap:8px"><span>${crmEsc(info.subject||'')}</span>
-        <a class="btn btn-ghost" style="font-size:11px;text-decoration:none" target="_blank" rel="noopener" href="https://mail.google.com/mail/#all/${id}">Otwórz w Gmailu ↗</a></div>
-      <div style="font-size:12px;color:var(--text2);margin-bottom:10px">${crmEsc(info.who||'')} · ${crmEsc(info.email||'')}</div>
-      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px">${CRM_STATUSES.map(s =>
-        `<button class="btn ${st?.key===s.key?'btn-primary':'btn-ghost'}" style="font-size:11px;padding:5px 10px" onclick="crmSetStatus('${id}','${s.key}')">${s.name}</button>`).join('')}</div>
-      ${t.messages.map(m => { const from = crmHeader(m,'From'); const me = from.includes(crmMe);
-        return `<div class="crm-msg ${me?'me':''}"><div class="h"><b>${me ? 'Ty' : crmEsc(crmWho(from))}</b><span>${new Date(+m.internalDate).toLocaleString('pl-PL')}</span></div>
-          <div class="b">${crmEsc(crmTrimQuote(crmBody(m.payload)) || m.snippet || '')}</div></div>`; }).join('')}`;
-  } catch(e) { box.innerHTML = `<div class="empty">Błąd: ${crmEsc(e.message)}</div>`; }
-}
-
-async function crmSetStatus(id, key) {
-  try {
-    await crmApi('threads/' + id + '/modify', {method:'POST', body: JSON.stringify({
-      addLabelIds: [crmLabelIds[key]],
-      removeLabelIds: CRM_STATUSES.filter(s => s.key !== key).map(s => crmLabelIds[s.key])})});
-    const t = crmThreads.find(x => x.id === id);
-    if (t) { t.labelIds = (t.labelIds||[]).filter(l => !Object.values(crmLabelIds).includes(l)).concat(crmLabelIds[key]); crmRender(); }
-    else { await crmLoad(); }
-    crmOpen(id);
-  } catch(e) { alert(e.message); }
-}
-
-async function crmSearch() {
-  const q = document.getElementById('crm-q').value.trim(), box = document.getElementById('crm-search');
-  if (!q) return;
-  if (!crmToken) { box.innerHTML = '<div class="empty">Najpierw połącz Gmail.</div>'; return; }
-  box.innerHTML = '<div class="loading"><div class="spinner"></div><span>Szukam...</span></div>';
-  try {
-    const r = await crmApi('threads?maxResults=10&q=' + encodeURIComponent(q));
-    const items = [];
-    for (const th of (r.threads||[])) {
-      const t = await crmApi('threads/' + th.id + '?format=metadata&metadataHeaders=From&metadataHeaders=Subject');
-      const m = t.messages[0];
-      items.push(`<div class="crm-row" style="cursor:default"><div class="t"><span>${crmEsc(crmWho(crmHeader(m,'From')))} — ${crmEsc(crmHeader(m,'Subject')||'(bez tematu)')}</span>
-        <button class="btn btn-primary" style="font-size:11px;padding:4px 10px" onclick="crmAdd('${th.id}')">Dodaj jako Rozpoczęta</button></div>
-        <div class="s">${crmEsc(t.messages[t.messages.length-1].snippet||'')}</div></div>`);
-    }
-    box.innerHTML = items.join('') || '<div class="empty">Nic nie znaleziono.</div>';
-  } catch(e) { box.innerHTML = `<div class="empty">Błąd: ${crmEsc(e.message)}</div>`; }
-}
-async function crmAdd(id) { await crmSetStatus(id, 'start'); document.getElementById('crm-search').innerHTML = ''; }
-
 // ── WZMIANKI W SIECI + KONKURENCJA (data/mentions_log.json z workflow) ──
 async function loadMentions(site) {
   const el = document.getElementById(`mentions-${site.id}`);
@@ -1332,25 +1142,6 @@ function renderProfile(site) {
       </div>
     </div>
     ` : ''}
-
-    ${site.id==='directwebs' ? `<div id="tab-contacts" class="tab-panel">
-      <div class="card" style="margin-bottom:16px">
-        <div class="card-title">💬 Kontakty i rozmowy <span style="display:flex;gap:8px">
-          <button class="btn btn-ghost" style="font-size:11px" onclick="crmLoad()">🔄 Odśwież</button>
-          <button class="btn btn-primary" style="font-size:11px" id="crm-login" onclick="crmLogin()">Połącz Gmail</button></span></div>
-        <div style="font-size:12px;color:var(--text2);line-height:1.5">Rozmowy czytane są na żywo z Twojego Gmaila (konto z directwebs.pl). Status to etykieta w Gmailu: <b>DW/Rozpoczęta</b>, <b>DW/W trakcie</b>, <b>DW/Pozyskana</b>, <b>DW/Utracona</b>. Nic nie jest zapisywane na tej stronie.</div>
-        <div id="crm-stats" class="crm-stats"></div>
-      </div>
-      <div class="card" style="margin-bottom:16px">
-        <div class="card-title">➕ Dodaj rozmowę z Gmaila</div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap"><input class="form-input" id="crm-q" style="flex:1;min-width:200px" placeholder="np. adres e-mail klienta, nazwa firmy albo temat" onkeydown="if(event.key==='Enter')crmSearch()"><button class="btn btn-ghost" onclick="crmSearch()">Szukaj</button></div>
-        <div id="crm-search"></div>
-      </div>
-      <div class="crm-wrap">
-        <div class="card"><div class="crm-filter" id="crm-filter"></div><div id="crm-list"><div class="empty">Kliknij „Połącz Gmail”, aby wczytać rozmowy.</div></div></div>
-        <div class="card" id="crm-thread"><div class="empty">Wybierz rozmowę z listy, aby zobaczyć całą korespondencję.</div></div>
-      </div>
-    </div>` : ''}
 
     <div id="tab-settings" class="tab-panel">
       <div class="card" style="max-width:540px">
