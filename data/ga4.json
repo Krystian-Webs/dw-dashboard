@@ -1,14 +1,14 @@
 {
-  "updated": "2026-10-06 18:24",
+  "updated": "2026-10-07 11:16",
   "property_id": "511078398",
   "summary": {
     "biezace": {
-      "activeUsers": 44.0,
-      "newUsers": 43.0,
-      "sessions": 47.0,
-      "screenPageViews": 74.0,
-      "engagementRate": 0.5319,
-      "averageSessionDuration": 34.632
+      "activeUsers": 46.0,
+      "newUsers": 44.0,
+      "sessions": 50.0,
+      "screenPageViews": 86.0,
+      "engagementRate": 0.52,
+      "averageSessionDuration": 42.1766
     },
     "poprzednie": {
       "activeUsers": 33.0,
@@ -16,15 +16,10 @@
       "sessions": 36.0,
       "screenPageViews": 48.0,
       "engagementRate": 0.3056,
-      "averageSessionDuration": 44.7657
+      "averageSessionDuration": 44.6266
     }
   },
   "trend": [
-    {
-      "date": "20260708",
-      "users": 4.0,
-      "sessions": 4.0
-    },
     {
       "date": "20260709",
       "users": 3.0,
@@ -349,13 +344,18 @@
       "date": "20261005",
       "users": 2.0,
       "sessions": 2.0
+    },
+    {
+      "date": "20261006",
+      "users": 3.0,
+      "sessions": 4.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 25.0,
-      "activeUsers": 25.0
+      "sessions": 28.0,
+      "activeUsers": 27.0
     },
     {
       "sessionDefaultChannelGroup": "Referral",
@@ -371,6 +371,11 @@
       "sessionDefaultChannelGroup": "Organic Search",
       "sessions": 4.0,
       "activeUsers": 4.0
+    },
+    {
+      "sessionDefaultChannelGroup": "Unassigned",
+      "sessions": 1.0,
+      "activeUsers": 1.0
     }
   ],
   "pages": [
@@ -379,6 +384,12 @@
       "pageTitle": "Work in Progress -",
       "screenPageViews": 51.0,
       "activeUsers": 29.0
+    },
+    {
+      "pagePath": "/",
+      "pageTitle": "Strony internetowe Kłodzko – projektowanie stron WWW | DirectWebs",
+      "screenPageViews": 13.0,
+      "activeUsers": 3.0
     },
     {
       "pagePath": "/skontaktuj-sie-porozmawiajmy-o-twoim-projekcie/",
@@ -405,12 +416,6 @@
       "activeUsers": 2.0
     },
     {
-      "pagePath": "/polityka-prywatnosci-rodo/",
-      "pageTitle": "Polityka prywatności — ochrona danych i RODO | DirectWebs",
-      "screenPageViews": 2.0,
-      "activeUsers": 2.0
-    },
-    {
       "pagePath": "/wspolpraca-wordpress-strony-www/",
       "pageTitle": "Współpraca przy tworzeniu stron WordPress — DirectWebs",
       "screenPageViews": 2.0,
@@ -419,6 +424,12 @@
     {
       "pagePath": "/grafiki-halloween-z-chatgpt-pomysly-na-content-z-ai/",
       "pageTitle": "Grafiki Halloween z ChatGPT – pomysły na content z AI",
+      "screenPageViews": 1.0,
+      "activeUsers": 1.0
+    },
+    {
+      "pagePath": "/polityka-prywatnosci-rodo/",
+      "pageTitle": "Polityka prywatności — ochrona danych i RODO | DirectWebs",
       "screenPageViews": 1.0,
       "activeUsers": 1.0
     },
@@ -444,11 +455,11 @@
   "cities": [
     {
       "city": "Warsaw",
-      "activeUsers": 7.0
+      "activeUsers": 8.0
     },
     {
       "city": "Wroclaw",
-      "activeUsers": 4.0
+      "activeUsers": 5.0
     },
     {
       "city": "Ashburn",
