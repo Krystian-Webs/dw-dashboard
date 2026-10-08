@@ -70,6 +70,17 @@
   .post-badge{font-size:10px;padding:2px 8px;border-radius:20px;background:rgba(29,158,117,.1);color:var(--green);border:1px solid rgba(29,158,117,.25)}
   .badge{font-size:10px;padding:2px 7px;border-radius:20px;font-weight:500}
   .badge-purple{background:rgba(108,99,255,.12);color:var(--accent);border:1px solid rgba(108,99,255,.25)}
+  .lead{border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:10px;padding:14px;margin-bottom:12px;background:var(--surface)}
+  .lead-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+  .lead-name{font-size:14px;font-weight:600}
+  .lead-meta{font-size:11px;color:var(--text3);margin-top:2px;word-break:break-word}
+  .lead-subject{font-size:13px;font-weight:500;margin-top:10px}
+  .lead-msg{font-size:13px;color:var(--text2);margin-top:6px;white-space:pre-wrap;line-height:1.5}
+  .lead-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+  .lead-actions a{text-decoration:none}
+  .lead-note{margin-top:10px;min-height:38px;resize:vertical;font-size:12px}
+  .lead-select{font-size:11px;padding:5px 8px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-weight:500}
+  .lead-count{display:inline-block;min-width:18px;padding:0 6px;margin-left:4px;border-radius:9px;background:var(--accent);color:#fff;font-size:10px;line-height:18px;text-align:center}
   .seo-table{width:100%;border-collapse:collapse}
   .seo-table th{text-align:left;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;padding:0 12px 10px 0;border-bottom:1px solid var(--border)}
   .seo-table td{padding:10px 12px 10px 0;font-size:12px;border-bottom:1px solid var(--border);vertical-align:middle}
@@ -218,6 +229,14 @@ function clearToken(siteId) {
 }
 
 // ── RENDER SIDEBAR ─────────────────────────────────
+var leadsData = null, leadsNewCount = 0;
+const LEAD_STATUSES = {
+  nowe:{label:'🆕 Nowe', color:'#6c63ff'},
+  w_rozmowie:{label:'💬 W rozmowie', color:'#e0a82e'},
+  oferta:{label:'📄 Wysłana oferta', color:'#00b894'},
+  wygrane:{label:'✅ Wygrane', color:'#1d9e75'},
+  przegrane:{label:'✖️ Przegrane', color:'#9b9ba6'},
+};
 const NAV_ITEMS = [
   {id:'overview', icon:'📊', label:'Przegląd'},
   {id:'seo', icon:'🔍', label:'SEO stron'},
@@ -246,7 +265,10 @@ function renderSidebarNav() {
   const navWrap = document.getElementById('sidebar-nav-wrap');
   if (!activeSite) { navWrap.innerHTML = ''; return; }
   let items = [...NAV_ITEMS];
-  if (activeSite.id === 'directwebs') items.push({id:'airank', icon:'🤖', label:'AI & Ranking', cls:'airank'});
+  if (activeSite.id === 'directwebs') {
+    items.push({id:'airank', icon:'🤖', label:'AI & Ranking', cls:'airank'});
+    items.splice(1, 0, {id:'leads', icon:'📨', label:'Zapytania' + (leadsNewCount ? ` <span class="lead-count">${leadsNewCount}</span>` : '')});
+  }
   navWrap.innerHTML = `<div class="sidebar-section-label">${activeSite.name}</div>` +
     items.map(it => `<div class="nav-item ${it.cls||''} ${activeTab===it.id?'active':''}" onclick="switchTab('${it.id}', this)">${it.icon} ${it.label}</div>`).join('');
 }
@@ -266,7 +288,7 @@ function selectSite(site) {
   if (site.wpUser && site.wpPass) loadWpData(site);
   if (site.seoToken) loadSeoStatus(site);
   // Widoczność w AI i wzmianki nie wymagają logowania Google — dane z workflow
-  if (site.id === 'directwebs') setTimeout(() => { loadAiVisibility(site); loadMentions(site); loadGa4(site); }, 0);
+  if (site.id === 'directwebs') setTimeout(() => { loadAiVisibility(site); loadMentions(site); loadGa4(site); loadLeads(site); }, 0);
   let token = getToken(site.id);
   if (token) {
     loadGscData(site, token);
@@ -1012,6 +1034,122 @@ async function loadSeoStatus(site) {
   }
 }
 
+// ── ZAPYTANIA (Flamingo, na żywo z WordPressa) ─────
+// Dane osobowe pobierane tylko do pamięci przeglądarki — nie trafiają do repozytorium ani localStorage.
+async function loadLeads(site) {
+  const el = document.getElementById(`leads-${site.id}`);
+  if (!el) return;
+  if (!site.wpUser || !site.wpPass) {
+    el.innerHTML = '<div class="empty">Wpisz login i hasło aplikacji WordPress w ⚙️ Ustawieniach, żeby zobaczyć zapytania.</div>';
+    return;
+  }
+  el.innerHTML = '<div class="loading"><div class="spinner"></div><span>Pobieranie zapytań...</span></div>';
+  try {
+    const res = await fetch(`${site.wpUrl}/wp-json/directwebs/v1/leads?per_page=200`,
+      {headers:{'Authorization':`Basic ${btoa(`${site.wpUser}:${site.wpPass}`)}`}});
+    if (res.status === 404) {
+      const j = await res.json().catch(()=>({}));
+      el.innerHTML = `<div class="empty">${j.code==='no_flamingo' ? 'Włącz wtyczkę Flamingo w WordPressie.' : 'Brak fragmentu „DirectWebs — zapytania” w WPCode (endpoint /directwebs/v1/leads).'}</div>`;
+      return;
+    }
+    if (res.status === 401 || res.status === 403) {
+      el.innerHTML = '<div class="empty">Brak dostępu — sprawdź login i hasło aplikacji w ⚙️ Ustawieniach (konto administratora).</div>';
+      return;
+    }
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    leadsData = await res.json();
+    renderLeads();
+  } catch(e) {
+    el.innerHTML = `<div class="empty">Błąd połączenia: ${leadEsc(e.message)}</div>`;
+  }
+}
+
+function leadEsc(s) {
+  return String(s ?? '').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function leadPhone(l) {
+  for (const [k,v] of Object.entries(l.fields||{})) if (/tel|phone|telefon/i.test(k) && v) return v;
+  return '';
+}
+
+function leadSource(l) {
+  if (!l.page) return '';
+  try { const u = new URL(l.page); return u.pathname === '/' ? 'Strona główna' : decodeURIComponent(u.pathname); }
+  catch(e) { return l.page; }
+}
+
+function renderLeads() {
+  const site = activeSite;
+  if (!site) return;
+  const el = document.getElementById(`leads-${site.id}`);
+  const statsEl = document.getElementById(`leads-stats-${site.id}`);
+  if (!el) return;
+  const all = leadsData || [];
+  const now = Date.now(), DAY = 864e5;
+  const inDays = d => all.filter(l => now - new Date(l.date).getTime() <= d*DAY).length;
+  leadsNewCount = all.filter(l => l.status === 'nowe').length;
+  renderSidebarNav();
+  if (statsEl) statsEl.innerHTML = `
+    <div class="stat-card"><div class="stat-label">Nowe</div><div class="stat-value" style="color:var(--accent)">${leadsNewCount}</div><div class="stat-sub">czekają na odpowiedź</div></div>
+    <div class="stat-card"><div class="stat-label">Ostatnie 7 dni</div><div class="stat-value">${inDays(7)}</div><div class="stat-sub">zapytań</div></div>
+    <div class="stat-card"><div class="stat-label">Ostatnie 30 dni</div><div class="stat-value">${inDays(30)}</div><div class="stat-sub">zapytań</div></div>
+    <div class="stat-card"><div class="stat-label">Wygrane</div><div class="stat-value" style="color:var(--green)">${all.filter(l=>l.status==='wygrane').length}</div><div class="stat-sub">z ${all.length} wszystkich</div></div>`;
+
+  const filter = document.getElementById('leads-filter')?.value || '';
+  const list = filter ? all.filter(l => l.status === filter) : all;
+  if (!list.length) {
+    el.innerHTML = `<div class="empty">${all.length ? 'Brak zapytań z tym statusem.' : 'Jeszcze nie ma zapytań z formularzy. Pojawią się tu automatycznie.'}</div>`;
+    return;
+  }
+  const known = ['your-name','your-email','your-subject','your-message'];
+  el.innerHTML = list.map(l => {
+    const st = LEAD_STATUSES[l.status] || LEAD_STATUSES.nowe;
+    const phone = leadPhone(l);
+    const msg = l.fields['your-message'] || '';
+    const extra = Object.entries(l.fields).filter(([k,v]) => v && !known.includes(k) && !/tel|phone|telefon/i.test(k));
+    const subj = encodeURIComponent('Re: ' + (l.subject || 'Zapytanie ze strony directwebs.pl'));
+    const date = new Date(l.date).toLocaleString('pl-PL', {day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit'});
+    return `<div class="lead" style="border-left-color:${st.color}">
+      <div class="lead-head">
+        <div>
+          <div class="lead-name">${leadEsc(l.name || l.email || 'Bez imienia')}</div>
+          <div class="lead-meta">${[date, leadSource(l), l.form].filter(Boolean).map(leadEsc).join(' · ')}</div>
+        </div>
+        <select class="lead-select" onchange="saveLead(${l.id}, {status:this.value})" style="color:${st.color}">
+          ${Object.entries(LEAD_STATUSES).map(([k,v])=>`<option value="${k}" ${k===l.status?'selected':''}>${v.label}</option>`).join('')}
+        </select>
+      </div>
+      ${l.subject ? `<div class="lead-subject">${leadEsc(l.subject)}</div>` : ''}
+      ${msg ? `<div class="lead-msg">${leadEsc(msg)}</div>` : ''}
+      ${extra.length ? `<div class="lead-meta" style="margin-top:6px">${extra.map(([k,v])=>`<b>${leadEsc(k)}:</b> ${leadEsc(v)}`).join(' · ')}</div>` : ''}
+      <div class="lead-actions">
+        ${l.email ? `<a class="btn btn-primary" style="font-size:11px" href="mailto:${encodeURIComponent(l.email)}?subject=${subj}">✉️ Odpowiedz</a>
+        <span class="lead-meta">${leadEsc(l.email)}</span>` : ''}
+        ${phone ? `<a class="btn btn-ghost" style="font-size:11px" href="tel:${leadEsc(phone.replace(/\s+/g,''))}">📞 ${leadEsc(phone)}</a>` : ''}
+      </div>
+      <textarea class="form-input lead-note" placeholder="Notatka (np. wysłana wycena 2500 zł, oddzwonić w piątek)" onchange="saveLead(${l.id}, {note:this.value})">${leadEsc(l.note)}</textarea>
+    </div>`;
+  }).join('');
+}
+
+async function saveLead(id, data) {
+  const site = activeSite;
+  const lead = (leadsData||[]).find(l => l.id === id);
+  try {
+    const res = await fetch(`${site.wpUrl}/wp-json/directwebs/v1/leads/${id}`, {
+      method:'POST',
+      headers:{'Authorization':`Basic ${btoa(`${site.wpUser}:${site.wpPass}`)}`, 'Content-Type':'application/json'},
+      body: JSON.stringify(data),
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    if (lead) Object.assign(lead, data);
+    if ('status' in data) renderLeads();
+  } catch(e) {
+    alert('Nie udało się zapisać zmian: ' + e.message);
+  }
+}
+
 // ── RENDER PROFILE ─────────────────────────────────
 function renderProfile(site) {
   const token = getToken(site.id);
@@ -1048,6 +1186,22 @@ function renderProfile(site) {
         <div id="ga4-${site.id}"><div class="loading"><div class="spinner"></div><span>Ładowanie...</span></div></div>
       </div>` : ''}
     </div>
+
+    ${site.id==='directwebs' ? `<div id="tab-leads" class="tab-panel">
+      <div class="stats-row" id="leads-stats-${site.id}"></div>
+      <div class="card">
+        <div class="card-title">📨 Zapytania ze strony
+          <span style="display:flex;gap:8px;align-items:center">
+            <select id="leads-filter" onchange="renderLeads()" class="lead-select">
+              <option value="">Wszystkie</option>
+              ${Object.entries(LEAD_STATUSES).map(([k,v])=>`<option value="${k}">${v.label}</option>`).join('')}
+            </select>
+            <button class="btn btn-ghost" style="font-size:11px" onclick="loadLeads(activeSite)">🔄 Odśwież</button>
+          </span>
+        </div>
+        <div id="leads-${site.id}"><div class="loading"><div class="spinner"></div><span>Pobieranie zapytań...</span></div></div>
+      </div>
+    </div>` : ''}
 
     <div id="tab-seo" class="tab-panel">
       <div class="card">
@@ -1191,6 +1345,7 @@ function saveSettings(siteId) {
   document.getElementById(`settings-msg-${siteId}`).innerHTML = '<span style="color:var(--green)">✅ Zapisano!</span>';
   if (site.wpUser && site.wpPass) loadWpData(site);
   if (site.seoToken) loadSeoStatus(site);
+  if (site.id === 'directwebs') loadLeads(site);
 }
 
 async function testWp(siteId) {
