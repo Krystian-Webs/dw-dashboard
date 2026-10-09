@@ -1039,21 +1039,21 @@ async function loadSeoStatus(site) {
 async function loadLeads(site) {
   const el = document.getElementById(`leads-${site.id}`);
   if (!el) return;
-  if (!site.wpUser || !site.wpPass) {
-    el.innerHTML = '<div class="empty">Wpisz login i hasło aplikacji WordPress w ⚙️ Ustawieniach, żeby zobaczyć zapytania.</div>';
+  if (!site.leadsToken) {
+    el.innerHTML = '<div class="empty">Wpisz „Token zapytań” w ⚙️ Ustawieniach (ten sam, który jest we fragmencie „DirectWebs — zapytania” w WPCode).</div>';
     return;
   }
   el.innerHTML = '<div class="loading"><div class="spinner"></div><span>Pobieranie zapytań...</span></div>';
   try {
-    const res = await fetch(`${site.wpUrl}/wp-json/directwebs/v1/leads?per_page=200`,
-      {headers:{'Authorization':`Basic ${btoa(`${site.wpUser}:${site.wpPass}`)}`}});
+    // Token w adresie zamiast nagłówka Authorization — prosty GET bez preflightu CORS (jak status SEO).
+    const res = await fetch(`${site.wpUrl}/wp-json/directwebs/v1/leads?per_page=200&token=${encodeURIComponent(site.leadsToken)}`);
     if (res.status === 404) {
       const j = await res.json().catch(()=>({}));
       el.innerHTML = `<div class="empty">${j.code==='no_flamingo' ? 'Włącz wtyczkę Flamingo w WordPressie.' : 'Brak fragmentu „DirectWebs — zapytania” w WPCode (endpoint /directwebs/v1/leads).'}</div>`;
       return;
     }
     if (res.status === 401 || res.status === 403) {
-      el.innerHTML = '<div class="empty">Brak dostępu — sprawdź login i hasło aplikacji w ⚙️ Ustawieniach (konto administratora).</div>';
+      el.innerHTML = '<div class="empty">Brak dostępu — token zapytań w ⚙️ Ustawieniach różni się od tego we fragmencie WPCode.</div>';
       return;
     }
     if (!res.ok) throw new Error('HTTP ' + res.status);
@@ -1137,10 +1137,10 @@ async function saveLead(id, data) {
   const site = activeSite;
   const lead = (leadsData||[]).find(l => l.id === id);
   try {
-    const res = await fetch(`${site.wpUrl}/wp-json/directwebs/v1/leads/${id}`, {
+    // Formularz (URLSearchParams) zamiast JSON — prosty POST bez preflightu CORS.
+    const res = await fetch(`${site.wpUrl}/wp-json/directwebs/v1/leads/${id}?token=${encodeURIComponent(site.leadsToken)}`, {
       method:'POST',
-      headers:{'Authorization':`Basic ${btoa(`${site.wpUser}:${site.wpPass}`)}`, 'Content-Type':'application/json'},
-      body: JSON.stringify(data),
+      body: new URLSearchParams(data),
     });
     if (!res.ok) throw new Error('HTTP ' + res.status);
     if (lead) Object.assign(lead, data);
@@ -1307,6 +1307,7 @@ function renderProfile(site) {
         <div class="form-group"><label class="form-label">WordPress Login</label><input class="form-input" id="s-wp-user" value="${site.wpUser||''}"></div>
         <div class="form-group"><label class="form-label">WordPress Application Password</label><input class="form-input" id="s-wp-pass" type="password" value="${site.wpPass||''}"></div>
         <div class="form-group"><label class="form-label">Token wtyczki DirectWebs SEO</label><input class="form-input" id="s-seo-token" type="password" value="${site.seoToken||''}"><div style="font-size:11px;color:var(--text3);margin-top:4px">Zapisywany tylko w tej przeglądarce.</div></div>
+        ${site.id==='directwebs' ? `<div class="form-group"><label class="form-label">Token zapytań (z fragmentu WPCode „DirectWebs — zapytania”)</label><input class="form-input" id="s-leads-token" type="password" value="${site.leadsToken||''}"><div style="font-size:11px;color:var(--text3);margin-top:4px">Zapisywany tylko w tej przeglądarce.</div></div>` : ''}
         <div style="display:flex;gap:8px;margin-top:8px">
           <button class="btn btn-primary" onclick="saveSettings('${site.id}')">💾 Zapisz</button>
           <button class="btn btn-ghost" onclick="testWp('${site.id}')">🔗 Testuj WP</button>
@@ -1339,6 +1340,8 @@ function saveSettings(siteId) {
   site.wpUser = document.getElementById('s-wp-user').value;
   site.wpPass = document.getElementById('s-wp-pass').value;
   site.seoToken = document.getElementById('s-seo-token').value;
+  const lt = document.getElementById('s-leads-token');
+  if (lt) site.leadsToken = lt.value.trim();
   localStorage.setItem('dw_sites2', JSON.stringify(sites));
   activeSite = site;
   renderSidebar();
