@@ -1,30 +1,25 @@
 {
-  "updated": "2026-10-09 11:27",
+  "updated": "2026-10-10 10:44",
   "property_id": "511078398",
   "summary": {
     "biezace": {
-      "activeUsers": 42.0,
-      "newUsers": 41.0,
+      "activeUsers": 41.0,
+      "newUsers": 39.0,
       "sessions": 47.0,
-      "screenPageViews": 83.0,
-      "engagementRate": 0.5319,
-      "averageSessionDuration": 44.9093
+      "screenPageViews": 106.0,
+      "engagementRate": 0.5745,
+      "averageSessionDuration": 53.9608
     },
     "poprzednie": {
-      "activeUsers": 36.0,
-      "newUsers": 34.0,
-      "sessions": 40.0,
-      "screenPageViews": 52.0,
-      "engagementRate": 0.35,
-      "averageSessionDuration": 41.9504
+      "activeUsers": 38.0,
+      "newUsers": 35.0,
+      "sessions": 41.0,
+      "screenPageViews": 53.0,
+      "engagementRate": 0.3171,
+      "averageSessionDuration": 34.8256
     }
   },
   "trend": [
-    {
-      "date": "20260711",
-      "users": 2.0,
-      "sessions": 2.0
-    },
     {
       "date": "20260713",
       "users": 2.0,
@@ -349,13 +344,18 @@
       "date": "20261008",
       "users": 1.0,
       "sessions": 1.0
+    },
+    {
+      "date": "20261009",
+      "users": 1.0,
+      "sessions": 2.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
       "sessions": 26.0,
-      "activeUsers": 24.0
+      "activeUsers": 23.0
     },
     {
       "sessionDefaultChannelGroup": "Referral",
@@ -377,14 +377,32 @@
     {
       "pagePath": "/",
       "pageTitle": "Work in Progress -",
-      "screenPageViews": 47.0,
-      "activeUsers": 25.0
+      "screenPageViews": 46.0,
+      "activeUsers": 24.0
     },
     {
       "pagePath": "/",
       "pageTitle": "Strony internetowe Kłodzko – projektowanie stron WWW | DirectWebs",
-      "screenPageViews": 15.0,
-      "activeUsers": 4.0
+      "screenPageViews": 25.0,
+      "activeUsers": 5.0
+    },
+    {
+      "pagePath": "/cennik/",
+      "pageTitle": "Cennik stron internetowych 2026 – od 1000 zł | DirectWebs Kłodzko",
+      "screenPageViews": 5.0,
+      "activeUsers": 1.0
+    },
+    {
+      "pagePath": "/oferta/",
+      "pageTitle": "Oferta – strony WWW, SEO i aplikacje dla firm | DirectWebs Kłodzko",
+      "screenPageViews": 5.0,
+      "activeUsers": 1.0
+    },
+    {
+      "pagePath": "/projektowanie-stron-internetowych-dla-firm/",
+      "pageTitle": "Projektowanie stron internetowych dla firm – DirectWebs",
+      "screenPageViews": 5.0,
+      "activeUsers": 1.0
     },
     {
       "pagePath": "/skontaktuj-sie-porozmawiajmy-o-twoim-projekcie/",
@@ -419,12 +437,6 @@
     {
       "pagePath": "/grafiki-halloween-z-chatgpt-pomysly-na-content-z-ai/",
       "pageTitle": "Grafiki Halloween z ChatGPT – pomysły na content z AI",
-      "screenPageViews": 1.0,
-      "activeUsers": 1.0
-    },
-    {
-      "pagePath": "/polityka-prywatnosci-rodo/",
-      "pageTitle": "Polityka prywatności — ochrona danych i RODO | DirectWebs",
       "screenPageViews": 1.0,
       "activeUsers": 1.0
     },
@@ -469,6 +481,10 @@
       "activeUsers": 2.0
     },
     {
+      "city": "Klodzko",
+      "activeUsers": 2.0
+    },
+    {
       "city": "New York",
       "activeUsers": 2.0
     },
@@ -478,10 +494,6 @@
     },
     {
       "city": "Altoona",
-      "activeUsers": 1.0
-    },
-    {
-      "city": "Bydgoszcz",
       "activeUsers": 1.0
     }
   ]
