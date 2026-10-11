@@ -1,22 +1,22 @@
 {
-  "updated": "2026-10-10 10:44",
+  "updated": "2026-10-11 10:57",
   "property_id": "511078398",
   "summary": {
     "biezace": {
-      "activeUsers": 41.0,
-      "newUsers": 39.0,
-      "sessions": 47.0,
-      "screenPageViews": 106.0,
-      "engagementRate": 0.5745,
-      "averageSessionDuration": 53.9608
+      "activeUsers": 44.0,
+      "newUsers": 42.0,
+      "sessions": 50.0,
+      "screenPageViews": 140.0,
+      "engagementRate": 0.62,
+      "averageSessionDuration": 53.4078
     },
     "poprzednie": {
       "activeUsers": 38.0,
-      "newUsers": 35.0,
+      "newUsers": 36.0,
       "sessions": 41.0,
       "screenPageViews": 53.0,
-      "engagementRate": 0.3171,
-      "averageSessionDuration": 34.8256
+      "engagementRate": 0.2927,
+      "averageSessionDuration": 23.943
     }
   },
   "trend": [
@@ -349,18 +349,18 @@
       "date": "20261009",
       "users": 1.0,
       "sessions": 2.0
+    },
+    {
+      "date": "20261010",
+      "users": 4.0,
+      "sessions": 4.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 26.0,
-      "activeUsers": 23.0
-    },
-    {
-      "sessionDefaultChannelGroup": "Referral",
-      "sessions": 9.0,
-      "activeUsers": 6.0
+      "sessions": 29.0,
+      "activeUsers": 26.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
@@ -368,23 +368,40 @@
       "activeUsers": 8.0
     },
     {
+      "sessionDefaultChannelGroup": "Referral",
+      "sessions": 8.0,
+      "activeUsers": 5.0
+    },
+    {
       "sessionDefaultChannelGroup": "Organic Search",
-      "sessions": 4.0,
-      "activeUsers": 4.0
+      "sessions": 5.0,
+      "activeUsers": 5.0
     }
   ],
   "pages": [
     {
       "pagePath": "/",
       "pageTitle": "Work in Progress -",
-      "screenPageViews": 46.0,
-      "activeUsers": 24.0
+      "screenPageViews": 45.0,
+      "activeUsers": 23.0
     },
     {
       "pagePath": "/",
       "pageTitle": "Strony internetowe Kłodzko – projektowanie stron WWW | DirectWebs",
       "screenPageViews": 25.0,
       "activeUsers": 5.0
+    },
+    {
+      "pagePath": "/jak-tworzyc-strony-internetowe-poradnik/",
+      "pageTitle": "Jak tworzyć strony internetowe — kompletny poradnik 2025",
+      "screenPageViews": 19.0,
+      "activeUsers": 4.0
+    },
+    {
+      "pagePath": "/",
+      "pageTitle": "Strony internetowe dla firm od 1000 zł | DirectWebs",
+      "screenPageViews": 10.0,
+      "activeUsers": 1.0
     },
     {
       "pagePath": "/cennik/",
@@ -399,8 +416,20 @@
       "activeUsers": 1.0
     },
     {
+      "pagePath": "/portfolio-projektow-i-stron-internetowych/",
+      "pageTitle": "Portfolio: 28 stron internetowych i projektów | DirectWebs",
+      "screenPageViews": 5.0,
+      "activeUsers": 1.0
+    },
+    {
       "pagePath": "/projektowanie-stron-internetowych-dla-firm/",
       "pageTitle": "Projektowanie stron internetowych dla firm – DirectWebs",
+      "screenPageViews": 5.0,
+      "activeUsers": 1.0
+    },
+    {
+      "pagePath": "/projektowanie-stron-wordpress-o-mnie/",
+      "pageTitle": "O mnie: DirectWebs, ponad 25 stron dla firm",
       "screenPageViews": 5.0,
       "activeUsers": 1.0
     },
@@ -409,12 +438,6 @@
       "pageTitle": "Skontaktuj się — porozmawiajmy o Twoim projekcie",
       "screenPageViews": 5.0,
       "activeUsers": 3.0
-    },
-    {
-      "pagePath": "/jak-tworzyc-strony-internetowe-poradnik/",
-      "pageTitle": "Jak tworzyć strony internetowe — kompletny poradnik 2025",
-      "screenPageViews": 4.0,
-      "activeUsers": 1.0
     },
     {
       "pagePath": "/portfolio-projektow-i-stron-internetowych/",
@@ -445,18 +468,6 @@
       "pageTitle": "Tworzę strony WordPress i projekty graficzne, które działają",
       "screenPageViews": 1.0,
       "activeUsers": 1.0
-    },
-    {
-      "pagePath": "/skontaktuj-sie-porozmawiajmy-o-twoim-projekcie/",
-      "pageTitle": "Kontakt – bezpłatna wycena strony internetowej | DirectWebs Kłodzko",
-      "screenPageViews": 1.0,
-      "activeUsers": 1.0
-    },
-    {
-      "pagePath": "/szkolenia-ai-online/",
-      "pageTitle": "Page Not Found -",
-      "screenPageViews": 1.0,
-      "activeUsers": 1.0
     }
   ],
   "cities": [
@@ -465,8 +476,12 @@
       "activeUsers": 6.0
     },
     {
+      "city": "Klodzko",
+      "activeUsers": 3.0
+    },
+    {
       "city": "Wroclaw",
-      "activeUsers": 4.0
+      "activeUsers": 3.0
     },
     {
       "city": "Ashburn",
@@ -478,10 +493,6 @@
     },
     {
       "city": "Frankfurt am Main",
-      "activeUsers": 2.0
-    },
-    {
-      "city": "Klodzko",
       "activeUsers": 2.0
     },
     {
