@@ -1,14 +1,14 @@
 {
-  "updated": "2026-10-11 10:57",
+  "updated": "2026-10-12 12:19",
   "property_id": "511078398",
   "summary": {
     "biezace": {
-      "activeUsers": 44.0,
-      "newUsers": 42.0,
-      "sessions": 50.0,
-      "screenPageViews": 140.0,
-      "engagementRate": 0.62,
-      "averageSessionDuration": 53.4078
+      "activeUsers": 45.0,
+      "newUsers": 43.0,
+      "sessions": 52.0,
+      "screenPageViews": 150.0,
+      "engagementRate": 0.6346,
+      "averageSessionDuration": 52.0116
     },
     "poprzednie": {
       "activeUsers": 38.0,
@@ -20,11 +20,6 @@
     }
   },
   "trend": [
-    {
-      "date": "20260713",
-      "users": 2.0,
-      "sessions": 2.0
-    },
     {
       "date": "20260714",
       "users": 5.0,
@@ -354,13 +349,18 @@
       "date": "20261010",
       "users": 4.0,
       "sessions": 4.0
+    },
+    {
+      "date": "20261011",
+      "users": 2.0,
+      "sessions": 2.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 29.0,
-      "activeUsers": 26.0
+      "sessions": 30.0,
+      "activeUsers": 27.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
@@ -374,7 +374,7 @@
     },
     {
       "sessionDefaultChannelGroup": "Organic Search",
-      "sessions": 5.0,
+      "sessions": 6.0,
       "activeUsers": 5.0
     }
   ],
@@ -394,12 +394,18 @@
     {
       "pagePath": "/jak-tworzyc-strony-internetowe-poradnik/",
       "pageTitle": "Jak tworzyć strony internetowe — kompletny poradnik 2025",
-      "screenPageViews": 19.0,
-      "activeUsers": 4.0
+      "screenPageViews": 24.0,
+      "activeUsers": 5.0
     },
     {
       "pagePath": "/",
       "pageTitle": "Strony internetowe dla firm od 1000 zł | DirectWebs",
+      "screenPageViews": 10.0,
+      "activeUsers": 1.0
+    },
+    {
+      "pagePath": "/projektowanie-stron-wordpress-o-mnie/",
+      "pageTitle": "O mnie: DirectWebs, ponad 25 stron dla firm",
       "screenPageViews": 10.0,
       "activeUsers": 1.0
     },
@@ -424,12 +430,6 @@
     {
       "pagePath": "/projektowanie-stron-internetowych-dla-firm/",
       "pageTitle": "Projektowanie stron internetowych dla firm – DirectWebs",
-      "screenPageViews": 5.0,
-      "activeUsers": 1.0
-    },
-    {
-      "pagePath": "/projektowanie-stron-wordpress-o-mnie/",
-      "pageTitle": "O mnie: DirectWebs, ponad 25 stron dla firm",
       "screenPageViews": 5.0,
       "activeUsers": 1.0
     },
