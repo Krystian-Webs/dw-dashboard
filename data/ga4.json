@@ -1,30 +1,25 @@
 {
-  "updated": "2026-10-12 12:19",
+  "updated": "2026-10-13 12:03",
   "property_id": "511078398",
   "summary": {
     "biezace": {
-      "activeUsers": 45.0,
-      "newUsers": 43.0,
-      "sessions": 52.0,
-      "screenPageViews": 150.0,
-      "engagementRate": 0.6346,
-      "averageSessionDuration": 52.0116
+      "activeUsers": 42.0,
+      "newUsers": 40.0,
+      "sessions": 49.0,
+      "screenPageViews": 146.0,
+      "engagementRate": 0.6327,
+      "averageSessionDuration": 53.7139
     },
     "poprzednie": {
-      "activeUsers": 38.0,
-      "newUsers": 36.0,
-      "sessions": 41.0,
-      "screenPageViews": 53.0,
-      "engagementRate": 0.2927,
-      "averageSessionDuration": 23.943
+      "activeUsers": 39.0,
+      "newUsers": 37.0,
+      "sessions": 42.0,
+      "screenPageViews": 55.0,
+      "engagementRate": 0.3333,
+      "averageSessionDuration": 24.8521
     }
   },
   "trend": [
-    {
-      "date": "20260714",
-      "users": 5.0,
-      "sessions": 5.0
-    },
     {
       "date": "20260715",
       "users": 1.0,
@@ -359,13 +354,8 @@
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 30.0,
-      "activeUsers": 27.0
-    },
-    {
-      "sessionDefaultChannelGroup": "Organic Social",
-      "sessions": 8.0,
-      "activeUsers": 8.0
+      "sessions": 29.0,
+      "activeUsers": 26.0
     },
     {
       "sessionDefaultChannelGroup": "Referral",
@@ -373,17 +363,22 @@
       "activeUsers": 5.0
     },
     {
+      "sessionDefaultChannelGroup": "Organic Social",
+      "sessions": 7.0,
+      "activeUsers": 7.0
+    },
+    {
       "sessionDefaultChannelGroup": "Organic Search",
-      "sessions": 6.0,
-      "activeUsers": 5.0
+      "sessions": 5.0,
+      "activeUsers": 4.0
     }
   ],
   "pages": [
     {
       "pagePath": "/",
       "pageTitle": "Work in Progress -",
-      "screenPageViews": 45.0,
-      "activeUsers": 23.0
+      "screenPageViews": 44.0,
+      "activeUsers": 22.0
     },
     {
       "pagePath": "/",
@@ -434,14 +429,14 @@
       "activeUsers": 1.0
     },
     {
-      "pagePath": "/skontaktuj-sie-porozmawiajmy-o-twoim-projekcie/",
-      "pageTitle": "Skontaktuj się — porozmawiajmy o Twoim projekcie",
-      "screenPageViews": 5.0,
-      "activeUsers": 3.0
-    },
-    {
       "pagePath": "/portfolio-projektow-i-stron-internetowych/",
       "pageTitle": "Portfolio projektów i stron internetowych | DirectWebs",
+      "screenPageViews": 3.0,
+      "activeUsers": 2.0
+    },
+    {
+      "pagePath": "/skontaktuj-sie-porozmawiajmy-o-twoim-projekcie/",
+      "pageTitle": "Skontaktuj się — porozmawiajmy o Twoim projekcie",
       "screenPageViews": 3.0,
       "activeUsers": 2.0
     },
@@ -473,7 +468,7 @@
   "cities": [
     {
       "city": "Warsaw",
-      "activeUsers": 6.0
+      "activeUsers": 5.0
     },
     {
       "city": "Klodzko",
@@ -485,10 +480,6 @@
     },
     {
       "city": "Ashburn",
-      "activeUsers": 2.0
-    },
-    {
-      "city": "Dublin",
       "activeUsers": 2.0
     },
     {
@@ -505,6 +496,10 @@
     },
     {
       "city": "Altoona",
+      "activeUsers": 1.0
+    },
+    {
+      "city": "Boardman",
       "activeUsers": 1.0
     }
   ]
