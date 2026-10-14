@@ -1,30 +1,25 @@
 {
-  "updated": "2026-10-13 12:03",
+  "updated": "2026-10-14 09:39",
   "property_id": "511078398",
   "summary": {
     "biezace": {
-      "activeUsers": 42.0,
-      "newUsers": 40.0,
-      "sessions": 49.0,
-      "screenPageViews": 146.0,
-      "engagementRate": 0.6327,
-      "averageSessionDuration": 53.7139
+      "activeUsers": 43.0,
+      "newUsers": 41.0,
+      "sessions": 50.0,
+      "screenPageViews": 155.0,
+      "engagementRate": 0.64,
+      "averageSessionDuration": 51.7035
     },
     "poprzednie": {
-      "activeUsers": 39.0,
-      "newUsers": 37.0,
-      "sessions": 42.0,
-      "screenPageViews": 55.0,
+      "activeUsers": 37.0,
+      "newUsers": 36.0,
+      "sessions": 39.0,
+      "screenPageViews": 51.0,
       "engagementRate": 0.3333,
-      "averageSessionDuration": 24.8521
+      "averageSessionDuration": 28.0472
     }
   },
   "trend": [
-    {
-      "date": "20260715",
-      "users": 1.0,
-      "sessions": 1.0
-    },
     {
       "date": "20260717",
       "users": 5.0,
@@ -349,13 +344,18 @@
       "date": "20261011",
       "users": 2.0,
       "sessions": 2.0
+    },
+    {
+      "date": "20261013",
+      "users": 2.0,
+      "sessions": 2.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 29.0,
-      "activeUsers": 26.0
+      "sessions": 31.0,
+      "activeUsers": 28.0
     },
     {
       "sessionDefaultChannelGroup": "Referral",
@@ -364,8 +364,8 @@
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
-      "sessions": 7.0,
-      "activeUsers": 7.0
+      "sessions": 6.0,
+      "activeUsers": 6.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Search",
@@ -395,8 +395,8 @@
     {
       "pagePath": "/",
       "pageTitle": "Strony internetowe dla firm od 1000 zł | DirectWebs",
-      "screenPageViews": 10.0,
-      "activeUsers": 1.0
+      "screenPageViews": 20.0,
+      "activeUsers": 3.0
     },
     {
       "pagePath": "/projektowanie-stron-wordpress-o-mnie/",
@@ -429,12 +429,6 @@
       "activeUsers": 1.0
     },
     {
-      "pagePath": "/portfolio-projektow-i-stron-internetowych/",
-      "pageTitle": "Portfolio projektów i stron internetowych | DirectWebs",
-      "screenPageViews": 3.0,
-      "activeUsers": 2.0
-    },
-    {
       "pagePath": "/skontaktuj-sie-porozmawiajmy-o-twoim-projekcie/",
       "pageTitle": "Skontaktuj się — porozmawiajmy o Twoim projekcie",
       "screenPageViews": 3.0,
@@ -445,6 +439,12 @@
       "pageTitle": "Blog — WordPress, projekty graficzne i SEO | DirectWebs",
       "screenPageViews": 2.0,
       "activeUsers": 2.0
+    },
+    {
+      "pagePath": "/portfolio-projektow-i-stron-internetowych/",
+      "pageTitle": "Portfolio projektów i stron internetowych | DirectWebs",
+      "screenPageViews": 2.0,
+      "activeUsers": 1.0
     },
     {
       "pagePath": "/wspolpraca-wordpress-strony-www/",
@@ -468,7 +468,7 @@
   "cities": [
     {
       "city": "Warsaw",
-      "activeUsers": 5.0
+      "activeUsers": 6.0
     },
     {
       "city": "Klodzko",
