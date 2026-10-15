@@ -1,22 +1,22 @@
 {
-  "updated": "2026-10-14 09:39",
+  "updated": "2026-10-15 09:18",
   "property_id": "511078398",
   "summary": {
     "biezace": {
-      "activeUsers": 43.0,
-      "newUsers": 41.0,
-      "sessions": 50.0,
-      "screenPageViews": 155.0,
-      "engagementRate": 0.64,
-      "averageSessionDuration": 51.7035
+      "activeUsers": 48.0,
+      "newUsers": 46.0,
+      "sessions": 55.0,
+      "screenPageViews": 180.0,
+      "engagementRate": 0.6727,
+      "averageSessionDuration": 47.3378
     },
     "poprzednie": {
-      "activeUsers": 37.0,
-      "newUsers": 36.0,
-      "sessions": 39.0,
-      "screenPageViews": 51.0,
-      "engagementRate": 0.3333,
-      "averageSessionDuration": 28.0472
+      "activeUsers": 36.0,
+      "newUsers": 35.0,
+      "sessions": 38.0,
+      "screenPageViews": 50.0,
+      "engagementRate": 0.3421,
+      "averageSessionDuration": 28.7125
     }
   },
   "trend": [
@@ -349,18 +349,23 @@
       "date": "20261013",
       "users": 2.0,
       "sessions": 2.0
+    },
+    {
+      "date": "20261014",
+      "users": 6.0,
+      "sessions": 6.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 31.0,
-      "activeUsers": 28.0
+      "sessions": 35.0,
+      "activeUsers": 32.0
     },
     {
       "sessionDefaultChannelGroup": "Referral",
-      "sessions": 8.0,
-      "activeUsers": 5.0
+      "sessions": 9.0,
+      "activeUsers": 6.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
@@ -381,22 +386,22 @@
       "activeUsers": 22.0
     },
     {
+      "pagePath": "/jak-tworzyc-strony-internetowe-poradnik/",
+      "pageTitle": "Jak tworzyć strony internetowe — kompletny poradnik 2025",
+      "screenPageViews": 30.0,
+      "activeUsers": 7.0
+    },
+    {
       "pagePath": "/",
       "pageTitle": "Strony internetowe Kłodzko – projektowanie stron WWW | DirectWebs",
       "screenPageViews": 25.0,
       "activeUsers": 5.0
     },
     {
-      "pagePath": "/jak-tworzyc-strony-internetowe-poradnik/",
-      "pageTitle": "Jak tworzyć strony internetowe — kompletny poradnik 2025",
-      "screenPageViews": 24.0,
-      "activeUsers": 5.0
-    },
-    {
       "pagePath": "/",
       "pageTitle": "Strony internetowe dla firm od 1000 zł | DirectWebs",
-      "screenPageViews": 20.0,
-      "activeUsers": 3.0
+      "screenPageViews": 25.0,
+      "activeUsers": 4.0
     },
     {
       "pagePath": "/projektowanie-stron-wordpress-o-mnie/",
@@ -405,8 +410,20 @@
       "activeUsers": 1.0
     },
     {
+      "pagePath": "/blog-wordpress-projekty-graficzne-seo/",
+      "pageTitle": "Blog o stronach WWW, SEO i marketingu 2026 | DirectWebs",
+      "screenPageViews": 5.0,
+      "activeUsers": 1.0
+    },
+    {
       "pagePath": "/cennik/",
       "pageTitle": "Cennik stron internetowych 2026 – od 1000 zł | DirectWebs Kłodzko",
+      "screenPageViews": 5.0,
+      "activeUsers": 1.0
+    },
+    {
+      "pagePath": "/czy-warto-miec-strone-internetowa-jesli-mam-facebooka/",
+      "pageTitle": "Czy warto mieć stronę internetową jeśli mam facebooka: 2026 -",
       "screenPageViews": 5.0,
       "activeUsers": 1.0
     },
@@ -429,15 +446,15 @@
       "activeUsers": 1.0
     },
     {
+      "pagePath": "/strona-internetowa-biuro-nieruchomosci-piotrowski-krotoszyn/",
+      "pageTitle": "Jak stworzyliśmy stronę dla Piotrowski Krotoszyn -",
+      "screenPageViews": 5.0,
+      "activeUsers": 1.0
+    },
+    {
       "pagePath": "/skontaktuj-sie-porozmawiajmy-o-twoim-projekcie/",
       "pageTitle": "Skontaktuj się — porozmawiajmy o Twoim projekcie",
       "screenPageViews": 3.0,
-      "activeUsers": 2.0
-    },
-    {
-      "pagePath": "/blog-wordpress-projekty-graficzne-seo/",
-      "pageTitle": "Blog — WordPress, projekty graficzne i SEO | DirectWebs",
-      "screenPageViews": 2.0,
       "activeUsers": 2.0
     },
     {
@@ -451,24 +468,12 @@
       "pageTitle": "Współpraca przy tworzeniu stron WordPress — DirectWebs",
       "screenPageViews": 2.0,
       "activeUsers": 2.0
-    },
-    {
-      "pagePath": "/grafiki-halloween-z-chatgpt-pomysly-na-content-z-ai/",
-      "pageTitle": "Grafiki Halloween z ChatGPT – pomysły na content z AI",
-      "screenPageViews": 1.0,
-      "activeUsers": 1.0
-    },
-    {
-      "pagePath": "/projektowanie-stron-wordpress-o-mnie/",
-      "pageTitle": "Tworzę strony WordPress i projekty graficzne, które działają",
-      "screenPageViews": 1.0,
-      "activeUsers": 1.0
     }
   ],
   "cities": [
     {
       "city": "Warsaw",
-      "activeUsers": 6.0
+      "activeUsers": 8.0
     },
     {
       "city": "Klodzko",
@@ -487,10 +492,6 @@
       "activeUsers": 2.0
     },
     {
-      "city": "New York",
-      "activeUsers": 2.0
-    },
-    {
       "city": "Poznan",
       "activeUsers": 2.0
     },
@@ -500,6 +501,10 @@
     },
     {
       "city": "Boardman",
+      "activeUsers": 1.0
+    },
+    {
+      "city": "Council Bluffs",
       "activeUsers": 1.0
     }
   ]
