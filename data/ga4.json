@@ -1,30 +1,25 @@
 {
-  "updated": "2026-10-15 09:18",
+  "updated": "2026-10-16 09:12",
   "property_id": "511078398",
   "summary": {
     "biezace": {
       "activeUsers": 48.0,
       "newUsers": 46.0,
       "sessions": 55.0,
-      "screenPageViews": 180.0,
-      "engagementRate": 0.6727,
-      "averageSessionDuration": 47.3378
+      "screenPageViews": 188.0,
+      "engagementRate": 0.6909,
+      "averageSessionDuration": 47.5548
     },
     "poprzednie": {
-      "activeUsers": 36.0,
-      "newUsers": 35.0,
-      "sessions": 38.0,
-      "screenPageViews": 50.0,
-      "engagementRate": 0.3421,
-      "averageSessionDuration": 28.7125
+      "activeUsers": 37.0,
+      "newUsers": 36.0,
+      "sessions": 39.0,
+      "screenPageViews": 51.0,
+      "engagementRate": 0.359,
+      "averageSessionDuration": 28.0357
     }
   },
   "trend": [
-    {
-      "date": "20260717",
-      "users": 5.0,
-      "sessions": 6.0
-    },
     {
       "date": "20260719",
       "users": 1.0,
@@ -354,6 +349,11 @@
       "date": "20261014",
       "users": 6.0,
       "sessions": 6.0
+    },
+    {
+      "date": "20261015",
+      "users": 2.0,
+      "sessions": 2.0
     }
   ],
   "channels": [
@@ -382,8 +382,8 @@
     {
       "pagePath": "/",
       "pageTitle": "Work in Progress -",
-      "screenPageViews": 44.0,
-      "activeUsers": 22.0
+      "screenPageViews": 43.0,
+      "activeUsers": 21.0
     },
     {
       "pagePath": "/jak-tworzyc-strony-internetowe-poradnik/",
@@ -407,6 +407,12 @@
       "pagePath": "/projektowanie-stron-wordpress-o-mnie/",
       "pageTitle": "O mnie: DirectWebs, ponad 25 stron dla firm",
       "screenPageViews": 10.0,
+      "activeUsers": 1.0
+    },
+    {
+      "pagePath": "/aplikacje-dedykowane/",
+      "pageTitle": "Aplikacje dedykowane dla firm: wycena w 24 h | DirectWebs",
+      "screenPageViews": 5.0,
       "activeUsers": 1.0
     },
     {
@@ -452,21 +458,15 @@
       "activeUsers": 1.0
     },
     {
-      "pagePath": "/skontaktuj-sie-porozmawiajmy-o-twoim-projekcie/",
-      "pageTitle": "Skontaktuj się — porozmawiajmy o Twoim projekcie",
-      "screenPageViews": 3.0,
-      "activeUsers": 2.0
-    },
-    {
-      "pagePath": "/portfolio-projektow-i-stron-internetowych/",
-      "pageTitle": "Portfolio projektów i stron internetowych | DirectWebs",
-      "screenPageViews": 2.0,
+      "pagePath": "/wspolpraca-wordpress-strony-www/",
+      "pageTitle": "Współpraca przy tworzeniu stron WordPress 2026",
+      "screenPageViews": 5.0,
       "activeUsers": 1.0
     },
     {
-      "pagePath": "/wspolpraca-wordpress-strony-www/",
-      "pageTitle": "Współpraca przy tworzeniu stron WordPress — DirectWebs",
-      "screenPageViews": 2.0,
+      "pagePath": "/skontaktuj-sie-porozmawiajmy-o-twoim-projekcie/",
+      "pageTitle": "Skontaktuj się — porozmawiajmy o Twoim projekcie",
+      "screenPageViews": 3.0,
       "activeUsers": 2.0
     }
   ],
@@ -480,10 +480,6 @@
       "activeUsers": 3.0
     },
     {
-      "city": "Wroclaw",
-      "activeUsers": 3.0
-    },
-    {
       "city": "Ashburn",
       "activeUsers": 2.0
     },
@@ -492,7 +488,15 @@
       "activeUsers": 2.0
     },
     {
+      "city": "Lincoln",
+      "activeUsers": 2.0
+    },
+    {
       "city": "Poznan",
+      "activeUsers": 2.0
+    },
+    {
+      "city": "Wroclaw",
       "activeUsers": 2.0
     },
     {
@@ -501,10 +505,6 @@
     },
     {
       "city": "Boardman",
-      "activeUsers": 1.0
-    },
-    {
-      "city": "Council Bluffs",
       "activeUsers": 1.0
     }
   ]
