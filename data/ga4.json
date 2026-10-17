@@ -1,22 +1,22 @@
 {
-  "updated": "2026-10-16 09:12",
+  "updated": "2026-10-17 08:43",
   "property_id": "511078398",
   "summary": {
     "biezace": {
       "activeUsers": 48.0,
       "newUsers": 46.0,
-      "sessions": 55.0,
-      "screenPageViews": 188.0,
-      "engagementRate": 0.6909,
-      "averageSessionDuration": 47.5548
+      "sessions": 53.0,
+      "screenPageViews": 256.0,
+      "engagementRate": 0.6981,
+      "averageSessionDuration": 48.8889
     },
     "poprzednie": {
-      "activeUsers": 37.0,
-      "newUsers": 36.0,
-      "sessions": 39.0,
-      "screenPageViews": 51.0,
-      "engagementRate": 0.359,
-      "averageSessionDuration": 28.0357
+      "activeUsers": 41.0,
+      "newUsers": 40.0,
+      "sessions": 45.0,
+      "screenPageViews": 62.0,
+      "engagementRate": 0.4222,
+      "averageSessionDuration": 37.4421
     }
   },
   "trend": [
@@ -354,36 +354,52 @@
       "date": "20261015",
       "users": 2.0,
       "sessions": 2.0
+    },
+    {
+      "date": "20261016",
+      "users": 5.0,
+      "sessions": 5.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 35.0,
-      "activeUsers": 32.0
-    },
-    {
-      "sessionDefaultChannelGroup": "Referral",
-      "sessions": 9.0,
-      "activeUsers": 6.0
+      "sessions": 31.0,
+      "activeUsers": 28.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
+      "sessions": 10.0,
+      "activeUsers": 10.0
+    },
+    {
+      "sessionDefaultChannelGroup": "Referral",
       "sessions": 6.0,
-      "activeUsers": 6.0
+      "activeUsers": 5.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Search",
       "sessions": 5.0,
       "activeUsers": 4.0
+    },
+    {
+      "sessionDefaultChannelGroup": "AI Assistant",
+      "sessions": 1.0,
+      "activeUsers": 1.0
     }
   ],
   "pages": [
     {
       "pagePath": "/",
+      "pageTitle": "Strony internetowe dla firm od 1000 zł | DirectWebs",
+      "screenPageViews": 45.0,
+      "activeUsers": 8.0
+    },
+    {
+      "pagePath": "/",
       "pageTitle": "Work in Progress -",
-      "screenPageViews": 43.0,
-      "activeUsers": 21.0
+      "screenPageViews": 36.0,
+      "activeUsers": 17.0
     },
     {
       "pagePath": "/jak-tworzyc-strony-internetowe-poradnik/",
@@ -398,10 +414,28 @@
       "activeUsers": 5.0
     },
     {
-      "pagePath": "/",
-      "pageTitle": "Strony internetowe dla firm od 1000 zł | DirectWebs",
-      "screenPageViews": 25.0,
-      "activeUsers": 4.0
+      "pagePath": "/blog-wordpress-projekty-graficzne-seo/",
+      "pageTitle": "Blog o stronach WWW, SEO i marketingu 2026 | DirectWebs",
+      "screenPageViews": 20.0,
+      "activeUsers": 2.0
+    },
+    {
+      "pagePath": "/projektowanie-stron-wordpress-o-mnie/",
+      "pageTitle": "Page Not Found -",
+      "screenPageViews": 20.0,
+      "activeUsers": 1.0
+    },
+    {
+      "pagePath": "/cennik/",
+      "pageTitle": "Cennik stron internetowych 2026: od 1000 zł | DirectWebs",
+      "screenPageViews": 15.0,
+      "activeUsers": 1.0
+    },
+    {
+      "pagePath": "/portfolio-projektow-i-stron-internetowych/",
+      "pageTitle": "Portfolio: 28 stron internetowych i projektów | DirectWebs",
+      "screenPageViews": 10.0,
+      "activeUsers": 2.0
     },
     {
       "pagePath": "/projektowanie-stron-wordpress-o-mnie/",
@@ -412,12 +446,6 @@
     {
       "pagePath": "/aplikacje-dedykowane/",
       "pageTitle": "Aplikacje dedykowane dla firm: wycena w 24 h | DirectWebs",
-      "screenPageViews": 5.0,
-      "activeUsers": 1.0
-    },
-    {
-      "pagePath": "/blog-wordpress-projekty-graficzne-seo/",
-      "pageTitle": "Blog o stronach WWW, SEO i marketingu 2026 | DirectWebs",
       "screenPageViews": 5.0,
       "activeUsers": 1.0
     },
@@ -440,8 +468,8 @@
       "activeUsers": 1.0
     },
     {
-      "pagePath": "/portfolio-projektow-i-stron-internetowych/",
-      "pageTitle": "Portfolio: 28 stron internetowych i projektów | DirectWebs",
+      "pagePath": "/pozycjonowanie-seo/",
+      "pageTitle": "Pozycjonowanie stron w Google i AI: wycena w 24 h",
       "screenPageViews": 5.0,
       "activeUsers": 1.0
     },
@@ -450,38 +478,20 @@
       "pageTitle": "Projektowanie stron internetowych dla firm – DirectWebs",
       "screenPageViews": 5.0,
       "activeUsers": 1.0
-    },
-    {
-      "pagePath": "/strona-internetowa-biuro-nieruchomosci-piotrowski-krotoszyn/",
-      "pageTitle": "Jak stworzyliśmy stronę dla Piotrowski Krotoszyn -",
-      "screenPageViews": 5.0,
-      "activeUsers": 1.0
-    },
-    {
-      "pagePath": "/wspolpraca-wordpress-strony-www/",
-      "pageTitle": "Współpraca przy tworzeniu stron WordPress 2026",
-      "screenPageViews": 5.0,
-      "activeUsers": 1.0
-    },
-    {
-      "pagePath": "/skontaktuj-sie-porozmawiajmy-o-twoim-projekcie/",
-      "pageTitle": "Skontaktuj się — porozmawiajmy o Twoim projekcie",
-      "screenPageViews": 3.0,
-      "activeUsers": 2.0
     }
   ],
   "cities": [
     {
       "city": "Warsaw",
-      "activeUsers": 8.0
+      "activeUsers": 7.0
+    },
+    {
+      "city": "Wroclaw",
+      "activeUsers": 4.0
     },
     {
       "city": "Klodzko",
       "activeUsers": 3.0
-    },
-    {
-      "city": "Ashburn",
-      "activeUsers": 2.0
     },
     {
       "city": "Frankfurt am Main",
@@ -496,7 +506,7 @@
       "activeUsers": 2.0
     },
     {
-      "city": "Wroclaw",
+      "city": "Prineville",
       "activeUsers": 2.0
     },
     {
@@ -504,7 +514,7 @@
       "activeUsers": 1.0
     },
     {
-      "city": "Boardman",
+      "city": "Ashburn",
       "activeUsers": 1.0
     }
   ]
