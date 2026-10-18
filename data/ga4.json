@@ -1,14 +1,14 @@
 {
-  "updated": "2026-10-17 08:43",
+  "updated": "2026-10-18 08:59",
   "property_id": "511078398",
   "summary": {
     "biezace": {
       "activeUsers": 48.0,
       "newUsers": 46.0,
       "sessions": 53.0,
-      "screenPageViews": 256.0,
-      "engagementRate": 0.6981,
-      "averageSessionDuration": 48.8889
+      "screenPageViews": 265.0,
+      "engagementRate": 0.717,
+      "averageSessionDuration": 49.6194
     },
     "poprzednie": {
       "activeUsers": 41.0,
@@ -16,15 +16,10 @@
       "sessions": 45.0,
       "screenPageViews": 62.0,
       "engagementRate": 0.4222,
-      "averageSessionDuration": 37.4421
+      "averageSessionDuration": 37.6123
     }
   },
   "trend": [
-    {
-      "date": "20260719",
-      "users": 1.0,
-      "sessions": 1.0
-    },
     {
       "date": "20260721",
       "users": 1.0,
@@ -359,18 +354,23 @@
       "date": "20261016",
       "users": 5.0,
       "sessions": 5.0
+    },
+    {
+      "date": "20261017",
+      "users": 1.0,
+      "sessions": 1.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 31.0,
-      "activeUsers": 28.0
+      "sessions": 32.0,
+      "activeUsers": 29.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
-      "sessions": 10.0,
-      "activeUsers": 10.0
+      "sessions": 9.0,
+      "activeUsers": 9.0
     },
     {
       "sessionDefaultChannelGroup": "Referral",
@@ -398,8 +398,8 @@
     {
       "pagePath": "/",
       "pageTitle": "Work in Progress -",
-      "screenPageViews": 36.0,
-      "activeUsers": 17.0
+      "screenPageViews": 35.0,
+      "activeUsers": 16.0
     },
     {
       "pagePath": "/jak-tworzyc-strony-internetowe-poradnik/",
@@ -444,6 +444,12 @@
       "activeUsers": 1.0
     },
     {
+      "pagePath": "/tanie-strony-internetowe-cennik-ile-kosztuje-strona/",
+      "pageTitle": "Tanie strony internetowe cennik — koszt wykonania w 2025",
+      "screenPageViews": 10.0,
+      "activeUsers": 1.0
+    },
+    {
       "pagePath": "/aplikacje-dedykowane/",
       "pageTitle": "Aplikacje dedykowane dla firm: wycena w 24 h | DirectWebs",
       "screenPageViews": 5.0,
@@ -472,12 +478,6 @@
       "pageTitle": "Pozycjonowanie stron w Google i AI: wycena w 24 h",
       "screenPageViews": 5.0,
       "activeUsers": 1.0
-    },
-    {
-      "pagePath": "/projektowanie-stron-internetowych-dla-firm/",
-      "pageTitle": "Projektowanie stron internetowych dla firm – DirectWebs",
-      "screenPageViews": 5.0,
-      "activeUsers": 1.0
     }
   ],
   "cities": [
@@ -487,7 +487,7 @@
     },
     {
       "city": "Wroclaw",
-      "activeUsers": 4.0
+      "activeUsers": 5.0
     },
     {
       "city": "Klodzko",
