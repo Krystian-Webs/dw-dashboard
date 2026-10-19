@@ -1,22 +1,22 @@
 {
-  "updated": "2026-10-18 08:59",
+  "updated": "2026-10-19 10:09",
   "property_id": "511078398",
   "summary": {
-    "biezace": {
-      "activeUsers": 48.0,
-      "newUsers": 46.0,
-      "sessions": 53.0,
-      "screenPageViews": 265.0,
-      "engagementRate": 0.717,
-      "averageSessionDuration": 49.6194
-    },
     "poprzednie": {
-      "activeUsers": 41.0,
-      "newUsers": 40.0,
-      "sessions": 45.0,
-      "screenPageViews": 62.0,
-      "engagementRate": 0.4222,
-      "averageSessionDuration": 37.6123
+      "activeUsers": 46.0,
+      "newUsers": 45.0,
+      "sessions": 50.0,
+      "screenPageViews": 67.0,
+      "engagementRate": 0.44,
+      "averageSessionDuration": 36.6764
+    },
+    "biezace": {
+      "activeUsers": 44.0,
+      "newUsers": 42.0,
+      "sessions": 49.0,
+      "screenPageViews": 271.0,
+      "engagementRate": 0.7551,
+      "averageSessionDuration": 51.5274
     }
   },
   "trend": [
@@ -359,13 +359,18 @@
       "date": "20261017",
       "users": 1.0,
       "sessions": 1.0
+    },
+    {
+      "date": "20261018",
+      "users": 3.0,
+      "sessions": 3.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 32.0,
-      "activeUsers": 29.0
+      "sessions": 31.0,
+      "activeUsers": 28.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
@@ -373,14 +378,14 @@
       "activeUsers": 9.0
     },
     {
-      "sessionDefaultChannelGroup": "Referral",
-      "sessions": 6.0,
-      "activeUsers": 5.0
+      "sessionDefaultChannelGroup": "Organic Search",
+      "sessions": 4.0,
+      "activeUsers": 3.0
     },
     {
-      "sessionDefaultChannelGroup": "Organic Search",
-      "sessions": 5.0,
-      "activeUsers": 4.0
+      "sessionDefaultChannelGroup": "Referral",
+      "sessions": 4.0,
+      "activeUsers": 3.0
     },
     {
       "sessionDefaultChannelGroup": "AI Assistant",
@@ -392,20 +397,20 @@
     {
       "pagePath": "/",
       "pageTitle": "Strony internetowe dla firm od 1000 zł | DirectWebs",
-      "screenPageViews": 45.0,
-      "activeUsers": 8.0
-    },
-    {
-      "pagePath": "/",
-      "pageTitle": "Work in Progress -",
-      "screenPageViews": 35.0,
-      "activeUsers": 16.0
+      "screenPageViews": 60.0,
+      "activeUsers": 11.0
     },
     {
       "pagePath": "/jak-tworzyc-strony-internetowe-poradnik/",
       "pageTitle": "Jak tworzyć strony internetowe — kompletny poradnik 2025",
       "screenPageViews": 30.0,
       "activeUsers": 7.0
+    },
+    {
+      "pagePath": "/",
+      "pageTitle": "Work in Progress -",
+      "screenPageViews": 27.0,
+      "activeUsers": 10.0
     },
     {
       "pagePath": "/",
@@ -483,26 +488,22 @@
   "cities": [
     {
       "city": "Warsaw",
-      "activeUsers": 7.0
+      "activeUsers": 6.0
     },
     {
       "city": "Wroclaw",
-      "activeUsers": 5.0
-    },
-    {
-      "city": "Klodzko",
-      "activeUsers": 3.0
+      "activeUsers": 6.0
     },
     {
       "city": "Frankfurt am Main",
       "activeUsers": 2.0
     },
     {
-      "city": "Lincoln",
+      "city": "Klodzko",
       "activeUsers": 2.0
     },
     {
-      "city": "Poznan",
+      "city": "Lincoln",
       "activeUsers": 2.0
     },
     {
@@ -515,6 +516,10 @@
     },
     {
       "city": "Ashburn",
+      "activeUsers": 1.0
+    },
+    {
+      "city": "Boardman",
       "activeUsers": 1.0
     }
   ]
