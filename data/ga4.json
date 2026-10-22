@@ -1,30 +1,25 @@
 {
-  "updated": "2026-10-21 09:30",
+  "updated": "2026-10-22 09:33",
   "property_id": "511078398",
   "summary": {
     "poprzednie": {
       "activeUsers": 47.0,
       "newUsers": 46.0,
       "sessions": 52.0,
-      "screenPageViews": 69.0,
-      "engagementRate": 0.4231,
-      "averageSessionDuration": 35.376
+      "screenPageViews": 72.0,
+      "engagementRate": 0.4615,
+      "averageSessionDuration": 44.8484
     },
     "biezace": {
-      "activeUsers": 42.0,
-      "newUsers": 40.0,
-      "sessions": 46.0,
-      "screenPageViews": 272.0,
-      "engagementRate": 0.8043,
-      "averageSessionDuration": 54.6614
+      "activeUsers": 44.0,
+      "newUsers": 42.0,
+      "sessions": 48.0,
+      "screenPageViews": 297.0,
+      "engagementRate": 0.8333,
+      "averageSessionDuration": 46.7923
     }
   },
   "trend": [
-    {
-      "date": "20260723",
-      "users": 3.0,
-      "sessions": 5.0
-    },
     {
       "date": "20260724",
       "users": 1.0,
@@ -359,13 +354,18 @@
       "date": "20261019",
       "users": 1.0,
       "sessions": 1.0
+    },
+    {
+      "date": "20261021",
+      "users": 5.0,
+      "sessions": 5.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 31.0,
-      "activeUsers": 28.0
+      "sessions": 32.0,
+      "activeUsers": 29.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
@@ -384,8 +384,8 @@
     },
     {
       "sessionDefaultChannelGroup": "AI Assistant",
-      "sessions": 1.0,
-      "activeUsers": 1.0
+      "sessions": 2.0,
+      "activeUsers": 2.0
     }
   ],
   "pages": [
@@ -398,8 +398,8 @@
     {
       "pagePath": "/jak-tworzyc-strony-internetowe-poradnik/",
       "pageTitle": "Jak tworzyć strony internetowe — kompletny poradnik 2025",
-      "screenPageViews": 30.0,
-      "activeUsers": 7.0
+      "screenPageViews": 26.0,
+      "activeUsers": 6.0
     },
     {
       "pagePath": "/",
@@ -410,8 +410,20 @@
     {
       "pagePath": "/",
       "pageTitle": "Work in Progress -",
-      "screenPageViews": 24.0,
-      "activeUsers": 8.0
+      "screenPageViews": 22.0,
+      "activeUsers": 6.0
+    },
+    {
+      "pagePath": "/cennik/",
+      "pageTitle": "Cennik stron internetowych 2026: od 1000 zł | DirectWebs",
+      "screenPageViews": 21.0,
+      "activeUsers": 2.0
+    },
+    {
+      "pagePath": "/",
+      "pageTitle": "Strony internetowe dla firm od 1500 zł | DirectWebs",
+      "screenPageViews": 20.0,
+      "activeUsers": 3.0
     },
     {
       "pagePath": "/blog-wordpress-projekty-graficzne-seo/",
@@ -423,12 +435,6 @@
       "pagePath": "/projektowanie-stron-wordpress-o-mnie/",
       "pageTitle": "Page Not Found -",
       "screenPageViews": 20.0,
-      "activeUsers": 1.0
-    },
-    {
-      "pagePath": "/cennik/",
-      "pageTitle": "Cennik stron internetowych 2026: od 1000 zł | DirectWebs",
-      "screenPageViews": 15.0,
       "activeUsers": 1.0
     },
     {
@@ -472,29 +478,23 @@
       "pageTitle": "Oferta – strony WWW, SEO i aplikacje dla firm | DirectWebs Kłodzko",
       "screenPageViews": 5.0,
       "activeUsers": 1.0
-    },
-    {
-      "pagePath": "/pozycjonowanie-seo/",
-      "pageTitle": "Pozycjonowanie stron w Google i AI: wycena w 24 h",
-      "screenPageViews": 5.0,
-      "activeUsers": 1.0
     }
   ],
   "cities": [
     {
-      "city": "Wroclaw",
+      "city": "Warsaw",
       "activeUsers": 6.0
     },
     {
-      "city": "Warsaw",
-      "activeUsers": 5.0
+      "city": "Wroclaw",
+      "activeUsers": 6.0
     },
     {
       "city": "Ashburn",
       "activeUsers": 2.0
     },
     {
-      "city": "Frankfurt am Main",
+      "city": "Boardman",
       "activeUsers": 2.0
     },
     {
@@ -514,7 +514,7 @@
       "activeUsers": 1.0
     },
     {
-      "city": "Boardman",
+      "city": "Council Bluffs",
       "activeUsers": 1.0
     }
   ]
