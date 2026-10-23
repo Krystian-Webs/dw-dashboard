@@ -1,30 +1,25 @@
 {
-  "updated": "2026-10-22 09:33",
+  "updated": "2026-10-23 09:29",
   "property_id": "511078398",
   "summary": {
     "poprzednie": {
-      "activeUsers": 47.0,
-      "newUsers": 46.0,
-      "sessions": 52.0,
-      "screenPageViews": 72.0,
-      "engagementRate": 0.4615,
-      "averageSessionDuration": 44.8484
+      "activeUsers": 46.0,
+      "newUsers": 45.0,
+      "sessions": 51.0,
+      "screenPageViews": 70.0,
+      "engagementRate": 0.451,
+      "averageSessionDuration": 42.1241
     },
     "biezace": {
-      "activeUsers": 44.0,
-      "newUsers": 42.0,
-      "sessions": 48.0,
-      "screenPageViews": 297.0,
-      "engagementRate": 0.8333,
-      "averageSessionDuration": 46.7923
+      "activeUsers": 45.0,
+      "newUsers": 43.0,
+      "sessions": 49.0,
+      "screenPageViews": 317.0,
+      "engagementRate": 0.8367,
+      "averageSessionDuration": 54.586
     }
   },
   "trend": [
-    {
-      "date": "20260724",
-      "users": 1.0,
-      "sessions": 1.0
-    },
     {
       "date": "20260725",
       "users": 8.0,
@@ -359,6 +354,11 @@
       "date": "20261021",
       "users": 5.0,
       "sessions": 5.0
+    },
+    {
+      "date": "20261022",
+      "users": 1.0,
+      "sessions": 1.0
     }
   ],
   "channels": [
@@ -373,6 +373,11 @@
       "activeUsers": 8.0
     },
     {
+      "sessionDefaultChannelGroup": "AI Assistant",
+      "sessions": 3.0,
+      "activeUsers": 3.0
+    },
+    {
       "sessionDefaultChannelGroup": "Organic Search",
       "sessions": 3.0,
       "activeUsers": 2.0
@@ -381,11 +386,6 @@
       "sessionDefaultChannelGroup": "Referral",
       "sessions": 3.0,
       "activeUsers": 3.0
-    },
-    {
-      "sessionDefaultChannelGroup": "AI Assistant",
-      "sessions": 2.0,
-      "activeUsers": 2.0
     }
   ],
   "pages": [
@@ -409,6 +409,18 @@
     },
     {
       "pagePath": "/",
+      "pageTitle": "Strony internetowe dla firm od 1500 zł | DirectWebs",
+      "screenPageViews": 25.0,
+      "activeUsers": 4.0
+    },
+    {
+      "pagePath": "/projektowanie-stron-wordpress-o-mnie/",
+      "pageTitle": "Page Not Found -",
+      "screenPageViews": 25.0,
+      "activeUsers": 2.0
+    },
+    {
+      "pagePath": "/",
       "pageTitle": "Work in Progress -",
       "screenPageViews": 22.0,
       "activeUsers": 6.0
@@ -420,28 +432,16 @@
       "activeUsers": 2.0
     },
     {
-      "pagePath": "/",
-      "pageTitle": "Strony internetowe dla firm od 1500 zł | DirectWebs",
-      "screenPageViews": 20.0,
-      "activeUsers": 3.0
-    },
-    {
       "pagePath": "/blog-wordpress-projekty-graficzne-seo/",
       "pageTitle": "Blog o stronach WWW, SEO i marketingu 2026 | DirectWebs",
       "screenPageViews": 20.0,
       "activeUsers": 2.0
     },
     {
-      "pagePath": "/projektowanie-stron-wordpress-o-mnie/",
-      "pageTitle": "Page Not Found -",
-      "screenPageViews": 20.0,
-      "activeUsers": 1.0
-    },
-    {
       "pagePath": "/portfolio-projektow-i-stron-internetowych/",
       "pageTitle": "Portfolio: 28 stron internetowych i projektów | DirectWebs",
-      "screenPageViews": 10.0,
-      "activeUsers": 2.0
+      "screenPageViews": 15.0,
+      "activeUsers": 3.0
     },
     {
       "pagePath": "/projektowanie-stron-wordpress-o-mnie/",
@@ -483,7 +483,7 @@
   "cities": [
     {
       "city": "Warsaw",
-      "activeUsers": 6.0
+      "activeUsers": 7.0
     },
     {
       "city": "Wroclaw",
