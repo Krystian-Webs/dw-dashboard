@@ -1,30 +1,25 @@
 {
-  "updated": "2026-10-23 09:29",
+  "updated": "2026-10-24 09:01",
   "property_id": "511078398",
   "summary": {
-    "poprzednie": {
-      "activeUsers": 46.0,
-      "newUsers": 45.0,
-      "sessions": 51.0,
-      "screenPageViews": 70.0,
-      "engagementRate": 0.451,
-      "averageSessionDuration": 42.1241
-    },
     "biezace": {
-      "activeUsers": 45.0,
-      "newUsers": 43.0,
-      "sessions": 49.0,
-      "screenPageViews": 317.0,
-      "engagementRate": 0.8367,
-      "averageSessionDuration": 54.586
+      "activeUsers": 69.0,
+      "newUsers": 67.0,
+      "sessions": 75.0,
+      "screenPageViews": 532.0,
+      "engagementRate": 0.88,
+      "averageSessionDuration": 54.9186
+    },
+    "poprzednie": {
+      "activeUsers": 47.0,
+      "newUsers": 46.0,
+      "sessions": 52.0,
+      "screenPageViews": 72.0,
+      "engagementRate": 0.4615,
+      "averageSessionDuration": 41.4777
     }
   },
   "trend": [
-    {
-      "date": "20260725",
-      "users": 8.0,
-      "sessions": 8.0
-    },
     {
       "date": "20260727",
       "users": 1.0,
@@ -359,18 +354,28 @@
       "date": "20261022",
       "users": 1.0,
       "sessions": 1.0
+    },
+    {
+      "date": "20261023",
+      "users": 26.0,
+      "sessions": 27.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 32.0,
-      "activeUsers": 29.0
+      "sessions": 37.0,
+      "activeUsers": 33.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
-      "sessions": 8.0,
-      "activeUsers": 8.0
+      "sessions": 29.0,
+      "activeUsers": 28.0
+    },
+    {
+      "sessionDefaultChannelGroup": "Organic Search",
+      "sessions": 4.0,
+      "activeUsers": 3.0
     },
     {
       "sessionDefaultChannelGroup": "AI Assistant",
@@ -378,22 +383,29 @@
       "activeUsers": 3.0
     },
     {
-      "sessionDefaultChannelGroup": "Organic Search",
-      "sessions": 3.0,
-      "activeUsers": 2.0
-    },
-    {
       "sessionDefaultChannelGroup": "Referral",
-      "sessions": 3.0,
-      "activeUsers": 3.0
+      "sessions": 2.0,
+      "activeUsers": 2.0
     }
   ],
   "pages": [
     {
       "pagePath": "/",
+      "pageTitle": "Strony internetowe dla firm od 1500 zł | DirectWebs",
+      "screenPageViews": 142.0,
+      "activeUsers": 25.0
+    },
+    {
+      "pagePath": "/",
       "pageTitle": "Strony internetowe dla firm od 1000 zł | DirectWebs",
       "screenPageViews": 65.0,
       "activeUsers": 12.0
+    },
+    {
+      "pagePath": "/portfolio-projektow-i-stron-internetowych/",
+      "pageTitle": "Portfolio: 28 stron internetowych i projektów | DirectWebs",
+      "screenPageViews": 30.0,
+      "activeUsers": 5.0
     },
     {
       "pagePath": "/jak-tworzyc-strony-internetowe-poradnik/",
@@ -408,22 +420,10 @@
       "activeUsers": 5.0
     },
     {
-      "pagePath": "/",
-      "pageTitle": "Strony internetowe dla firm od 1500 zł | DirectWebs",
-      "screenPageViews": 25.0,
-      "activeUsers": 4.0
-    },
-    {
       "pagePath": "/projektowanie-stron-wordpress-o-mnie/",
       "pageTitle": "Page Not Found -",
       "screenPageViews": 25.0,
       "activeUsers": 2.0
-    },
-    {
-      "pagePath": "/",
-      "pageTitle": "Work in Progress -",
-      "screenPageViews": 22.0,
-      "activeUsers": 6.0
     },
     {
       "pagePath": "/cennik/",
@@ -432,62 +432,82 @@
       "activeUsers": 2.0
     },
     {
+      "pagePath": "/",
+      "pageTitle": "Work in Progress -",
+      "screenPageViews": 20.0,
+      "activeUsers": 5.0
+    },
+    {
       "pagePath": "/blog-wordpress-projekty-graficzne-seo/",
       "pageTitle": "Blog o stronach WWW, SEO i marketingu 2026 | DirectWebs",
       "screenPageViews": 20.0,
       "activeUsers": 2.0
     },
     {
-      "pagePath": "/portfolio-projektow-i-stron-internetowych/",
-      "pageTitle": "Portfolio: 28 stron internetowych i projektów | DirectWebs",
-      "screenPageViews": 15.0,
-      "activeUsers": 3.0
+      "pagePath": "/oferta/",
+      "pageTitle": "Oferta: strony internetowe od 1000 zł, SEO i aplikacje",
+      "screenPageViews": 20.0,
+      "activeUsers": 1.0
     },
     {
       "pagePath": "/projektowanie-stron-wordpress-o-mnie/",
       "pageTitle": "O mnie: DirectWebs, ponad 25 stron dla firm",
-      "screenPageViews": 10.0,
-      "activeUsers": 1.0
+      "screenPageViews": 20.0,
+      "activeUsers": 2.0
+    },
+    {
+      "pagePath": "/aplikacje-dedykowane/",
+      "pageTitle": "Aplikacje dedykowane dla firm: wycena w 24 h | DirectWebs",
+      "screenPageViews": 15.0,
+      "activeUsers": 3.0
+    },
+    {
+      "pagePath": "/produkt/voucher-prezentowy-uslugi-graficzne/",
+      "pageTitle": "Page Not Found -",
+      "screenPageViews": 15.0,
+      "activeUsers": 3.0
+    },
+    {
+      "pagePath": "/skontaktuj-sie-porozmawiajmy-o-twoim-projekcie/",
+      "pageTitle": "Kontakt: bezpłatna wycena strony w 24 h | DirectWebs",
+      "screenPageViews": 15.0,
+      "activeUsers": 2.0
     },
     {
       "pagePath": "/tanie-strony-internetowe-cennik-ile-kosztuje-strona/",
       "pageTitle": "Tanie strony internetowe cennik — koszt wykonania w 2025",
       "screenPageViews": 10.0,
       "activeUsers": 1.0
-    },
-    {
-      "pagePath": "/aplikacje-dedykowane/",
-      "pageTitle": "Aplikacje dedykowane dla firm: wycena w 24 h | DirectWebs",
-      "screenPageViews": 5.0,
-      "activeUsers": 1.0
-    },
-    {
-      "pagePath": "/cennik/",
-      "pageTitle": "Cennik stron internetowych 2026 – od 1000 zł | DirectWebs Kłodzko",
-      "screenPageViews": 5.0,
-      "activeUsers": 1.0
-    },
-    {
-      "pagePath": "/czy-warto-miec-strone-internetowa-jesli-mam-facebooka/",
-      "pageTitle": "Czy warto mieć stronę internetową jeśli mam facebooka: 2026 -",
-      "screenPageViews": 5.0,
-      "activeUsers": 1.0
-    },
-    {
-      "pagePath": "/oferta/",
-      "pageTitle": "Oferta – strony WWW, SEO i aplikacje dla firm | DirectWebs Kłodzko",
-      "screenPageViews": 5.0,
-      "activeUsers": 1.0
     }
   ],
   "cities": [
     {
-      "city": "Warsaw",
-      "activeUsers": 7.0
+      "city": "Wroclaw",
+      "activeUsers": 10.0
     },
     {
-      "city": "Wroclaw",
-      "activeUsers": 6.0
+      "city": "Warsaw",
+      "activeUsers": 8.0
+    },
+    {
+      "city": "Dublin",
+      "activeUsers": 5.0
+    },
+    {
+      "city": "Lulea",
+      "activeUsers": 4.0
+    },
+    {
+      "city": "Altoona",
+      "activeUsers": 3.0
+    },
+    {
+      "city": "Klodzko",
+      "activeUsers": 3.0
+    },
+    {
+      "city": "Prineville",
+      "activeUsers": 3.0
     },
     {
       "city": "Ashburn",
@@ -496,26 +516,6 @@
     {
       "city": "Boardman",
       "activeUsers": 2.0
-    },
-    {
-      "city": "Klodzko",
-      "activeUsers": 2.0
-    },
-    {
-      "city": "Lincoln",
-      "activeUsers": 2.0
-    },
-    {
-      "city": "Prineville",
-      "activeUsers": 2.0
-    },
-    {
-      "city": "Altoona",
-      "activeUsers": 1.0
-    },
-    {
-      "city": "Council Bluffs",
-      "activeUsers": 1.0
     }
   ]
 }
