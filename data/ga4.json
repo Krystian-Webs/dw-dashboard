@@ -1,22 +1,22 @@
 {
-  "updated": "2026-10-24 09:01",
+  "updated": "2026-10-25 09:17",
   "property_id": "511078398",
   "summary": {
     "biezace": {
-      "activeUsers": 69.0,
-      "newUsers": 67.0,
-      "sessions": 75.0,
-      "screenPageViews": 532.0,
-      "engagementRate": 0.88,
-      "averageSessionDuration": 54.9186
+      "activeUsers": 66.0,
+      "newUsers": 64.0,
+      "sessions": 72.0,
+      "screenPageViews": 543.0,
+      "engagementRate": 0.8889,
+      "averageSessionDuration": 73.4454
     },
     "poprzednie": {
-      "activeUsers": 47.0,
-      "newUsers": 46.0,
-      "sessions": 52.0,
-      "screenPageViews": 72.0,
-      "engagementRate": 0.4615,
-      "averageSessionDuration": 41.4777
+      "activeUsers": 51.0,
+      "newUsers": 50.0,
+      "sessions": 56.0,
+      "screenPageViews": 91.0,
+      "engagementRate": 0.4821,
+      "averageSessionDuration": 38.8836
     }
   },
   "trend": [
@@ -359,18 +359,23 @@
       "date": "20261023",
       "users": 26.0,
       "sessions": 27.0
+    },
+    {
+      "date": "20261024",
+      "users": 1.0,
+      "sessions": 1.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 37.0,
-      "activeUsers": 33.0
+      "sessions": 35.0,
+      "activeUsers": 31.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
-      "sessions": 29.0,
-      "activeUsers": 28.0
+      "sessions": 27.0,
+      "activeUsers": 26.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Search",
@@ -384,16 +389,16 @@
     },
     {
       "sessionDefaultChannelGroup": "Referral",
-      "sessions": 2.0,
-      "activeUsers": 2.0
+      "sessions": 3.0,
+      "activeUsers": 3.0
     }
   ],
   "pages": [
     {
       "pagePath": "/",
       "pageTitle": "Strony internetowe dla firm od 1500 zł | DirectWebs",
-      "screenPageViews": 142.0,
-      "activeUsers": 25.0
+      "screenPageViews": 162.0,
+      "activeUsers": 26.0
     },
     {
       "pagePath": "/",
@@ -404,8 +409,14 @@
     {
       "pagePath": "/portfolio-projektow-i-stron-internetowych/",
       "pageTitle": "Portfolio: 28 stron internetowych i projektów | DirectWebs",
-      "screenPageViews": 30.0,
-      "activeUsers": 5.0
+      "screenPageViews": 35.0,
+      "activeUsers": 6.0
+    },
+    {
+      "pagePath": "/cennik/",
+      "pageTitle": "Cennik stron internetowych 2026: od 1000 zł | DirectWebs",
+      "screenPageViews": 26.0,
+      "activeUsers": 3.0
     },
     {
       "pagePath": "/jak-tworzyc-strony-internetowe-poradnik/",
@@ -424,18 +435,6 @@
       "pageTitle": "Page Not Found -",
       "screenPageViews": 25.0,
       "activeUsers": 2.0
-    },
-    {
-      "pagePath": "/cennik/",
-      "pageTitle": "Cennik stron internetowych 2026: od 1000 zł | DirectWebs",
-      "screenPageViews": 21.0,
-      "activeUsers": 2.0
-    },
-    {
-      "pagePath": "/",
-      "pageTitle": "Work in Progress -",
-      "screenPageViews": 20.0,
-      "activeUsers": 5.0
     },
     {
       "pagePath": "/blog-wordpress-projekty-graficzne-seo/",
@@ -478,12 +477,18 @@
       "pageTitle": "Tanie strony internetowe cennik — koszt wykonania w 2025",
       "screenPageViews": 10.0,
       "activeUsers": 1.0
+    },
+    {
+      "pagePath": "/cennik/",
+      "pageTitle": "Cennik stron internetowych 2026 – od 1000 zł | DirectWebs Kłodzko",
+      "screenPageViews": 5.0,
+      "activeUsers": 1.0
     }
   ],
   "cities": [
     {
       "city": "Wroclaw",
-      "activeUsers": 10.0
+      "activeUsers": 11.0
     },
     {
       "city": "Warsaw",
@@ -491,15 +496,11 @@
     },
     {
       "city": "Dublin",
-      "activeUsers": 5.0
+      "activeUsers": 4.0
     },
     {
       "city": "Lulea",
       "activeUsers": 4.0
-    },
-    {
-      "city": "Altoona",
-      "activeUsers": 3.0
     },
     {
       "city": "Klodzko",
@@ -510,11 +511,15 @@
       "activeUsers": 3.0
     },
     {
-      "city": "Ashburn",
+      "city": "Altoona",
       "activeUsers": 2.0
     },
     {
       "city": "Boardman",
+      "activeUsers": 2.0
+    },
+    {
+      "city": "Lincoln",
       "activeUsers": 2.0
     }
   ]
