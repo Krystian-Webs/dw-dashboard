@@ -1,30 +1,25 @@
 {
-  "updated": "2026-10-26 10:23",
+  "updated": "2026-10-27 09:58",
   "property_id": "511078398",
   "summary": {
     "biezace": {
-      "activeUsers": 66.0,
-      "newUsers": 64.0,
-      "sessions": 73.0,
-      "screenPageViews": 583.0,
-      "engagementRate": 0.8904,
-      "averageSessionDuration": 86.8495
+      "activeUsers": 71.0,
+      "newUsers": 69.0,
+      "sessions": 79.0,
+      "screenPageViews": 627.0,
+      "engagementRate": 0.8861,
+      "averageSessionDuration": 84.6536
     },
     "poprzednie": {
-      "activeUsers": 50.0,
+      "activeUsers": 49.0,
       "newUsers": 49.0,
-      "sessions": 54.0,
-      "screenPageViews": 84.0,
-      "engagementRate": 0.4815,
-      "averageSessionDuration": 31.081
+      "sessions": 53.0,
+      "screenPageViews": 83.0,
+      "engagementRate": 0.4906,
+      "averageSessionDuration": 31.63
     }
   },
   "trend": [
-    {
-      "date": "20260728",
-      "users": 3.0,
-      "sessions": 3.0
-    },
     {
       "date": "20260729",
       "users": 2.0,
@@ -364,13 +359,18 @@
       "date": "20261025",
       "users": 1.0,
       "sessions": 1.0
+    },
+    {
+      "date": "20261026",
+      "users": 5.0,
+      "sessions": 6.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 35.0,
-      "activeUsers": 31.0
+      "sessions": 40.0,
+      "activeUsers": 36.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
@@ -379,7 +379,7 @@
     },
     {
       "sessionDefaultChannelGroup": "Organic Search",
-      "sessions": 5.0,
+      "sessions": 6.0,
       "activeUsers": 4.0
     },
     {
@@ -397,8 +397,8 @@
     {
       "pagePath": "/",
       "pageTitle": "Strony internetowe dla firm od 1500 zł | DirectWebs",
-      "screenPageViews": 177.0,
-      "activeUsers": 26.0
+      "screenPageViews": 216.0,
+      "activeUsers": 30.0
     },
     {
       "pagePath": "/",
@@ -473,22 +473,22 @@
       "activeUsers": 2.0
     },
     {
-      "pagePath": "/projektowanie-stron-wordpress-nowoczesne-strony-www/",
-      "pageTitle": "Nowoczesne strony WWW dla firm od 1000 zł | DirectWebs",
+      "pagePath": "/polityka-prywatnosci-rodo/",
+      "pageTitle": "Polityka prywatności i RODO 2025 | DirectWebs",
       "screenPageViews": 10.0,
       "activeUsers": 2.0
     },
     {
-      "pagePath": "/tanie-strony-internetowe-cennik-ile-kosztuje-strona/",
-      "pageTitle": "Tanie strony internetowe cennik — koszt wykonania w 2025",
+      "pagePath": "/projektowanie-stron-wordpress-nowoczesne-strony-www/",
+      "pageTitle": "Nowoczesne strony WWW dla firm od 1000 zł | DirectWebs",
       "screenPageViews": 10.0,
-      "activeUsers": 1.0
+      "activeUsers": 2.0
     }
   ],
   "cities": [
     {
       "city": "Wroclaw",
-      "activeUsers": 11.0
+      "activeUsers": 12.0
     },
     {
       "city": "Warsaw",
@@ -515,11 +515,11 @@
       "activeUsers": 2.0
     },
     {
-      "city": "Boardman",
+      "city": "Amsterdam",
       "activeUsers": 2.0
     },
     {
-      "city": "Lincoln",
+      "city": "Boardman",
       "activeUsers": 2.0
     }
   ]
