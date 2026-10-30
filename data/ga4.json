@@ -1,14 +1,14 @@
 {
-  "updated": "2026-10-29 11:01",
+  "updated": "2026-10-30 10:58",
   "property_id": "511078398",
   "summary": {
     "biezace": {
-      "activeUsers": 81.0,
-      "newUsers": 79.0,
-      "sessions": 90.0,
-      "screenPageViews": 761.0,
-      "engagementRate": 0.9111,
-      "averageSessionDuration": 107.3351
+      "activeUsers": 84.0,
+      "newUsers": 82.0,
+      "sessions": 95.0,
+      "screenPageViews": 800.0,
+      "engagementRate": 0.9158,
+      "averageSessionDuration": 119.9957
     },
     "poprzednie": {
       "activeUsers": 47.0,
@@ -16,7 +16,7 @@
       "sessions": 51.0,
       "screenPageViews": 81.0,
       "engagementRate": 0.5098,
-      "averageSessionDuration": 32.6394
+      "averageSessionDuration": 32.6286
     }
   },
   "trend": [
@@ -364,13 +364,18 @@
       "date": "20261028",
       "users": 7.0,
       "sessions": 7.0
+    },
+    {
+      "date": "20261029",
+      "users": 5.0,
+      "sessions": 6.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 47.0,
-      "activeUsers": 43.0
+      "sessions": 50.0,
+      "activeUsers": 46.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
@@ -379,7 +384,7 @@
     },
     {
       "sessionDefaultChannelGroup": "Organic Search",
-      "sessions": 7.0,
+      "sessions": 9.0,
       "activeUsers": 4.0
     },
     {
@@ -397,7 +402,7 @@
     {
       "pagePath": "/",
       "pageTitle": "Strony internetowe dla firm od 1500 zł | DirectWebs",
-      "screenPageViews": 262.0,
+      "screenPageViews": 267.0,
       "activeUsers": 33.0
     },
     {
@@ -437,6 +442,12 @@
       "activeUsers": 5.0
     },
     {
+      "pagePath": "/projektowanie-stron-wordpress-nowoczesne-strony-www/",
+      "pageTitle": "Nowoczesne strony WWW dla firm od 1000 zł | DirectWebs",
+      "screenPageViews": 25.0,
+      "activeUsers": 3.0
+    },
+    {
       "pagePath": "/projektowanie-stron-wordpress-o-mnie/",
       "pageTitle": "Page Not Found -",
       "screenPageViews": 25.0,
@@ -449,16 +460,16 @@
       "activeUsers": 3.0
     },
     {
+      "pagePath": "/aplikacje-dedykowane/",
+      "pageTitle": "Aplikacje dedykowane dla firm: wycena w 24 h | DirectWebs",
+      "screenPageViews": 20.0,
+      "activeUsers": 4.0
+    },
+    {
       "pagePath": "/oferta/",
       "pageTitle": "Oferta: strony internetowe od 1000 zł, SEO i aplikacje",
       "screenPageViews": 20.0,
       "activeUsers": 1.0
-    },
-    {
-      "pagePath": "/projektowanie-stron-wordpress-nowoczesne-strony-www/",
-      "pageTitle": "Nowoczesne strony WWW dla firm od 1000 zł | DirectWebs",
-      "screenPageViews": 20.0,
-      "activeUsers": 3.0
     },
     {
       "pagePath": "/projektowanie-stron-wordpress-o-mnie/",
@@ -467,22 +478,16 @@
       "activeUsers": 2.0
     },
     {
-      "pagePath": "/aplikacje-dedykowane/",
-      "pageTitle": "Aplikacje dedykowane dla firm: wycena w 24 h | DirectWebs",
+      "pagePath": "/",
+      "pageTitle": "Strony internetowe Kłodzko od 1500 zł | DirectWebs",
       "screenPageViews": 15.0,
-      "activeUsers": 3.0
+      "activeUsers": 2.0
     },
     {
       "pagePath": "/produkt/voucher-prezentowy-uslugi-graficzne/",
       "pageTitle": "Page Not Found -",
       "screenPageViews": 15.0,
       "activeUsers": 3.0
-    },
-    {
-      "pagePath": "/czy-moja-strona-jest-widoczna-w-google/",
-      "pageTitle": "Czy moja strona jest widoczna w Google? 5 metod",
-      "screenPageViews": 10.0,
-      "activeUsers": 2.0
     }
   ],
   "cities": [
