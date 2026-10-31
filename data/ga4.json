@@ -1,22 +1,22 @@
 {
-  "updated": "2026-10-30 10:58",
+  "updated": "2026-10-31 10:31",
   "property_id": "511078398",
   "summary": {
     "biezace": {
-      "activeUsers": 84.0,
-      "newUsers": 82.0,
-      "sessions": 95.0,
-      "screenPageViews": 800.0,
-      "engagementRate": 0.9158,
-      "averageSessionDuration": 119.9957
+      "activeUsers": 92.0,
+      "newUsers": 90.0,
+      "sessions": 103.0,
+      "screenPageViews": 860.0,
+      "engagementRate": 0.9223,
+      "averageSessionDuration": 125.1245
     },
     "poprzednie": {
-      "activeUsers": 47.0,
-      "newUsers": 47.0,
-      "sessions": 51.0,
-      "screenPageViews": 81.0,
-      "engagementRate": 0.5098,
-      "averageSessionDuration": 32.6286
+      "activeUsers": 45.0,
+      "newUsers": 44.0,
+      "sessions": 48.0,
+      "screenPageViews": 76.0,
+      "engagementRate": 0.5208,
+      "averageSessionDuration": 34.2988
     }
   },
   "trend": [
@@ -369,13 +369,18 @@
       "date": "20261029",
       "users": 5.0,
       "sessions": 6.0
+    },
+    {
+      "date": "20261030",
+      "users": 8.0,
+      "sessions": 8.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 50.0,
-      "activeUsers": 46.0
+      "sessions": 56.0,
+      "activeUsers": 52.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
@@ -384,8 +389,8 @@
     },
     {
       "sessionDefaultChannelGroup": "Organic Search",
-      "sessions": 9.0,
-      "activeUsers": 4.0
+      "sessions": 11.0,
+      "activeUsers": 6.0
     },
     {
       "sessionDefaultChannelGroup": "AI Assistant",
@@ -414,8 +419,8 @@
     {
       "pagePath": "/portfolio-projektow-i-stron-internetowych/",
       "pageTitle": "Portfolio: 28 stron internetowych i projektów | DirectWebs",
-      "screenPageViews": 50.0,
-      "activeUsers": 8.0
+      "screenPageViews": 55.0,
+      "activeUsers": 9.0
     },
     {
       "pagePath": "/skontaktuj-sie-porozmawiajmy-o-twoim-projekcie/",
@@ -437,7 +442,19 @@
     },
     {
       "pagePath": "/",
+      "pageTitle": "Strony internetowe Kłodzko od 1500 zł | DirectWebs",
+      "screenPageViews": 25.0,
+      "activeUsers": 4.0
+    },
+    {
+      "pagePath": "/",
       "pageTitle": "Strony internetowe Kłodzko – projektowanie stron WWW | DirectWebs",
+      "screenPageViews": 25.0,
+      "activeUsers": 5.0
+    },
+    {
+      "pagePath": "/aplikacje-dedykowane/",
+      "pageTitle": "Aplikacje dedykowane dla firm: wycena w 24 h | DirectWebs",
       "screenPageViews": 25.0,
       "activeUsers": 5.0
     },
@@ -460,10 +477,10 @@
       "activeUsers": 3.0
     },
     {
-      "pagePath": "/aplikacje-dedykowane/",
-      "pageTitle": "Aplikacje dedykowane dla firm: wycena w 24 h | DirectWebs",
+      "pagePath": "/o-mnie-strony-internetowe-klodzko/",
+      "pageTitle": "O mnie: strony internetowe Kłodzko, WordPress i SEO",
       "screenPageViews": 20.0,
-      "activeUsers": 4.0
+      "activeUsers": 3.0
     },
     {
       "pagePath": "/oferta/",
@@ -476,24 +493,12 @@
       "pageTitle": "O mnie: DirectWebs, ponad 25 stron dla firm",
       "screenPageViews": 20.0,
       "activeUsers": 2.0
-    },
-    {
-      "pagePath": "/",
-      "pageTitle": "Strony internetowe Kłodzko od 1500 zł | DirectWebs",
-      "screenPageViews": 15.0,
-      "activeUsers": 2.0
-    },
-    {
-      "pagePath": "/produkt/voucher-prezentowy-uslugi-graficzne/",
-      "pageTitle": "Page Not Found -",
-      "screenPageViews": 15.0,
-      "activeUsers": 3.0
     }
   ],
   "cities": [
     {
       "city": "Wroclaw",
-      "activeUsers": 13.0
+      "activeUsers": 14.0
     },
     {
       "city": "Warsaw",
@@ -501,6 +506,10 @@
     },
     {
       "city": "Dublin",
+      "activeUsers": 6.0
+    },
+    {
+      "city": "Urumqi",
       "activeUsers": 6.0
     },
     {
@@ -521,10 +530,6 @@
     },
     {
       "city": "Amsterdam",
-      "activeUsers": 2.0
-    },
-    {
-      "city": "Boardman",
       "activeUsers": 2.0
     }
   ]
