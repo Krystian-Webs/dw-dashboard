@@ -1,14 +1,14 @@
 {
-  "updated": "2026-10-31 10:31",
+  "updated": "2026-11-01 11:26",
   "property_id": "511078398",
   "summary": {
     "biezace": {
-      "activeUsers": 92.0,
-      "newUsers": 90.0,
-      "sessions": 103.0,
-      "screenPageViews": 860.0,
-      "engagementRate": 0.9223,
-      "averageSessionDuration": 125.1245
+      "activeUsers": 96.0,
+      "newUsers": 94.0,
+      "sessions": 107.0,
+      "screenPageViews": 880.0,
+      "engagementRate": 0.9252,
+      "averageSessionDuration": 120.6596
     },
     "poprzednie": {
       "activeUsers": 45.0,
@@ -374,18 +374,23 @@
       "date": "20261030",
       "users": 8.0,
       "sessions": 8.0
+    },
+    {
+      "date": "20261031",
+      "users": 4.0,
+      "sessions": 4.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 56.0,
-      "activeUsers": 52.0
+      "sessions": 59.0,
+      "activeUsers": 55.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
-      "sessions": 30.0,
-      "activeUsers": 29.0
+      "sessions": 31.0,
+      "activeUsers": 30.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Search",
@@ -429,6 +434,12 @@
       "activeUsers": 5.0
     },
     {
+      "pagePath": "/",
+      "pageTitle": "Strony internetowe Kłodzko od 1500 zł | DirectWebs",
+      "screenPageViews": 35.0,
+      "activeUsers": 6.0
+    },
+    {
       "pagePath": "/cennik/",
       "pageTitle": "Cennik stron internetowych 2026: od 1000 zł | DirectWebs",
       "screenPageViews": 31.0,
@@ -439,12 +450,6 @@
       "pageTitle": "Jak tworzyć strony internetowe — kompletny poradnik 2025",
       "screenPageViews": 26.0,
       "activeUsers": 6.0
-    },
-    {
-      "pagePath": "/",
-      "pageTitle": "Strony internetowe Kłodzko od 1500 zł | DirectWebs",
-      "screenPageViews": 25.0,
-      "activeUsers": 4.0
     },
     {
       "pagePath": "/",
@@ -498,7 +503,11 @@
   "cities": [
     {
       "city": "Wroclaw",
-      "activeUsers": 14.0
+      "activeUsers": 15.0
+    },
+    {
+      "city": "Urumqi",
+      "activeUsers": 8.0
     },
     {
       "city": "Warsaw",
@@ -506,10 +515,6 @@
     },
     {
       "city": "Dublin",
-      "activeUsers": 6.0
-    },
-    {
-      "city": "Urumqi",
       "activeUsers": 6.0
     },
     {
