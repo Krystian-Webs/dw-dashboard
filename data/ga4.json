@@ -1,22 +1,22 @@
 {
-  "updated": "2026-11-02 12:46",
+  "updated": "2026-11-03 12:12",
   "property_id": "511078398",
   "summary": {
     "biezace": {
-      "activeUsers": 99.0,
-      "newUsers": 97.0,
-      "sessions": 111.0,
-      "screenPageViews": 900.0,
-      "engagementRate": 0.9189,
-      "averageSessionDuration": 116.7983
+      "activeUsers": 104.0,
+      "newUsers": 102.0,
+      "sessions": 117.0,
+      "screenPageViews": 943.0,
+      "engagementRate": 0.9316,
+      "averageSessionDuration": 111.2824
     },
     "poprzednie": {
       "activeUsers": 44.0,
       "newUsers": 43.0,
       "sessions": 47.0,
-      "screenPageViews": 75.0,
+      "screenPageViews": 74.0,
       "engagementRate": 0.5319,
-      "averageSessionDuration": 34.9231
+      "averageSessionDuration": 34.632
     }
   },
   "trend": [
@@ -379,13 +379,18 @@
       "date": "20261101",
       "users": 4.0,
       "sessions": 4.0
+    },
+    {
+      "date": "20261102",
+      "users": 8.0,
+      "sessions": 8.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 61.0,
-      "activeUsers": 57.0
+      "sessions": 67.0,
+      "activeUsers": 62.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
@@ -422,6 +427,12 @@
     },
     {
       "pagePath": "/",
+      "pageTitle": "Strony internetowe Kłodzko od 1500 zł | DirectWebs",
+      "screenPageViews": 65.0,
+      "activeUsers": 12.0
+    },
+    {
+      "pagePath": "/",
       "pageTitle": "Strony internetowe dla firm od 1000 zł | DirectWebs",
       "screenPageViews": 65.0,
       "activeUsers": 12.0
@@ -429,14 +440,8 @@
     {
       "pagePath": "/portfolio-projektow-i-stron-internetowych/",
       "pageTitle": "Portfolio: 28 stron internetowych i projektów | DirectWebs",
-      "screenPageViews": 55.0,
-      "activeUsers": 9.0
-    },
-    {
-      "pagePath": "/",
-      "pageTitle": "Strony internetowe Kłodzko od 1500 zł | DirectWebs",
-      "screenPageViews": 50.0,
-      "activeUsers": 9.0
+      "screenPageViews": 60.0,
+      "activeUsers": 10.0
     },
     {
       "pagePath": "/skontaktuj-sie-porozmawiajmy-o-twoim-projekcie/",
@@ -449,6 +454,12 @@
       "pageTitle": "Cennik stron internetowych 2026: od 1000 zł | DirectWebs",
       "screenPageViews": 31.0,
       "activeUsers": 3.0
+    },
+    {
+      "pagePath": "/projektowanie-stron-wordpress-nowoczesne-strony-www/",
+      "pageTitle": "Nowoczesne strony WWW dla firm od 1000 zł | DirectWebs",
+      "screenPageViews": 30.0,
+      "activeUsers": 4.0
     },
     {
       "pagePath": "/jak-tworzyc-strony-internetowe-poradnik/",
@@ -467,12 +478,6 @@
       "pageTitle": "Aplikacje dedykowane dla firm: wycena w 24 h | DirectWebs",
       "screenPageViews": 25.0,
       "activeUsers": 5.0
-    },
-    {
-      "pagePath": "/projektowanie-stron-wordpress-nowoczesne-strony-www/",
-      "pageTitle": "Nowoczesne strony WWW dla firm od 1000 zł | DirectWebs",
-      "screenPageViews": 25.0,
-      "activeUsers": 3.0
     },
     {
       "pagePath": "/projektowanie-stron-wordpress-o-mnie/",
@@ -508,18 +513,18 @@
   "cities": [
     {
       "city": "Wroclaw",
-      "activeUsers": 15.0
+      "activeUsers": 16.0
     },
     {
       "city": "Urumqi",
-      "activeUsers": 9.0
-    },
-    {
-      "city": "Warsaw",
-      "activeUsers": 8.0
+      "activeUsers": 13.0
     },
     {
       "city": "Dublin",
+      "activeUsers": 7.0
+    },
+    {
+      "city": "Warsaw",
       "activeUsers": 7.0
     },
     {
