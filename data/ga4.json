@@ -1,30 +1,25 @@
 {
-  "updated": "2026-11-03 12:12",
+  "updated": "2026-11-04 12:24",
   "property_id": "511078398",
   "summary": {
     "biezace": {
-      "activeUsers": 104.0,
-      "newUsers": 102.0,
-      "sessions": 117.0,
-      "screenPageViews": 943.0,
-      "engagementRate": 0.9316,
-      "averageSessionDuration": 111.2824
+      "activeUsers": 116.0,
+      "newUsers": 114.0,
+      "sessions": 129.0,
+      "screenPageViews": 1015.0,
+      "engagementRate": 0.9457,
+      "averageSessionDuration": 97.3822
     },
     "poprzednie": {
-      "activeUsers": 44.0,
-      "newUsers": 43.0,
-      "sessions": 47.0,
-      "screenPageViews": 74.0,
-      "engagementRate": 0.5319,
-      "averageSessionDuration": 34.632
+      "activeUsers": 46.0,
+      "newUsers": 44.0,
+      "sessions": 50.0,
+      "screenPageViews": 86.0,
+      "engagementRate": 0.54,
+      "averageSessionDuration": 43.3868
     }
   },
   "trend": [
-    {
-      "date": "20260805",
-      "users": 1.0,
-      "sessions": 1.0
-    },
     {
       "date": "20260806",
       "users": 3.0,
@@ -384,13 +379,18 @@
       "date": "20261102",
       "users": 8.0,
       "sessions": 8.0
+    },
+    {
+      "date": "20261103",
+      "users": 14.0,
+      "sessions": 16.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 67.0,
-      "activeUsers": 62.0
+      "sessions": 70.0,
+      "activeUsers": 67.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
@@ -399,16 +399,21 @@
     },
     {
       "sessionDefaultChannelGroup": "Organic Search",
-      "sessions": 11.0,
-      "activeUsers": 6.0
-    },
-    {
-      "sessionDefaultChannelGroup": "AI Assistant",
-      "sessions": 3.0,
-      "activeUsers": 3.0
+      "sessions": 12.0,
+      "activeUsers": 7.0
     },
     {
       "sessionDefaultChannelGroup": "Referral",
+      "sessions": 6.0,
+      "activeUsers": 4.0
+    },
+    {
+      "sessionDefaultChannelGroup": "Paid Search",
+      "sessions": 5.0,
+      "activeUsers": 5.0
+    },
+    {
+      "sessionDefaultChannelGroup": "AI Assistant",
       "sessions": 3.0,
       "activeUsers": 3.0
     },
@@ -428,8 +433,8 @@
     {
       "pagePath": "/",
       "pageTitle": "Strony internetowe Kłodzko od 1500 zł | DirectWebs",
-      "screenPageViews": 65.0,
-      "activeUsers": 12.0
+      "screenPageViews": 100.0,
+      "activeUsers": 17.0
     },
     {
       "pagePath": "/",
@@ -444,6 +449,18 @@
       "activeUsers": 10.0
     },
     {
+      "pagePath": "/projektowanie-stron-wordpress-nowoczesne-strony-www/",
+      "pageTitle": "Nowoczesne strony WWW dla firm od 1000 zł | DirectWebs",
+      "screenPageViews": 50.0,
+      "activeUsers": 8.0
+    },
+    {
+      "pagePath": "/o-mnie-strony-internetowe-klodzko/",
+      "pageTitle": "O mnie: strony internetowe Kłodzko, WordPress i SEO",
+      "screenPageViews": 45.0,
+      "activeUsers": 8.0
+    },
+    {
       "pagePath": "/skontaktuj-sie-porozmawiajmy-o-twoim-projekcie/",
       "pageTitle": "Kontakt: bezpłatna wycena strony w 24 h | DirectWebs",
       "screenPageViews": 40.0,
@@ -456,22 +473,10 @@
       "activeUsers": 3.0
     },
     {
-      "pagePath": "/projektowanie-stron-wordpress-nowoczesne-strony-www/",
-      "pageTitle": "Nowoczesne strony WWW dla firm od 1000 zł | DirectWebs",
-      "screenPageViews": 30.0,
-      "activeUsers": 4.0
-    },
-    {
       "pagePath": "/jak-tworzyc-strony-internetowe-poradnik/",
       "pageTitle": "Jak tworzyć strony internetowe — kompletny poradnik 2025",
       "screenPageViews": 26.0,
       "activeUsers": 6.0
-    },
-    {
-      "pagePath": "/",
-      "pageTitle": "Strony internetowe Kłodzko – projektowanie stron WWW | DirectWebs",
-      "screenPageViews": 25.0,
-      "activeUsers": 5.0
     },
     {
       "pagePath": "/aplikacje-dedykowane/",
@@ -492,12 +497,6 @@
       "activeUsers": 3.0
     },
     {
-      "pagePath": "/o-mnie-strony-internetowe-klodzko/",
-      "pageTitle": "O mnie: strony internetowe Kłodzko, WordPress i SEO",
-      "screenPageViews": 20.0,
-      "activeUsers": 3.0
-    },
-    {
       "pagePath": "/oferta/",
       "pageTitle": "Oferta: strony internetowe od 1000 zł, SEO i aplikacje",
       "screenPageViews": 20.0,
@@ -508,23 +507,29 @@
       "pageTitle": "O mnie: DirectWebs, ponad 25 stron dla firm",
       "screenPageViews": 20.0,
       "activeUsers": 2.0
+    },
+    {
+      "pagePath": "/produkt/voucher-prezentowy-uslugi-graficzne/",
+      "pageTitle": "Page Not Found -",
+      "screenPageViews": 15.0,
+      "activeUsers": 3.0
     }
   ],
   "cities": [
     {
       "city": "Wroclaw",
-      "activeUsers": 16.0
+      "activeUsers": 15.0
     },
     {
       "city": "Urumqi",
-      "activeUsers": 13.0
-    },
-    {
-      "city": "Dublin",
-      "activeUsers": 7.0
+      "activeUsers": 14.0
     },
     {
       "city": "Warsaw",
+      "activeUsers": 8.0
+    },
+    {
+      "city": "Dublin",
       "activeUsers": 7.0
     },
     {
