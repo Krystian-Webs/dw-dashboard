@@ -1,30 +1,25 @@
 {
-  "updated": "2026-11-04 12:24",
+  "updated": "2026-11-05 12:39",
   "property_id": "511078398",
   "summary": {
     "biezace": {
-      "activeUsers": 116.0,
-      "newUsers": 114.0,
-      "sessions": 129.0,
-      "screenPageViews": 1015.0,
-      "engagementRate": 0.9457,
-      "averageSessionDuration": 97.3822
+      "activeUsers": 126.0,
+      "newUsers": 124.0,
+      "sessions": 139.0,
+      "screenPageViews": 1134.0,
+      "engagementRate": 0.9496,
+      "averageSessionDuration": 99.1931
     },
     "poprzednie": {
-      "activeUsers": 46.0,
-      "newUsers": 44.0,
-      "sessions": 50.0,
-      "screenPageViews": 86.0,
-      "engagementRate": 0.54,
-      "averageSessionDuration": 43.3868
+      "activeUsers": 43.0,
+      "newUsers": 41.0,
+      "sessions": 48.0,
+      "screenPageViews": 84.0,
+      "engagementRate": 0.5417,
+      "averageSessionDuration": 44.3414
     }
   },
   "trend": [
-    {
-      "date": "20260806",
-      "users": 3.0,
-      "sessions": 3.0
-    },
     {
       "date": "20260808",
       "users": 1.0,
@@ -384,18 +379,23 @@
       "date": "20261103",
       "users": 14.0,
       "sessions": 16.0
+    },
+    {
+      "date": "20261104",
+      "users": 11.0,
+      "sessions": 11.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 70.0,
-      "activeUsers": 67.0
+      "sessions": 79.0,
+      "activeUsers": 76.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
-      "sessions": 32.0,
-      "activeUsers": 31.0
+      "sessions": 33.0,
+      "activeUsers": 32.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Search",
@@ -433,8 +433,14 @@
     {
       "pagePath": "/",
       "pageTitle": "Strony internetowe Kłodzko od 1500 zł | DirectWebs",
-      "screenPageViews": 100.0,
-      "activeUsers": 17.0
+      "screenPageViews": 170.0,
+      "activeUsers": 20.0
+    },
+    {
+      "pagePath": "/projektowanie-stron-wordpress-nowoczesne-strony-www/",
+      "pageTitle": "Nowoczesne strony WWW dla firm od 1000 zł | DirectWebs",
+      "screenPageViews": 70.0,
+      "activeUsers": 12.0
     },
     {
       "pagePath": "/",
@@ -447,12 +453,6 @@
       "pageTitle": "Portfolio: 28 stron internetowych i projektów | DirectWebs",
       "screenPageViews": 60.0,
       "activeUsers": 10.0
-    },
-    {
-      "pagePath": "/projektowanie-stron-wordpress-nowoczesne-strony-www/",
-      "pageTitle": "Nowoczesne strony WWW dla firm od 1000 zł | DirectWebs",
-      "screenPageViews": 50.0,
-      "activeUsers": 8.0
     },
     {
       "pagePath": "/o-mnie-strony-internetowe-klodzko/",
@@ -509,24 +509,24 @@
       "activeUsers": 2.0
     },
     {
-      "pagePath": "/produkt/voucher-prezentowy-uslugi-graficzne/",
-      "pageTitle": "Page Not Found -",
+      "pagePath": "/oferta/",
+      "pageTitle": "Oferta stron internetowych od 1500 zł, SEO i aplikacje",
       "screenPageViews": 15.0,
-      "activeUsers": 3.0
+      "activeUsers": 2.0
     }
   ],
   "cities": [
+    {
+      "city": "Urumqi",
+      "activeUsers": 17.0
+    },
     {
       "city": "Wroclaw",
       "activeUsers": 15.0
     },
     {
-      "city": "Urumqi",
-      "activeUsers": 14.0
-    },
-    {
       "city": "Warsaw",
-      "activeUsers": 8.0
+      "activeUsers": 9.0
     },
     {
       "city": "Dublin",
@@ -537,19 +537,19 @@
       "activeUsers": 4.0
     },
     {
+      "city": "Prineville",
+      "activeUsers": 4.0
+    },
+    {
+      "city": "Tirana",
+      "activeUsers": 4.0
+    },
+    {
       "city": "Klodzko",
       "activeUsers": 3.0
     },
     {
-      "city": "Prineville",
-      "activeUsers": 3.0
-    },
-    {
       "city": "Altoona",
-      "activeUsers": 2.0
-    },
-    {
-      "city": "Amsterdam",
       "activeUsers": 2.0
     }
   ]
