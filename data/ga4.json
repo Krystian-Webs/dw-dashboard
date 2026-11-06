@@ -1,22 +1,22 @@
 {
-  "updated": "2026-11-05 12:39",
+  "updated": "2026-11-06 12:21",
   "property_id": "511078398",
   "summary": {
     "biezace": {
-      "activeUsers": 126.0,
-      "newUsers": 124.0,
-      "sessions": 139.0,
-      "screenPageViews": 1134.0,
-      "engagementRate": 0.9496,
-      "averageSessionDuration": 99.1931
+      "activeUsers": 129.0,
+      "newUsers": 127.0,
+      "sessions": 142.0,
+      "screenPageViews": 1153.0,
+      "engagementRate": 0.9577,
+      "averageSessionDuration": 97.2167
     },
     "poprzednie": {
-      "activeUsers": 43.0,
+      "activeUsers": 42.0,
       "newUsers": 41.0,
-      "sessions": 48.0,
-      "screenPageViews": 84.0,
-      "engagementRate": 0.5417,
-      "averageSessionDuration": 44.3414
+      "sessions": 47.0,
+      "screenPageViews": 83.0,
+      "engagementRate": 0.5319,
+      "averageSessionDuration": 44.9093
     }
   },
   "trend": [
@@ -384,13 +384,18 @@
       "date": "20261104",
       "users": 11.0,
       "sessions": 11.0
+    },
+    {
+      "date": "20261105",
+      "users": 4.0,
+      "sessions": 4.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 79.0,
-      "activeUsers": 76.0
+      "sessions": 82.0,
+      "activeUsers": 79.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
@@ -433,8 +438,8 @@
     {
       "pagePath": "/",
       "pageTitle": "Strony internetowe Kłodzko od 1500 zł | DirectWebs",
-      "screenPageViews": 170.0,
-      "activeUsers": 20.0
+      "screenPageViews": 175.0,
+      "activeUsers": 21.0
     },
     {
       "pagePath": "/projektowanie-stron-wordpress-nowoczesne-strony-www/",
@@ -518,7 +523,7 @@
   "cities": [
     {
       "city": "Urumqi",
-      "activeUsers": 17.0
+      "activeUsers": 19.0
     },
     {
       "city": "Wroclaw",
@@ -531,6 +536,10 @@
     {
       "city": "Dublin",
       "activeUsers": 7.0
+    },
+    {
+      "city": "Kashgar Prefecture",
+      "activeUsers": 4.0
     },
     {
       "city": "Lulea",
@@ -547,10 +556,6 @@
     {
       "city": "Klodzko",
       "activeUsers": 3.0
-    },
-    {
-      "city": "Altoona",
-      "activeUsers": 2.0
     }
   ]
 }
