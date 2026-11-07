@@ -1,30 +1,25 @@
 {
-  "updated": "2026-11-06 12:21",
+  "updated": "2026-11-07 11:15",
   "property_id": "511078398",
   "summary": {
     "biezace": {
       "activeUsers": 129.0,
-      "newUsers": 127.0,
-      "sessions": 142.0,
-      "screenPageViews": 1153.0,
-      "engagementRate": 0.9577,
-      "averageSessionDuration": 97.2167
+      "newUsers": 128.0,
+      "sessions": 141.0,
+      "screenPageViews": 1133.0,
+      "engagementRate": 0.9574,
+      "averageSessionDuration": 94.8951
     },
     "poprzednie": {
-      "activeUsers": 42.0,
-      "newUsers": 41.0,
+      "activeUsers": 41.0,
+      "newUsers": 39.0,
       "sessions": 47.0,
-      "screenPageViews": 83.0,
-      "engagementRate": 0.5319,
-      "averageSessionDuration": 44.9093
+      "screenPageViews": 106.0,
+      "engagementRate": 0.5745,
+      "averageSessionDuration": 53.9608
     }
   },
   "trend": [
-    {
-      "date": "20260808",
-      "users": 1.0,
-      "sessions": 1.0
-    },
     {
       "date": "20260809",
       "users": 2.0,
@@ -389,12 +384,17 @@
       "date": "20261105",
       "users": 4.0,
       "sessions": 4.0
+    },
+    {
+      "date": "20261106",
+      "users": 1.0,
+      "sessions": 1.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 82.0,
+      "sessions": 81.0,
       "activeUsers": 79.0
     },
     {
@@ -539,7 +539,7 @@
     },
     {
       "city": "Kashgar Prefecture",
-      "activeUsers": 4.0
+      "activeUsers": 5.0
     },
     {
       "city": "Lulea",
@@ -554,8 +554,8 @@
       "activeUsers": 4.0
     },
     {
-      "city": "Klodzko",
-      "activeUsers": 3.0
+      "city": "Altoona",
+      "activeUsers": 2.0
     }
   ]
 }
