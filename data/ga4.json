@@ -1,30 +1,25 @@
 {
-  "updated": "2026-11-07 11:15",
+  "updated": "2026-11-08 11:27",
   "property_id": "511078398",
   "summary": {
     "biezace": {
       "activeUsers": 129.0,
-      "newUsers": 128.0,
-      "sessions": 141.0,
-      "screenPageViews": 1133.0,
-      "engagementRate": 0.9574,
-      "averageSessionDuration": 94.8951
+      "newUsers": 127.0,
+      "sessions": 142.0,
+      "screenPageViews": 1143.0,
+      "engagementRate": 0.9577,
+      "averageSessionDuration": 100.9104
     },
     "poprzednie": {
-      "activeUsers": 41.0,
-      "newUsers": 39.0,
-      "sessions": 47.0,
-      "screenPageViews": 106.0,
-      "engagementRate": 0.5745,
-      "averageSessionDuration": 53.9608
+      "activeUsers": 44.0,
+      "newUsers": 42.0,
+      "sessions": 50.0,
+      "screenPageViews": 140.0,
+      "engagementRate": 0.62,
+      "averageSessionDuration": 53.4078
     }
   },
   "trend": [
-    {
-      "date": "20260809",
-      "users": 2.0,
-      "sessions": 2.0
-    },
     {
       "date": "20260810",
       "users": 1.0,
@@ -389,13 +384,18 @@
       "date": "20261106",
       "users": 1.0,
       "sessions": 1.0
+    },
+    {
+      "date": "20261107",
+      "users": 4.0,
+      "sessions": 5.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 81.0,
-      "activeUsers": 79.0
+      "sessions": 80.0,
+      "activeUsers": 78.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
@@ -404,13 +404,13 @@
     },
     {
       "sessionDefaultChannelGroup": "Organic Search",
-      "sessions": 12.0,
+      "sessions": 13.0,
       "activeUsers": 7.0
     },
     {
       "sessionDefaultChannelGroup": "Referral",
-      "sessions": 6.0,
-      "activeUsers": 4.0
+      "sessions": 7.0,
+      "activeUsers": 5.0
     },
     {
       "sessionDefaultChannelGroup": "Paid Search",
@@ -438,26 +438,26 @@
     {
       "pagePath": "/",
       "pageTitle": "Strony internetowe Kłodzko od 1500 zł | DirectWebs",
-      "screenPageViews": 175.0,
-      "activeUsers": 21.0
+      "screenPageViews": 190.0,
+      "activeUsers": 23.0
     },
     {
       "pagePath": "/projektowanie-stron-wordpress-nowoczesne-strony-www/",
       "pageTitle": "Nowoczesne strony WWW dla firm od 1000 zł | DirectWebs",
-      "screenPageViews": 70.0,
+      "screenPageViews": 75.0,
       "activeUsers": 12.0
     },
     {
       "pagePath": "/",
       "pageTitle": "Strony internetowe dla firm od 1000 zł | DirectWebs",
-      "screenPageViews": 65.0,
-      "activeUsers": 12.0
+      "screenPageViews": 55.0,
+      "activeUsers": 11.0
     },
     {
       "pagePath": "/portfolio-projektow-i-stron-internetowych/",
       "pageTitle": "Portfolio: 28 stron internetowych i projektów | DirectWebs",
-      "screenPageViews": 60.0,
-      "activeUsers": 10.0
+      "screenPageViews": 55.0,
+      "activeUsers": 9.0
     },
     {
       "pagePath": "/o-mnie-strony-internetowe-klodzko/",
@@ -478,16 +478,16 @@
       "activeUsers": 3.0
     },
     {
-      "pagePath": "/jak-tworzyc-strony-internetowe-poradnik/",
-      "pageTitle": "Jak tworzyć strony internetowe — kompletny poradnik 2025",
-      "screenPageViews": 26.0,
-      "activeUsers": 6.0
-    },
-    {
       "pagePath": "/aplikacje-dedykowane/",
       "pageTitle": "Aplikacje dedykowane dla firm: wycena w 24 h | DirectWebs",
       "screenPageViews": 25.0,
       "activeUsers": 5.0
+    },
+    {
+      "pagePath": "/oferta/",
+      "pageTitle": "Oferta stron internetowych od 1500 zł, SEO i aplikacje",
+      "screenPageViews": 25.0,
+      "activeUsers": 2.0
     },
     {
       "pagePath": "/projektowanie-stron-wordpress-o-mnie/",
@@ -508,16 +508,16 @@
       "activeUsers": 1.0
     },
     {
-      "pagePath": "/projektowanie-stron-wordpress-o-mnie/",
-      "pageTitle": "O mnie: DirectWebs, ponad 25 stron dla firm",
-      "screenPageViews": 20.0,
-      "activeUsers": 2.0
+      "pagePath": "/pozycjonowanie-seo/",
+      "pageTitle": "Pozycjonowanie stron w Google i AI: wycena w 24 h",
+      "screenPageViews": 15.0,
+      "activeUsers": 3.0
     },
     {
-      "pagePath": "/oferta/",
-      "pageTitle": "Oferta stron internetowych od 1500 zł, SEO i aplikacje",
+      "pagePath": "/produkt/voucher-prezentowy-uslugi-graficzne/",
+      "pageTitle": "Page Not Found -",
       "screenPageViews": 15.0,
-      "activeUsers": 2.0
+      "activeUsers": 3.0
     }
   ],
   "cities": [
@@ -527,7 +527,7 @@
     },
     {
       "city": "Wroclaw",
-      "activeUsers": 15.0
+      "activeUsers": 16.0
     },
     {
       "city": "Warsaw",
@@ -539,7 +539,7 @@
     },
     {
       "city": "Kashgar Prefecture",
-      "activeUsers": 5.0
+      "activeUsers": 7.0
     },
     {
       "city": "Lulea",
