@@ -4813,5 +4813,229 @@
     "site_analysis": {
       "error": "Gemini: wyczerpany limit zapytan (pominieto)"
     }
+  },
+  {
+    "date": "2026-11-09",
+    "checks": [
+      {
+        "question": "Kto robi strony internetowe w Kłodzku i Kotlinie Kłodzkiej?",
+        "tier": "lokalnie",
+        "chatgpt": {
+          "error": "429 insufficient_quota — doladuj konto OpenAI (platform.openai.com → Billing)"
+        },
+        "gemini": {
+          "error": "HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)"
+        },
+        "claude": {
+          "mentioned": false,
+          "response_excerpt": "Nie mam dostępu do aktualnych, zweryfikowanych danych o lokalnych firmach, więc nie podam konkretnych nazw. Wolę nie zgadywać, bo mógłbym wskazać firmę, która już nie działa albo nie ma dobrych opinii. Oto jak znaleźć wykonawcę.\n\n## Gdzie szukać\n\n1. **Mapy Google**: wpisz „strony internetowe Kłodzko”, „tworzenie stron www Polanica-Zdrój”, „agencja marketingowa Kudowa-Zdrój”. Zwróć uwagę na opinie,",
+          "domains": []
+        }
+      },
+      {
+        "question": "Agencja webdesign Kłodzko - kogo polecacie?",
+        "tier": "lokalnie",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)"
+        },
+        "claude": {
+          "mentioned": false,
+          "response_excerpt": "Nie mam dostępu do aktualnych, zweryfikowanych opinii o firmach z Kłodzka, więc nie podam konkretnej nazwy. Wolę nie wymyślać rekomendacji, bo mogłyby być nieaktualne lub nieprawdziwe.\n\n## Jak znaleźć dobrą agencję\n\n**Gdzie szukać:**\n- Wizytówki Google (Mapy): fraza „agencja webdesign Kłodzko\" lub „strony internetowe Kłodzko\", z uwzględnieniem liczby i treści opinii.\n- Polecenia lokalnych firm: za",
+          "domains": []
+        }
+      },
+      {
+        "question": "Firma do stworzenia strony internetowej Kotlina Kłodzka",
+        "tier": "lokalnie",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)"
+        },
+        "claude": {
+          "mentioned": false,
+          "response_excerpt": "Nie jestem pewien, czego dokładnie potrzebujesz, więc przygotowałem uniwersalny szkic. Poniżej znajdziesz wskazówki, jak wybrać firmę do stworzenia strony w Kotlinie Kłodzkiej. Można go użyć jako wpisu SEO albo treści na stronę usługową.\n\n---\n\n## Firma do stworzenia strony internetowej w Kotlinie Kłodzkiej: jak wybrać?\n\nKotlina Kłodzka to region, w którym turystyka, gastronomia, noclegi i lokalne ",
+          "domains": []
+        }
+      },
+      {
+        "question": "Polecane agencje tworzenia stron internetowych na Dolnym Śląsku",
+        "tier": "regionalnie",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)"
+        },
+        "claude": {
+          "mentioned": false,
+          "response_excerpt": "Nie mam dostępu do aktualnych rankingów ani opinii, więc nie podam „najlepszej listy” bez ryzyka błędu. Poniżej to, co mogę powiedzieć rzetelnie, oraz jak samodzielnie wybrać dobrą agencję.\n\n## Przykładowe firmy z regionu (do weryfikacji)\nTe nazwy kojarzę jako działające we Wrocławiu, ale sprawdź ich aktualną ofertę, portfolio i opinie:\n\n- **Cube Group** (Wrocław): agencja marketingowa i webowa, s",
+          "domains": []
+        }
+      },
+      {
+        "question": "Kto robi sklepy WooCommerce na Dolnym Śląsku?",
+        "tier": "regionalnie",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)"
+        },
+        "claude": {
+          "mentioned": false,
+          "response_excerpt": "Nie mam dostępu do aktualnych, zweryfikowanych danych o firmach, więc nie podam konkretnej listy, żeby nie zgadywać nazw ani opinii. Poniżej opisuję, kto zazwyczaj realizuje takie projekty i jak ich znaleźć.\n\n## Kto robi sklepy WooCommerce na Dolnym Śląsku\n\n1. **Agencje interaktywne i e-commerce**: głównie we Wrocławiu, który jest największym ośrodkiem w regionie. Biorą większe wdrożenia, integrac",
+          "domains": []
+        }
+      },
+      {
+        "question": "Polecane agencje tworzenia stron internetowych w Polsce",
+        "tier": "krajowo",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)"
+        },
+        "claude": {
+          "mentioned": false,
+          "response_excerpt": "# Polecane agencje i software house'y do tworzenia stron internetowych w Polsce\n\nNie mam dostępu do aktualnych rankingów, więc poniższa lista opiera się na ogólnej renomie firm. Przed wyborem sprawdź ich aktualną ofertę i opinie.\n\n## Większe firmy (złożone projekty, aplikacje webowe, skalowalne produkty)\n- **Netguru** (Poznań): produkty cyfrowe, e-commerce, fintech.\n- **10Clouds** (Warszawa): apli",
+          "domains": []
+        }
+      },
+      {
+        "question": "Kto robi strony WordPress i sklepy WooCommerce dla małych firm w Polsce?",
+        "tier": "krajowo",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)"
+        },
+        "claude": {
+          "mentioned": false,
+          "response_excerpt": "Nie mam dostępu do aktualnych rankingów ani cenników, więc nie wskażę jednej \"najlepszej\" firmy. Poniżej opisuję, kto zwykle zajmuje się takimi projektami i jak wybrać wykonawcę.\n\n## Kto robi takie strony\n\n1. **Freelancerzy**\n   - Zwykle najtańsza opcja i dobry wybór dla stron wizytówek i prostych sklepów.\n   - Znajdziesz ich na Useme, Oferteo, Fiverr i Upwork, w grupach na Facebooku (\"WordPress P",
+          "domains": []
+        }
+      },
+      {
+        "question": "Jak wybrać firmę do stworzenia strony internetowej i sklepu online?",
+        "tier": "krajowo",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)"
+        },
+        "claude": {
+          "mentioned": false,
+          "response_excerpt": "# Jak wybrać firmę do stworzenia strony i sklepu online\n\n## 1. Zacznij od własnych wymagań\nZanim zaczniesz szukać, ustal:\n- **Cel**: wizytówka, blog, sklep, a może sprzedaż B2B?\n- **Skalę**: liczba produktów, planowana liczba zamówień, rynki zagraniczne.\n- **Budżet**: koszt wdrożenia i miesięczne koszty utrzymania.\n- **Integracje**: płatności (Przelewy24, PayU, BLIK), kurierzy (InPost, DPD), księg",
+          "domains": []
+        }
+      },
+      {
+        "question": "Kto jest dobrym specjalistą od stron WordPress na Dolnym Śląsku?",
+        "tier": "ekspert",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)"
+        },
+        "claude": {
+          "mentioned": false,
+          "response_excerpt": "Nie znam sprawdzonych, aktualnych rekomendacji konkretnych specjalistów z Dolnego Śląska, więc nie podam nazwisk ani firm, żeby nie zgadywać. Mogę za to wskazać, gdzie szukać i jak ocenić wykonawcę.\n\n## Gdzie szukać\n- **Mapy Google**: frazy typu „strony WordPress Wrocław\", „tworzenie stron www Legnica / Wałbrzych / Jelenia Góra\". Zwróć uwagę na liczbę i treść opinii.\n- **Wyszukiwarka Google**: fir",
+          "domains": []
+        }
+      },
+      {
+        "question": "Kto pomoże mi pozycjonować firmę w Google i w ChatGPT w Kłodzku?",
+        "tier": "ekspert",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)"
+        },
+        "claude": {
+          "mentioned": false,
+          "response_excerpt": "# Kto może Ci pomóc w Kłodzku\n\nNie znam zweryfikowanej listy firm SEO z Kłodzka i nie chcę polecać przypadkowych nazw. Poniżej opcje i sposób wyboru.\n\n## 1. Do kogo się zwrócić\n- **Lokalna lub regionalna agencja SEO** (Kłodzko, Wałbrzych, Wrocław). Kłodzko jest małym rynkiem, więc agencje z Wrocławia często obsługują firmy z całego Dolnego Śląska zdalnie.\n- **Freelancer SEO / specjalista od local ",
+          "domains": [
+            "sprawdzone.pl"
+          ]
+        }
+      },
+      {
+        "question": "Polecisz freelancera do zrobienia strony dla małej firmy w Kotlinie Kłodzkiej?",
+        "tier": "ekspert",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)"
+        },
+        "claude": {
+          "mentioned": false,
+          "response_excerpt": "Nie podam konkretnego nazwiska. Nie mam zweryfikowanych, aktualnych informacji o freelancerach z tego regionu i nie chcę polecać kogoś \"na ślepo\". Mogę za to pokazać, jak wybrać dobrą osobę.\n\n## Gdzie szukać\n- **Lokalne polecenia**: zapytaj w urzędzie gminy, w lokalnych grupach na Facebooku (np. dotyczących Kłodzka, Polanicy-Zdroju, Dusznik, Lądka-Zdroju), u innych przedsiębiorców i w lokalnej izb",
+          "domains": [
+            "freelancer.pl"
+          ]
+        }
+      },
+      {
+        "question": "Co to jest DirectWebs?",
+        "tier": "brand",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "Gemini 429 — wyczerpany limit darmowego planu (gemini-3.8-flash). Wlacz platnosci w Google AI Studio albo poczekaj na odnowienie limitu."
+        },
+        "claude": {
+          "mentioned": true,
+          "response_excerpt": "Nie mam wiarygodnych informacji o tym, czym dokładnie jest DirectWebs, więc nie chcę zgadywać. Nazwa może oznaczać firmę, agencję internetową lub markę związaną z SEO i tworzeniem stron, ale nie potrafię tego potwierdzić.\n\nWskazówką jest nazwa katalogu projektu, `dw-seo-autoposter`. Prefiks „dw\" może oznaczać DirectWebs, a sam projekt wygląda na narzędzie do automatycznego publikowania wpisów SEO.",
+          "domains": []
+        }
+      },
+      {
+        "question": "DirectWebs opinie",
+        "tier": "brand",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        "claude": {
+          "mentioned": true,
+          "response_excerpt": "Nie mam wiarygodnych, aktualnych danych o opiniach na temat DirectWebs, więc nie będę ich zmyślać ani streszczać z pamięci. Twoje zapytanie można zrozumieć na kilka sposobów:\n\n1. **Szukasz opinii o firmie DirectWebs jako klient.** Najlepiej sprawdzić Google Maps/Profil Firmy, Clutch, GoWork, Facebooka i Trustpilot. Warto też poprosić firmę o kontakt do klientów referencyjnych.\n2. **Potrzebujesz wp",
+          "domains": [
+            "schema.org"
+          ]
+        }
+      },
+      {
+        "question": "directwebs.pl — czym się zajmuje ta firma i ile kosztuje strona?",
+        "tier": "brand",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        "claude": {
+          "mentioned": true,
+          "response_excerpt": "Nie mam wiarygodnych informacji o firmie directwebs.pl, a nie chcę zgadywać, bo cennik stron internetowych bardzo się różni w zależności od firmy i zakresu prac.\n\nZ nazwy projektu, w którym pracuję (`dw-seo-autoposter`), podejrzewam, że chodzi o agencję lub firmę webową zajmującą się stronami i SEO. To jednak tylko domysł, a nie potwierdzony fakt.\n\n**Jak to szybko sprawdzić:**\n- Zajrzyj w zakładki",
+          "domains": []
+        }
+      }
+    ],
+    "site_analysis": {
+      "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+    }
   }
 ]
