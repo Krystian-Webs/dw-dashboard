@@ -1,30 +1,25 @@
 {
-  "updated": "2026-11-08 11:27",
+  "updated": "2026-11-09 13:13",
   "property_id": "511078398",
   "summary": {
     "biezace": {
-      "activeUsers": 129.0,
-      "newUsers": 127.0,
-      "sessions": 142.0,
-      "screenPageViews": 1143.0,
-      "engagementRate": 0.9577,
-      "averageSessionDuration": 100.9104
+      "activeUsers": 133.0,
+      "newUsers": 132.0,
+      "sessions": 146.0,
+      "screenPageViews": 1163.0,
+      "engagementRate": 0.9589,
+      "averageSessionDuration": 98.1204
     },
     "poprzednie": {
-      "activeUsers": 44.0,
-      "newUsers": 42.0,
-      "sessions": 50.0,
-      "screenPageViews": 140.0,
-      "engagementRate": 0.62,
-      "averageSessionDuration": 53.4078
+      "activeUsers": 45.0,
+      "newUsers": 43.0,
+      "sessions": 52.0,
+      "screenPageViews": 150.0,
+      "engagementRate": 0.6346,
+      "averageSessionDuration": 52.0116
     }
   },
   "trend": [
-    {
-      "date": "20260810",
-      "users": 1.0,
-      "sessions": 1.0
-    },
     {
       "date": "20260811",
       "users": 1.0,
@@ -389,13 +384,18 @@
       "date": "20261107",
       "users": 4.0,
       "sessions": 5.0
+    },
+    {
+      "date": "20261108",
+      "users": 6.0,
+      "sessions": 6.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 80.0,
-      "activeUsers": 78.0
+      "sessions": 85.0,
+      "activeUsers": 83.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
@@ -404,8 +404,8 @@
     },
     {
       "sessionDefaultChannelGroup": "Organic Search",
-      "sessions": 13.0,
-      "activeUsers": 7.0
+      "sessions": 12.0,
+      "activeUsers": 6.0
     },
     {
       "sessionDefaultChannelGroup": "Referral",
@@ -438,8 +438,8 @@
     {
       "pagePath": "/",
       "pageTitle": "Strony internetowe Kłodzko od 1500 zł | DirectWebs",
-      "screenPageViews": 190.0,
-      "activeUsers": 23.0
+      "screenPageViews": 200.0,
+      "activeUsers": 25.0
     },
     {
       "pagePath": "/projektowanie-stron-wordpress-nowoczesne-strony-www/",
@@ -508,14 +508,14 @@
       "activeUsers": 1.0
     },
     {
-      "pagePath": "/pozycjonowanie-seo/",
-      "pageTitle": "Pozycjonowanie stron w Google i AI: wycena w 24 h",
+      "pagePath": "/polityka-prywatnosci-rodo/",
+      "pageTitle": "Polityka prywatności i RODO 2025 | DirectWebs",
       "screenPageViews": 15.0,
       "activeUsers": 3.0
     },
     {
-      "pagePath": "/produkt/voucher-prezentowy-uslugi-graficzne/",
-      "pageTitle": "Page Not Found -",
+      "pagePath": "/pozycjonowanie-seo/",
+      "pageTitle": "Pozycjonowanie stron w Google i AI: wycena w 24 h",
       "screenPageViews": 15.0,
       "activeUsers": 3.0
     }
@@ -530,15 +530,15 @@
       "activeUsers": 16.0
     },
     {
+      "city": "Kashgar Prefecture",
+      "activeUsers": 11.0
+    },
+    {
       "city": "Warsaw",
       "activeUsers": 9.0
     },
     {
       "city": "Dublin",
-      "activeUsers": 7.0
-    },
-    {
-      "city": "Kashgar Prefecture",
       "activeUsers": 7.0
     },
     {
