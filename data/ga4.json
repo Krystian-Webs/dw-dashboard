@@ -1,30 +1,25 @@
 {
-  "updated": "2026-11-09 13:13",
+  "updated": "2026-11-10 12:52",
   "property_id": "511078398",
   "summary": {
     "biezace": {
-      "activeUsers": 133.0,
-      "newUsers": 132.0,
-      "sessions": 146.0,
-      "screenPageViews": 1163.0,
-      "engagementRate": 0.9589,
-      "averageSessionDuration": 98.1204
+      "activeUsers": 152.0,
+      "newUsers": 151.0,
+      "sessions": 166.0,
+      "screenPageViews": 1279.0,
+      "engagementRate": 0.9639,
+      "averageSessionDuration": 88.9751
     },
     "poprzednie": {
-      "activeUsers": 45.0,
-      "newUsers": 43.0,
-      "sessions": 52.0,
-      "screenPageViews": 150.0,
-      "engagementRate": 0.6346,
-      "averageSessionDuration": 52.0116
+      "activeUsers": 42.0,
+      "newUsers": 40.0,
+      "sessions": 49.0,
+      "screenPageViews": 146.0,
+      "engagementRate": 0.6327,
+      "averageSessionDuration": 53.7139
     }
   },
   "trend": [
-    {
-      "date": "20260811",
-      "users": 1.0,
-      "sessions": 1.0
-    },
     {
       "date": "20260813",
       "users": 1.0,
@@ -389,13 +384,18 @@
       "date": "20261108",
       "users": 6.0,
       "sessions": 6.0
+    },
+    {
+      "date": "20261109",
+      "users": 19.0,
+      "sessions": 20.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 85.0,
-      "activeUsers": 83.0
+      "sessions": 102.0,
+      "activeUsers": 100.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
@@ -404,8 +404,8 @@
     },
     {
       "sessionDefaultChannelGroup": "Organic Search",
-      "sessions": 12.0,
-      "activeUsers": 6.0
+      "sessions": 13.0,
+      "activeUsers": 7.0
     },
     {
       "sessionDefaultChannelGroup": "Referral",
@@ -414,13 +414,18 @@
     },
     {
       "sessionDefaultChannelGroup": "Paid Search",
-      "sessions": 5.0,
-      "activeUsers": 5.0
+      "sessions": 6.0,
+      "activeUsers": 6.0
     },
     {
       "sessionDefaultChannelGroup": "AI Assistant",
       "sessions": 3.0,
       "activeUsers": 3.0
+    },
+    {
+      "sessionDefaultChannelGroup": "Cross-network",
+      "sessions": 1.0,
+      "activeUsers": 1.0
     },
     {
       "sessionDefaultChannelGroup": "Unassigned",
@@ -438,14 +443,20 @@
     {
       "pagePath": "/",
       "pageTitle": "Strony internetowe Kłodzko od 1500 zł | DirectWebs",
-      "screenPageViews": 200.0,
-      "activeUsers": 25.0
+      "screenPageViews": 256.0,
+      "activeUsers": 37.0
     },
     {
       "pagePath": "/projektowanie-stron-wordpress-nowoczesne-strony-www/",
       "pageTitle": "Nowoczesne strony WWW dla firm od 1000 zł | DirectWebs",
-      "screenPageViews": 75.0,
-      "activeUsers": 12.0
+      "screenPageViews": 90.0,
+      "activeUsers": 15.0
+    },
+    {
+      "pagePath": "/portfolio-projektow-i-stron-internetowych/",
+      "pageTitle": "Portfolio: 28 stron internetowych i projektów | DirectWebs",
+      "screenPageViews": 60.0,
+      "activeUsers": 10.0
     },
     {
       "pagePath": "/",
@@ -454,22 +465,16 @@
       "activeUsers": 11.0
     },
     {
-      "pagePath": "/portfolio-projektow-i-stron-internetowych/",
-      "pageTitle": "Portfolio: 28 stron internetowych i projektów | DirectWebs",
-      "screenPageViews": 55.0,
-      "activeUsers": 9.0
-    },
-    {
       "pagePath": "/o-mnie-strony-internetowe-klodzko/",
       "pageTitle": "O mnie: strony internetowe Kłodzko, WordPress i SEO",
-      "screenPageViews": 45.0,
-      "activeUsers": 8.0
+      "screenPageViews": 50.0,
+      "activeUsers": 9.0
     },
     {
       "pagePath": "/skontaktuj-sie-porozmawiajmy-o-twoim-projekcie/",
       "pageTitle": "Kontakt: bezpłatna wycena strony w 24 h | DirectWebs",
-      "screenPageViews": 40.0,
-      "activeUsers": 5.0
+      "screenPageViews": 50.0,
+      "activeUsers": 7.0
     },
     {
       "pagePath": "/cennik/",
@@ -478,16 +483,16 @@
       "activeUsers": 3.0
     },
     {
+      "pagePath": "/oferta/",
+      "pageTitle": "Oferta stron internetowych od 1500 zł, SEO i aplikacje",
+      "screenPageViews": 30.0,
+      "activeUsers": 3.0
+    },
+    {
       "pagePath": "/aplikacje-dedykowane/",
       "pageTitle": "Aplikacje dedykowane dla firm: wycena w 24 h | DirectWebs",
       "screenPageViews": 25.0,
       "activeUsers": 5.0
-    },
-    {
-      "pagePath": "/oferta/",
-      "pageTitle": "Oferta stron internetowych od 1500 zł, SEO i aplikacje",
-      "screenPageViews": 25.0,
-      "activeUsers": 2.0
     },
     {
       "pagePath": "/projektowanie-stron-wordpress-o-mnie/",
@@ -508,14 +513,14 @@
       "activeUsers": 1.0
     },
     {
-      "pagePath": "/polityka-prywatnosci-rodo/",
-      "pageTitle": "Polityka prywatności i RODO 2025 | DirectWebs",
-      "screenPageViews": 15.0,
-      "activeUsers": 3.0
+      "pagePath": "/wspolpraca-wordpress-strony-www",
+      "pageTitle": "Page Not Found - DirectWebs",
+      "screenPageViews": 20.0,
+      "activeUsers": 4.0
     },
     {
-      "pagePath": "/pozycjonowanie-seo/",
-      "pageTitle": "Pozycjonowanie stron w Google i AI: wycena w 24 h",
+      "pagePath": "/polityka-prywatnosci-rodo/",
+      "pageTitle": "Polityka prywatności i RODO 2025 | DirectWebs",
       "screenPageViews": 15.0,
       "activeUsers": 3.0
     }
@@ -531,11 +536,11 @@
     },
     {
       "city": "Kashgar Prefecture",
-      "activeUsers": 11.0
+      "activeUsers": 15.0
     },
     {
       "city": "Warsaw",
-      "activeUsers": 9.0
+      "activeUsers": 10.0
     },
     {
       "city": "Dublin",
