@@ -1,22 +1,22 @@
 {
-  "updated": "2026-11-10 12:52",
+  "updated": "2026-11-11 12:02",
   "property_id": "511078398",
   "summary": {
     "biezace": {
-      "activeUsers": 152.0,
-      "newUsers": 151.0,
-      "sessions": 166.0,
-      "screenPageViews": 1279.0,
-      "engagementRate": 0.9639,
-      "averageSessionDuration": 88.9751
+      "activeUsers": 154.0,
+      "newUsers": 153.0,
+      "sessions": 169.0,
+      "screenPageViews": 1299.0,
+      "engagementRate": 0.9645,
+      "averageSessionDuration": 87.4031
     },
     "poprzednie": {
-      "activeUsers": 42.0,
-      "newUsers": 40.0,
-      "sessions": 49.0,
-      "screenPageViews": 146.0,
-      "engagementRate": 0.6327,
-      "averageSessionDuration": 53.7139
+      "activeUsers": 43.0,
+      "newUsers": 41.0,
+      "sessions": 50.0,
+      "screenPageViews": 155.0,
+      "engagementRate": 0.64,
+      "averageSessionDuration": 51.7035
     }
   },
   "trend": [
@@ -389,13 +389,18 @@
       "date": "20261109",
       "users": 19.0,
       "sessions": 20.0
+    },
+    {
+      "date": "20261110",
+      "users": 5.0,
+      "sessions": 5.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 102.0,
-      "activeUsers": 100.0
+      "sessions": 104.0,
+      "activeUsers": 101.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
@@ -408,14 +413,14 @@
       "activeUsers": 7.0
     },
     {
+      "sessionDefaultChannelGroup": "Paid Search",
+      "sessions": 7.0,
+      "activeUsers": 7.0
+    },
+    {
       "sessionDefaultChannelGroup": "Referral",
       "sessions": 7.0,
       "activeUsers": 5.0
-    },
-    {
-      "sessionDefaultChannelGroup": "Paid Search",
-      "sessions": 6.0,
-      "activeUsers": 6.0
     },
     {
       "sessionDefaultChannelGroup": "AI Assistant",
@@ -443,14 +448,14 @@
     {
       "pagePath": "/",
       "pageTitle": "Strony internetowe Kłodzko od 1500 zł | DirectWebs",
-      "screenPageViews": 256.0,
+      "screenPageViews": 261.0,
       "activeUsers": 37.0
     },
     {
       "pagePath": "/projektowanie-stron-wordpress-nowoczesne-strony-www/",
       "pageTitle": "Nowoczesne strony WWW dla firm od 1000 zł | DirectWebs",
-      "screenPageViews": 90.0,
-      "activeUsers": 15.0
+      "screenPageViews": 95.0,
+      "activeUsers": 16.0
     },
     {
       "pagePath": "/portfolio-projektow-i-stron-internetowych/",
@@ -459,22 +464,22 @@
       "activeUsers": 10.0
     },
     {
-      "pagePath": "/",
-      "pageTitle": "Strony internetowe dla firm od 1000 zł | DirectWebs",
-      "screenPageViews": 55.0,
-      "activeUsers": 11.0
-    },
-    {
       "pagePath": "/o-mnie-strony-internetowe-klodzko/",
       "pageTitle": "O mnie: strony internetowe Kłodzko, WordPress i SEO",
-      "screenPageViews": 50.0,
-      "activeUsers": 9.0
+      "screenPageViews": 55.0,
+      "activeUsers": 10.0
     },
     {
       "pagePath": "/skontaktuj-sie-porozmawiajmy-o-twoim-projekcie/",
       "pageTitle": "Kontakt: bezpłatna wycena strony w 24 h | DirectWebs",
       "screenPageViews": 50.0,
       "activeUsers": 7.0
+    },
+    {
+      "pagePath": "/",
+      "pageTitle": "Strony internetowe dla firm od 1000 zł | DirectWebs",
+      "screenPageViews": 45.0,
+      "activeUsers": 9.0
     },
     {
       "pagePath": "/cennik/",
@@ -519,8 +524,8 @@
       "activeUsers": 4.0
     },
     {
-      "pagePath": "/polityka-prywatnosci-rodo/",
-      "pageTitle": "Polityka prywatności i RODO 2025 | DirectWebs",
+      "pagePath": "/optymalizacja-strony-wordpress-10-krokow/",
+      "pageTitle": "Optymalizacja strony WordPress — 10 kroków do wydajności",
       "screenPageViews": 15.0,
       "activeUsers": 3.0
     }
@@ -531,16 +536,16 @@
       "activeUsers": 19.0
     },
     {
+      "city": "Kashgar Prefecture",
+      "activeUsers": 17.0
+    },
+    {
       "city": "Wroclaw",
       "activeUsers": 16.0
     },
     {
-      "city": "Kashgar Prefecture",
-      "activeUsers": 15.0
-    },
-    {
       "city": "Warsaw",
-      "activeUsers": 10.0
+      "activeUsers": 9.0
     },
     {
       "city": "Dublin",
