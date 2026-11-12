@@ -5037,5 +5037,195 @@
     "site_analysis": {
       "error": "Gemini: wyczerpany limit zapytan (pominieto)"
     }
+  },
+  {
+    "date": "2026-11-12",
+    "checks": [
+      {
+        "question": "Kto robi strony internetowe w Kłodzku i Kotlinie Kłodzkiej?",
+        "tier": "lokalnie",
+        "chatgpt": {
+          "error": "429 insufficient_quota — doladuj konto OpenAI (platform.openai.com → Billing)"
+        },
+        "gemini": {
+          "error": "HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)"
+        },
+        "claude": {
+          "error": "Claude (subskrypcja): Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgyRdkdSGH3QzmQWmEUK3\"}"
+        }
+      },
+      {
+        "question": "Agencja webdesign Kłodzko - kogo polecacie?",
+        "tier": "lokalnie",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)"
+        },
+        "claude": {
+          "error": "Claude (subskrypcja): Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgyRjdxGqHp55NdxNVhgz\"}"
+        }
+      },
+      {
+        "question": "Firma do stworzenia strony internetowej Kotlina Kłodzka",
+        "tier": "lokalnie",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)"
+        },
+        "claude": {
+          "error": "Claude (subskrypcja): Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgyRqgLZNb1uHFC5Y3p3C\"}"
+        }
+      },
+      {
+        "question": "Polecane agencje tworzenia stron internetowych na Dolnym Śląsku",
+        "tier": "regionalnie",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)"
+        },
+        "claude": {
+          "error": "Claude (subskrypcja): Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgyRyuyoyTfQJcRfJwa3T\"}"
+        }
+      },
+      {
+        "question": "Kto robi sklepy WooCommerce na Dolnym Śląsku?",
+        "tier": "regionalnie",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "Gemini 503 (gemini-3.8-flash): {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n"
+        },
+        "claude": {
+          "error": "Claude (subskrypcja): Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgySDNhWzxdLkME9yevHZ\"}"
+        }
+      },
+      {
+        "question": "Polecane agencje tworzenia stron internetowych w Polsce",
+        "tier": "krajowo",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "Gemini 503 (gemini-3.8-flash): {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n"
+        },
+        "claude": {
+          "error": "Claude (subskrypcja): Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgySUa6Z16cVELmQsRnTe\"}"
+        }
+      },
+      {
+        "question": "Kto robi strony WordPress i sklepy WooCommerce dla małych firm w Polsce?",
+        "tier": "krajowo",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "Gemini 429 — wyczerpany limit darmowego planu (gemini-3.8-flash). Wlacz platnosci w Google AI Studio albo poczekaj na odnowienie limitu."
+        },
+        "claude": {
+          "error": "Claude (subskrypcja): Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgySWHicNGhk2eLANiG3i\"}"
+        }
+      },
+      {
+        "question": "Jak wybrać firmę do stworzenia strony internetowej i sklepu online?",
+        "tier": "krajowo",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        "claude": {
+          "error": "Claude (subskrypcja): Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgySWRCp2BgSzS214dvec\"}"
+        }
+      },
+      {
+        "question": "Kto jest dobrym specjalistą od stron WordPress na Dolnym Śląsku?",
+        "tier": "ekspert",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        "claude": {
+          "error": "Claude (subskrypcja): Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgySWZ4LT4dztVFZKwzJM\"}"
+        }
+      },
+      {
+        "question": "Kto pomoże mi pozycjonować firmę w Google i w ChatGPT w Kłodzku?",
+        "tier": "ekspert",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        "claude": {
+          "error": "Claude (subskrypcja): Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgySWguNQKSnRRX6zpS7N\"}"
+        }
+      },
+      {
+        "question": "Polecisz freelancera do zrobienia strony dla małej firmy w Kotlinie Kłodzkiej?",
+        "tier": "ekspert",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        "claude": {
+          "error": "Claude (subskrypcja): Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgySWqP7HDrJ9KSy3QTsT\"}"
+        }
+      },
+      {
+        "question": "Co to jest DirectWebs?",
+        "tier": "brand",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        "claude": {
+          "error": "Claude (subskrypcja): Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgySWy6DEJviKEZeuQKow\"}"
+        }
+      },
+      {
+        "question": "DirectWebs opinie",
+        "tier": "brand",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        "claude": {
+          "error": "Claude (subskrypcja): Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgySX6afa8MvxmtEKEATY\"}"
+        }
+      },
+      {
+        "question": "directwebs.pl — czym się zajmuje ta firma i ile kosztuje strona?",
+        "tier": "brand",
+        "chatgpt": {
+          "skipped": "brak srodkow na koncie OpenAI (insufficient_quota)"
+        },
+        "gemini": {
+          "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+        },
+        "claude": {
+          "error": "Claude (subskrypcja): Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access | Claude API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgySXDsCn7Pt7UMcG8Jn8\"}"
+        }
+      }
+    ],
+    "site_analysis": {
+      "error": "Gemini: wyczerpany limit zapytan (pominieto)"
+    }
   }
 ]
