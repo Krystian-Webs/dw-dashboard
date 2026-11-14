@@ -1,35 +1,25 @@
 {
-  "updated": "2026-11-12 13:06",
+  "updated": "2026-11-14 11:40",
   "property_id": "511078398",
   "summary": {
     "biezace": {
-      "activeUsers": 164.0,
-      "newUsers": 163.0,
-      "sessions": 179.0,
-      "screenPageViews": 1352.0,
-      "engagementRate": 0.9553,
-      "averageSessionDuration": 83.2359
+      "activeUsers": 167.0,
+      "newUsers": 166.0,
+      "sessions": 183.0,
+      "screenPageViews": 1320.0,
+      "engagementRate": 0.9672,
+      "averageSessionDuration": 83.1838
     },
     "poprzednie": {
       "activeUsers": 48.0,
       "newUsers": 46.0,
-      "sessions": 55.0,
-      "screenPageViews": 180.0,
-      "engagementRate": 0.6727,
-      "averageSessionDuration": 47.3378
+      "sessions": 53.0,
+      "screenPageViews": 256.0,
+      "engagementRate": 0.6981,
+      "averageSessionDuration": 48.8889
     }
   },
   "trend": [
-    {
-      "date": "20260814",
-      "users": 1.0,
-      "sessions": 1.0
-    },
-    {
-      "date": "20260815",
-      "users": 1.0,
-      "sessions": 1.0
-    },
     {
       "date": "20260817",
       "users": 2.0,
@@ -394,18 +384,28 @@
       "date": "20261111",
       "users": 16.0,
       "sessions": 16.0
+    },
+    {
+      "date": "20261112",
+      "users": 6.0,
+      "sessions": 6.0
+    },
+    {
+      "date": "20261113",
+      "users": 4.0,
+      "sessions": 5.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 113.0,
-      "activeUsers": 110.0
+      "sessions": 119.0,
+      "activeUsers": 116.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
-      "sessions": 33.0,
-      "activeUsers": 32.0
+      "sessions": 29.0,
+      "activeUsers": 28.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Search",
@@ -414,8 +414,8 @@
     },
     {
       "sessionDefaultChannelGroup": "Paid Search",
-      "sessions": 8.0,
-      "activeUsers": 8.0
+      "sessions": 11.0,
+      "activeUsers": 10.0
     },
     {
       "sessionDefaultChannelGroup": "Referral",
@@ -423,17 +423,17 @@
       "activeUsers": 4.0
     },
     {
-      "sessionDefaultChannelGroup": "Unassigned",
-      "sessions": 6.0,
-      "activeUsers": 6.0
-    },
-    {
       "sessionDefaultChannelGroup": "AI Assistant",
-      "sessions": 3.0,
-      "activeUsers": 3.0
+      "sessions": 2.0,
+      "activeUsers": 2.0
     },
     {
       "sessionDefaultChannelGroup": "Cross-network",
+      "sessions": 1.0,
+      "activeUsers": 1.0
+    },
+    {
+      "sessionDefaultChannelGroup": "Unassigned",
       "sessions": 1.0,
       "activeUsers": 1.0
     }
@@ -442,8 +442,8 @@
     {
       "pagePath": "/",
       "pageTitle": "Strony internetowe Kłodzko od 1500 zł | DirectWebs",
-      "screenPageViews": 276.0,
-      "activeUsers": 40.0
+      "screenPageViews": 281.0,
+      "activeUsers": 41.0
     },
     {
       "pagePath": "/",
@@ -454,14 +454,14 @@
     {
       "pagePath": "/projektowanie-stron-wordpress-nowoczesne-strony-www/",
       "pageTitle": "Nowoczesne strony WWW dla firm od 1000 zł | DirectWebs",
-      "screenPageViews": 100.0,
-      "activeUsers": 17.0
+      "screenPageViews": 125.0,
+      "activeUsers": 21.0
     },
     {
       "pagePath": "/skontaktuj-sie-porozmawiajmy-o-twoim-projekcie/",
       "pageTitle": "Kontakt: bezpłatna wycena strony w 24 h | DirectWebs",
-      "screenPageViews": 75.0,
-      "activeUsers": 12.0
+      "screenPageViews": 85.0,
+      "activeUsers": 14.0
     },
     {
       "pagePath": "/o-mnie-strony-internetowe-klodzko/",
@@ -472,20 +472,8 @@
     {
       "pagePath": "/portfolio-projektow-i-stron-internetowych/",
       "pageTitle": "Portfolio: 28 stron internetowych i projektów | DirectWebs",
-      "screenPageViews": 60.0,
-      "activeUsers": 10.0
-    },
-    {
-      "pagePath": "/",
-      "pageTitle": "Strony internetowe dla firm od 1000 zł | DirectWebs",
-      "screenPageViews": 40.0,
-      "activeUsers": 8.0
-    },
-    {
-      "pagePath": "/cennik/",
-      "pageTitle": "Cennik stron internetowych 2026: od 1000 zł | DirectWebs",
-      "screenPageViews": 31.0,
-      "activeUsers": 3.0
+      "screenPageViews": 55.0,
+      "activeUsers": 9.0
     },
     {
       "pagePath": "/oferta/",
@@ -500,16 +488,10 @@
       "activeUsers": 5.0
     },
     {
-      "pagePath": "/projektowanie-stron-wordpress-o-mnie/",
-      "pageTitle": "Page Not Found -",
-      "screenPageViews": 25.0,
-      "activeUsers": 2.0
-    },
-    {
-      "pagePath": "/blog-wordpress-projekty-graficzne-seo/",
-      "pageTitle": "Blog o stronach WWW, SEO i marketingu 2026 | DirectWebs",
-      "screenPageViews": 23.0,
-      "activeUsers": 3.0
+      "pagePath": "/",
+      "pageTitle": "Strony internetowe dla firm od 1000 zł | DirectWebs",
+      "screenPageViews": 20.0,
+      "activeUsers": 4.0
     },
     {
       "pagePath": "/oferta/",
@@ -524,8 +506,26 @@
       "activeUsers": 4.0
     },
     {
+      "pagePath": "/cennik/",
+      "pageTitle": "Cennik stron internetowych 2026: od 1000 zł | DirectWebs",
+      "screenPageViews": 16.0,
+      "activeUsers": 2.0
+    },
+    {
       "pagePath": "/optymalizacja-strony-wordpress-10-krokow/",
       "pageTitle": "Optymalizacja strony WordPress — 10 kroków do wydajności",
+      "screenPageViews": 15.0,
+      "activeUsers": 3.0
+    },
+    {
+      "pagePath": "/polityka-prywatnosci-rodo/",
+      "pageTitle": "Polityka prywatności i RODO 2025 | DirectWebs",
+      "screenPageViews": 15.0,
+      "activeUsers": 3.0
+    },
+    {
+      "pagePath": "/pozycjonowanie-seo/",
+      "pageTitle": "Pozycjonowanie stron w Google i AI: wycena w 24 h",
       "screenPageViews": 15.0,
       "activeUsers": 3.0
     }
@@ -533,7 +533,7 @@
   "cities": [
     {
       "city": "Kashgar Prefecture",
-      "activeUsers": 19.0
+      "activeUsers": 24.0
     },
     {
       "city": "Urumqi",
@@ -541,7 +541,7 @@
     },
     {
       "city": "Wroclaw",
-      "activeUsers": 16.0
+      "activeUsers": 15.0
     },
     {
       "city": "Warsaw",
@@ -552,11 +552,11 @@
       "activeUsers": 7.0
     },
     {
-      "city": "Lulea",
+      "city": "Kabul",
       "activeUsers": 4.0
     },
     {
-      "city": "Prineville",
+      "city": "Lulea",
       "activeUsers": 4.0
     },
     {
