@@ -1,22 +1,22 @@
 {
-  "updated": "2026-11-14 11:40",
+  "updated": "2026-11-15 12:09",
   "property_id": "511078398",
   "summary": {
     "biezace": {
-      "activeUsers": 167.0,
-      "newUsers": 166.0,
-      "sessions": 183.0,
-      "screenPageViews": 1320.0,
-      "engagementRate": 0.9672,
-      "averageSessionDuration": 83.1838
+      "activeUsers": 170.0,
+      "newUsers": 169.0,
+      "sessions": 188.0,
+      "screenPageViews": 1340.0,
+      "engagementRate": 0.9681,
+      "averageSessionDuration": 80.8744
     },
     "poprzednie": {
       "activeUsers": 48.0,
       "newUsers": 46.0,
       "sessions": 53.0,
-      "screenPageViews": 256.0,
-      "engagementRate": 0.6981,
-      "averageSessionDuration": 48.8889
+      "screenPageViews": 265.0,
+      "engagementRate": 0.717,
+      "averageSessionDuration": 49.6194
     }
   },
   "trend": [
@@ -394,13 +394,18 @@
       "date": "20261113",
       "users": 4.0,
       "sessions": 5.0
+    },
+    {
+      "date": "20261114",
+      "users": 5.0,
+      "sessions": 6.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 119.0,
-      "activeUsers": 116.0
+      "sessions": 123.0,
+      "activeUsers": 118.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
@@ -414,8 +419,8 @@
     },
     {
       "sessionDefaultChannelGroup": "Paid Search",
-      "sessions": 11.0,
-      "activeUsers": 10.0
+      "sessions": 12.0,
+      "activeUsers": 11.0
     },
     {
       "sessionDefaultChannelGroup": "Referral",
@@ -442,7 +447,7 @@
     {
       "pagePath": "/",
       "pageTitle": "Strony internetowe Kłodzko od 1500 zł | DirectWebs",
-      "screenPageViews": 281.0,
+      "screenPageViews": 291.0,
       "activeUsers": 41.0
     },
     {
@@ -454,8 +459,8 @@
     {
       "pagePath": "/projektowanie-stron-wordpress-nowoczesne-strony-www/",
       "pageTitle": "Nowoczesne strony WWW dla firm od 1000 zł | DirectWebs",
-      "screenPageViews": 125.0,
-      "activeUsers": 21.0
+      "screenPageViews": 130.0,
+      "activeUsers": 22.0
     },
     {
       "pagePath": "/skontaktuj-sie-porozmawiajmy-o-twoim-projekcie/",
@@ -464,16 +469,16 @@
       "activeUsers": 14.0
     },
     {
+      "pagePath": "/portfolio-projektow-i-stron-internetowych/",
+      "pageTitle": "Portfolio: 28 stron internetowych i projektów | DirectWebs",
+      "screenPageViews": 70.0,
+      "activeUsers": 12.0
+    },
+    {
       "pagePath": "/o-mnie-strony-internetowe-klodzko/",
       "pageTitle": "O mnie: strony internetowe Kłodzko, WordPress i SEO",
       "screenPageViews": 60.0,
       "activeUsers": 11.0
-    },
-    {
-      "pagePath": "/portfolio-projektow-i-stron-internetowych/",
-      "pageTitle": "Portfolio: 28 stron internetowych i projektów | DirectWebs",
-      "screenPageViews": 55.0,
-      "activeUsers": 9.0
     },
     {
       "pagePath": "/oferta/",
@@ -560,11 +565,11 @@
       "activeUsers": 4.0
     },
     {
-      "city": "Tirana",
+      "city": "New York",
       "activeUsers": 4.0
     },
     {
-      "city": "Yerevan",
+      "city": "Tirana",
       "activeUsers": 4.0
     }
   ]
