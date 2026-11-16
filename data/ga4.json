@@ -1,30 +1,25 @@
 {
-  "updated": "2026-11-15 12:09",
+  "updated": "2026-11-16 13:02",
   "property_id": "511078398",
   "summary": {
     "biezace": {
-      "activeUsers": 170.0,
-      "newUsers": 169.0,
-      "sessions": 188.0,
-      "screenPageViews": 1340.0,
-      "engagementRate": 0.9681,
-      "averageSessionDuration": 80.8744
+      "activeUsers": 169.0,
+      "newUsers": 168.0,
+      "sessions": 187.0,
+      "screenPageViews": 1335.0,
+      "engagementRate": 0.9679,
+      "averageSessionDuration": 81.0964
     },
     "poprzednie": {
-      "activeUsers": 48.0,
-      "newUsers": 46.0,
-      "sessions": 53.0,
-      "screenPageViews": 265.0,
-      "engagementRate": 0.717,
-      "averageSessionDuration": 49.6194
+      "activeUsers": 44.0,
+      "newUsers": 42.0,
+      "sessions": 49.0,
+      "screenPageViews": 271.0,
+      "engagementRate": 0.7551,
+      "averageSessionDuration": 51.5274
     }
   },
   "trend": [
-    {
-      "date": "20260817",
-      "users": 2.0,
-      "sessions": 2.0
-    },
     {
       "date": "20260818",
       "users": 3.0,
@@ -399,6 +394,11 @@
       "date": "20261114",
       "users": 5.0,
       "sessions": 6.0
+    },
+    {
+      "date": "20261115",
+      "users": 2.0,
+      "sessions": 2.0
     }
   ],
   "channels": [
@@ -409,8 +409,8 @@
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
-      "sessions": 29.0,
-      "activeUsers": 28.0
+      "sessions": 27.0,
+      "activeUsers": 26.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Search",
@@ -419,8 +419,8 @@
     },
     {
       "sessionDefaultChannelGroup": "Paid Search",
-      "sessions": 12.0,
-      "activeUsers": 11.0
+      "sessions": 13.0,
+      "activeUsers": 12.0
     },
     {
       "sessionDefaultChannelGroup": "Referral",
@@ -459,8 +459,8 @@
     {
       "pagePath": "/projektowanie-stron-wordpress-nowoczesne-strony-www/",
       "pageTitle": "Nowoczesne strony WWW dla firm od 1000 zł | DirectWebs",
-      "screenPageViews": 130.0,
-      "activeUsers": 22.0
+      "screenPageViews": 135.0,
+      "activeUsers": 23.0
     },
     {
       "pagePath": "/skontaktuj-sie-porozmawiajmy-o-twoim-projekcie/",
@@ -483,20 +483,14 @@
     {
       "pagePath": "/oferta/",
       "pageTitle": "Oferta stron internetowych od 1500 zł, SEO i aplikacje",
-      "screenPageViews": 30.0,
-      "activeUsers": 3.0
+      "screenPageViews": 35.0,
+      "activeUsers": 4.0
     },
     {
       "pagePath": "/aplikacje-dedykowane/",
       "pageTitle": "Aplikacje dedykowane dla firm: wycena w 24 h | DirectWebs",
       "screenPageViews": 25.0,
       "activeUsers": 5.0
-    },
-    {
-      "pagePath": "/",
-      "pageTitle": "Strony internetowe dla firm od 1000 zł | DirectWebs",
-      "screenPageViews": 20.0,
-      "activeUsers": 4.0
     },
     {
       "pagePath": "/oferta/",
@@ -533,12 +527,18 @@
       "pageTitle": "Pozycjonowanie stron w Google i AI: wycena w 24 h",
       "screenPageViews": 15.0,
       "activeUsers": 3.0
+    },
+    {
+      "pagePath": "/produkt/voucher-prezentowy-uslugi-graficzne/",
+      "pageTitle": "Page Not Found -",
+      "screenPageViews": 15.0,
+      "activeUsers": 3.0
     }
   ],
   "cities": [
     {
       "city": "Kashgar Prefecture",
-      "activeUsers": 24.0
+      "activeUsers": 25.0
     },
     {
       "city": "Urumqi",
@@ -546,7 +546,7 @@
     },
     {
       "city": "Wroclaw",
-      "activeUsers": 15.0
+      "activeUsers": 13.0
     },
     {
       "city": "Warsaw",
