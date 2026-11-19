@@ -1,30 +1,25 @@
 {
-  "updated": "2026-11-18 13:19",
+  "updated": "2026-11-19 13:43",
   "property_id": "511078398",
   "summary": {
     "biezace": {
       "activeUsers": 180.0,
       "newUsers": 179.0,
-      "sessions": 206.0,
-      "screenPageViews": 1479.0,
-      "engagementRate": 0.9612,
-      "averageSessionDuration": 98.4373
+      "sessions": 209.0,
+      "screenPageViews": 1533.0,
+      "engagementRate": 0.9617,
+      "averageSessionDuration": 111.7219
     },
     "poprzednie": {
-      "activeUsers": 42.0,
-      "newUsers": 40.0,
-      "sessions": 46.0,
-      "screenPageViews": 272.0,
-      "engagementRate": 0.8043,
-      "averageSessionDuration": 54.6614
+      "activeUsers": 44.0,
+      "newUsers": 42.0,
+      "sessions": 48.0,
+      "screenPageViews": 297.0,
+      "engagementRate": 0.8333,
+      "averageSessionDuration": 46.7923
     }
   },
   "trend": [
-    {
-      "date": "20260820",
-      "users": 1.0,
-      "sessions": 1.0
-    },
     {
       "date": "20260821",
       "users": 1.0,
@@ -399,23 +394,28 @@
       "date": "20261117",
       "users": 9.0,
       "sessions": 14.0
+    },
+    {
+      "date": "20261118",
+      "users": 6.0,
+      "sessions": 8.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 139.0,
-      "activeUsers": 126.0
+      "sessions": 141.0,
+      "activeUsers": 125.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
-      "sessions": 29.0,
-      "activeUsers": 28.0
+      "sessions": 31.0,
+      "activeUsers": 30.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Search",
-      "sessions": 15.0,
-      "activeUsers": 9.0
+      "sessions": 14.0,
+      "activeUsers": 8.0
     },
     {
       "sessionDefaultChannelGroup": "Paid Search",
@@ -424,13 +424,13 @@
     },
     {
       "sessionDefaultChannelGroup": "Referral",
-      "sessions": 6.0,
-      "activeUsers": 4.0
+      "sessions": 7.0,
+      "activeUsers": 5.0
     },
     {
       "sessionDefaultChannelGroup": "AI Assistant",
-      "sessions": 2.0,
-      "activeUsers": 2.0
+      "sessions": 1.0,
+      "activeUsers": 1.0
     },
     {
       "sessionDefaultChannelGroup": "Cross-network",
@@ -447,20 +447,20 @@
     {
       "pagePath": "/",
       "pageTitle": "Strony internetowe Kłodzko od 1500 zł | DirectWebs",
-      "screenPageViews": 360.0,
-      "activeUsers": 47.0
+      "screenPageViews": 405.0,
+      "activeUsers": 50.0
     },
     {
       "pagePath": "/",
       "pageTitle": "Strony internetowe dla firm od 1500 zł | DirectWebs",
-      "screenPageViews": 267.0,
-      "activeUsers": 33.0
+      "screenPageViews": 247.0,
+      "activeUsers": 30.0
     },
     {
       "pagePath": "/projektowanie-stron-wordpress-nowoczesne-strony-www/",
       "pageTitle": "Nowoczesne strony WWW dla firm od 1000 zł | DirectWebs",
-      "screenPageViews": 135.0,
-      "activeUsers": 23.0
+      "screenPageViews": 150.0,
+      "activeUsers": 26.0
     },
     {
       "pagePath": "/skontaktuj-sie-porozmawiajmy-o-twoim-projekcie/",
@@ -483,7 +483,7 @@
     {
       "pagePath": "/oferta/",
       "pageTitle": "Oferta stron internetowych od 1500 zł, SEO i aplikacje",
-      "screenPageViews": 35.0,
+      "screenPageViews": 60.0,
       "activeUsers": 4.0
     },
     {
@@ -503,12 +503,6 @@
       "pageTitle": "Page Not Found - DirectWebs",
       "screenPageViews": 20.0,
       "activeUsers": 4.0
-    },
-    {
-      "pagePath": "/cennik/",
-      "pageTitle": "Cennik stron internetowych 2026: od 1000 zł | DirectWebs",
-      "screenPageViews": 16.0,
-      "activeUsers": 2.0
     },
     {
       "pagePath": "/optymalizacja-strony-wordpress-10-krokow/",
@@ -533,12 +527,18 @@
       "pageTitle": "Page Not Found -",
       "screenPageViews": 15.0,
       "activeUsers": 3.0
+    },
+    {
+      "pagePath": "/responsywna-strona-internetowa/",
+      "pageTitle": "Responsywna strona internetowa: dlaczego warto?",
+      "screenPageViews": 15.0,
+      "activeUsers": 3.0
     }
   ],
   "cities": [
     {
       "city": "Kashgar Prefecture",
-      "activeUsers": 27.0
+      "activeUsers": 28.0
     },
     {
       "city": "Urumqi",
@@ -550,7 +550,7 @@
     },
     {
       "city": "Warsaw",
-      "activeUsers": 10.0
+      "activeUsers": 9.0
     },
     {
       "city": "Dublin",
