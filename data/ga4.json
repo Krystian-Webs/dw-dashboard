@@ -1,30 +1,25 @@
 {
-  "updated": "2026-11-19 13:43",
+  "updated": "2026-11-20 13:26",
   "property_id": "511078398",
   "summary": {
     "biezace": {
-      "activeUsers": 180.0,
-      "newUsers": 179.0,
-      "sessions": 209.0,
-      "screenPageViews": 1533.0,
-      "engagementRate": 0.9617,
-      "averageSessionDuration": 111.7219
+      "activeUsers": 188.0,
+      "newUsers": 186.0,
+      "sessions": 218.0,
+      "screenPageViews": 1572.0,
+      "engagementRate": 0.9587,
+      "averageSessionDuration": 105.9179
     },
     "poprzednie": {
-      "activeUsers": 44.0,
-      "newUsers": 42.0,
-      "sessions": 48.0,
-      "screenPageViews": 297.0,
-      "engagementRate": 0.8333,
-      "averageSessionDuration": 46.7923
+      "activeUsers": 45.0,
+      "newUsers": 43.0,
+      "sessions": 49.0,
+      "screenPageViews": 317.0,
+      "engagementRate": 0.8367,
+      "averageSessionDuration": 54.586
     }
   },
   "trend": [
-    {
-      "date": "20260821",
-      "users": 1.0,
-      "sessions": 1.0
-    },
     {
       "date": "20260822",
       "users": 1.0,
@@ -399,13 +394,18 @@
       "date": "20261118",
       "users": 6.0,
       "sessions": 8.0
+    },
+    {
+      "date": "20261119",
+      "users": 9.0,
+      "sessions": 10.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 141.0,
-      "activeUsers": 125.0
+      "sessions": 148.0,
+      "activeUsers": 132.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
@@ -414,8 +414,8 @@
     },
     {
       "sessionDefaultChannelGroup": "Organic Search",
-      "sessions": 14.0,
-      "activeUsers": 8.0
+      "sessions": 16.0,
+      "activeUsers": 9.0
     },
     {
       "sessionDefaultChannelGroup": "Paid Search",
@@ -428,17 +428,12 @@
       "activeUsers": 5.0
     },
     {
-      "sessionDefaultChannelGroup": "AI Assistant",
-      "sessions": 1.0,
-      "activeUsers": 1.0
+      "sessionDefaultChannelGroup": "Unassigned",
+      "sessions": 2.0,
+      "activeUsers": 2.0
     },
     {
       "sessionDefaultChannelGroup": "Cross-network",
-      "sessions": 1.0,
-      "activeUsers": 1.0
-    },
-    {
-      "sessionDefaultChannelGroup": "Unassigned",
       "sessions": 1.0,
       "activeUsers": 1.0
     }
@@ -447,38 +442,38 @@
     {
       "pagePath": "/",
       "pageTitle": "Strony internetowe Kłodzko od 1500 zł | DirectWebs",
-      "screenPageViews": 405.0,
-      "activeUsers": 50.0
+      "screenPageViews": 425.0,
+      "activeUsers": 53.0
     },
     {
       "pagePath": "/",
       "pageTitle": "Strony internetowe dla firm od 1500 zł | DirectWebs",
-      "screenPageViews": 247.0,
-      "activeUsers": 30.0
+      "screenPageViews": 242.0,
+      "activeUsers": 29.0
     },
     {
       "pagePath": "/projektowanie-stron-wordpress-nowoczesne-strony-www/",
       "pageTitle": "Nowoczesne strony WWW dla firm od 1000 zł | DirectWebs",
-      "screenPageViews": 150.0,
-      "activeUsers": 26.0
+      "screenPageViews": 155.0,
+      "activeUsers": 27.0
     },
     {
       "pagePath": "/skontaktuj-sie-porozmawiajmy-o-twoim-projekcie/",
       "pageTitle": "Kontakt: bezpłatna wycena strony w 24 h | DirectWebs",
-      "screenPageViews": 115.0,
-      "activeUsers": 19.0
+      "screenPageViews": 110.0,
+      "activeUsers": 18.0
     },
     {
       "pagePath": "/portfolio-projektow-i-stron-internetowych/",
       "pageTitle": "Portfolio: 28 stron internetowych i projektów | DirectWebs",
-      "screenPageViews": 100.0,
-      "activeUsers": 15.0
+      "screenPageViews": 95.0,
+      "activeUsers": 14.0
     },
     {
       "pagePath": "/o-mnie-strony-internetowe-klodzko/",
       "pageTitle": "O mnie: strony internetowe Kłodzko, WordPress i SEO",
-      "screenPageViews": 65.0,
-      "activeUsers": 12.0
+      "screenPageViews": 70.0,
+      "activeUsers": 13.0
     },
     {
       "pagePath": "/oferta/",
@@ -523,14 +518,14 @@
       "activeUsers": 3.0
     },
     {
-      "pagePath": "/produkt/voucher-prezentowy-uslugi-graficzne/",
-      "pageTitle": "Page Not Found -",
+      "pagePath": "/pozycjonowanie-w-ai-7-krokow-do-klientow-z-chatgpt/",
+      "pageTitle": "Pozycjonowanie w AI: 7 kroków do klientów z ChatGPT",
       "screenPageViews": 15.0,
       "activeUsers": 3.0
     },
     {
-      "pagePath": "/responsywna-strona-internetowa/",
-      "pageTitle": "Responsywna strona internetowa: dlaczego warto?",
+      "pagePath": "/produkt/voucher-prezentowy-uslugi-graficzne/",
+      "pageTitle": "Page Not Found -",
       "screenPageViews": 15.0,
       "activeUsers": 3.0
     }
@@ -538,7 +533,7 @@
   "cities": [
     {
       "city": "Kashgar Prefecture",
-      "activeUsers": 28.0
+      "activeUsers": 31.0
     },
     {
       "city": "Urumqi",
