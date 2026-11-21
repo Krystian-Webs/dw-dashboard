@@ -1,30 +1,25 @@
 {
-  "updated": "2026-11-20 13:26",
+  "updated": "2026-11-21 12:54",
   "property_id": "511078398",
   "summary": {
     "biezace": {
-      "activeUsers": 188.0,
-      "newUsers": 186.0,
-      "sessions": 218.0,
-      "screenPageViews": 1572.0,
-      "engagementRate": 0.9587,
-      "averageSessionDuration": 105.9179
+      "activeUsers": 168.0,
+      "newUsers": 166.0,
+      "sessions": 198.0,
+      "screenPageViews": 1395.0,
+      "engagementRate": 0.9596,
+      "averageSessionDuration": 112.9847
     },
     "poprzednie": {
-      "activeUsers": 45.0,
-      "newUsers": 43.0,
-      "sessions": 49.0,
-      "screenPageViews": 317.0,
-      "engagementRate": 0.8367,
-      "averageSessionDuration": 54.586
+      "activeUsers": 69.0,
+      "newUsers": 67.0,
+      "sessions": 75.0,
+      "screenPageViews": 532.0,
+      "engagementRate": 0.88,
+      "averageSessionDuration": 54.9186
     }
   },
   "trend": [
-    {
-      "date": "20260822",
-      "users": 1.0,
-      "sessions": 1.0
-    },
     {
       "date": "20260823",
       "users": 2.0,
@@ -399,6 +394,11 @@
       "date": "20261119",
       "users": 9.0,
       "sessions": 10.0
+    },
+    {
+      "date": "20261120",
+      "users": 7.0,
+      "sessions": 7.0
     }
   ],
   "channels": [
@@ -408,19 +408,19 @@
       "activeUsers": 132.0
     },
     {
-      "sessionDefaultChannelGroup": "Organic Social",
-      "sessions": 31.0,
-      "activeUsers": 30.0
-    },
-    {
       "sessionDefaultChannelGroup": "Organic Search",
       "sessions": 16.0,
-      "activeUsers": 9.0
+      "activeUsers": 8.0
     },
     {
       "sessionDefaultChannelGroup": "Paid Search",
       "sessions": 13.0,
       "activeUsers": 12.0
+    },
+    {
+      "sessionDefaultChannelGroup": "Organic Social",
+      "sessions": 11.0,
+      "activeUsers": 11.0
     },
     {
       "sessionDefaultChannelGroup": "Referral",
@@ -442,32 +442,32 @@
     {
       "pagePath": "/",
       "pageTitle": "Strony internetowe Kłodzko od 1500 zł | DirectWebs",
-      "screenPageViews": 425.0,
-      "activeUsers": 53.0
-    },
-    {
-      "pagePath": "/",
-      "pageTitle": "Strony internetowe dla firm od 1500 zł | DirectWebs",
-      "screenPageViews": 242.0,
-      "activeUsers": 29.0
+      "screenPageViews": 445.0,
+      "activeUsers": 55.0
     },
     {
       "pagePath": "/projektowanie-stron-wordpress-nowoczesne-strony-www/",
       "pageTitle": "Nowoczesne strony WWW dla firm od 1000 zł | DirectWebs",
-      "screenPageViews": 155.0,
-      "activeUsers": 27.0
+      "screenPageViews": 150.0,
+      "activeUsers": 26.0
+    },
+    {
+      "pagePath": "/",
+      "pageTitle": "Strony internetowe dla firm od 1500 zł | DirectWebs",
+      "screenPageViews": 125.0,
+      "activeUsers": 8.0
     },
     {
       "pagePath": "/skontaktuj-sie-porozmawiajmy-o-twoim-projekcie/",
       "pageTitle": "Kontakt: bezpłatna wycena strony w 24 h | DirectWebs",
-      "screenPageViews": 110.0,
-      "activeUsers": 18.0
+      "screenPageViews": 100.0,
+      "activeUsers": 17.0
     },
     {
       "pagePath": "/portfolio-projektow-i-stron-internetowych/",
       "pageTitle": "Portfolio: 28 stron internetowych i projektów | DirectWebs",
-      "screenPageViews": 95.0,
-      "activeUsers": 14.0
+      "screenPageViews": 85.0,
+      "activeUsers": 13.0
     },
     {
       "pagePath": "/o-mnie-strony-internetowe-klodzko/",
@@ -484,14 +484,8 @@
     {
       "pagePath": "/aplikacje-dedykowane/",
       "pageTitle": "Aplikacje dedykowane dla firm: wycena w 24 h | DirectWebs",
-      "screenPageViews": 30.0,
-      "activeUsers": 6.0
-    },
-    {
-      "pagePath": "/oferta/",
-      "pageTitle": "Oferta: strony internetowe od 1000 zł, SEO i aplikacje",
       "screenPageViews": 20.0,
-      "activeUsers": 1.0
+      "activeUsers": 4.0
     },
     {
       "pagePath": "/wspolpraca-wordpress-strony-www",
@@ -502,12 +496,6 @@
     {
       "pagePath": "/optymalizacja-strony-wordpress-10-krokow/",
       "pageTitle": "Optymalizacja strony WordPress — 10 kroków do wydajności",
-      "screenPageViews": 15.0,
-      "activeUsers": 3.0
-    },
-    {
-      "pagePath": "/polityka-prywatnosci-rodo/",
-      "pageTitle": "Polityka prywatności i RODO 2025 | DirectWebs",
       "screenPageViews": 15.0,
       "activeUsers": 3.0
     },
@@ -524,10 +512,22 @@
       "activeUsers": 3.0
     },
     {
-      "pagePath": "/produkt/voucher-prezentowy-uslugi-graficzne/",
-      "pageTitle": "Page Not Found -",
+      "pagePath": "/responsywna-strona-internetowa/",
+      "pageTitle": "Responsywna strona internetowa: dlaczego warto?",
       "screenPageViews": 15.0,
       "activeUsers": 3.0
+    },
+    {
+      "pagePath": "/blog-wordpress-jak-zaczac/",
+      "pageTitle": "Blog WordPress jak zacząć: poradnik krok po kroku",
+      "screenPageViews": 10.0,
+      "activeUsers": 1.0
+    },
+    {
+      "pagePath": "/cennik/",
+      "pageTitle": "Cennik stron internetowych 2026: od 1000 zł | DirectWebs",
+      "screenPageViews": 10.0,
+      "activeUsers": 1.0
     }
   ],
   "cities": [
@@ -541,18 +541,18 @@
     },
     {
       "city": "Wroclaw",
-      "activeUsers": 15.0
+      "activeUsers": 11.0
     },
     {
       "city": "Warsaw",
-      "activeUsers": 9.0
-    },
-    {
-      "city": "Dublin",
-      "activeUsers": 7.0
+      "activeUsers": 8.0
     },
     {
       "city": "Des Moines",
+      "activeUsers": 4.0
+    },
+    {
+      "city": "Dublin",
       "activeUsers": 4.0
     },
     {
@@ -560,11 +560,11 @@
       "activeUsers": 4.0
     },
     {
-      "city": "Lulea",
+      "city": "New York",
       "activeUsers": 4.0
     },
     {
-      "city": "New York",
+      "city": "Tirana",
       "activeUsers": 4.0
     }
   ]
