@@ -1,30 +1,25 @@
 {
-  "updated": "2026-11-24 15:08",
+  "updated": "2026-11-25 14:48",
   "property_id": "511078398",
   "summary": {
     "biezace": {
-      "activeUsers": 187.0,
-      "newUsers": 183.0,
-      "sessions": 215.0,
-      "screenPageViews": 1400.0,
-      "engagementRate": 0.9628,
-      "averageSessionDuration": 93.7175
+      "activeUsers": 188.0,
+      "newUsers": 184.0,
+      "sessions": 216.0,
+      "screenPageViews": 1334.0,
+      "engagementRate": 0.963,
+      "averageSessionDuration": 79.9872
     },
     "poprzednie": {
-      "activeUsers": 71.0,
-      "newUsers": 69.0,
-      "sessions": 79.0,
-      "screenPageViews": 627.0,
-      "engagementRate": 0.8861,
-      "averageSessionDuration": 84.6536
+      "activeUsers": 76.0,
+      "newUsers": 74.0,
+      "sessions": 84.0,
+      "screenPageViews": 723.0,
+      "engagementRate": 0.8929,
+      "averageSessionDuration": 114.4454
     }
   },
   "trend": [
-    {
-      "date": "20260826",
-      "users": 3.0,
-      "sessions": 3.0
-    },
     {
       "date": "20260827",
       "users": 1.0,
@@ -404,13 +399,18 @@
       "date": "20261123",
       "users": 4.0,
       "sessions": 4.0
+    },
+    {
+      "date": "20261124",
+      "users": 6.0,
+      "sessions": 6.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 166.0,
-      "activeUsers": 150.0
+      "sessions": 170.0,
+      "activeUsers": 154.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Search",
@@ -424,8 +424,8 @@
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
-      "sessions": 11.0,
-      "activeUsers": 11.0
+      "sessions": 8.0,
+      "activeUsers": 8.0
     },
     {
       "sessionDefaultChannelGroup": "Referral",
@@ -447,32 +447,32 @@
     {
       "pagePath": "/",
       "pageTitle": "Strony internetowe Kłodzko od 1500 zł | DirectWebs",
-      "screenPageViews": 475.0,
-      "activeUsers": 61.0
+      "screenPageViews": 495.0,
+      "activeUsers": 65.0
     },
     {
       "pagePath": "/projektowanie-stron-wordpress-nowoczesne-strony-www/",
       "pageTitle": "Nowoczesne strony WWW dla firm od 1000 zł | DirectWebs",
-      "screenPageViews": 150.0,
-      "activeUsers": 27.0
+      "screenPageViews": 140.0,
+      "activeUsers": 26.0
     },
     {
       "pagePath": "/skontaktuj-sie-porozmawiajmy-o-twoim-projekcie/",
       "pageTitle": "Kontakt: bezpłatna wycena strony w 24 h | DirectWebs",
-      "screenPageViews": 105.0,
-      "activeUsers": 18.0
+      "screenPageViews": 80.0,
+      "activeUsers": 15.0
     },
     {
       "pagePath": "/portfolio-projektow-i-stron-internetowych/",
       "pageTitle": "Portfolio: 28 stron internetowych i projektów | DirectWebs",
-      "screenPageViews": 80.0,
-      "activeUsers": 13.0
+      "screenPageViews": 70.0,
+      "activeUsers": 11.0
     },
     {
       "pagePath": "/o-mnie-strony-internetowe-klodzko/",
       "pageTitle": "O mnie: strony internetowe Kłodzko, WordPress i SEO",
-      "screenPageViews": 70.0,
-      "activeUsers": 13.0
+      "screenPageViews": 65.0,
+      "activeUsers": 12.0
     },
     {
       "pagePath": "/oferta/",
@@ -481,20 +481,14 @@
       "activeUsers": 5.0
     },
     {
-      "pagePath": "/",
-      "pageTitle": "Strony internetowe dla firm od 1500 zł | DirectWebs",
-      "screenPageViews": 51.0,
-      "activeUsers": 4.0
-    },
-    {
-      "pagePath": "/pozycjonowanie-seo/",
-      "pageTitle": "Pozycjonowanie stron w Google i AI: wycena w 24 h",
+      "pagePath": "/aplikacje-dedykowane/",
+      "pageTitle": "Aplikacje dedykowane dla firm: wycena w 24 h | DirectWebs",
       "screenPageViews": 30.0,
       "activeUsers": 6.0
     },
     {
-      "pagePath": "/aplikacje-dedykowane/",
-      "pageTitle": "Aplikacje dedykowane dla firm: wycena w 24 h | DirectWebs",
+      "pagePath": "/pozycjonowanie-seo/",
+      "pageTitle": "Pozycjonowanie stron w Google i AI: wycena w 24 h",
       "screenPageViews": 25.0,
       "activeUsers": 5.0
     },
@@ -523,14 +517,20 @@
       "activeUsers": 3.0
     },
     {
+      "pagePath": "/strony-internetowe-polanica-zdroj/",
+      "pageTitle": "Strony internetowe Polanica-Zdrój od 1500 zł | DirectWebs",
+      "screenPageViews": 15.0,
+      "activeUsers": 3.0
+    },
+    {
       "pagePath": "/blog-wordpress-projekty-graficzne-seo/",
       "pageTitle": "Blog o stronach WWW, SEO i marketingu 2026 | DirectWebs",
       "screenPageViews": 12.0,
       "activeUsers": 3.0
     },
     {
-      "pagePath": "/blog-wordpress-jak-zaczac/",
-      "pageTitle": "Blog WordPress jak zacząć: poradnik krok po kroku",
+      "pagePath": "/",
+      "pageTitle": "Strony internetowe dla firm od 1500 zł | DirectWebs",
       "screenPageViews": 10.0,
       "activeUsers": 1.0
     }
@@ -538,7 +538,7 @@
   "cities": [
     {
       "city": "Kashgar Prefecture",
-      "activeUsers": 32.0
+      "activeUsers": 34.0
     },
     {
       "city": "Urumqi",
@@ -546,11 +546,11 @@
     },
     {
       "city": "Singapore",
-      "activeUsers": 15.0
+      "activeUsers": 18.0
     },
     {
       "city": "Wroclaw",
-      "activeUsers": 10.0
+      "activeUsers": 9.0
     },
     {
       "city": "Warsaw",
@@ -565,11 +565,11 @@
       "activeUsers": 4.0
     },
     {
-      "city": "Dublin",
+      "city": "Kabul",
       "activeUsers": 4.0
     },
     {
-      "city": "Kabul",
+      "city": "Tirana",
       "activeUsers": 4.0
     }
   ]
