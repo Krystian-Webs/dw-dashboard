@@ -1,22 +1,22 @@
 {
-  "updated": "2026-11-27 14:09",
+  "updated": "2026-11-28 13:27",
   "property_id": "511078398",
   "summary": {
     "biezace": {
-      "activeUsers": 197.0,
-      "newUsers": 193.0,
-      "sessions": 223.0,
-      "screenPageViews": 1350.0,
-      "engagementRate": 0.9686,
-      "averageSessionDuration": 70.0587
+      "activeUsers": 203.0,
+      "newUsers": 198.0,
+      "sessions": 229.0,
+      "screenPageViews": 1365.0,
+      "engagementRate": 0.9694,
+      "averageSessionDuration": 62.5218
     },
     "poprzednie": {
-      "activeUsers": 84.0,
-      "newUsers": 82.0,
-      "sessions": 95.0,
-      "screenPageViews": 800.0,
-      "engagementRate": 0.9158,
-      "averageSessionDuration": 119.9957
+      "activeUsers": 92.0,
+      "newUsers": 90.0,
+      "sessions": 103.0,
+      "screenPageViews": 860.0,
+      "engagementRate": 0.9223,
+      "averageSessionDuration": 125.1245
     }
   },
   "trend": [
@@ -409,13 +409,18 @@
       "date": "20261126",
       "users": 8.0,
       "sessions": 8.0
+    },
+    {
+      "date": "20261127",
+      "users": 14.0,
+      "sessions": 14.0
     }
   ],
   "channels": [
     {
       "sessionDefaultChannelGroup": "Direct",
-      "sessions": 179.0,
-      "activeUsers": 162.0
+      "sessions": 186.0,
+      "activeUsers": 169.0
     },
     {
       "sessionDefaultChannelGroup": "Paid Search",
@@ -424,8 +429,8 @@
     },
     {
       "sessionDefaultChannelGroup": "Organic Search",
-      "sessions": 12.0,
-      "activeUsers": 8.0
+      "sessions": 11.0,
+      "activeUsers": 7.0
     },
     {
       "sessionDefaultChannelGroup": "Organic Social",
@@ -452,8 +457,8 @@
     {
       "pagePath": "/",
       "pageTitle": "Strony internetowe Kłodzko od 1500 zł | DirectWebs",
-      "screenPageViews": 534.0,
-      "activeUsers": 73.0
+      "screenPageViews": 589.0,
+      "activeUsers": 84.0
     },
     {
       "pagePath": "/projektowanie-stron-wordpress-nowoczesne-strony-www/",
@@ -470,20 +475,20 @@
     {
       "pagePath": "/portfolio-projektow-i-stron-internetowych/",
       "pageTitle": "Portfolio: 28 stron internetowych i projektów | DirectWebs",
-      "screenPageViews": 70.0,
-      "activeUsers": 11.0
-    },
-    {
-      "pagePath": "/o-mnie-strony-internetowe-klodzko/",
-      "pageTitle": "O mnie: strony internetowe Kłodzko, WordPress i SEO",
-      "screenPageViews": 60.0,
-      "activeUsers": 11.0
+      "screenPageViews": 65.0,
+      "activeUsers": 10.0
     },
     {
       "pagePath": "/oferta/",
       "pageTitle": "Oferta stron internetowych od 1500 zł, SEO i aplikacje",
       "screenPageViews": 60.0,
       "activeUsers": 5.0
+    },
+    {
+      "pagePath": "/o-mnie-strony-internetowe-klodzko/",
+      "pageTitle": "O mnie: strony internetowe Kłodzko, WordPress i SEO",
+      "screenPageViews": 50.0,
+      "activeUsers": 10.0
     },
     {
       "pagePath": "/aplikacje-dedykowane/",
@@ -504,10 +509,10 @@
       "activeUsers": 4.0
     },
     {
-      "pagePath": "/wspolpraca-wordpress-strony-www",
+      "pagePath": "/audyt-techniczny-strony-ahrefs-100/",
       "pageTitle": "Page Not Found - DirectWebs",
-      "screenPageViews": 20.0,
-      "activeUsers": 4.0
+      "screenPageViews": 15.0,
+      "activeUsers": 3.0
     },
     {
       "pagePath": "/optymalizacja-strony-wordpress-10-krokow/",
@@ -522,16 +527,16 @@
       "activeUsers": 3.0
     },
     {
+      "pagePath": "/wspolpraca-wordpress-strony-www",
+      "pageTitle": "Page Not Found - DirectWebs",
+      "screenPageViews": 15.0,
+      "activeUsers": 3.0
+    },
+    {
       "pagePath": "/blog-wordpress-projekty-graficzne-seo/",
       "pageTitle": "Blog o stronach WWW, SEO i marketingu 2026 | DirectWebs",
       "screenPageViews": 12.0,
       "activeUsers": 3.0
-    },
-    {
-      "pagePath": "/audyt-techniczny-strony-ahrefs-100/",
-      "pageTitle": "Page Not Found - DirectWebs",
-      "screenPageViews": 10.0,
-      "activeUsers": 2.0
     },
     {
       "pagePath": "/blog-wordpress-jak-zaczac/",
@@ -547,11 +552,11 @@
     },
     {
       "city": "Singapore",
-      "activeUsers": 19.0
+      "activeUsers": 23.0
     },
     {
       "city": "Urumqi",
-      "activeUsers": 17.0
+      "activeUsers": 13.0
     },
     {
       "city": "Wroclaw",
